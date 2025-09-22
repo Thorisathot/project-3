@@ -1,0 +1,288 @@
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Max: 25.200, on this date: 2024-01-17
+Water Temperature min: 8.800, on this date: 2024-07-04
+Station long name: BARWON RIVER @ GEELONG
+Station Number: 233217
+Parameter: Water Course LevelWater Course Max: 1.314, on this date: 2024-01-01
+Water Course min: 0.769, on this date: 2024-12-31
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Max: 77.360, on this date: 2024-01-17
+Water Temperature min: 47.840, on this date: 2024-07-04
+Station long name: BARWON RIVER @ GEELONG
+Station Number: 233217
+Parameter: Water Course LevelWater Course Max: 1.314, on this date: 2024-01-01
+Water Course min: 0.769, on this date: 2024-12-31
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Max: 25.200, on this date: 2024-01-17
+Water Temperature min: 8.800, on this date: 2024-07-04
+Station long name: BARWON RIVER @ GEELONG
+Station Number: 233217
+Parameter: Water Course LevelWater Course Max: 1.314, on this date: 2024-01-01
+Water Course min: 0.769, on this date: 2024-12-31
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Max: 0.000, on this date: 
+Water Temperature min: 100.000, on this date: 
+Station long name: BARWON RIVER @ GEELONG
+Station Number: 233217
+Parameter: Water Course LevelWater Course Max: 1.314, on this date: 2024-01-01
+Water Course min: 0.769, on this date: 2024-12-31
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Max: 0.000, on this date: 
+Water Temperature min: 100.000, on this date: 
+Station long name: BARWON RIVER @ GEELONG
+Station Number: 233217
+Parameter: Water Course LevelWater Course Max: 1.314, on this date: 2024-01-01
+Water Course min: 0.769, on this date: 2024-12-31
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Max: 25.200, on this date: 2024-01-17
+Water Temperature min: 8.800, on this date: 2024-07-04
+Station long name: 
+Station Number: 
+Parameter: Water Course Max: 0.000, on this date: 
+Water Course min: 100.000, on this date: 
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Max: 25.200, on this date: 2024-01-17
+Water Temperature min: 8.800, on this date: 2024-07-04
+Station long name: 
+Station Number: 
+Parameter: Water Course Max: 0.000, on this date: 
+Water Course min: 100.000, on this date: 
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Max: 77.360, on this date: 2024-01-17
+Water Temperature min: 47.840, on this date: 2024-07-04
+Station long name: 
+Station Number: 
+Parameter: Water Course Max: 0.000, on this date: 
+Water Course min: 100.000, on this date: 
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Max: 25.200, on this date: 2024-01-17
+Water Temperature min: 8.800, on this date: 2024-07-04
+Station long name: 
+Station Number: 
+Parameter: Water Course Max: 0.000, on this date: 
+Water Course min: 100.000, on this date: 
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Max: 25.200, on this date: 2024-01-17
+Water Temperature min: 8.800, on this date: 2024-07-04
+Station long name: BARWON RIVER @ GEELONG
+Station Number: 233217
+Parameter: Water Course LevelWater Course Max: 1.314, on this date: 2024-01-01
+Water Course min: 0.769, on this date: 2024-12-31
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Max: 77.360, on this date: 2024-01-17
+Water Temperature min: 8.800, on this date: 2024-07-04
+Station long name: BARWON RIVER @ GEELONG
+Station Number: 233217
+Parameter: Water Course LevelWater Course Max: 1.314, on this date: 2024-01-01
+Water Course min: 0.769, on this date: 2024-12-31
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Max: 25.200, on this date: 2024-01-17
+Water Temperature min: 8.800, on this date: 2024-07-04
+Station long name: 
+Station Number: 
+Parameter: Water Course Max: 0.000, on this date: 
+Water Course min: 100.000, on this date: 
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Max: 25.200, on this date: 2024-01-17
+Water Temperature min: 8.800, on this date: 2024-07-04
+Station long name: 
+Station Number: 
+Parameter: Water Course Max: 0.000, on this date: 
+Water Course min: 100.000, on this date: 
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Max: 25.200, on this date: 2024-01-17
+Water Temperature min: 8.800, on this date: 2024-07-04
+Station long name: 
+Station Number: 
+Parameter: Water Course Max: 0.000, on this date: 
+Water Course min: 100.000, on this date: 
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Max: 77.360, on this date: 2024-01-17
+Water Temperature min: 47.840, on this date: 2024-07-04
+Station long name: 
+Station Number: 
+Parameter: Water Course Max: 0.000, on this date: 
+Water Course min: 100.000, on this date: 
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Daily Max: 25.200, on this date: 2024-01-17
+Water Temperature Daily min: 8.800, on this date: 2024-07-04
+Station long name: 
+Station Number: 
+Parameter: Water Course Daily Max: 0.000, on this date: 
+Water Course Daily min: 100.000, on this date: 
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Daily Max: 25.200, on this date: 2024-01-17
+Water Temperature Daily min: 8.800, on this date: 2024-07-04
+Station long name: 
+Station Number: 
+Parameter: Water Course Daily Max: 0.000, on this date: 
+Water Course Daily min: 100.000, on this date: 
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Daily Max: 77.360, on this date: 2024-01-17
+Water Temperature Daily min: 8.800, on this date: 2024-07-04
+Station long name: 
+Station Number: 
+Parameter: Water Course Daily Max: 0.000, on this date: 
+Water Course Daily min: 100.000, on this date: 
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Daily Max: 25.200, on this date: 2024-01-17
+Water Temperature Daily min: 8.800, on this date: 2024-07-04
+Station long name: BARWON RIVER @ GEELONG
+Station Number: 233217
+Parameter: Water Course LevelWater Course Daily Max: 1.314, on this date: 2024-01-01
+Water Course Daily min: 0.769, on this date: 2024-12-31
+Station long name: 
+Station Number: 
+Parameter: 
+Water Temperature Daily Max: 25.200, on this date: 2024-01-17
+Water Temperature Daily min: 8.800, on this date: 2024-07-04
+Station long name: BARWON RIVER @ GEELONG
+Station Number: 233217
+Parameter: Water Course LevelWater Course Daily Max: 1.314, on this date: 2024-01-01
+Water Course Daily min: 0.769, on this date: 2024-12-31
+Station long name: BARWON RIVER @ GEELONG
+Station Number: 233217
+Parameter: Water Course Level
+Water Temperature Daily Max: 25.200, on this date: 2024-01-17
+Water Temperature Daily min: 8.800, on this date: 2024-07-04
+Station long name: 
+Station Number: 
+Parameter: Water Course LevelWater Course Daily Max: 1.314, on this date: 2024-01-01
+Water Course Daily min: 0.769, on this date: 2024-12-31
+Station long name: BARWON RIVER @ GEELONG
+Station Number: 233217
+Parameter: Water Course Level
+Water Temperature Daily Max: 25.200, on this date: 2024-01-17
+Water Temperature Daily min: 8.800, on this date: 2024-07-04
+Station long name: 
+Station Number: 
+Parameter: Water Course LevelWater Course Daily Max: 1.314, on this date: 2024-01-01
+Water Course Daily min: 0.769, on this date: 2024-12-31
+Station long name: 
+Station Number: 
+Parameter: Water Course Level
+Water Temperature Daily Max: 77.360, on this date: 2024-01-17
+Water Temperature Daily min: 47.840, on this date: 2024-07-04
+Station long name: 
+Station Number: 
+Parameter: Water Course LevelWater Course Daily Max: 1.314, on this date: 2024-01-01
+Water Course Daily min: -1000000000000000019884624838656.000, on this date: #
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Daily Max: 25.200, on this date: 2024-01-17
+Water Temperature Daily min: 8.800, on this date: 2024-07-04
+Station long name: 
+Station Number: 
+Parameter: Water Course LevelWater Course Daily Max: 1.314, on this date: 2024-01-01
+Water Course Daily min: -1000000000000000019884624838656.000, on this date: #
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Daily Max: 25.200, on this date: 2024-01-17
+Water Temperature Daily min: 8.800, on this date: 2024-07-04
+Station long name: 
+Station Number: 
+Parameter: Water Course LevelWater Course Daily Max: 1.314, on this date: 2024-01-01
+Water Course Daily min: -1000000000000000019884624838656.000, on this date: #
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Daily Max: 25.200, on this date: 2024-01-17
+Water Temperature Daily min: 8.800, on this date: 2024-07-04
+Station long name: 
+Station Number: 
+Parameter: Water Course LevelWater Course Daily Max: 1.314, on this date: 2024-01-01
+Water Course Daily min: -1000000000000000019884624838656.000, on this date: #
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Daily Max: 25.200, on this date: 2024-01-17
+Water Temperature Daily min: 8.800, on this date: 2024-07-04
+Station long name: 
+Station Number: 
+Parameter: Water Course LevelWater Course Daily Max: 1.314, on this date: 2024-01-01
+Water Course Daily min: -1000000000000000019884624838656.000, on this date: #
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Daily Max: 25.200, on this date: 2024-01-17
+Water Temperature Daily min: 8.800, on this date: 2024-07-04
+Station long name: BARWON RIVER @ GEELONG
+Station Number: 233217
+Parameter: Water Course LevelWater Course Daily Max: 1.314, on this date: 2024-01-01
+Water Course Daily min: -1000000000000000019884624838656.000, on this date: #
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Daily Max: 25.200, on this date: 2024-01-17
+Water Temperature Daily min: 8.800, on this date: 2024-07-04
+Station long name: BARWON RIVER @ GEELONG
+Station Number: 233217
+Parameter: Water Course LevelWater Course Daily Max: 1.314, on this date: 2024-01-01
+Water Course Daily min: -1000000000000000019884624838656.000, on this date: #
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Daily Max: 25.200, on this date: 2024-01-17
+Water Temperature Daily min: 8.800, on this date: 2024-07-04
+Station long name: BARWON RIVER @ GEELONG
+Station Number: 233217
+Parameter: Water Course LevelWater Course Daily Max: 1.314, on this date: 2024-01-01
+Water Course Daily min: 0.769, on this date: 2024-12-31
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Daily Max: 25.200, on this date: 2024-01-17
+Water Temperature Daily min: 8.800, on this date: 2024-07-04
+Station long name: BARWON RIVER @ GEELONG
+Station Number: 233217
+Parameter: Water Course LevelWater Course Daily Max: 1.314 meters, on this date: 2024-01-01
+Water Course Daily min: 0.769 meters, on this date: 2024-12-31
+Station long name: 
+Station Number: 233217
+Parameter: Water Temperature
+Water Temperature Daily Max: 25.200, on this date: 2024-01-17
+Water Temperature Daily min: 8.800, on this date: 2024-07-04
+Station long name: BARWON RIVER @ GEELONG
+Station Number: 233217
+Parameter: Water Course LevelWater Course Daily Max: 1.314 meters, on this date: 2024-01-01
+Water Course Daily min: 0.769 meters, on this date: 2024-12-31
