@@ -434,6 +434,45 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
 @keyframes coachPulse{50%{box-shadow:0 8px 28px -6px rgba(0,0,0,.7),0 0 30px -2px rgba(255,180,80,.9)}}
 @media (max-width:560px){.coach{top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 190px);font-size:15px}}
 
+/* ---- play screen ---- */
+.hub-body.fullplay{padding:0;overflow:hidden}
+#tab-play.fight{position:relative;display:block;height:100%;min-height:500px;overflow:hidden}
+.fight #heroCv{position:absolute;inset:0;width:100%;height:100%;display:block}
+.fight-top{position:absolute;top:16px;left:0;right:0;text-align:center;pointer-events:none;padding-inline:90px}
+.fight-top h2{font-size:clamp(22px,4.6vw,36px);letter-spacing:.03em;color:#fff6e6;text-shadow:0 3px 0 #2a1406,0 0 20px rgba(0,0,0,.9)}
+.fight-top p{margin:2px 0 0;font-family:var(--display);font-weight:700;font-size:14px;color:#ffdca8;text-shadow:0 2px 4px #000}
+.side{position:absolute;top:16px;display:flex;flex-direction:column;gap:10px;padding:10px 6px;border-radius:22px;background:linear-gradient(180deg,rgba(30,22,52,.72),rgba(14,10,24,.55));border:2px solid rgba(90,70,140,.5)}
+.side.left{left:12px}.side.right{right:12px}
+.sbtn{position:relative;width:66px;display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:0;color:#fff;cursor:pointer;font-family:var(--display);font-weight:700;font-size:11px;letter-spacing:.04em;text-shadow:0 1px 3px #000;padding:0}
+.sbtn img{width:52px;height:52px;object-fit:contain;filter:drop-shadow(0 4px 6px rgba(0,0,0,.6));transition:transform .15s}
+.sbtn:hover img,.sbtn:focus-visible img{transform:scale(1.1)}
+.sbtn:focus-visible{outline:none}
+.sbtn .badge{position:absolute;top:-2px;right:2px;min-width:20px;height:20px;padding:0 4px;box-sizing:border-box;border-radius:10px;background:#e8323c;color:#fff;font-family:var(--body);font-weight:700;font-size:13px;display:grid;place-items:center;border:2px solid #fff;text-shadow:none}
+.fight-bottom{position:absolute;left:0;right:0;bottom:14px;display:flex;flex-direction:column;align-items:center;gap:10px;padding-inline:12px}
+.fight-bottom .startrow{display:flex;align-items:center;gap:16px}
+.fight #heroBegin{font-size:22px;padding:16px 60px;flex:none}
+.fight #heroBegin:disabled{background:linear-gradient(180deg,#6a6278,#3a3448);box-shadow:0 5px 0 #24202e;color:#cfc8dc;animation:none;cursor:not-allowed}
+.arrow{width:44px;height:58px;border:0;background:none;cursor:pointer;padding:0;filter:drop-shadow(0 3px 0 #7a3008) drop-shadow(0 4px 8px rgba(0,0,0,.6))}
+.arrow::before{content:"";display:block;width:100%;height:100%;background:linear-gradient(180deg,#ffd36a,#f07a1a);clip-path:polygon(100% 0,0 50%,100% 100%)}
+.arrow.next::before{clip-path:polygon(0 0,100% 50%,0 100%)}
+.arrow:disabled{opacity:.25;cursor:default}
+.arrow:focus-visible{outline:2px solid #ffc04a;outline-offset:4px}
+.fight .record{color:#d6cce8;text-shadow:0 1px 3px #000;font-size:14px}
+.fight .miles{width:min(440px,100%);padding:6px 14px;border-radius:20px;background:linear-gradient(180deg,rgba(30,22,52,.75),rgba(14,10,24,.65));border:2px solid rgba(90,70,140,.5);box-sizing:border-box}
+.fight .mile img{width:58px}
+.fight .mile b{font-size:13px}
+.fight .mile span{font-size:11px}
+.ddays{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.dday{display:flex;flex-direction:column;gap:4px;padding:10px 8px;border-radius:14px;background:linear-gradient(180deg,#2a2143,#1d1630);border:2px solid #3f3460;text-align:center;font-size:14px;min-width:0}
+.dday span{font-family:var(--display);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ash)}
+.dday b{font-weight:600;line-height:1.2}
+.dday.got{opacity:.5}
+.dday.got span::after{content:" \2713";color:#8ae05a}
+.dday.now{border-color:#ffc04a;box-shadow:0 0 18px -4px rgba(255,180,80,.8)}
+.cls .chosen{align-self:flex-start;font-family:var(--display);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#ffc04a}
+@media (max-width:760px){.ddays{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:560px){.fight-top{padding-inline:84px;top:12px}.fight-top h2{font-size:21px}.fight-top p{font-size:12px}.side{top:10px;gap:8px;padding:8px 4px}.side.left{left:8px}.side.right{right:8px}.sbtn{width:58px;font-size:10px}.sbtn img{width:44px;height:44px}.fight #heroBegin{padding:15px 40px;font-size:20px}.fight-bottom .startrow{gap:10px}.fight .mile img{width:44px}.fight .mile b{font-size:12px}.fight .miles{padding:4px 10px}.ddays{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
 @media (max-width:820px){.slots{grid-template-columns:repeat(2,minmax(0,1fr))}.chests{grid-template-columns:1fr}.chestcard{flex-direction:row;flex-wrap:wrap;text-align:left;align-items:center}.chestcard>.ctext{flex:1;min-width:160px}.chestcard .odds{justify-content:flex-start}.brand{letter-spacing:.08em}}
 @media (max-width:400px){.coin{font-size:13px;padding:4px 7px}.brand{font-size:15px}}
 
@@ -478,29 +517,23 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
       </div>
     </header>
     <main class="hub-body">
-      <section id="tab-play" class="tab">
-        <div class="hero"><canvas id="heroCv" aria-label="Your origin keeping vigil by the flame"></canvas><div class="hero-cap"><div class="hero-txt"><div class="eyebrow" id="heroStage"></div><p class="tagline">The last flame gutters below the cathedral. Hold it against the hollowed dead until the third bell tolls.</p></div><button id="heroBegin" class="btn">Descend</button></div></div>
-        <div id="bounties" class="bounties"></div>
-        <div class="sect-h"><h2>Descent</h2><span class="muted">Deeper stages are deadlier and pay more gold.</span></div>
-        <div id="stages" class="stages"></div>
-        <div id="stageMiles"></div>
-        <div class="sect-h"><h2>Origin</h2><span class="muted">Unlock more origins with gold.</span></div>
-        <div id="classes" class="classes"></div>
-        <div class="descend"><button id="beginBtn" class="btn">Descend</button><div id="record" class="record"></div></div>
-        <details class="howto"><summary>Controls</summary>
-          <div class="controls">
-            <span><kbd>WASD</kbd> / <kbd>Arrows</kbd></span><span>Move. Your armaments strike on their own.</span>
-            <span><kbd>Space</kbd> / <kbd>Shift</kbd></span><span>Roll through danger. Costs stamina.</span>
-            <span><kbd>Q</kbd> / <kbd>E</kbd></span><span>Drink a tonic flask. Candle shrines refill them.</span>
-            <span><kbd>Esc</kbd> · <kbd>M</kbd></span><span>Pause · Sound</span>
-            <span>Touch</span><span>Drag anywhere to move. Buttons roll and drink.</span>
-          </div>
-        </details>
+      <section id="tab-play" class="tab fight">
+        <canvas id="heroCv" aria-label="Your origin before the stage boss"></canvas>
+        <div class="fight-top"><h2 id="stageTitle"></h2><p id="stageBest"></p></div>
+        <div class="side left" id="sideL"></div>
+        <div class="side right" id="sideR"></div>
+        <div class="fight-bottom">
+          <div id="stageMiles"></div>
+          <div class="startrow"><button class="arrow prev" id="stPrev" aria-label="Previous stage"></button><button id="heroBegin" class="btn">Descend</button><button class="arrow next" id="stNext" aria-label="Next stage"></button></div>
+          <div id="record" class="record"></div>
+        </div>
       </section>
       <section id="tab-armory" class="tab" hidden>
         <div class="sect-h"><h2>Equipped</h2><span class="muted">Gear applies to every origin.</span></div>
         <div class="doll"><div class="doll-col" id="dollL"></div><div class="doll-mid"><img id="dollImg" alt="Your origin"><div class="doll-name" id="dollName"></div></div><div class="doll-col" id="dollR"></div></div>
         <div id="dollStats" class="dstats"></div>
+        <div class="sect-h"><h2>Origins</h2><span class="muted">Choose who keeps the vigil. Unlock more with gold.</span></div>
+        <div id="classes" class="classes"></div>
         <div class="sect-h"><h2>Armory <span id="invCount" class="muted"></span></h2><div class="row"><button id="mergeBtn" class="btn ghost">Merge gear</button><button id="salvageCommons" class="btn ghost">Salvage spare commons</button></div></div>
         <div id="inv" class="inv"></div>
       </section>
@@ -2566,7 +2599,7 @@ function heroStart() {
   const loop = now => { if ($('hub').hidden || hubTab !== 'play' || document.hidden) { hero.raf = 0; return; } drawHero(now / 1000); hero.raf = requestAnimationFrame(loop); };
   hero.raf = requestAnimationFrame(loop);
 }
-function drawHero(t) {
+function drawHeroVector(t) {
   const cv = $('heroCv'); if (!cv) return;
   const k = Math.min(2, window.devicePixelRatio || 1), w = cv.clientWidth, h = cv.clientHeight; if (!w || !h) return;
   if (cv.width !== Math.round(w * k) || cv.height !== Math.round(h * k)) { cv.width = Math.round(w * k); cv.height = Math.round(h * k); }
@@ -2653,7 +2686,7 @@ function migrateSave() {
   SAVE.claims = Object.assign({ wood: 0, iron: 0, ember: 0 }, SAVE.claims || {});
   SAVE.pity = Object.assign({ wood: 0, iron: 0, ember: 0, emberL: 0 }, SAVE.pity || {});
   SAVE.daily = Object.assign({ last: '', n: 0 }, SAVE.daily || {});
-  if (!SAVE.tut) SAVE.tut = SAVE.runs > 2 ? { move: 1, embers: 1, roll: 1, flask: 1, shrine: 1, boss: 1, boon: 1, hub: 1 } : {};
+  if (!SAVE.tut || (!Object.keys(SAVE.tut).length && SAVE.runs > 2)) SAVE.tut = SAVE.runs > 2 ? { move: 1, embers: 1, roll: 1, flask: 1, shrine: 1, boss: 1, boon: 1, hub: 1 } : {};
   SAVE.miles = SAVE.miles || {}; SAVE.talM = SAVE.talM || [false, false, false, false]; SAVE.tal = SAVE.tal || 0; SAVE.urn = SAVE.urn || 0;
   if (SAVE.ironClaims) { SAVE.claims.iron += SAVE.ironClaims; SAVE.ironClaims = 0; }
   if (!SAVE.migrated2) {
@@ -2762,6 +2795,7 @@ function slotCard(s) { const it = itemById(SAVE.equipped[s]); return it ? itemCa
 function renderArmory() {
   $('dollL').innerHTML = slotCard('helm') + slotCard('armor');
   $('dollR').innerHTML = slotCard('ring') + slotCard('charm');
+  renderOrigins();
   $('dollImg').src = bigPortrait(SAVE.cls); $('dollName').textContent = CLASSES[SAVE.cls].name;
   const m = metaMods(), c = CLASSES[SAVE.cls];
   const stats = [['Health', Math.round(c.hp + m.hp)], ['Damage', '+' + Math.round((c.might * (1 + m.might) - 1) * 100) + '%'], ['Armor', c.armor + m.armor],
@@ -2853,33 +2887,6 @@ function openTalent(kind, i) {
 }
 
 /* play tab: daily vigil, ember urn, stage rewards */
-function renderBounties() {
-  const ready = dailyReady(), shown = ready ? SAVE.daily.n % 7 : (SAVE.daily.n - 1 + 7) % 7;
-  const pips = DAILY.map((d, k) => `<i class="${k < shown || (k === shown && !ready) ? 'got' : k === shown ? 'now' : ''}" title="Day ${k + 1}: ${rewardLine(d)}"></i>`).join('');
-  const pr = Platform.prices[URN.sku];
-  $('bounties').innerHTML = `<div class="bcard${ready ? ' hot' : ''}"><div class="eyebrow">Daily vigil · Day ${shown + 1} of 7</div><div class="dpips">${pips}</div>
-      <p>${ready ? 'Today: ' + rewardLine(DAILY[shown]) : 'Claimed. Tomorrow: ' + rewardLine(DAILY[(shown + 1) % 7]) + '.'}</p>${ready ? '<button class="buy" id="dailyBtn">Claim</button>' : ''}</div>
-    <div class="bcard"><div class="eyebrow">Ember urn</div><div class="urnbar"><i style="width:${Math.min(100, SAVE.urn / URN.cap * 100)}%"></i></div>
-      <p>${fmtNum(SAVE.urn)} of ${URN.cap} sigils stored. Every run adds more.</p>
-      ${Platform.canBuy() && pr ? `<button class="buy" id="urnBtn" ${SAVE.urn ? '' : 'disabled'}>Break it open · ${pr.priceString}</button>` : '<span class="muted" style="font-size:14px">Break it open in the Android and iOS app.</span>'}</div>`;
-  const db = $('dailyBtn');
-  if (db) db.onclick = () => { if (!dailyReady()) return; const r = DAILY[SAVE.daily.n % 7]; giveReward(r); SAVE.daily.n++; SAVE.daily.last = todayKey(); persist(); renderHub(); SND.init(); SND.chest(); toast('Claimed ' + rewardLine(r) + '.'); };
-  const ub = $('urnBtn');
-  if (ub) ub.onclick = async () => { ub.disabled = true; try { await Platform.purchase(URN.sku); const n = SAVE.urn; SAVE.sigils += n; SAVE.urn = 0; persist(); renderHub(); toast(fmtNum(n) + ' sigils added.'); } catch (e) { toast(e && e.userCancelled ? 'Purchase cancelled.' : 'Purchase not completed.'); ub.disabled = false; } };
-}
-function renderStageMiles() {
-  const i = SAVE.stage, st = STAGES[i], S = milesState(i);
-  $('stageMiles').innerHTML = `<div class="sect-h"><h2>Stage rewards</h2><span class="muted">${st.name}: survive or clear it to earn these chests.</span></div>
-    <div class="miles">${S.map((s, k) => `<button class="mile ${s.claimed ? 'claimed' : s.reached ? 'ready' : 'locked'}" data-k="${k}"><img src="${chestArt(s.m.art, s.claimed)}" alt=""><b>${s.m.label}</b><span>${s.claimed ? 'Claimed' : s.reached ? 'Claim' : rewardLine(s.m.give(st))}</span></button>`).join('<i class="mline"></i>')}</div>`;
-  $('stageMiles').querySelectorAll('.mile').forEach(b => b.onclick = () => {
-    const k = +b.dataset.k, s = milesState(i)[k];
-    if (s.claimed) return;
-    if (!s.reached) { toast(s.m.t === 'clear' ? 'Defeat the third boss of ' + st.name + ' to earn this.' : 'Survive ' + s.m.label + ' in ' + st.name + ' to earn this.'); return; }
-    const r = s.m.give(st); SAVE.miles[st.id] = SAVE.miles[st.id] || [false, false, false]; SAVE.miles[st.id][k] = true;
-    giveReward(r); persist(); renderHub(); SND.init(); SND.chest(); toast('Claimed ' + rewardLine(r) + '.');
-  });
-}
-
 /* ---------------- First-run tutorial ---------------- */
 const TUTS = { moved: 0, rolled: false, drank: false, cur: null, shown: 0 };
 const TUT_STEPS = [
@@ -2940,39 +2947,127 @@ function renderHub() {
     b.innerHTML = TAB_ICONS[b.dataset.tab] + '<span>' + TAB_LABELS[b.dataset.tab] + (tabDot(b.dataset.tab) ? '<span class="dot" aria-label="Something to claim"></span>' : '') + '</span>';
   });
   for (const t of ['play', 'armory', 'shop', 'altar']) $('tab-' + t).hidden = t !== hubTab;
+  $('hub').querySelector('.hub-body').classList.toggle('fullplay', hubTab === 'play');
   ({ play: renderPlay, armory: renderArmory, shop: renderShop, altar: renderAltar })[hubTab]();
 }
 document.querySelectorAll('.tabbar button').forEach(b => b.addEventListener('click', () => { hubTab = b.dataset.tab; renderHub(); $('hub').querySelector('.hub-body').scrollTop = 0; }));
 
+/* ---------------- Play screen: stage scene ---------------- */
+let viewStage = null;
+const STAGE_BOSS = ['gaoler', 'mother', 'warden', 'warden'];
+function drawHero(t) {
+  const cv = $('heroCv'); if (!cv) return;
+  const vi = viewStage == null ? SAVE.stage : viewStage, st = STAGES[vi];
+  const bgI = IMG['stage_' + st.id], hsI = IMG['hero_' + SAVE.cls], bsI = IMG['boss_' + STAGE_BOSS[vi]];
+  if (!bgI || !hsI) return drawHeroVector(t);
+  const k = Math.min(2, window.devicePixelRatio || 1), w = cv.clientWidth, h = cv.clientHeight; if (!w || !h) return;
+  if (cv.width !== Math.round(w * k) || cv.height !== Math.round(h * k)) { cv.width = Math.round(w * k); cv.height = Math.round(h * k); }
+  const c = cv.getContext('2d'); c.setTransform(k, 0, 0, k, 0, 0);
+  const locked = vi >= SAVE.unlocked, gc = st.glow;
+  const sc = Math.max(w / bgI.width, h / bgI.height) * 1.06, drift = Math.sin(t * 0.12) * w * 0.02;
+  c.drawImage(bgI, (w - bgI.width * sc) / 2 + drift, (h - bgI.height * sc) * 0.35, bgI.width * sc, bgI.height * sc);
+  const shade = c.createLinearGradient(0, 0, 0, h);
+  shade.addColorStop(0, 'rgba(8,5,14,0.7)'); shade.addColorStop(0.25, 'rgba(8,5,14,0.2)'); shade.addColorStop(0.6, 'rgba(8,5,14,0.25)'); shade.addColorStop(1, 'rgba(8,5,14,0.92)');
+  c.fillStyle = shade; c.fillRect(0, 0, w, h);
+  const cx = w / 2, unit = Math.min(h, w * 1.25);
+  if (bsI) {
+    const bh = unit * 0.44, bw = bsI.width / bsI.height * bh, by = h * 0.1 + Math.sin(t * 0.8) * 4;
+    c.globalCompositeOperation = 'lighter'; glowAt(c, cx, by + bh * 0.45, bh * 0.75, gc, 0.35); c.globalCompositeOperation = 'source-over';
+    c.save(); c.globalAlpha = locked ? 0.35 : 0.95; c.drawImage(bsI, cx - bw / 2, by, bw, bh); c.restore();
+    const fade = c.createLinearGradient(0, by + bh * 0.55, 0, by + bh); fade.addColorStop(0, 'rgba(8,5,14,0)'); fade.addColorStop(1, 'rgba(8,5,14,0.65)');
+    c.fillStyle = fade; c.fillRect(cx - bw, by + bh * 0.55, bw * 2, bh * 0.46);
+  }
+  const pm = $('stageMiles'), panelTop = pm ? pm.getBoundingClientRect().top - cv.getBoundingClientRect().top : h * 0.75;
+  const fy = Math.min(h * 0.71, panelTop - 4), hh = Math.min(unit * 0.3, fy * 0.42), hw = hsI.width / hsI.height * hh;
+  c.save(); c.translate(cx, fy); c.scale(1, 0.26);
+  c.globalCompositeOperation = 'lighter';
+  const ring = c.createRadialGradient(0, 0, 0, 0, 0, hh * 0.6); ring.addColorStop(0, `rgba(${gc},0.45)`); ring.addColorStop(1, `rgba(${gc},0)`);
+  c.fillStyle = ring; c.beginPath(); c.arc(0, 0, hh * 0.6, 0, TAU); c.fill();
+  c.strokeStyle = `rgba(${gc},0.85)`; c.lineWidth = 3; c.beginPath(); c.arc(0, 0, hh * 0.42, 0, TAU); c.stroke();
+  c.lineWidth = 2; c.beginPath(); c.arc(0, 0, hh * 0.32, 0, TAU); c.stroke();
+  for (let i = 0; i < 16; i++) { const a = i / 16 * TAU + t * 0.4; c.fillStyle = `rgba(${gc},0.9)`; c.fillRect(Math.cos(a) * hh * 0.37 - 2, Math.sin(a) * hh * 0.37 - 2, 4, 4); }
+  c.restore();
+  c.fillStyle = 'rgba(0,0,0,0.5)'; c.beginPath(); c.ellipse(cx, fy, hw * 0.32, hh * 0.05, 0, 0, TAU); c.fill();
+  c.save(); c.translate(cx, fy + 2); c.scale(1, 1 + Math.sin(t * 2) * 0.01); c.drawImage(hsI, -hw / 2, -hh, hw, hh); c.restore();
+  c.globalCompositeOperation = 'lighter';
+  for (let i = 0; i < 60; i++) { const life = (t * (0.1 + hash(i, 2) * 0.2) + hash(i, 1)) % 1, ex = hash(i, 3) * w + Math.sin(t + i) * 14, ey = h - life * h * 1.1;
+    c.fillStyle = `rgba(255,${150 + Math.floor(hash(i, 4) * 80)},80,${(1 - life) * 0.85})`; const sz = 1.4 + hash(i, 5) * 2.2; c.fillRect(ex, ey, sz, sz); }
+  c.globalCompositeOperation = 'source-over';
+  if (locked) { c.fillStyle = 'rgba(12,9,20,0.55)'; c.fillRect(0, 0, w, h); }
+}
+function sideSrc(n) { if (IMG[n]) return assetUrl(n); if (n.startsWith('chest_')) return chestArt(n.split('_')[1], false); return portrait(SAVE.cls); }
+function sideBtn(id, img, label, badge) {
+  return `<button class="sbtn" id="${id}"><img src="${sideSrc(img)}" alt="">${badge ? `<span class="badge">${badge === true ? '!' : badge}</span>` : ''}<span>${label}</span></button>`;
+}
+function renderSide() {
+  const freeReady = Date.now() >= SAVE.freeChestAt, claims = claimsCount();
+  $('sideL').innerHTML = sideBtn('sbDaily', 'chest_wood_0', 'Daily', dailyReady()) + sideBtn('sbUrn', 'cur_sigil', 'Urn ' + Math.round(SAVE.urn / URN.cap * 100) + '%', SAVE.urn >= URN.cap);
+  $('sideR').innerHTML = sideBtn('sbPath', 'cur_ember', 'Level ' + SAVE.plv, false) + sideBtn('sbFree', 'chest_iron_0', 'Chests', claims ? claims : freeReady) + sideBtn('sbTal', 'icon_p_attunement', 'Talents', talAvailable() != null);
+  $('sbDaily').onclick = openDaily; $('sbUrn').onclick = openUrn; $('sbPath').onclick = openPath;
+  $('sbFree').onclick = () => { hubTab = 'shop'; renderHub(); };
+  $('sbTal').onclick = () => { hubTab = 'altar'; renderHub(); };
+}
 function renderPlay() {
   if (!SAVE.origins.includes(SAVE.cls)) SAVE.cls = 'knight';
   if (SAVE.stage >= SAVE.unlocked) SAVE.stage = 0;
-  $('stages').innerHTML = STAGES.map((s, i) => {
-    const locked = i >= SAVE.unlocked, best = SAVE.best[s.id];
-    return `<button class="stage${locked ? ' locked' : ''}" data-i="${i}" aria-pressed="${i === SAVE.stage}" style="--hue:${s.hue}">
-      <img class="thumb" src="${stageThumb(i)}" alt=""><span class="sbody"><span class="eyebrow">Stage ${ROMAN[i]}${SAVE.cleared[s.id] ? ' · Cleared' : ''}</span><h3>${s.name}</h3><p>${s.sub}</p>
-      <span class="pips" aria-label="Danger ${i + 1} of 4">${'<i></i>'.repeat(i + 1)}${'<i class="off"></i>'.repeat(3 - i)}</span>
-      <span class="meta">${locked ? 'Clear ' + STAGES[i - 1].name + ' to unlock' : (best ? 'Longest vigil ' + fmtTime(best) : 'Not yet attempted') + ' · Gold ×' + s.gold}</span></span></button>`;
-  }).join('');
-  $('stages').querySelectorAll('.stage').forEach(b => b.addEventListener('click', () => {
-    const i = +b.dataset.i; if (i >= SAVE.unlocked) { toast('Clear ' + STAGES[i - 1].name + ' first.'); return; }
-    SAVE.stage = i; persist(); renderPlay();
-  }));
+  if (viewStage == null || viewStage >= STAGES.length) viewStage = SAVE.stage;
+  const st = STAGES[viewStage], locked = viewStage >= SAVE.unlocked, best = SAVE.best[st.id];
+  $('stageTitle').textContent = (viewStage + 1) + '. ' + st.name;
+  $('stageBest').textContent = locked ? 'Clear ' + STAGES[viewStage - 1].name + ' to unlock' : (best ? 'Longest vigil ' + fmtTime(best) : 'Not yet attempted') + (SAVE.cleared[st.id] ? ' · Cleared' : '');
+  $('stPrev').disabled = viewStage <= 0; $('stNext').disabled = viewStage >= STAGES.length - 1;
+  const hb = $('heroBegin'); hb.disabled = locked; hb.textContent = locked ? 'Locked' : 'Descend';
+  $('record').textContent = CLASSES[SAVE.cls].name + ' · Gold ×' + st.gold + ' · Danger ' + '◆'.repeat(viewStage + 1);
+  if (!locked && SAVE.stage !== viewStage) { SAVE.stage = viewStage; persist(); }
+  renderSide(); renderStageMiles(); heroStart();
+}
+$('stPrev').addEventListener('click', () => { if (viewStage > 0) { viewStage--; renderPlay(); } });
+$('stNext').addEventListener('click', () => { if (viewStage < STAGES.length - 1) { viewStage++; renderPlay(); } });
+function renderStageMiles() {
+  const i = viewStage == null ? SAVE.stage : viewStage, st = STAGES[i], S = milesState(i);
+  $('stageMiles').innerHTML = `<div class="miles">${S.map((s, k) => `<button class="mile ${s.claimed ? 'claimed' : s.reached ? 'ready' : 'locked'}" data-k="${k}" title="${rewardLine(s.m.give(st))}"><img src="${chestArt(s.m.art, s.claimed)}" alt=""><b>${s.m.label}</b>${s.reached && !s.claimed ? '<span>Claim</span>' : ''}</button>`).join('<i class="mline"></i>')}</div>`;
+  $('stageMiles').querySelectorAll('.mile').forEach(b => b.onclick = () => {
+    const k = +b.dataset.k, s = milesState(i)[k];
+    if (s.claimed) { toast('Already claimed.'); return; }
+    if (!s.reached) { toast((s.m.t === 'clear' ? 'Defeat the third boss of ' + st.name : 'Survive ' + s.m.label + ' in ' + st.name) + ' to earn ' + rewardLine(s.m.give(st)) + '.'); return; }
+    const r = s.m.give(st); SAVE.miles[st.id] = SAVE.miles[st.id] || [false, false, false]; SAVE.miles[st.id][k] = true;
+    giveReward(r); persist(); renderHub(); SND.init(); SND.chest(); toast('Claimed ' + rewardLine(r) + '.');
+  });
+}
+function openDaily() {
+  const ready = dailyReady(), shown = ready ? SAVE.daily.n % 7 : (SAVE.daily.n - 1 + 7) % 7;
+  const days = DAILY.map((d, k) => `<div class="dday ${k < shown || (k === shown && !ready) ? 'got' : k === shown ? 'now' : ''}"><span>Day ${k + 1}</span><b>${rewardLine(d)}</b></div>`).join('');
+  openModal(`<div class="eyebrow">Daily vigil</div><h2>Day ${shown + 1} of 7</h2><div class="ddays">${days}</div>
+    <p class="muted">Claim once a day. Missing a day never resets your progress.</p>
+    <div class="row">${ready ? '<button class="buy" id="dailyBtn">Claim ' + rewardLine(DAILY[shown]) + '</button>' : ''}<button class="btn ghost" id="mClose">Close</button></div>`, m => {
+    m.querySelector('#mClose').onclick = closeModal;
+    const b = m.querySelector('#dailyBtn');
+    if (b) b.onclick = () => { if (!dailyReady()) return; const r = DAILY[SAVE.daily.n % 7]; giveReward(r); SAVE.daily.n++; SAVE.daily.last = todayKey(); persist(); closeModal(); renderHub(); SND.init(); SND.chest(); toast('Claimed ' + rewardLine(r) + '.'); };
+  }, true);
+}
+function openUrn() {
+  const pr = Platform.prices[URN.sku], can = Platform.canBuy() && pr;
+  openModal(`<div class="eyebrow">Ember urn</div><h2>${fmtNum(SAVE.urn)} of ${URN.cap} sigils</h2>
+    <div class="urnbar"><i style="width:${Math.min(100, SAVE.urn / URN.cap * 100)}%"></i></div>
+    <p class="muted">Every run pours sigils into the urn: some for kills, more for bosses and victories. Break it open to claim them all at once.</p>
+    <div class="row">${can ? `<button class="buy" id="urnBtn" ${SAVE.urn ? '' : 'disabled'}>Break it open · ${pr.priceString}</button>` : '<span class="note" style="font-size:15px">Break it open in the Android and iOS app.</span>'}<button class="btn ghost" id="mClose">Close</button></div>`, m => {
+    m.querySelector('#mClose').onclick = closeModal;
+    const ub = m.querySelector('#urnBtn');
+    if (ub) ub.onclick = async () => { ub.disabled = true; try { await Platform.purchase(URN.sku); const n = SAVE.urn; SAVE.sigils += n; SAVE.urn = 0; persist(); closeModal(); renderHub(); toast(fmtNum(n) + ' sigils added.'); } catch (e) { toast(e && e.userCancelled ? 'Purchase cancelled.' : 'Purchase not completed.'); ub.disabled = false; } };
+  });
+}
+function renderOrigins() {
   $('classes').innerHTML = Object.entries(CLASSES).map(([id, c]) => {
     const owned = SAVE.origins.includes(id);
     return `<button class="cls${owned ? '' : ' locked'}" data-id="${id}" aria-pressed="${id === SAVE.cls}">
-      <img class="portrait" src="${portrait(id)}" alt=""><h3>${c.name}</h3><span class="start">${WEAPONS[c.start].name}</span><p>${c.blurb}</p>${owned ? '' : `<span class="price coin gold">${fmtNum(ORIGIN_COST[id])}</span>`}</button>`;
+      <img class="portrait" src="${portrait(id)}" alt=""><h3>${c.name}</h3><span class="start">${WEAPONS[c.start].name}</span><p>${c.blurb}</p>${owned ? (id === SAVE.cls ? '<span class="chosen">Selected</span>' : '') : `<span class="price coin gold">${fmtNum(ORIGIN_COST[id])}</span>`}</button>`;
   }).join('');
   $('classes').querySelectorAll('.cls').forEach(b => b.addEventListener('click', () => {
     const id = b.dataset.id, c = CLASSES[id];
-    if (SAVE.origins.includes(id)) { SAVE.cls = id; persist(); renderPlay(); return; }
+    if (SAVE.origins.includes(id)) { SAVE.cls = id; persist(); renderHub(); return; }
     confirmBuy('Unlock the ' + c.name, c.blurb + ' Starts with ' + WEAPONS[c.start].name + '.', { gold: ORIGIN_COST[id] }, () => { SAVE.origins.push(id); SAVE.cls = id; toast(c.name + ' unlocked.'); });
   }));
-  $('beginBtn').textContent = 'Descend';
-  $('heroStage').textContent = 'Stage ' + ROMAN[SAVE.stage] + ' \u00b7 ' + STAGES[SAVE.stage].name;
-  heroStart(); renderBounties(); renderStageMiles();
-  $('record').textContent = STAGES[SAVE.stage].name + ' · ' + CLASSES[SAVE.cls].name + (SAVE.runs ? ' · ' + SAVE.runs + ' vigils so far' : '');
 }
+
 function confirmBuy(title, text, cost, onOk) {
   const ok = canAfford(cost);
   openModal(`<h2>${title}</h2><p class="muted">${text}</p>
@@ -3072,6 +3167,7 @@ function openSettings(confirmErase) {
     <div class="seg" role="group" aria-label="Camera zoom">${[['near', 'Close'], ['normal', 'Normal'], ['far', 'Far']].map(([k, l]) => `<button data-z="${k}" aria-pressed="${z === k}">${l}</button>`).join('')}</div>
     <div class="eyebrow">Sound</div>
     <div class="seg two" role="group" aria-label="Sound"><button data-s="on" aria-pressed="${!SND.muted}">On</button><button data-s="off" aria-pressed="${SND.muted}">Off</button></div>
+    <div class="eyebrow">Controls</div><p class="muted" style="margin:0;font-size:15px">Move with WASD, the arrow keys or by dragging. Roll with Space or Shift. Drink a flask with Q or E. Pause with Esc, toggle sound with M.</p>
     ${confirmErase ? `<p class="muted">This erases all gold, sigils, gear, upgrades and unlocks on this device. It cannot be undone.</p>
       <div class="row"><button class="btn ghost danger" id="mErase2">Erase everything</button><button class="btn ghost" id="mKeep">Keep my progress</button></div>`
       : `<div class="row"><button class="btn" id="mClose" style="padding:12px 24px;font-size:14px">Done</button><button class="btn ghost danger" id="mErase">Erase progress</button></div>`}`, m => {
@@ -3372,7 +3468,6 @@ $('flaskBtn').addEventListener('pointerdown', e => { e.preventDefault(); tryDrin
 $('pauseBtn').addEventListener('click', () => togglePause());
 $('muteBtn').textContent = SND.muted ? 'OFF' : 'SND';
 $('muteBtn').addEventListener('click', () => { SND.init(); SND.setMuted(!SND.muted); $('muteBtn').textContent = SND.muted ? 'OFF' : 'SND'; });
-$('beginBtn').addEventListener('click', startRun);
 $('heroBegin').addEventListener('click', startRun);
 $('menuBtn').addEventListener('click', toTitle);
 $('againBtn').addEventListener('click', startRun);
