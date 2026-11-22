@@ -16,7 +16,7 @@ Open `index.html` in a browser to play (the `assets/` folder must sit beside it)
 - **Player level** grows from every run (kills, time survived, bosses, clears and deeper stages). Each level pays gold, every 5th adds sigils and an Iron Reliquary, and each level adds +1% damage to every run (up to +50%).
 - **Gold** is earned from kills, bosses and clears. **Sigils** come from bosses and first-time stage clears (and from in-app purchases in the native app).
 - **4 stages** (Undercroft, Sunken Catacombs, Ember Cathedral, Abyss Below), unlocked in order, each tougher and paying more gold.
-- **Chests** (wooden, iron and ember, plus a free one every 4 hours) drop gear for 4 slots in 4 rarities, with odds shown. Gear can be upgraded to +10 or salvaged.
+- **Chests** (wooden, iron and ember, plus a free one every 4 hours) drop gear for 8 slots (helm, armor, gloves, boots, ring, talisman, wings and a familiar) in 4 rarities, with odds shown. Gear can be upgraded to +10 or salvaged.
 - **Talents**: a winding path of 36 permanent boons gated by player level, plus 4 milestone talents (extra reroll, extra flask, revive, +10% damage).
 - **Stage rewards**: chests for surviving 2:00 and 5:00 and for clearing each stage.
 - **Merging**: 3 pieces of gear of the same slot and rarity become 1 of the next rarity.

@@ -474,7 +474,13 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
 @media (max-width:560px){.fight-top{padding-inline:84px;top:12px}.fight-top h2{font-size:21px}.fight-top p{font-size:12px}.side{top:10px;gap:8px;padding:8px 4px}.side.left{left:8px}.side.right{right:8px}.sbtn{width:58px;font-size:10px}.sbtn img{width:44px;height:44px}.fight #heroBegin{padding:15px 40px;font-size:20px}.fight-bottom .startrow{gap:10px}.fight .mile img{width:44px}.fight .mile b{font-size:12px}.fight .miles{padding:4px 10px}.ddays{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* ---- armory layout ---- */
-#tab-armory .dstats{grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+#tab-armory .dstats{grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.doll-fig{position:relative;display:grid;place-items:center;width:100%}
+#dollImg{position:relative;z-index:1}
+#dollWings{position:absolute;left:50%;bottom:16%;transform:translateX(-50%);width:125%;max-width:none;height:auto;max-height:none;z-index:0;filter:drop-shadow(0 6px 10px rgba(0,0,0,.5));animation:wingFlap 3s ease-in-out infinite}
+#dollFam{position:absolute;right:-4%;top:4%;width:30%;height:auto;z-index:2;filter:drop-shadow(0 4px 8px rgba(0,0,0,.5));animation:famBob 2.6s ease-in-out infinite}
+@keyframes wingFlap{50%{transform:translateX(-50%) scaleX(1.05)}}
+@keyframes famBob{50%{transform:translateY(-8px)}}
 #tab-armory .dstats span{flex-direction:row;justify-content:flex-start;gap:8px;padding:8px 10px;text-transform:none;letter-spacing:0}
 #tab-armory .dstats img{width:26px;height:26px;object-fit:contain;flex:none;filter:drop-shadow(0 2px 3px rgba(0,0,0,.6))}
 #tab-armory .dstats b{font-size:16px;white-space:nowrap}
@@ -488,7 +494,7 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
 .sub-h b{color:var(--bone)}
 @media (max-width:820px){#tab-armory .dstats{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:560px){
-  #tab-armory .dstats{grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+  #tab-armory .dstats{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
   #tab-armory .dstats span{flex-direction:column;align-items:center;gap:1px;padding:6px 2px;border-radius:10px}
   #tab-armory .dstats i{margin:0;font-size:10px}#tab-armory .dstats b{font-size:13px}#tab-armory .dstats img{width:20px;height:20px}
   #tab-armory .doll{grid-template-columns:80px minmax(0,1fr) 80px;gap:8px}
@@ -497,7 +503,9 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
   #tab-armory .doll-col{gap:12px}
   #tab-armory .doll-col .item{grid-template-columns:1fr;justify-items:center;padding:8px 4px;gap:2px}
   #tab-armory .doll-col .item .itxt{display:none}
-  #tab-armory .doll-col .item .ico{width:58px;height:58px}
+  #tab-armory .doll-col .item .ico{width:44px;height:44px}
+  #tab-armory .doll-col{gap:8px;align-self:center}
+  #tab-armory .doll-col .item{padding:6px 2px}
   #tab-armory .doll-col .item::before{content:attr(data-slot);font-family:var(--display);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ash);order:2}
 }
 @media (max-width:820px){.slots{grid-template-columns:repeat(2,minmax(0,1fr))}.chests{grid-template-columns:1fr}.chestcard{flex-direction:row;flex-wrap:wrap;text-align:left;align-items:center}.chestcard>.ctext{flex:1;min-width:160px}.chestcard .odds{justify-content:flex-start}.brand{letter-spacing:.08em}}
@@ -557,7 +565,7 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
       </section>
       <section id="tab-armory" class="tab" hidden>
         <div id="dollStats" class="dstats" aria-label="Your stats in every run"></div>
-        <div class="doll"><div class="doll-col" id="dollL"></div><div class="doll-mid"><img id="dollImg" alt="Your origin"><div class="doll-name" id="dollName"></div></div><div class="doll-col" id="dollR"></div></div>
+        <div class="doll"><div class="doll-col" id="dollL"></div><div class="doll-mid"><div class="doll-fig"><img id="dollWings" alt="" hidden><img id="dollImg" alt="Your origin"><img id="dollFam" alt="" hidden></div><div class="doll-name" id="dollName"></div></div><div class="doll-col" id="dollR"></div></div>
         <div class="subtabs" role="tablist" aria-label="Armory sections"><button role="tab" data-sub="gear" id="subTabGear">Gear</button><button role="tab" data-sub="origins" id="subTabOrigins">Origins</button></div>
         <div id="subGear" class="sub">
           <div class="sub-h"><span class="muted">Stored gear <b id="invCount"></b></span><div class="row"><button id="mergeBtn" class="btn ghost">Merge gear</button><button id="salvageCommons" class="btn ghost">Salvage spare commons</button></div></div>
@@ -741,7 +749,7 @@ const IMG_NAMES = [
   ...['knight', 'sorcerer', 'pyromancer', 'wanderer', 'cleric'].map(k => 'hero_' + k),
   ...['hollow', 'rat', 'skeleton', 'wraith', 'cultist', 'dknight'].map(k => 'foe_' + k),
   ...['gaoler', 'mother', 'warden'].map(k => 'boss_' + k),
-  ...['helm', 'armor', 'ring', 'charm'].flatMap(s => [0, 1, 2, 3].map(r => `item_${s}_${r}`)),
+  ...['helm', 'armor', 'ring', 'charm', 'gloves', 'boots', 'wings', 'familiar'].flatMap(s => [0, 1, 2, 3].map(r => `item_${s}_${r}`)),
   ...['blade', 'knives', 'pyre', 'ward', 'lance', 'censer', 'wrath'].map(k => 'icon_w_' + k),
   ...['vitality', 'strength', 'dexterity', 'attunement', 'endurance', 'covetous', 'fortitude'].map(k => 'icon_p_' + k),
   ...['wood', 'iron', 'ember'].flatMap(k => [`chest_${k}_0`, `chest_${k}_1`]),
@@ -939,15 +947,19 @@ const SLOTS = {
   armor: { name: 'Armor', prim: ['armor', 1], names: [['Tattered Gambeson', 'Rusted Mail', 'Grave Wrappings'], ['Chainmail of the Order', 'Scaled Hauberk', 'Cultist Robes'], ['Plate of the Drowned King', 'Ashen Cuirass', 'Mantle of Cinders'], ["Warden's Aegis", 'Shroud of the First Flame']] },
   ring: { name: 'Ring', prim: ['might', 0.04], names: [['Iron Band', 'Copper Loop', 'Bone Ring'], ['Ring of Embers', 'Signet of Varn', "Thief's Ring"], ['Ring of the Old Gods', 'Bloodstone Ring', 'Serpent Coil'], ['Ring of the Last Flame', 'Covenant of Ash']] },
   charm: { name: 'Talisman', prim: ['cdr', 0.025], names: [['Worn Rosary', 'Candle Stub', 'Rat Totem'], ['Pilgrim Charm', 'Bell Shard', "Saint's Finger"], ['Ember Reliquary', 'Moth Talisman', 'Eye of the Deep'], ['Heart of the Vigil', 'Third Bell Fragment']] },
+  gloves: { name: 'Gloves', prim: ['crit', 0.025], names: [['Leather Grips', 'Rusted Gauntlets', 'Worn Bracers'], ["Knight's Gauntlets", 'Steel Grasp'], ['Grip of the Abyss', 'Runed Claws'], ['Hands of the Warden', 'Emberfist Gauntlets']] },
+  boots: { name: 'Boots', prim: ['spd', 0.03], names: [['Pilgrim Boots', 'Rusted Sabatons', 'Worn Treads'], ['Steel Greaves', 'Windstep Boots'], ['Shadowstride Greaves', 'Runed Sabatons'], ['Boots of the First Flame', 'Ashwalker Greaves']] },
+  wings: { name: 'Wings', prim: ['magnet', 0.12], names: [['Tattered Bat Wings'], ['Raven Wings'], ['Abyssal Wings'], ['Seraph Wings of Flame']] },
+  familiar: { name: 'Familiar', prim: ['fam', 8], names: [['Ember Wisp'], ['Spirit Owl'], ['Violet Whelp'], ['Phoenix Chick']] },
 };
-const AFFIX = { hp: 10, might: 0.03, cdr: 0.02, area: 0.04, spd: 0.03, magnet: 0.12, xp: 0.04, gold: 0.06, regen: 0.12 };
+const AFFIX = { crit: 0.02, hp: 10, might: 0.03, cdr: 0.02, area: 0.04, spd: 0.03, magnet: 0.12, xp: 0.04, gold: 0.06, regen: 0.12 };
 const INT_STATS = new Set(['armor', 'flasks', 'revive']);
 const pctS = v => Math.round(v * 100) + '%';
 const STAT_TEXT = {
   hp: v => `+${Math.round(v)} max health`, might: v => `+${pctS(v)} damage`, cdr: v => `Armaments recover ${pctS(v)} faster`,
   area: v => `+${pctS(v)} area`, spd: v => `+${pctS(v)} move speed`, magnet: v => `+${pctS(v)} pickup reach`,
   xp: v => `+${pctS(v)} embers gained`, gold: v => `+${pctS(v)} gold found`, armor: v => `+${v} armor`,
-  regen: v => `+${v.toFixed(2)} health per second`, flasks: v => `+${v} tonic flask`, revive: () => 'Rise once per run at half health',
+  regen: v => `+${v.toFixed(2)} health per second`, crit: v => `+${pctS(v)} critical hit chance`, fam: v => `Familiar strikes for ${Math.round(v)} damage`, flasks: v => `+${v} tonic flask`, revive: () => 'Rise once per run at half health',
 };
 const INV_CAP = 80;
 const CHESTS = [
@@ -999,7 +1011,7 @@ function itemStats(it) {
   add(it.prim); it.aff.forEach(add); return out;
 }
 function genItem(r, forceSlot) {
-  const slot = forceSlot || Object.keys(SLOTS)[Math.floor(Math.random() * 4)], S = SLOTS[slot], R = RARITY[r];
+  const slot = forceSlot || Object.keys(SLOTS)[Math.floor(Math.random() * Object.keys(SLOTS).length)], S = SLOTS[slot], R = RARITY[r];
   const names = S.names[r];
   const it = { id: SAVE.nextId++, slot, r, name: names[Math.floor(Math.random() * names.length)], plus: 0,
     prim: [S.prim[0], S.prim[0] === 'armor' ? (r >= 2 ? 2 : 1) : +(S.prim[1] * R.mult).toFixed(4)], aff: [] };
@@ -1007,13 +1019,14 @@ function genItem(r, forceSlot) {
   for (let i = 0; i < R.aff; i++) it.aff.push([keys[i], +(AFFIX[keys[i]] * R.mult * rand(0.85, 1.15)).toFixed(4)]);
   if (r === 3 && slot === 'charm') it.aff.push(['revive', 1]);
   if (r === 3 && slot === 'armor') it.aff.push(['flasks', 1]);
+  if (r === 3 && slot === 'wings') it.aff.push(['xp', 0.15]);
   return it;
 }
 const upCost = it => Math.round(50 * Math.pow(RARITY[it.r].mult, 1.3) * Math.pow(it.plus + 1, 1.45) / 5) * 5;
 const salvageVal = it => Math.round(20 * RARITY[it.r].mult * RARITY[it.r].mult * (1 + it.plus * 0.6));
 function rollRarity(odds) { let r = Math.random() * 100; for (let i = 0; i < 4; i++) { r -= odds[i]; if (r < 0) return i; } return 0; }
 function metaMods() {
-  const m = { hp: 0, might: 0, cdr: 0, area: 0, spd: 0, magnet: 0, xp: 0, gold: 0, armor: 0, regen: 0, flasks: 0, revive: 0, reroll: 0 };
+  const m = { hp: 0, might: 0, cdr: 0, area: 0, spd: 0, magnet: 0, xp: 0, gold: 0, armor: 0, regen: 0, flasks: 0, revive: 0, reroll: 0, crit: 0, fam: 0 };
   talMods(m);
   for (const slot in SAVE.equipped) { const it = itemById(SAVE.equipped[slot]); if (it) for (const [k, v] of itemStats(it)) m[k] += v; }
   m.might += veteranBonus();
@@ -1100,6 +1113,8 @@ function newRun(cls) {
   G.decals = []; G.flash = 0; P.swingT = 0; P.ghost = null;
   G.stage = SAVE.stage; G.meta = metaMods(); G.gold = 0; G.sigils = 0; G.revives = G.meta.revive; G.rerolls = G.meta.reroll;
   G.goldMul = (1 + G.meta.gold) * STAGES[G.stage].gold;
+  const wi = itemById(SAVE.equipped.wings), fi = itemById(SAVE.equipped.familiar);
+  G.wingsR = wi ? wi.r : -1; G.famR = fi ? fi.r : -1; G.fam = fi ? { x: 0, y: -30, t: 0, cd: 1 } : null;
   P.maxFlasks = 3 + G.meta.flasks; P.flasks = P.maxFlasks;
   setFloor(STAGES[G.stage]);
   addWeapon(c.start);
@@ -1119,6 +1134,7 @@ function recalc() {
   P.magnet = 60 * (1 + 0.35 * pv('covetous') + M.magnet);
   P.xpMul = 1 + 0.08 * pv('covetous') + M.xp;
   P.armor = c.armor + pv('fortitude') + M.armor;
+  P.crit = M.crit; P.fam = M.fam;
   const ward = P.weapons.find(w => w.id === 'ward');
   P.regen = c.regen + M.regen + (ward && ward.evo ? 1.5 : 0);
 }
@@ -1166,7 +1182,7 @@ function randomVisibleEnemies(n) {
 /* ---------------- Combat ---------------- */
 function damageEnemy(e, dmg, kx = 0, ky = 0) {
   if (e.dead) return;
-  const crit = Math.random() < 0.08;
+  const crit = Math.random() < 0.08 + (P.crit || 0);
   dmg *= P.might * (0.9 + Math.random() * 0.2) * (crit ? 1.8 : 1);
   e.hp -= dmg; e.flash = 0.08; G.dmgDealt += dmg;
   if (!e.boss) { const m = 1 / e.mass; e.kbx += kx * m; e.kby += ky * m; }
@@ -1341,6 +1357,24 @@ function weaponUpdate(w, dt) {
       break;
     }
   }
+}
+const FAM_COL = ['255,150,60', '140,200,255', '190,120,255', '255,200,90'];
+function famUpdate(dt) {
+  const f = G.fam; if (!f) return;
+  f.t += dt;
+  const tx = P.x - P.fx * 40 + Math.cos(f.t * 1.7) * 10, ty = P.y - 30 + Math.sin(f.t * 2.3) * 6, k = 1 - Math.pow(0.002, dt);
+  f.x += (tx - f.x) * k; f.y += (ty - f.y) * k;
+  f.cd -= dt; if (f.cd > 0) return;
+  const tgt = nearestEnemy(f.x, f.y, 430); if (!tgt) { f.cd = 0.2; return; }
+  f.cd = 0.95 * P.cdr;
+  const a = Math.atan2(tgt.y - f.y, tgt.x - f.x), shots = G.famR >= 3 ? 3 : G.famR >= 2 ? 2 : 1;
+  for (let i = 0; i < shots; i++) { const aa = a + (i - (shots - 1) / 2) * 0.18; G.proj.push({ kind: 'fam', x: f.x, y: f.y, vx: Math.cos(aa) * 480, vy: Math.sin(aa) * 480, r: 6, dmg: P.fam * (1 + P.lv * 0.04), pierce: G.famR >= 1 ? 2 : 1, life: 1, hit: new Set(), a: aa, rr: G.famR }); }
+}
+function drawFam() {
+  const f = G.fam, c = ctx, s = spr('item_familiar_' + G.famR, 30), bob = Math.sin(f.t * 5) * 2.5;
+  c.fillStyle = 'rgba(0,0,0,0.28)'; ellipse(c, f.x, f.y + 42, 8, 3);
+  c.save(); c.globalCompositeOperation = 'lighter'; glowAt(c, f.x, f.y - 12 + bob, 30, FAM_COL[G.famR], 0.35); c.restore();
+  if (s) drawSpr(c, s, f.x, f.y + bob, P.fx < 0 ? -1 : 1); else { c.fillStyle = `rgb(${FAM_COL[G.famR]})`; circle(c, f.x, f.y - 10 + bob, 6); }
 }
 function explode(x, y, rad, dmg, evo) {
   G.fx.push({ kind: 'boom', x, y, r: rad, t: 0, dur: 0.35 });
@@ -1771,6 +1805,7 @@ function update(dt) {
   updatePlayer(dt);
   director(dt);
   for (const w of P.weapons) weaponUpdate(w, dt);
+  famUpdate(dt);
   updateEnemies(dt);
   buildGrid();
   updateProjectiles(dt);
@@ -2114,6 +2149,7 @@ function drawPlayer() {
     }
     const bob = P.moving ? Math.abs(Math.sin(P.walkT)) * 2.4 : 0, tilt = P.moving ? Math.sin(P.walkT) * 0.06 : 0;
     c.save(); if (P.inv > 0 && Math.floor(P.inv * 20) % 2 === 0) c.globalAlpha = 0.5;
+    if (G.wingsR >= 0) { const ws = spr('item_wings_' + G.wingsR, 58); if (ws) drawSpr(c, ws, P.x, P.y + 2 - bob, dir, { sx: 1 + Math.sin(G.t * (P.moving ? 9 : 3)) * 0.07 }); }
     drawSpr(c, hs, P.x, P.y + 10 - bob, dir, { rot: tilt, sy: P.moving ? 1 : 1 + Math.sin(G.t * 2.2) * 0.015, flash: P.hurtT > 0 ? Math.min(0.8, P.hurtT * 2.5) : 0 });
     c.restore(); return;
   }
@@ -2207,11 +2243,12 @@ function render() {
   for (const e of G.enemies) if (e.x > v.x0 && e.x < v.x1 && e.y > v.y0 && e.y < v.y1 + 40) ents.push(e);
   for (const p of pillars) ents.push({ pillar: p, y: p.y });
   ents.push({ player: true, y: P.y });
+  if (G.fam) ents.push({ famEnt: true, y: G.fam.y + 40 });
   ents.sort((a, b) => a.y - b.y);
   EYES.length = 0;
   for (const p of G.parts) if (p.ghost) { c.globalAlpha = 0.35 * (1 - p.t / p.life); c.fillStyle = (LOOKS[P.cls] || LOOKS.knight).cloak; ellipse(c, p.x, p.y - 2, 8, 11); }
   c.globalAlpha = 1;
-  for (const e of ents) { if (e.pillar) drawPillar(e.pillar); else if (e.player) drawPlayer(); else drawEnemy(e); }
+  for (const e of ents) { if (e.pillar) drawPillar(e.pillar); else if (e.player) drawPlayer(); else if (e.famEnt) drawFam(); else drawEnemy(e); }
   if (G.boss && G.boss.phase === 'tele') {
     const b = G.boss, L = b.def.chargeSpd * 0.55;
     c.save(); c.translate(b.x, b.y); c.rotate(b.cang);
@@ -2308,6 +2345,7 @@ function render() {
     }
   }
   c.globalCompositeOperation = 'lighter';
+  for (const p of G.proj) if (p.kind === 'fam') { const col = FAM_COL[p.rr] || FAM_COL[0], g = c.createRadialGradient(p.x, p.y, 0, p.x, p.y, 14); g.addColorStop(0, 'rgba(255,255,255,0.95)'); g.addColorStop(0.3, `rgba(${col},0.85)`); g.addColorStop(1, `rgba(${col},0)`); c.fillStyle = g; circle(c, p.x, p.y, 14); }
   for (const p of G.parts) { if (!p.glow) continue; c.globalAlpha = 1 - p.t / p.life; c.fillStyle = p.c; circle(c, p.x, p.y, p.s); }
   c.globalAlpha = 1;
   for (const p of G.eproj) {
@@ -2826,8 +2864,10 @@ function slotCard(s) { const it = itemById(SAVE.equipped[s]); return it ? itemCa
 let armorySub = 'gear';
 document.querySelectorAll('.subtabs [data-sub]').forEach(b => b.addEventListener('click', () => { armorySub = b.dataset.sub; renderArmory(); }));
 function renderArmory() {
-  $('dollL').innerHTML = slotCard('helm') + slotCard('armor');
-  $('dollR').innerHTML = slotCard('ring') + slotCard('charm');
+  $('dollL').innerHTML = ['helm', 'armor', 'gloves', 'boots'].map(slotCard).join('');
+  $('dollR').innerHTML = ['ring', 'charm', 'wings', 'familiar'].map(slotCard).join('');
+  { const wi = itemById(SAVE.equipped.wings), fi = itemById(SAVE.equipped.familiar), dw = $('dollWings'), df = $('dollFam');
+    dw.hidden = !wi; if (wi) dw.src = itemIcon('wings', wi.r); df.hidden = !fi; if (fi) df.src = itemIcon('familiar', fi.r); }
   renderOrigins();
   $('dollImg').src = bigPortrait(SAVE.cls); $('dollName').textContent = CLASSES[SAVE.cls].name;
   const m = metaMods(), c = CLASSES[SAVE.cls];
@@ -2835,8 +2875,8 @@ function renderArmory() {
   const stats = [['hp', 'Health', Math.round(c.hp + m.hp)], ['fortitude', 'Armor', c.armor + m.armor], ['regen', 'Regen', (c.regen + m.regen).toFixed(1) + '/s'],
     ['might', 'Damage', pc(c.might * (1 + m.might) - 1)], ['cdr', 'Haste', pc(1 - c.cdr * (1 - m.cdr))], ['area', 'Area', pc(c.area * (1 + m.area) - 1)],
     ['spd', 'Speed', pc(c.spd * (1 + m.spd) - 1)], ['magnet', 'Reach', pc(m.magnet)], ['gold', 'Gold', pc(m.gold)],
-    ['xp', 'Embers', pc(m.xp)], ['flask', 'Flasks', 3 + m.flasks], ['reroll', 'Rerolls', m.reroll + (m.revive ? ' \u00b7 ' + m.revive + ' rise' : '')]];
-  const SI = { hp: 'icon_p_vitality', fortitude: 'icon_p_fortitude', regen: 'icon_w_ward', might: 'icon_p_strength', cdr: 'icon_p_dexterity', area: 'icon_p_attunement', spd: 'icon_p_endurance', magnet: 'icon_p_covetous', gold: 'cur_gold', xp: 'cur_ember', flask: 'icon_w_pyre', reroll: 'icon_p_attunement' };
+    ['crit', 'Crit', Math.round((0.08 + m.crit) * 100) + '%'], ['xp', 'Embers', pc(m.xp)], ['flask', 'Flasks', 3 + m.flasks], ['fam', 'Familiar', m.fam ? Math.round(m.fam) : '\u2013'], ['reroll', 'Rerolls', m.reroll + (m.revive ? ' \u00b7 ' + m.revive + ' rise' : '')]];
+  const SI = { hp: 'icon_p_vitality', fortitude: 'icon_p_fortitude', regen: 'icon_w_ward', might: 'icon_p_strength', cdr: 'icon_p_dexterity', area: 'icon_p_attunement', spd: 'icon_p_endurance', magnet: 'icon_p_covetous', gold: 'cur_gold', xp: 'cur_ember', flask: 'icon_w_pyre', reroll: 'icon_p_attunement', crit: 'item_gloves_2', fam: 'item_familiar_' + Math.max(0, (itemById(SAVE.equipped.familiar) || { r: 0 }).r) };
   $('dollStats').innerHTML = stats.map(([k, label, v]) => `<span>${IMG[SI[k]] ? `<img src="${assetUrl(SI[k])}" alt="">` : ''}<b>${v}</b><i>${label}</i></span>`).join('');
   $('subGear').hidden = armorySub !== 'gear'; $('subOrigins').hidden = armorySub !== 'origins';
   $('subTabGear').setAttribute('aria-selected', armorySub === 'gear'); $('subTabOrigins').setAttribute('aria-selected', armorySub === 'origins');
@@ -3027,7 +3067,12 @@ function drawHero(t) {
   for (let i = 0; i < 16; i++) { const a = i / 16 * TAU + t * 0.4; c.fillStyle = `rgba(${gc},0.9)`; c.fillRect(Math.cos(a) * hh * 0.37 - 2, Math.sin(a) * hh * 0.37 - 2, 4, 4); }
   c.restore();
   c.fillStyle = 'rgba(0,0,0,0.5)'; c.beginPath(); c.ellipse(cx, fy, hw * 0.32, hh * 0.05, 0, 0, TAU); c.fill();
+  const wIt = itemById(SAVE.equipped.wings), wI = wIt && IMG['item_wings_' + wIt.r];
+  if (wI) { const wh = hh * 0.92, ww = wI.width / wI.height * wh; c.save(); c.translate(cx, fy - hh * 0.06); c.scale(1 + Math.sin(t * 3) * 0.04, 1); c.drawImage(wI, -ww / 2, -wh, ww, wh); c.restore(); }
   c.save(); c.translate(cx, fy + 2); c.scale(1, 1 + Math.sin(t * 2) * 0.01); c.drawImage(hsI, -hw / 2, -hh, hw, hh); c.restore();
+  const fIt = itemById(SAVE.equipped.familiar), fI = fIt && IMG['item_familiar_' + fIt.r];
+  if (fI) { const fh = hh * 0.34, fw = fI.width / fI.height * fh, fx = cx + hw * 0.55, fyy = fy - hh * 0.78 + Math.sin(t * 2.6) * 6;
+    c.globalCompositeOperation = 'lighter'; glowAt(c, fx, fyy + fh / 2, fh * 0.9, FAM_COL[fIt.r], 0.35); c.globalCompositeOperation = 'source-over'; c.drawImage(fI, fx - fw / 2, fyy, fw, fh); }
   c.globalCompositeOperation = 'lighter';
   for (let i = 0; i < 60; i++) { const life = (t * (0.1 + hash(i, 2) * 0.2) + hash(i, 1)) % 1, ex = hash(i, 3) * w + Math.sin(t + i) * 14, ey = h - life * h * 1.1;
     c.fillStyle = `rgba(255,${150 + Math.floor(hash(i, 4) * 80)},80,${(1 - life) * 0.85})`; const sz = 1.4 + hash(i, 5) * 2.2; c.fillRect(ex, ey, sz, sz); }
