@@ -1,6 +1,6 @@
 // Wraps the game page (index.html, written as an HTML fragment) into a full
 // document for the native app and writes it to www/index.html.
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, cpSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -21,4 +21,5 @@ ${body}
 `;
 mkdirSync(join(root, 'www'), { recursive: true });
 writeFileSync(join(root, 'www', 'index.html'), html);
+if (existsSync(join(root, 'assets'))) cpSync(join(root, 'assets'), join(root, 'www', 'assets'), { recursive: true });
 console.log('Built www/index.html (' + Math.round(html.length / 1024) + ' KB)');

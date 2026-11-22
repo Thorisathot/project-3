@@ -2,7 +2,7 @@
 
 A dark-fantasy survivors-style roguelite in one HTML file. Pick an origin, descend into the halls, and hold out against the hollowed dead until the third bell tolls and the Last Warden falls (about 15 minutes).
 
-Open `index.html` in a browser to play. No build step is needed. Fonts load from Google Fonts, and the game works offline with fallback fonts.
+Open `index.html` in a browser to play (the `assets/` folder must sit beside it). No build step is needed. Fonts load from Google Fonts, and the game works offline with fallback fonts.
 
 ## Controls
 - **WASD / arrows**: move (armaments attack automatically)
@@ -34,3 +34,6 @@ See [APP.md](APP.md) for building the Android and iOS apps and setting up purcha
 - 3 bosses at 5, 10 and 15 minutes, with telegraphed charges, ground slams, bullet rings and spirals
 - Dynamic darkness lit by your lantern, braziers, spells and candle shrines
 - Synthesized sound effects and ambient drone (no audio files)
+
+## Art
+Characters, enemies, bosses, items, ability icons, chests, props, floors, stage scenes and splash art in `assets/` were generated with OpenAI's image models (gpt-image-1.5 for transparent sprites, gpt-image-2 for scenes) in one shared stylised 3D style, then trimmed, resized and compressed to WebP. If an image fails to load, the game falls back to its built-in drawn art.

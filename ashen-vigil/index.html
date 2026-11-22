@@ -375,6 +375,57 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
 @media (max-width:820px){.dstats{grid-template-columns:repeat(3,minmax(0,1fr))}.multi{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:560px){.bounties{grid-template-columns:1fr}.doll{grid-template-columns:1fr 1fr}.doll-mid{grid-column:1/-1;order:-1}.doll-mid img{max-width:170px}.tnode b{font-size:10px}.tdia{width:44px;height:44px}.tdia svg{width:20px;height:20px}.tnode.mile .tdia{width:50px;height:50px}.tnode{padding-top:19px}.tnode.mile{padding-top:16px}.mile img{width:70px}.mrow{grid-template-columns:40px minmax(0,1fr) auto}.mrow img:nth-of-type(2){display:none}}
 
+/* ---- glossy reskin ---- */
+:root{--void:#0e0a17;--stone:#1d1630;--stone-2:#2a2143;--line:#3f3460}
+.cls,.card{clip-path:none;border-radius:16px;border:2px solid var(--line);background:linear-gradient(180deg,#2e2448,#1c152e)}
+.cls[aria-pressed="true"]{border-color:#ffc04a;box-shadow:0 0 0 2px rgba(255,192,74,.35),0 8px 24px -8px rgba(255,160,60,.5)}
+.stage,.chestcard,.bcard,.claim,.starter,.freechest,.pack,.item,.plvpanel,.sheet,.hero,.mrow,.mcard,.note{border-radius:16px}
+.dstats{gap:6px}.dstats span{border-radius:12px;background:linear-gradient(180deg,#2a2143,#1d1630)}
+.item,.stage{border-width:2px}
+.btn{border-radius:14px;border:0;background:linear-gradient(180deg,#ffd36a 0%,#ffae34 45%,#f07a1a 100%);color:#3a1606;text-shadow:0 1px 0 rgba(255,240,200,.6);box-shadow:0 5px 0 #9a420c,0 10px 22px -6px rgba(240,120,30,.6),inset 0 2px 0 rgba(255,255,255,.55);font-weight:900;transition:transform .08s,filter .15s}
+.btn:hover,.btn:focus-visible{background:linear-gradient(180deg,#ffe08a 0%,#ffbc4a 45%,#ff8a2a 100%);color:#2a0e04;box-shadow:0 5px 0 #9a420c,0 10px 26px -6px rgba(240,120,30,.75),inset 0 2px 0 rgba(255,255,255,.6)}
+.btn:active{transform:translateY(3px);box-shadow:0 2px 0 #9a420c,inset 0 2px 0 rgba(255,255,255,.55)}
+#beginBtn,#heroBegin{animation:btnGlow 2.4s ease-in-out infinite}
+@keyframes btnGlow{50%{filter:brightness(1.12) drop-shadow(0 0 14px rgba(255,170,60,.7))}}
+.btn.ghost{border-radius:14px;border:2px solid var(--line);background:rgba(42,33,67,.75);color:#d6cce8;box-shadow:none;text-shadow:none}
+.btn.ghost:hover,.btn.ghost:focus-visible{background:#3a2e5a;color:#fff;box-shadow:none}
+#mergeBtn.ready{border-color:#ffb050;color:#ffe2c0;box-shadow:0 0 16px -4px #ff9a40}
+.buy{border-radius:12px;border:0;background:linear-gradient(180deg,#a6ec6a,#5cc23a 50%,#3a9426);color:#fff;text-shadow:0 1px 2px rgba(0,60,0,.7);box-shadow:0 4px 0 #22601a,inset 0 2px 0 rgba(255,255,255,.45);font-weight:900;padding:11px 16px}
+.buy:hover:not(:disabled),.buy:focus-visible{background:linear-gradient(180deg,#b8f47e,#6ad044 50%,#44a22e);color:#fff}
+.buy:active:not(:disabled){transform:translateY(2px);box-shadow:0 2px 0 #22601a}
+.buy:disabled{background:linear-gradient(180deg,#5a5468,#3a3448);box-shadow:0 4px 0 #24202e;color:#c8c0d8;text-shadow:none;opacity:.85}
+.buy .coin{color:inherit}
+.coin{border-radius:999px;border:2px solid #4a3e70;background:linear-gradient(180deg,#2e2450,#1a1430);padding:4px 12px 4px 6px;box-shadow:inset 0 2px 0 rgba(255,255,255,.08)}
+.coin.bare{border:0;background:none;box-shadow:none;padding:0}
+.coin.gold::before{width:20px;height:20px;border-radius:0;box-shadow:none;background:url(assets/cur_gold.webp) center/contain no-repeat,radial-gradient(circle at 35% 35%,#f3d48a,#a8772a 66%,transparent 70%)}
+.coin.gem::before{width:20px;height:20px;transform:none;box-shadow:none;background:url(assets/cur_sigil.webp) center/contain no-repeat,linear-gradient(135deg,#dcc2ff,#7a4ec8)}
+.coin.xp::before{width:18px;height:18px;transform:none;background:url(assets/cur_ember.webp) center/contain no-repeat}
+.hub{background:radial-gradient(ellipse at 50% -10%,rgba(90,50,140,.55),rgba(14,10,23,.94) 65%)}
+.hub-head{background:linear-gradient(180deg,rgba(32,24,54,.97),rgba(20,15,34,.92));border-bottom:2px solid #3f3460}
+.tabbar{background:linear-gradient(180deg,#221a38,#140f22);border-top:2px solid #3f3460}
+.tabbar button{border-top:0;margin:0 3px;border-radius:14px 14px 0 0;transition:transform .15s}
+.tabbar button[aria-current="page"]{background:linear-gradient(180deg,#5a46a0,#2a2048);color:#fff;transform:translateY(-6px);box-shadow:0 -6px 18px -6px rgba(140,100,255,.6)}
+.tabbar svg{width:26px;height:26px}
+.item{background:linear-gradient(160deg,color-mix(in srgb,var(--rc) 30%,#1d1630),#1a1428 70%);border-color:color-mix(in srgb,var(--rc) 55%,#3f3460)}
+.item .ico{filter:drop-shadow(0 3px 6px rgba(0,0,0,.6));object-fit:contain}
+.item.empty{background:linear-gradient(180deg,#221a36,#1a1428);border-style:dashed}
+.cardico{width:58px;height:58px;flex:none;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,.6))}
+.cls .portrait{width:100px;height:100px;object-fit:contain;margin-top:-6px}
+.chestimg{width:130px;object-fit:contain;filter:drop-shadow(0 8px 14px rgba(0,0,0,.55))}
+.chestimg.big{width:220px}
+.mile img,.claim img,.starter img,.mrow img,.mcard img,.ico.big{object-fit:contain}
+.doll-mid{background:radial-gradient(ellipse at 50% 88%,rgba(255,150,70,.4),transparent 60%)}
+.doll-mid img{max-height:300px;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(0,0,0,.6))}
+.overlay{background:radial-gradient(ellipse at 50% 40%,rgba(40,26,70,.6),rgba(10,7,18,.94) 75%)}
+.stage[aria-pressed="true"]{border-color:#ffc04a;box-shadow:0 0 0 2px rgba(255,192,74,.3),0 10px 26px -10px rgba(255,160,60,.6)}
+.stage .thumb{aspect-ratio:2/1;object-fit:cover}
+.splash.painted #spRays,.splash.painted #spMid,.splash.painted #spHero,.splash.painted #spFront{display:none}
+.splash.painted #spBg{object-position:50% 30%}
+.iconbtn,.tbtn{border-radius:12px;background:linear-gradient(180deg,#2e2450,#1a1430);border:2px solid #4a3e70;color:#e8e0f4}
+.tbtn.touchbtn{border-radius:50%}
+#flaskBtn{background:radial-gradient(circle at 40% 35%,#ffb060,#a8400c);color:#fff;border-color:#ffcf8a;text-shadow:0 1px 2px #5a1a04}
+#rollBtn{background:radial-gradient(circle at 40% 35%,#6a5aa8,#2a2048);border-color:#8a7ac8}
+
 @media (max-width:820px){.slots{grid-template-columns:repeat(2,minmax(0,1fr))}.chests{grid-template-columns:1fr}.chestcard{flex-direction:row;flex-wrap:wrap;text-align:left;align-items:center}.chestcard>.ctext{flex:1;min-width:160px}.chestcard .odds{justify-content:flex-start}.brand{letter-spacing:.08em}}
 @media (max-width:400px){.coin{font-size:13px;padding:4px 7px}.brand{font-size:15px}}
 
@@ -611,6 +662,55 @@ function resize() {
 }
 window.addEventListener('resize', resize); resize();
 
+/* ---------------- Painted art: loading and sprite caches ---------------- */
+const IMG = {}, SPR = {};
+const IMG_NAMES = [
+  ...['knight', 'sorcerer', 'pyromancer', 'wanderer', 'cleric'].map(k => 'hero_' + k),
+  ...['hollow', 'rat', 'skeleton', 'wraith', 'cultist', 'dknight'].map(k => 'foe_' + k),
+  ...['gaoler', 'mother', 'warden'].map(k => 'boss_' + k),
+  ...['helm', 'armor', 'ring', 'charm'].flatMap(s => [0, 1, 2, 3].map(r => `item_${s}_${r}`)),
+  ...['blade', 'knives', 'pyre', 'ward', 'lance', 'censer', 'wrath'].map(k => 'icon_w_' + k),
+  ...['vitality', 'strength', 'dexterity', 'attunement', 'endurance', 'covetous', 'fortitude'].map(k => 'icon_p_' + k),
+  ...['wood', 'iron', 'ember'].flatMap(k => [`chest_${k}_0`, `chest_${k}_1`]),
+  'cur_gold', 'cur_sigil', 'cur_ember',
+  ...['pillar', 'brazier', 'candles', 'tomb', 'shrine'].map(k => 'prop_' + k),
+  ...['undercroft', 'catacombs', 'cathedral', 'abyss'].flatMap(k => ['floor_' + k, 'stage_' + k]),
+];
+const assetUrl = n => 'assets/' + n + '.webp';
+const FOE_IMG = { hollow: 'foe_hollow', rat: 'foe_rat', skeleton: 'foe_skeleton', wraith: 'foe_wraith', cultist: 'foe_cultist', knight: 'foe_dknight' };
+// world-unit heights of each sprite
+const SPR_H = { hero: 62, foe_hollow: 50, foe_rat: 30, foe_skeleton: 52, foe_wraith: 56, foe_cultist: 54, foe_dknight: 66, boss_gaoler: 130, boss_mother: 140, boss_warden: 136,
+  prop_pillar: 70, prop_brazier: 62, prop_candles: 34, prop_tomb: 60, prop_shrine: 56, chest: 34 };
+function makeSprite(n, worldH) {
+  const im = IMG[n]; if (!im) return null;
+  const k = Math.min(3, Math.max(1.5, (window.devicePixelRatio || 1) * 1.4));
+  const h = Math.max(8, Math.round(worldH * k)), w = Math.max(8, Math.round(im.width / im.height * h));
+  const c = document.createElement('canvas'); c.width = w; c.height = h;
+  const x = c.getContext('2d'); x.imageSmoothingQuality = 'high'; x.drawImage(im, 0, 0, w, h);
+  const wc = document.createElement('canvas'); wc.width = w; wc.height = h;
+  const wx = wc.getContext('2d'); wx.drawImage(c, 0, 0); wx.globalCompositeOperation = 'source-in'; wx.fillStyle = '#fff4e8'; wx.fillRect(0, 0, w, h);
+  return { c, white: wc, w: worldH * im.width / im.height, h: worldH };
+}
+function spr(n, worldH) { const key = n + '@' + worldH; if (SPR[key] === undefined) SPR[key] = makeSprite(n, worldH); return SPR[key]; }
+function drawSpr(c, s, x, y, dir, opts) {
+  // x,y = feet position; dir flips horizontally (art faces right)
+  c.save(); c.translate(x, y);
+  if (opts && opts.rot) c.rotate(opts.rot);
+  if (dir < 0) c.scale(-1, 1);
+  const sx = opts && opts.sx || 1, sy = opts && opts.sy || 1;
+  c.drawImage(s.c, -s.w * sx / 2, -s.h * sy, s.w * sx, s.h * sy);
+  if (opts && opts.flash) { c.globalAlpha *= opts.flash; c.drawImage(s.white, -s.w * sx / 2, -s.h * sy, s.w * sx, s.h * sy); }
+  c.restore();
+}
+let artLoaded = false;
+function loadArt() {
+  let left = IMG_NAMES.length;
+  const done = () => { if (--left > 0) return; artLoaded = true; for (const k in SPR) delete SPR[k]; for (const k in ART) delete ART[k];
+    if (IMG['floor_' + STAGES[G ? G.stage : SAVE.stage].id]) setFloor(STAGES[G ? G.stage : SAVE.stage]);
+    if (state === 'title') renderHub(); if (splash.open) splashArt(); };
+  for (const n of IMG_NAMES) { const im = new Image(); im.decoding = 'async'; im.onload = () => { IMG[n] = im; done(); }; im.onerror = done; im.src = assetUrl(n); }
+}
+
 /* Floor texture: 512px flagstone tile, repeated */
 const floorCv = document.createElement('canvas'); floorCv.width = floorCv.height = 512;
 function makeFloor(baseHue, sat) {
@@ -640,7 +740,11 @@ function makeFloor(baseHue, sat) {
   }
 }
 let floorPattern = null;
-function setFloor(st) { makeFloor(st.hue, st.sat); floorPattern = ctx.createPattern(floorCv, 'repeat'); }
+function setFloor(st) {
+  const im = IMG['floor_' + st.id];
+  if (im) { floorPattern = ctx.createPattern(im, 'repeat'); try { floorPattern.setTransform(new DOMMatrix().scale(0.45)); } catch (e) {} return; }
+  makeFloor(st.hue, st.sat); floorPattern = ctx.createPattern(floorCv, 'repeat');
+}
 
 /* ---------------- World features ---------------- */
 const CHUNK = 480;
@@ -1451,15 +1555,15 @@ function rollChoices(n) {
 function describe(c) {
   if (c.k === 'w') {
     const d = WEAPONS[c.id], w = getW(c.id), cur = w ? w.lv : 0;
-    return { kind: 'Armament', name: d.name, glyph: d.glyph, color: d.color, lv: cur ? `Lv ${cur} → ${cur + 1}` : 'New', text: cur ? d.lv[cur] : d.desc };
+    return { kind: 'Armament', img: 'icon_w_' + c.id, name: d.name, glyph: d.glyph, color: d.color, lv: cur ? `Lv ${cur} → ${cur + 1}` : 'New', text: cur ? d.lv[cur] : d.desc };
   }
   if (c.k === 'p') {
     const d = PASSIVES[c.id], cur = P.passives[c.id] || 0;
-    return { kind: 'Relic', name: d.name, glyph: d.glyph, color: d.color, lv: cur ? `Lv ${cur} → ${cur + 1}` : 'New', text: d.desc };
+    return { kind: 'Relic', img: 'icon_p_' + c.id, name: d.name, glyph: d.glyph, color: d.color, lv: cur ? `Lv ${cur} → ${cur + 1}` : 'New', text: d.desc };
   }
   if (c.k === 'evo') {
     const d = WEAPONS[c.id];
-    return { kind: 'Evolution', name: d.evoName, glyph: d.glyph, color: '#cfaa62', lv: d.name + ' transcends', text: d.evoDesc, evo: true };
+    return { kind: 'Evolution', img: 'icon_w_' + c.id, name: d.evoName, glyph: d.glyph, color: '#cfaa62', lv: d.name + ' transcends', text: d.evoDesc, evo: true };
   }
   if (c.k === 'heal') return { kind: 'Respite', name: 'Warm Ash', glyph: '+', color: '#c94a4a', lv: 'Restore', text: 'Recover 40% of your health.' };
   return { kind: 'Respite', name: 'Tonic Draught', glyph: 'T', color: '#ef7d32', lv: 'Restore', text: 'Refill one tonic flask.' };
@@ -1475,7 +1579,7 @@ function applyChoice(c) {
 function cardHTML(c, i) {
   const d = describe(c);
   return `<button class="card${d.evo ? ' evo' : ''}" data-i="${i}" id="card${i}">
-    <div class="top"><div class="sigil" style="color:${d.color}"><span>${d.glyph}</span></div>
+    <div class="top">${d.img && IMG[d.img] ? `<img class="cardico" src="${assetUrl(d.img)}" alt="">` : `<div class="sigil" style="color:${d.color}"><span>${d.glyph}</span></div>`}
     <div><div class="kind">${d.kind}</div><h3>${d.name}</h3></div></div>
     <div class="lv">${d.lv}</div><p>${d.text}</p></button>`;
 }
@@ -1796,6 +1900,7 @@ function drawGore(d) {
 }
 function drawProp(p) {
   const c = ctx;
+  if (p.kind === 'tomb' || p.kind === 'candles') { const ss = spr('prop_' + p.kind, SPR_H['prop_' + p.kind]); if (ss) { drawSpr(c, ss, p.x, p.y + (p.kind === 'tomb' ? 22 : 8), p.rot > Math.PI ? -1 : 1); return; } }
   if (p.kind === 'tomb') {
     c.save(); c.translate(p.x, p.y); c.rotate(p.rot);
     c.fillStyle = 'rgba(0,0,0,0.5)'; c.fillRect(-20, -9, 44, 26);
@@ -1818,7 +1923,7 @@ function drawProp(p) {
 }
 function drawPropGlow(p) {
   const c = ctx, t = G.t;
-  if (p.kind === 'candles') for (const k of p.c) drawFlame(p.x + k[0], p.y + k[1] - k[2], 0.28, k[0] + p.rot);
+  if (p.kind === 'candles') { if (!IMG.prop_candles) for (const k of p.c) drawFlame(p.x + k[0], p.y + k[1] - k[2], 0.28, k[0] + p.rot); }
   else if (p.kind === 'rune') {
     const gc = STAGES[G.stage].glow, a = 0.35 + Math.sin(t * 2 + p.rot * 3) * 0.15;
     c.strokeStyle = `rgba(${gc},${a})`; c.lineWidth = 1.6;
@@ -1829,6 +1934,8 @@ function drawPropGlow(p) {
 }
 function drawPillar(p) {
   const c = ctx, r = p.r;
+  const ps = spr(p.brazier ? 'prop_brazier' : 'prop_pillar', p.brazier ? SPR_H.prop_brazier : Math.round(r * 2.8));
+  if (ps) { c.fillStyle = 'rgba(0,0,0,0.5)'; ellipse(c, p.x + 4, p.y + 6, r * 1.25, r * 0.55); drawSpr(c, ps, p.x, p.y + r * 0.5, 1); return; }
   c.fillStyle = 'rgba(0,0,0,0.55)'; ellipse(c, p.x + 5, p.y + 8, r * 1.3, r * 0.75);
   if (p.brazier) {
     c.fillStyle = '#17141b'; c.fillRect(p.x - 3, p.y - 4, 6, 14);
@@ -1860,6 +1967,16 @@ function drawEnemy(e) {
     c.save(); c.globalCompositeOperation = 'lighter';
     const g = c.createRadialGradient(0, 0, 0, 0, 0, e.r * 2.4); g.addColorStop(0, `rgba(200,30,40,${0.35 + Math.sin(e.t * 5) * 0.1})`); g.addColorStop(1, 'rgba(200,30,40,0)');
     c.fillStyle = g; c.fillRect(-e.r * 2.4, -e.r * 2.4, e.r * 4.8, e.r * 4.8); c.restore();
+  }
+  const fn = e.type === 'boss' ? 'boss_' + e.def.id : FOE_IMG[e.type];
+  const es = fn && spr(fn, e.type === 'boss' ? SPR_H[fn] : Math.round(SPR_H[fn] * (e.elite ? 1.3 : 1)));
+  if (es) {
+    const bdir = e.type === 'boss' ? (P.x < e.x ? -1 : 1) : dir;
+    const hover = e.type === 'wraith' ? 6 + Math.sin(e.t * 3) * 3 : Math.abs(Math.sin(e.t * (e.type === 'rat' ? 14 : 7))) * (e.type === 'boss' ? 3 : 1.6);
+    if (e.type === 'boss') { c.save(); c.globalCompositeOperation = 'lighter'; const g0 = c.createRadialGradient(0, -es.h * 0.4, 0, 0, -es.h * 0.4, es.h * 0.8); g0.addColorStop(0, `rgba(${STAGES[G.stage].glow},0.22)`); g0.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = g0; c.fillRect(-es.h, -es.h * 1.2, es.h * 2, es.h * 1.6); c.restore(); }
+    if (e.type === 'wraith') c.globalAlpha *= 0.9;
+    drawSpr(c, es, 0, e.r * 0.9 - hover, bdir, { rot: e.type === 'boss' ? 0 : Math.sin(e.t * 7) * 0.05, flash: f ? 0.85 : 0 });
+    c.restore(); return;
   }
   c.lineWidth = 1.5; c.strokeStyle = OUTLINE; c.lineJoin = 'round';
   if (e.type === 'boss') drawBoss(e, f);
@@ -1908,6 +2025,19 @@ function drawBoss(e, f) {
 }
 function drawPlayer() {
   const c = ctx, L = LOOKS[P.cls] || LOOKS.knight, dir = P.fx < 0 ? -1 : 1;
+  const hs = spr('hero_' + P.cls, SPR_H.hero);
+  if (hs) {
+    c.fillStyle = 'rgba(0,0,0,0.45)'; ellipse(c, P.x, P.y + 10, 14, 5);
+    if (P.roll > 0) {
+      const k = 1 - P.roll / 0.36;
+      c.save(); c.globalAlpha = 0.9; c.translate(P.x, P.y - 8); c.rotate(dir * k * TAU); if (dir < 0) c.scale(-1, 1);
+      c.drawImage(hs.c, -hs.w * 0.4, -hs.h * 0.4, hs.w * 0.8, hs.h * 0.8); c.restore(); return;
+    }
+    const bob = P.moving ? Math.abs(Math.sin(P.walkT)) * 2.4 : 0, tilt = P.moving ? Math.sin(P.walkT) * 0.06 : 0;
+    c.save(); if (P.inv > 0 && Math.floor(P.inv * 20) % 2 === 0) c.globalAlpha = 0.5;
+    drawSpr(c, hs, P.x, P.y + 10 - bob, dir, { rot: tilt, sy: P.moving ? 1 : 1 + Math.sin(G.t * 2.2) * 0.015, flash: P.hurtT > 0 ? Math.min(0.8, P.hurtT * 2.5) : 0 });
+    c.restore(); return;
+  }
   if (P.roll > 0) {
     const k = 1 - P.roll / 0.36;
     c.save(); c.translate(P.x, P.y); c.fillStyle = 'rgba(0,0,0,0.45)'; ellipse(c, 0, 10, 10, 3.5);
@@ -1975,6 +2105,7 @@ function render() {
   }
   for (const s of G.shrines) {
     c.fillStyle = 'rgba(0,0,0,0.5)'; ellipse(c, s.x, s.y + 10, 28, 10);
+    const ss = spr('prop_shrine', SPR_H.prop_shrine); if (ss) { c.save(); if (s.used) c.globalAlpha = 0.55; drawSpr(c, ss, s.x, s.y + 14, 1); c.restore(); continue; }
     c.fillStyle = '#2e2834'; c.fillRect(s.x - 20, s.y - 6, 40, 16); c.fillStyle = '#4c4452'; c.fillRect(s.x - 16, s.y - 12, 32, 8);
     c.strokeStyle = OUTLINE; c.lineWidth = 1.5; c.strokeRect(s.x - 20, s.y - 6, 40, 16); c.strokeRect(s.x - 16, s.y - 12, 32, 8);
     c.fillStyle = '#e8dcc0'; for (let i = -1; i <= 1; i++) c.fillRect(s.x + i * 9 - 2, s.y - 22 + Math.abs(i) * 4, 4, 12 - Math.abs(i) * 4);
@@ -1982,6 +2113,7 @@ function render() {
   for (const ch of G.chests) {
     const y = ch.y + Math.sin(ch.t * 3) * 2;
     c.fillStyle = 'rgba(0,0,0,0.5)'; ellipse(c, ch.x, ch.y + 11, 17, 6);
+    const cs = spr('chest_ember_0', SPR_H.chest); if (cs) { drawSpr(c, cs, ch.x, y + 12, 1); continue; }
     c.lineWidth = 1.5; c.strokeStyle = OUTLINE;
     c.fillStyle = '#5a3824'; c.fillRect(ch.x - 15, y - 9, 30, 18); c.strokeRect(ch.x - 15, y - 9, 30, 18);
     c.fillStyle = '#7a4e34'; c.beginPath(); c.roundRect(ch.x - 16, y - 17, 32, 10, [6, 6, 1, 1]); c.fill(); c.stroke();
@@ -2034,7 +2166,7 @@ function render() {
   /* ----- darkness ----- */
   const lc = lctx;
   lc.setTransform(1, 0, 0, 1, 0, 0); lc.globalCompositeOperation = 'source-over';
-  const dark = 0.8 + Math.min(0.08, G.t / 900 * 0.08);
+  const dark = (artLoaded ? 0.5 : 0.8) + Math.min(0.08, G.t / 900 * 0.08);
   lc.fillStyle = `rgba(6,4,9,${dark})`; lc.fillRect(0, 0, lightCv.width, lightCv.height);
   lc.setTransform(0.5 * ZOOM, 0, 0, 0.5 * ZOOM, 0.5 * (W / 2 - camX * ZOOM), 0.5 * (H / 2 - camY * ZOOM));
   lc.globalCompositeOperation = 'destination-out';
@@ -2071,9 +2203,9 @@ function render() {
     const g = c.createRadialGradient(fx, fy, 0, fx, fy, fr); g.addColorStop(0, `rgba(${gc},0.035)`); g.addColorStop(1, `rgba(${gc},0)`);
     c.fillStyle = g; c.fillRect(fx - fr, fy - fr, fr * 2, fr * 2);
   }
-  for (const p of pillars) if (p.brazier) drawFlame(p.x, p.y - 14, 1.3, p.ph);
+  for (const p of pillars) if (p.brazier && !IMG.prop_brazier) drawFlame(p.x, p.y - 14, 1.3, p.ph);
   for (const p of props) drawPropGlow(p);
-  for (const s of G.shrines) if (!s.used) for (let i = -1; i <= 1; i++) drawFlame(s.x + i * 9, s.y - 22 + Math.abs(i) * 4, 0.4, i * 3);
+  for (const s of G.shrines) if (!s.used && !IMG.prop_shrine) for (let i = -1; i <= 1; i++) drawFlame(s.x + i * 9, s.y - 22 + Math.abs(i) * 4, 0.4, i * 3);
   for (const ch of G.chests) { const g = c.createLinearGradient(0, ch.y - 70, 0, ch.y); g.addColorStop(0, 'rgba(255,210,120,0)'); g.addColorStop(1, `rgba(255,210,120,${0.25 + Math.sin(ch.t * 3) * 0.08})`); c.fillStyle = g; c.fillRect(ch.x - 12, ch.y - 70, 24, 70); }
   // ambient motes
   for (let i = 0; i < 26; i++) {
@@ -2219,19 +2351,20 @@ function drawHUD() {
   c.save(); c.translate(ix + 12, iy + 2); c.rotate(Math.PI / 4); c.fillStyle = '#2a1a10'; c.fillRect(-11, -11, 22, 22); c.strokeStyle = '#d9b064'; c.lineWidth = 1.5; c.strokeRect(-11, -11, 22, 22); c.restore();
   c.font = '700 13px Cinzel, Georgia, serif'; c.fillStyle = '#f1d38e'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(P.lv, ix + 12, iy + 3);
   let x = ix + 50;
-  const drawSigil = (glyph, color, lv, evo, y) => {
+  const drawSigil = (glyph, color, lv, evo, y, icon) => {
     c.save(); c.translate(x, y + 12); c.rotate(Math.PI / 4);
     const g = c.createLinearGradient(-10, -10, 10, 10); g.addColorStop(0, 'rgba(40,32,46,0.95)'); g.addColorStop(1, 'rgba(12,10,16,0.95)');
     c.fillStyle = g; c.fillRect(-10, -10, 20, 20);
     c.strokeStyle = evo ? '#ffd27a' : color; c.lineWidth = evo ? 2 : 1.2; c.strokeRect(-10, -10, 20, 20); c.restore();
-    c.font = '900 12px Cinzel, Georgia, serif'; c.fillStyle = color; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(glyph, x, y + 12.5);
+    if (icon && IMG[icon]) c.drawImage(IMG[icon], x - 12, y + 0.5, 24, 24 * IMG[icon].height / IMG[icon].width);
+    else { c.font = '900 12px Cinzel, Georgia, serif'; c.fillStyle = color; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(glyph, x, y + 12.5); }
     if (!evo) for (let i = 0; i < 5; i++) { c.fillStyle = i < lv ? color : 'rgba(255,255,255,0.12)'; c.fillRect(x - 11 + i * 4.6, y + 29, 3.2, 3.2); }
     else { c.fillStyle = '#ffd27a'; c.fillRect(x - 11, y + 29, 22, 3.2); }
     x += 32;
   };
-  for (const w of P.weapons) drawSigil(WEAPONS[w.id].glyph, WEAPONS[w.id].color, w.lv, w.evo, iy - 10);
+  for (const w of P.weapons) drawSigil(WEAPONS[w.id].glyph, WEAPONS[w.id].color, w.lv, w.evo, iy - 10, 'icon_w_' + w.id);
   x = ix + 50;
-  for (const id in P.passives) drawSigil(PASSIVES[id].glyph, PASSIVES[id].color, P.passives[id], false, iy + 30);
+  for (const id in P.passives) drawSigil(PASSIVES[id].glyph, PASSIVES[id].color, P.passives[id], false, iy + 30, 'icon_p_' + id);
   c.textBaseline = 'alphabetic'; c.textAlign = 'left';
   // health, stamina, flasks
   if (P.ghost == null || P.ghost < P.hp) P.ghost = P.hp; else P.ghost = Math.max(P.hp, P.ghost - P.maxHp * 0.012);
@@ -2319,6 +2452,7 @@ function drawColumn(c, x, top, bottom, w, hue, sat) {
 }
 function glowAt(c, x, y, r, rgb, a) { const g = c.createRadialGradient(x, y, 0, x, y, r); g.addColorStop(0, `rgba(${rgb},${a})`); g.addColorStop(1, `rgba(${rgb},0)`); c.fillStyle = g; c.fillRect(x - r, y - r, r * 2, r * 2); }
 function stageThumb(i) {
+  if (IMG['stage_' + STAGES[i].id]) return assetUrl('stage_' + STAGES[i].id);
   return cached('stage' + i, () => {
     const st = STAGES[i], w = 320, h = 120, [cv, c] = mkCanvas(w, h), fy = 82;
     drawWall(c, w, h, st.hue, st.sat + 6, fy);
@@ -2334,6 +2468,7 @@ function stageThumb(i) {
   });
 }
 function portrait(cls) {
+  if (IMG['hero_' + cls]) return assetUrl('hero_' + cls);
   return cached('por' + cls, () => {
     const L = LOOKS[cls], [cv, c] = mkCanvas(96, 96);
     const bg = c.createRadialGradient(48, 52, 4, 48, 52, 60); bg.addColorStop(0, 'rgba(255,170,90,0.35)'); bg.addColorStop(0.6, 'rgba(60,30,30,0.15)'); bg.addColorStop(1, 'rgba(0,0,0,0)');
@@ -2344,6 +2479,7 @@ function portrait(cls) {
 }
 const METAL = [['#b4afba', '#4a4650'], ['#c4d8f0', '#3a5276'], ['#dcc8f6', '#5a3c88'], ['#ffe09a', '#8a5a18']];
 function itemIcon(slot, r) {
+  if (IMG[`item_${slot}_${r}`]) return assetUrl(`item_${slot}_${r}`);
   return cached('ico' + slot + r, () => {
     const [cv, c] = mkCanvas(64, 64), rc = RARITY[r].color, [m1, m2] = METAL[r];
     const bg = c.createRadialGradient(32, 34, 2, 32, 34, 34); bg.addColorStop(0, rc + (r ? '66' : '33')); bg.addColorStop(1, rc + '00'); c.fillStyle = bg; c.fillRect(0, 0, 64, 64);
@@ -2378,6 +2514,7 @@ function itemIcon(slot, r) {
 }
 const CHEST_LOOK = { wood: ['#7a4e34', '#3a2618', '#9a9aa4'], iron: ['#5a5e6c', '#262830', '#c8cad6'], ember: ['#6a1e14', '#2a0a06', '#f0b04a'] };
 function chestArt(id, open) {
+  if (IMG[`chest_${id}_${open ? 1 : 0}`]) return assetUrl(`chest_${id}_${open ? 1 : 0}`);
   return cached('chest' + id + open, () => {
     const [cv, c] = mkCanvas(160, 130), [body, dark, band] = CHEST_LOOK[id];
     c.lineWidth = 2.5; c.strokeStyle = OUTLINE; c.lineJoin = 'round';
@@ -2420,6 +2557,23 @@ function drawHero(t) {
   if (cv.width !== Math.round(w * k) || cv.height !== Math.round(h * k)) { cv.width = Math.round(w * k); cv.height = Math.round(h * k); }
   const c = cv.getContext('2d'); c.setTransform(k, 0, 0, k, 0, 0);
   const st = STAGES[SAVE.stage] || STAGES[0], gc = st.glow, fy = h * 0.6;
+  const bgI = IMG['stage_' + st.id], hsI = IMG['hero_' + SAVE.cls];
+  if (bgI && hsI) {
+    const sc = Math.max(w / bgI.width, h / bgI.height), drift = Math.sin(t * 0.15) * 10;
+    c.drawImage(bgI, (w - bgI.width * sc) / 2 + drift, (h - bgI.height * sc) / 2, bgI.width * sc, bgI.height * sc);
+    c.fillStyle = 'rgba(8,5,14,0.18)'; c.fillRect(0, 0, w, h);
+    const chH = h * 0.95, chW = hsI.width / hsI.height * chH, cx = w * (w < 560 ? 0.5 : 0.33);
+    c.globalCompositeOperation = 'lighter'; glowAt(c, cx, h * 0.72, chH * 0.55, gc, 0.28); c.globalCompositeOperation = 'source-over';
+    c.fillStyle = 'rgba(0,0,0,0.45)'; c.beginPath(); c.ellipse(cx, h * 0.97, chW * 0.38, chH * 0.04, 0, 0, TAU); c.fill();
+    c.save(); c.translate(cx, h * 0.98); c.scale(1, 1 + Math.sin(t * 2) * 0.008); c.drawImage(hsI, -chW / 2, -chH, chW, chH); c.restore();
+    c.globalCompositeOperation = 'lighter';
+    for (let i = 0; i < 50; i++) { const life = (t * (0.12 + hash(i, 2) * 0.2) + hash(i, 1)) % 1, ex = hash(i, 3) * w + Math.sin(t + i) * 12, ey = h - life * h * 1.1;
+      c.fillStyle = `rgba(255,${150 + Math.floor(hash(i, 4) * 80)},80,${(1 - life) * 0.85})`; const sz = 1.4 + hash(i, 5) * 2; c.fillRect(ex, ey, sz, sz); }
+    c.globalCompositeOperation = 'source-over';
+    const vg = c.createRadialGradient(w / 2, h / 2, Math.min(w, h) * 0.35, w / 2, h / 2, Math.hypot(w, h) * 0.6); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,0.55)');
+    c.fillStyle = vg; c.fillRect(0, 0, w, h);
+    return;
+  }
   drawWall(c, w, h, st.hue, st.sat + 6, fy);
   const aw = Math.min(150, w * 0.24);
   drawArch(c, w * 0.5, h * 0.1, fy, aw, st.hue, st.sat + 6, gc, 0.35 + Math.sin(t * 1.3) * 0.08);
@@ -2577,6 +2731,7 @@ function showMerged(it) {
 
 /* equipment screen */
 function bigPortrait(cls) {
+  if (IMG['hero_' + cls]) return assetUrl('hero_' + cls);
   return cached('big' + cls, () => {
     const [cv, c] = mkCanvas(220, 250);
     c.globalCompositeOperation = 'lighter'; glowAt(c, 110, 205, 120, '255,140,60', 0.35); c.globalCompositeOperation = 'source-over';
@@ -3086,8 +3241,13 @@ const SPLASH = (() => {
 })();
 const splash = { raf: 0, px: 0, py: 0, tx: 0, ty: 0, parts: [], open: false };
 const SPLASH_DEPTH = { spBg: 10, spRays: 12, spMid: 22, spHero: 34, spFront: 54 };
+function splashArt() {
+  const tall = window.innerHeight > window.innerWidth * 1.1, src = assetUrl(tall ? 'splash_tall' : 'splash_wide'), im = new Image();
+  im.onload = () => { $('spBg').src = src; $('splash').classList.add('painted'); };
+  im.src = src;
+}
 function showSplash() {
-  SPLASH.build(); splash.open = true;
+  SPLASH.build(); splashArt(); splash.open = true;
   const el = $('splash'); el.hidden = false; el.classList.remove('out');
   if (!splash.raf) splash.raf = requestAnimationFrame(splashLoop);
 }
@@ -3124,6 +3284,7 @@ $('splash').addEventListener('pointermove', e => { splash.tx = e.clientX / windo
 $('splash').addEventListener('click', dismissSplash);
 document.querySelector('.brand').addEventListener('click', showSplash);
 showSplash();
+loadArt();
 
 /* ---------------- Input ---------------- */
 window.addEventListener('keydown', e => {
