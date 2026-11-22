@@ -17,7 +17,12 @@ Open `index.html` in a browser to play. No build step is needed. Fonts load from
 - **Gold** is earned from kills, bosses and clears. **Sigils** come from bosses and first-time stage clears (and from in-app purchases in the native app).
 - **4 stages** (Undercroft, Sunken Catacombs, Ember Cathedral, Abyss Below), unlocked in order, each tougher and paying more gold.
 - **Chests** (wooden, iron and ember, plus a free one every 4 hours) drop gear for 4 slots in 4 rarities, with odds shown. Gear can be upgraded to +10 or salvaged.
-- **Altar** upgrades are permanent: health, damage, haste, area, speed, gold, embers, rerolls, extra flasks and a once-per-run revive.
+- **Talents**: a winding path of 36 permanent boons gated by player level, plus 4 milestone talents (extra reroll, extra flask, revive, +10% damage).
+- **Stage rewards**: chests for surviving 2:00 and 5:00 and for clearing each stage.
+- **Merging**: 3 pieces of gear of the same slot and rarity become 1 of the next rarity.
+- **Pity counters and ten-packs** on every chest (10 for the price of 9).
+- **Daily vigil** login rewards on a 7-day cycle, and the **Ember Urn**, which stores sigils from every run until it's broken open in the app.
+- **Equipment screen** with your origin in the centre, gear slots around it, and total stats.
 - **Origins** beyond the Knight are unlocked with gold.
 - Camera zoom setting (Close, Normal, Far). Phones default to a closer camera.
 

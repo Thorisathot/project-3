@@ -289,6 +289,92 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
 @media (max-aspect-ratio:3/4){.splash .lyr{object-position:50% 20%}}
 @media (prefers-reduced-motion:reduce){.splash-stage,#spHero,.splash .rays,.splash-title,.splash-start,.splash-sub,.splash-ui .eyebrow{animation:none}}
 
+/* ---- progression features ---- */
+.bounties{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.bcard{display:flex;flex-direction:column;gap:8px;padding:14px 16px;background:linear-gradient(180deg,var(--stone-2),var(--stone));border:1px solid var(--line);min-width:0}
+.bcard.hot{border-color:var(--ember);box-shadow:0 0 24px -8px var(--ember)}
+.bcard p{margin:0;font-size:16px;color:#c9bfad}
+.bcard .buy{align-self:flex-start}
+.dpips{display:flex;gap:9px;padding:2px}
+.dpips i{width:12px;height:12px;transform:rotate(45deg);background:var(--line)}
+.dpips i.got{background:var(--gold)}
+.dpips i.now{background:var(--ember);box-shadow:0 0 10px var(--ember);animation:pulseDot 1.4s ease-in-out infinite}
+@keyframes pulseDot{50%{opacity:.45}}
+.urnbar{height:10px;background:#120c10;border:1px solid var(--line)}
+.urnbar i{display:block;height:100%;background:linear-gradient(90deg,#5a2a9a,#d0aaff);box-shadow:0 0 10px rgba(180,130,255,.6)}
+.miles{display:flex;align-items:center;padding:4px 0}
+.mline{flex:1;height:3px;min-width:10px;background:linear-gradient(90deg,var(--line),var(--ember-dim),var(--line))}
+.mile{display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:0;color:inherit;cursor:pointer;font:inherit;padding:4px;min-width:0;max-width:170px}
+.mile img{width:92px;max-width:100%}
+.mile b{font-family:var(--display);font-size:16px}
+.mile span{font-size:14px;color:var(--ash);text-align:center;line-height:1.2}
+.mile.locked img{filter:grayscale(.8) brightness(.55)}
+.mile.ready img{animation:bob 1.2s ease-in-out infinite;filter:drop-shadow(0 0 14px rgba(255,170,90,.75))}
+.mile.ready span{color:var(--ember);font-family:var(--display);letter-spacing:.14em;text-transform:uppercase}
+.mile.claimed{opacity:.55}
+@keyframes bob{50%{transform:translateY(-5px)}}
+.pity{font-size:14px;color:var(--gold);text-align:center}
+.chestcard .row{justify-content:center}
+#claims{display:flex;flex-direction:column;gap:10px}
+.starter{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 18px;border:1px solid var(--gold);background:linear-gradient(120deg,rgba(207,170,98,.22),rgba(120,30,20,.22) 60%),var(--stone);box-shadow:0 0 30px -10px rgba(239,125,50,.6)}
+.starter img{width:110px}
+.starter .stx{flex:1;min-width:180px;display:flex;flex-direction:column;gap:4px}
+.starter h3{font-size:22px}
+.starter p{margin:0;color:#e8dcc6;font-size:17px}
+.starter .tag{font-family:var(--display);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ember)}
+.doll{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,220px) minmax(0,1fr);gap:12px;align-items:center}
+.doll-col{display:flex;flex-direction:column;gap:10px;min-width:0}
+.doll-mid{display:flex;flex-direction:column;align-items:center;gap:2px}
+.doll-mid img{width:100%;max-width:220px;height:auto}
+.doll-name{font-family:var(--display);font-size:14px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.dstats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:2px}
+.dstats span{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px;background:var(--stone);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ash)}
+.dstats b{font-family:var(--display);font-size:19px;color:var(--bone);letter-spacing:0;font-variant-numeric:tabular-nums}
+#mergeBtn.ready{border-color:var(--ember);color:#ffd8b0;box-shadow:0 0 16px -4px var(--ember)}
+.mlist{display:flex;flex-direction:column;gap:8px}
+.mrow{display:grid;grid-template-columns:44px minmax(0,1fr) 44px auto;gap:10px;align-items:center;padding:8px 10px;background:rgba(0,0,0,.25);border:1px solid var(--line)}
+.mrow img{width:44px;height:44px}
+.mrow span{font-size:15px;line-height:1.3}
+.sheet.wide{max-width:720px}
+.multi{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.mcard{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 6px;text-align:center;min-width:0;background:linear-gradient(180deg,color-mix(in srgb,var(--rc) 18%,transparent),var(--stone));border:1px solid color-mix(in srgb,var(--rc) 45%,var(--line));animation:dealIn .45s cubic-bezier(.2,.8,.2,1) both}
+.mcard img{width:52px;height:52px}
+.mcard b{font-family:var(--display);font-size:11px;line-height:1.2;color:var(--rc)}
+.mcard span{font-size:12px;color:var(--ash)}
+.mcard.r2,.mcard.r3{box-shadow:0 0 20px -4px var(--rc)}
+@keyframes dealIn{from{opacity:0;transform:translateY(14px) scale(.9)}to{opacity:1;transform:none}}
+.tsum{display:flex;justify-content:space-between;gap:6px 14px;flex-wrap:wrap;align-items:baseline;font-size:16px}
+.ttree{position:relative;display:flex;flex-direction:column;padding-bottom:8px}
+.ttree::after{content:"";position:absolute;top:41px;bottom:150px;width:4px;left:calc(44px + (100% - 44px) * 7 / 8 - 2px);background:linear-gradient(#8a6424,#3a2a14)}
+.trow{position:relative;display:grid;grid-template-columns:44px repeat(4,minmax(0,1fr));align-items:start;height:112px}
+.trow::before{content:"";position:absolute;top:39px;height:4px;left:calc(44px + (100% - 44px) / 8);right:calc((100% - 44px) * 3 / 8);background:var(--line)}
+.trow.done::before{background:linear-gradient(90deg,#c86a2a,#ffb060,#c86a2a)}
+.tlink{position:absolute;top:39px;height:112px;width:4px;background:var(--line)}
+.tlink.r{left:calc(44px + (100% - 44px) * 5 / 8 - 2px)}
+.tlink.l{left:calc(44px + (100% - 44px) / 8 - 2px)}
+.trow.done .tlink{background:#c86a2a}
+.tlv{margin-top:23px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:900;font-size:14px;background:radial-gradient(circle at 35% 30%,#f3d48a,#a8772a);color:#2a1406;border:2px solid #5a3a10;box-shadow:0 0 12px -2px rgba(207,170,98,.6);position:relative;z-index:1}
+.trow.closed .tlv{background:#2a2430;color:var(--ash);border-color:var(--line);box-shadow:none}
+.tnode{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:13px;background:none;border:0;color:inherit;cursor:pointer;padding:16px 2px 0;font:inherit;min-width:0}
+.tnode:focus-visible{outline:none}
+.tnode:focus-visible .tdia{outline:2px solid var(--ember);outline-offset:3px}
+.tdia{width:50px;height:50px;transform:rotate(45deg);display:grid;place-items:center;border:2px solid var(--line);background:linear-gradient(135deg,#2a2230,#120e16);box-sizing:border-box}
+.tdia svg{transform:rotate(-45deg);width:24px;height:24px;fill:var(--sc)}
+.tnode b{font-family:var(--display);font-size:12px;letter-spacing:.03em;text-align:center;line-height:1.15}
+.tnode.got .tdia{border-color:var(--gold);background:linear-gradient(135deg,color-mix(in srgb,var(--sc) 45%,#2a1a10),#140c0a);box-shadow:0 0 16px -4px var(--sc)}
+.tnode.next .tdia{border-color:var(--ember);animation:nodePulse 1.6s ease-in-out infinite}
+.tnode.next b{color:#ffd8b0}
+@keyframes nodePulse{50%{box-shadow:0 0 22px rgba(239,125,50,.85)}}
+.tnode.lock{opacity:.42}
+.tnode.lock .tdia svg{fill:var(--ash)}
+.tnode.mile{padding-top:12px}
+.tnode.mile .tdia{width:58px;height:58px;border-color:#7a5a24;background:linear-gradient(135deg,#5a3e12,#1a1008)}
+.tnode.mile .tdia svg{width:28px;height:28px;fill:#ffd27a}
+.tnode.mile.got .tdia{border-color:#ffd27a;box-shadow:0 0 24px -2px rgba(255,200,100,.75)}
+.tnode.mile b{color:#f1d38e}
+@media (max-width:820px){.dstats{grid-template-columns:repeat(3,minmax(0,1fr))}.multi{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.bounties{grid-template-columns:1fr}.doll{grid-template-columns:1fr 1fr}.doll-mid{grid-column:1/-1;order:-1}.doll-mid img{max-width:170px}.tnode b{font-size:10px}.tdia{width:44px;height:44px}.tdia svg{width:20px;height:20px}.tnode.mile .tdia{width:50px;height:50px}.tnode{padding-top:19px}.tnode.mile{padding-top:16px}.mile img{width:70px}.mrow{grid-template-columns:40px minmax(0,1fr) auto}.mrow img:nth-of-type(2){display:none}}
+
 @media (max-width:820px){.slots{grid-template-columns:repeat(2,minmax(0,1fr))}.chests{grid-template-columns:1fr}.chestcard{flex-direction:row;flex-wrap:wrap;text-align:left;align-items:center}.chestcard>.ctext{flex:1;min-width:160px}.chestcard .odds{justify-content:flex-start}.brand{letter-spacing:.08em}}
 @media (max-width:400px){.coin{font-size:13px;padding:4px 7px}.brand{font-size:15px}}
 
@@ -334,8 +420,10 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
     <main class="hub-body">
       <section id="tab-play" class="tab">
         <div class="hero"><canvas id="heroCv" aria-label="Your origin keeping vigil by the flame"></canvas><div class="hero-cap"><div class="hero-txt"><div class="eyebrow" id="heroStage"></div><p class="tagline">The last flame gutters below the cathedral. Hold it against the hollowed dead until the third bell tolls.</p></div><button id="heroBegin" class="btn">Descend</button></div></div>
+        <div id="bounties" class="bounties"></div>
         <div class="sect-h"><h2>Descent</h2><span class="muted">Deeper stages are deadlier and pay more gold.</span></div>
         <div id="stages" class="stages"></div>
+        <div id="stageMiles"></div>
         <div class="sect-h"><h2>Origin</h2><span class="muted">Unlock more origins with gold.</span></div>
         <div id="classes" class="classes"></div>
         <div class="descend"><button id="beginBtn" class="btn">Descend</button><div id="record" class="record"></div></div>
@@ -351,11 +439,13 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
       </section>
       <section id="tab-armory" class="tab" hidden>
         <div class="sect-h"><h2>Equipped</h2><span class="muted">Gear applies to every origin.</span></div>
-        <div id="slots" class="slots"></div>
-        <div class="sect-h"><h2>Armory <span id="invCount" class="muted"></span></h2><button id="salvageCommons" class="btn ghost">Salvage spare commons</button></div>
+        <div class="doll"><div class="doll-col" id="dollL"></div><div class="doll-mid"><img id="dollImg" alt="Your origin"><div class="doll-name" id="dollName"></div></div><div class="doll-col" id="dollR"></div></div>
+        <div id="dollStats" class="dstats"></div>
+        <div class="sect-h"><h2>Armory <span id="invCount" class="muted"></span></h2><div class="row"><button id="mergeBtn" class="btn ghost">Merge gear</button><button id="salvageCommons" class="btn ghost">Salvage spare commons</button></div></div>
         <div id="inv" class="inv"></div>
       </section>
       <section id="tab-shop" class="tab" hidden>
+        <div id="starter" hidden></div>
         <div id="claims" hidden></div>
         <div id="freeChest" class="freechest"></div>
         <div class="sect-h"><h2>Chests</h2><span class="muted">Each chest holds one piece of gear. Odds are listed.</span></div>
@@ -364,8 +454,9 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
         <div id="packs" class="packs"></div>
       </section>
       <section id="tab-altar" class="tab" hidden>
-        <div class="sect-h"><h2>Altar of Embers</h2><span class="muted">Permanent boons for every run, bought with gold.</span></div>
-        <div id="upgs" class="upgs"></div>
+        <div class="sect-h"><h2>Talents</h2><span class="muted">A path of permanent boons. Each row opens at a player level.</span></div>
+        <div id="talSum" class="tsum"></div>
+        <div id="talTree" class="ttree"></div>
       </section>
     </main>
     <nav class="tabbar" aria-label="Main menu"><button data-tab="play">Play</button><button data-tab="armory">Armory</button><button data-tab="shop">Shop</button><button data-tab="altar">Altar</button></nav>
@@ -712,13 +803,15 @@ const PACKS = [
 /* ---------------- Save ---------------- */
 const SAVE_KEY = 'av_save_v1';
 const DEFAULT_SAVE = () => ({ v: 1, gold: 0, sigils: 0, items: [], nextId: 1, equipped: { helm: null, armor: null, ring: null, charm: null },
-  upg: {}, origins: ['knight'], cls: 'knight', stage: 0, unlocked: 1, best: {}, cleared: {}, freeChestAt: 0, settings: { zoom: 'normal' }, runs: 0, plv: 1, pxp: 0, ironClaims: 0 });
+  upg: {}, origins: ['knight'], cls: 'knight', stage: 0, unlocked: 1, best: {}, cleared: {}, freeChestAt: 0, settings: { zoom: 'normal' }, runs: 0, plv: 1, pxp: 0, ironClaims: 0,
+  claims: { wood: 0, iron: 0, ember: 0 }, pity: { wood: 0, iron: 0, ember: 0, emberL: 0 }, daily: { last: '', n: 0 }, miles: {}, tal: 0, talM: [false, false, false, false], starter: false, urn: 0, migrated2: false });
 function loadSave() {
   const d = DEFAULT_SAVE(), s = store.get(SAVE_KEY, null);
   if (!s || typeof s !== 'object') return d;
   return Object.assign(d, s, { equipped: Object.assign(d.equipped, s.equipped || {}), settings: Object.assign(d.settings, s.settings || {}), best: s.best || {}, cleared: s.cleared || {}, upg: s.upg || {} });
 }
 let SAVE = loadSave();
+migrateSave();
 function persist() { store.set(SAVE_KEY, SAVE); }
 zoomPref = ZOOM_PREFS[SAVE.settings.zoom] || 1; resize();
 const itemById = id => SAVE.items.find(i => i.id === id) || null;
@@ -728,8 +821,8 @@ function itemStats(it) {
   const add = ([key, v]) => out.push([key, INT_STATS.has(key) ? (key === 'armor' ? v + Math.floor(it.plus / 4) : v) : v * k]);
   add(it.prim); it.aff.forEach(add); return out;
 }
-function genItem(r) {
-  const slot = Object.keys(SLOTS)[Math.floor(Math.random() * 4)], S = SLOTS[slot], R = RARITY[r];
+function genItem(r, forceSlot) {
+  const slot = forceSlot || Object.keys(SLOTS)[Math.floor(Math.random() * 4)], S = SLOTS[slot], R = RARITY[r];
   const names = S.names[r];
   const it = { id: SAVE.nextId++, slot, r, name: names[Math.floor(Math.random() * names.length)], plus: 0,
     prim: [S.prim[0], S.prim[0] === 'armor' ? (r >= 2 ? 2 : 1) : +(S.prim[1] * R.mult).toFixed(4)], aff: [] };
@@ -744,9 +837,7 @@ const salvageVal = it => Math.round(20 * RARITY[it.r].mult * RARITY[it.r].mult *
 function rollRarity(odds) { let r = Math.random() * 100; for (let i = 0; i < 4; i++) { r -= odds[i]; if (r < 0) return i; } return 0; }
 function metaMods() {
   const m = { hp: 0, might: 0, cdr: 0, area: 0, spd: 0, magnet: 0, xp: 0, gold: 0, armor: 0, regen: 0, flasks: 0, revive: 0, reroll: 0 };
-  const u = id => SAVE.upg[id] || 0;
-  m.hp += 10 * u('vit'); m.might += 0.05 * u('might'); m.cdr += 0.03 * u('haste'); m.area += 0.05 * u('reach'); m.spd += 0.04 * u('swift');
-  m.gold += 0.1 * u('greed'); m.xp += 0.05 * u('wisdom'); m.reroll += u('reroll'); m.flasks += u('flask'); m.revive += u('rebirth');
+  talMods(m);
   for (const slot in SAVE.equipped) { const it = itemById(SAVE.equipped[slot]); if (it) for (const [k, v] of itemStats(it)) m[k] += v; }
   m.might += veteranBonus();
   m.revive = Math.min(m.revive, 2); m.cdr = Math.min(m.cdr, 0.6);
@@ -764,7 +855,7 @@ function grantPlayerXp(x) {
   const from = { l: SAVE.plv, xp: SAVE.pxp }, got = { gold: 0, sigils: 0, iron: 0, levels: 0 };
   SAVE.pxp += x;
   while (SAVE.pxp >= pxpNext(SAVE.plv)) { SAVE.pxp -= pxpNext(SAVE.plv); SAVE.plv++; const r = levelReward(SAVE.plv); got.gold += r.gold; got.sigils += r.sigils; got.iron += r.iron; got.levels++; }
-  SAVE.gold += got.gold; SAVE.sigils += got.sigils; SAVE.ironClaims = (SAVE.ironClaims || 0) + got.iron;
+  SAVE.gold += got.gold; SAVE.sigils += got.sigils; SAVE.claims.iron += got.iron;
   return { from, got };
 }
 
@@ -790,7 +881,7 @@ const Platform = {
       const P_ = this.plugin('Purchases');
       if (P_) {
         await P_.configure({ apiKey: this.ios ? STORE_KEYS.revenuecatIos : STORE_KEYS.revenuecatAndroid });
-        const { products } = await P_.getProducts({ productIdentifiers: PACKS.map(p => p.sku) });
+        const { products } = await P_.getProducts({ productIdentifiers: [...PACKS.map(p => p.sku), STARTER.sku, URN.sku] });
         for (const p of products || []) this.prices[p.identifier] = p;
       }
       const A = this.plugin('AdMob'); if (A) await A.initialize({});
@@ -1453,6 +1544,7 @@ function endRun(won) {
   }
   SAVE.best[st.id] = Math.max(SAVE.best[st.id] || 0, Math.floor(G.t));
   SAVE.gold += gold; SAVE.sigils += sig; SAVE.runs++;
+  SAVE.urn = Math.min(URN.cap, (SAVE.urn || 0) + Math.floor(G.kills / 120) + G.bossesKilled * 5 + (won ? 15 : 0));
   const xp = runXp(won), lvl = grantPlayerXp(xp); persist();
   G.reward = { gold, sig, xp, lvl };
   setTimeout(() => {
@@ -2362,6 +2454,261 @@ function drawHero(t) {
   c.fillStyle = vg; c.fillRect(0, 0, w, h);
 }
 
+/* ---------------- Progression features: claims, pity, merge, talents, daily, urn, starter ---------------- */
+const TAB_LABELS = { play: 'Play', armory: 'Armory', shop: 'Shop', altar: 'Talents' };
+const PITY = { wood: { n: 5, r: 1 }, iron: { n: 10, r: 2 }, ember: { n: 10, r: 2, n2: 50, r2: 3 } };
+const STARTER = { sku: 'av_starter', give: { sigils: 300, gold: 5000, claims: { iron: 2, ember: 1 } } };
+const URN = { sku: 'av_urn', cap: 500 };
+const DAILY = [{ gold: 200 }, { gold: 300 }, { sigils: 15 }, { claims: { iron: 1 } }, { gold: 600 }, { sigils: 30 }, { claims: { ember: 1 } }];
+const STAGE_MILES = [
+  { t: 120, label: '2:00', art: 'wood', give: st => ({ gold: Math.round(200 * st.gold), sigils: 5 }) },
+  { t: 300, label: '5:00', art: 'iron', give: st => ({ gold: Math.round(400 * st.gold), claims: { iron: 1 } }) },
+  { t: 'clear', label: 'Clear', art: 'ember', give: () => ({ sigils: 20, claims: { ember: 1 } }) },
+];
+const CHEST_NAME = id => CHESTS.find(c => c.id === id).name;
+function giveReward(r) { if (r.gold) SAVE.gold += r.gold; if (r.sigils) SAVE.sigils += r.sigils; if (r.claims) for (const k in r.claims) SAVE.claims[k] = (SAVE.claims[k] || 0) + r.claims[k]; }
+function rewardLine(r) { const p = []; if (r.gold) p.push(fmtNum(r.gold) + ' gold'); if (r.sigils) p.push(r.sigils + ' sigils'); if (r.claims) for (const k in r.claims) p.push((r.claims[k] > 1 ? r.claims[k] + ' × ' : '') + CHEST_NAME(k)); return p.join(', '); }
+const todayKey = () => { const d = new Date(); return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); };
+const dailyReady = () => SAVE.daily.last !== todayKey();
+function milesState(i) { const st = STAGES[i], got = SAVE.miles[st.id] || []; return STAGE_MILES.map((m, k) => ({ m, claimed: !!got[k], reached: m.t === 'clear' ? !!SAVE.cleared[st.id] : (SAVE.best[st.id] || 0) >= m.t })); }
+const milesReady = () => STAGES.some((_, i) => i < SAVE.unlocked && milesState(i).some(s => s.reached && !s.claimed));
+const claimsCount = () => Object.values(SAVE.claims).reduce((a, b) => a + b, 0);
+function tabDot(tab) {
+  if (tab === 'play') return dailyReady() || milesReady();
+  if (tab === 'shop') return Date.now() >= SAVE.freeChestAt || claimsCount() > 0;
+  if (tab === 'armory') return mergeGroups().length > 0;
+  if (tab === 'altar') return talAvailable() != null;
+  return false;
+}
+function migrateSave() {
+  SAVE.claims = Object.assign({ wood: 0, iron: 0, ember: 0 }, SAVE.claims || {});
+  SAVE.pity = Object.assign({ wood: 0, iron: 0, ember: 0, emberL: 0 }, SAVE.pity || {});
+  SAVE.daily = Object.assign({ last: '', n: 0 }, SAVE.daily || {});
+  SAVE.miles = SAVE.miles || {}; SAVE.talM = SAVE.talM || [false, false, false, false]; SAVE.tal = SAVE.tal || 0; SAVE.urn = SAVE.urn || 0;
+  if (SAVE.ironClaims) { SAVE.claims.iron += SAVE.ironClaims; SAVE.ironClaims = 0; }
+  if (!SAVE.migrated2) {
+    let refund = 0; for (const u of UPGRADES) for (let r = 0; r < (SAVE.upg[u.id] || 0); r++) refund += upgCost(u, r);
+    SAVE.upg = {}; SAVE.gold += refund; SAVE.migrated2 = true; if (refund) SAVE.refundNote = refund;
+  }
+  persist();
+}
+
+/* chests: pity and ten-packs */
+function rollChest(c) {
+  const P = PITY[c.id], p = SAVE.pity; let r = rollRarity(c.odds);
+  p[c.id] = (p[c.id] || 0) + 1;
+  if (p[c.id] >= P.n && r < P.r) r = P.r;
+  if (r >= P.r) p[c.id] = 0;
+  if (P.n2) { p.emberL = (p.emberL || 0) + 1; if (p.emberL >= P.n2 && r < P.r2) r = P.r2; if (r >= P.r2) p.emberL = 0; }
+  return r;
+}
+function chestPityText(c) {
+  const P = PITY[c.id], left = P.n - (SAVE.pity[c.id] || 0);
+  let s = `${RARITY[P.r].name} or better within ${left} opening${left > 1 ? 's' : ''}`;
+  if (P.n2) s += ` · Legendary within ${P.n2 - (SAVE.pity.emberL || 0)}`;
+  return s;
+}
+const mulCost = (c, k) => c.gold != null ? { gold: c.gold * k } : { sigils: c.sigils * k };
+function openShopChest10(c) {
+  const items = [];
+  for (let k = 0; k < 10; k++) { const it = genItem(rollChest(c)); SAVE.items.push(it); items.push(it); }
+  persist(); renderHub(); SND.init(); SND.chest();
+  const best = items.reduce((a, b) => b.r > a.r || (b.r === a.r && b.aff.length > a.aff.length) ? b : a);
+  openModal(`<div class="eyebrow">${c.name} × 10</div><h2>Your haul</h2>
+    <div class="multi">${items.map((it, k) => `<div class="mcard r${it.r}" style="--rc:${RARITY[it.r].color};animation-delay:${(k * 0.09).toFixed(2)}s"><img src="${itemIcon(it.slot, it.r)}" alt=""><b>${it.name}</b><span>${RARITY[it.r].name}</span></div>`).join('')}</div>
+    <p class="muted">Best find: <b style="color:${RARITY[best.r].color}">${best.name}</b>. Everything went to your armory.</p>
+    <div class="row"><button class="btn" id="mArm" style="padding:12px 24px;font-size:14px">View armory</button><button class="btn ghost" id="mClose">Close</button></div>`, m => {
+    m.querySelector('#mClose').onclick = closeModal;
+    m.querySelector('#mArm').onclick = () => { closeModal(); hubTab = 'armory'; renderHub(); };
+  }, true);
+}
+function renderClaims() {
+  const cl = $('claims'), ids = ['ember', 'iron', 'wood'].filter(k => SAVE.claims[k] > 0);
+  if (!ids.length) { cl.hidden = true; cl.innerHTML = ''; return; }
+  cl.hidden = false;
+  cl.innerHTML = ids.map(k => `<div class="claim"><img src="${chestArt(k, false)}" alt=""><div style="flex:1;min-width:160px"><h3>${CHEST_NAME(k)} × ${SAVE.claims[k]}</h3><p class="muted">Earned from player levels, stage rewards and daily vigils.</p></div><button class="buy" data-k="${k}">Open now</button></div>`).join('');
+  cl.querySelectorAll('[data-k]').forEach(b => b.onclick = () => { const k = b.dataset.k; if (!roomCheck() || SAVE.claims[k] <= 0) return; SAVE.claims[k]--; openShopChest(CHESTS.find(c => c.id === k)); });
+}
+function renderStarter() {
+  const el = $('starter');
+  if (SAVE.starter) { el.hidden = true; el.innerHTML = ''; return; }
+  el.hidden = false;
+  const pr = Platform.prices[STARTER.sku], can = Platform.canBuy() && pr;
+  el.innerHTML = `<div class="starter"><img src="${chestArt('ember', true)}" alt=""><div class="stx"><span class="tag">One time only</span><h3>Pilgrim's Bundle</h3><p>${rewardLine(STARTER.give)}</p></div>
+    ${can ? `<button class="btn" id="starterBtn">${pr.priceString}</button>` : '<p class="note">Available in the Android and iOS app.</p>'}</div>`;
+  const b = $('starterBtn');
+  if (b) b.onclick = async () => {
+    b.disabled = true;
+    try { await Platform.purchase(STARTER.sku); giveReward(STARTER.give); SAVE.starter = true; persist(); renderHub(); toast("Pilgrim's Bundle added."); }
+    catch (e) { toast(e && e.userCancelled ? 'Purchase cancelled.' : 'Purchase not completed.'); b.disabled = false; }
+  };
+}
+
+/* merging */
+function mergeGroups() { const g = {}; for (const it of SAVE.items) { if (it.r >= 3) continue; const k = it.slot + ':' + it.r; (g[k] = g[k] || []).push(it); } return Object.values(g).filter(a => a.length >= 3).sort((a, b) => b[0].r - a[0].r); }
+function doMerge(group) {
+  const pick = group.slice().sort((a, b) => (isEquipped(a) - isEquipped(b)) || a.plus - b.plus).slice(0, 3);
+  const wasEq = pick.some(isEquipped), slot = pick[0].slot;
+  const res = genItem(pick[0].r + 1, slot); res.plus = Math.max(...pick.map(i => i.plus));
+  SAVE.items = SAVE.items.filter(i => !pick.includes(i)); SAVE.items.push(res);
+  if (wasEq) SAVE.equipped[slot] = res.id;
+  persist(); return res;
+}
+function openMerge() {
+  const groups = mergeGroups();
+  const intro = '<p class="muted">Three pieces of the same slot and rarity become one piece of the next rarity. The new piece keeps the highest upgrade among them.</p>';
+  if (!groups.length) { openModal(`<h2>Merge gear</h2>${intro}<p style="margin:0">Nothing to merge yet. Open chests to collect more gear.</p><div class="row"><button class="btn ghost" id="mClose">Close</button></div>`, m => { m.querySelector('#mClose').onclick = closeModal; }); return; }
+  openModal(`<h2>Merge gear</h2>${intro}<div class="mlist">${groups.map((g, k) => { const it = g[0], R = RARITY[it.r], N = RARITY[it.r + 1];
+    return `<div class="mrow"><img src="${itemIcon(it.slot, it.r)}" alt=""><span><b style="color:${R.color}">${g.length} ${R.name} ${SLOTS[it.slot].name}s</b><br><span class="muted">3 become 1 <b style="color:${N.color}">${N.name}</b></span></span><img src="${itemIcon(it.slot, it.r + 1)}" alt=""><button class="buy" data-k="${k}">Merge</button></div>`; }).join('')}</div>
+    <div class="row"><button class="btn ghost" id="mClose">Done</button></div>`, m => {
+    m.querySelector('#mClose').onclick = closeModal;
+    m.querySelectorAll('[data-k]').forEach(b => b.onclick = () => { const res = doMerge(groups[+b.dataset.k]); SND.init(); SND.chest(); renderHub(); showMerged(res); });
+  });
+}
+function showMerged(it) {
+  const R = RARITY[it.r];
+  openModal(`<div class="eyebrow">Merged</div><div class="reveal lit" style="--rc:${R.color}"><div class="burst"></div><img class="ico" src="${itemIcon(it.slot, it.r)}" alt="" style="width:120px;height:120px;position:relative"></div>
+    <div class="eyebrow" style="color:${R.color}">${R.name} ${SLOTS[it.slot].name}</div><h2 style="color:${R.color}">${it.name}${it.plus ? ' +' + it.plus : ''}</h2>
+    <ul class="statlist" style="--rc:${R.color}">${itemStats(it).map(([k, v]) => `<li>${STAT_TEXT[k](v)}</li>`).join('')}</ul>
+    <div class="row"><button class="btn" id="mMore" style="padding:12px 24px;font-size:14px">${mergeGroups().length ? 'Merge more' : 'Done'}</button></div>`, m => {
+    m.querySelector('#mMore').onclick = () => mergeGroups().length ? openMerge() : closeModal();
+  });
+}
+
+/* equipment screen */
+function bigPortrait(cls) {
+  return cached('big' + cls, () => {
+    const [cv, c] = mkCanvas(220, 250);
+    c.globalCompositeOperation = 'lighter'; glowAt(c, 110, 205, 120, '255,140,60', 0.35); c.globalCompositeOperation = 'source-over';
+    c.strokeStyle = 'rgba(239,125,50,0.55)'; c.lineWidth = 2;
+    c.beginPath(); c.ellipse(110, 214, 84, 20, 0, 0, TAU); c.stroke(); c.beginPath(); c.ellipse(110, 214, 62, 14, 0, 0, TAU); c.stroke();
+    for (let i = 0; i < 12; i++) { const a = i / 12 * TAU; c.fillStyle = 'rgba(255,170,90,0.7)'; c.fillRect(110 + Math.cos(a) * 73 - 1.5, 214 + Math.sin(a) * 17 - 1.5, 3, 3); }
+    drawCharacter(c, 110, 204, 5.6, LOOKS[cls], { dir: 1, t: 0.6 });
+    return cv.toDataURL();
+  });
+}
+function slotCard(s) { const it = itemById(SAVE.equipped[s]); return it ? itemCard(it) : `<div class="item empty"><img class="ico" src="${itemIcon(s, 0)}" alt=""><span class="itxt"><span class="slot">${SLOTS[s].name}</span><b>Empty</b><span class="sum">Find gear in chests.</span></span></div>`; }
+function renderArmory() {
+  $('dollL').innerHTML = slotCard('helm') + slotCard('armor');
+  $('dollR').innerHTML = slotCard('ring') + slotCard('charm');
+  $('dollImg').src = bigPortrait(SAVE.cls); $('dollName').textContent = CLASSES[SAVE.cls].name;
+  const m = metaMods(), c = CLASSES[SAVE.cls];
+  const stats = [['Health', Math.round(c.hp + m.hp)], ['Damage', '+' + Math.round((c.might * (1 + m.might) - 1) * 100) + '%'], ['Armor', c.armor + m.armor],
+    ['Haste', Math.round((1 - c.cdr * (1 - m.cdr)) * 100) + '%'], ['Reach', '+' + Math.round(m.magnet * 100) + '%'], ['Gold', '+' + Math.round(m.gold * 100) + '%']];
+  $('dollStats').innerHTML = stats.map(([k, v]) => `<span><b>${v}</b>${k}</span>`).join('');
+  const items = SAVE.items.filter(i => !isEquipped(i)).sort((a, b) => b.r - a.r || b.plus - a.plus || a.slot.localeCompare(b.slot));
+  $('inv').innerHTML = items.length ? items.map(itemCard).join('') : `<p class="muted" style="grid-column:1/-1">Nothing in storage. Open chests in the Shop to find gear.</p>`;
+  $('invCount').textContent = SAVE.items.length + ' / ' + INV_CAP;
+  const g = mergeGroups().length; $('mergeBtn').textContent = g ? `Merge gear (${g} ready)` : 'Merge gear';
+  $('mergeBtn').classList.toggle('ready', g > 0);
+  document.querySelectorAll('#tab-armory .item[data-id]').forEach(b => b.addEventListener('click', () => openItem(+b.dataset.id)));
+}
+
+/* talents */
+const TAL_STATS = [['might', 0.03], ['hp', 12], ['cdr', 0.02], ['magnet', 0.1], ['area', 0.03], ['spd', 0.025], ['gold', 0.06], ['xp', 0.04]];
+const TAL_ROWS = 12;
+const talReq = row => row * 2 + 1;
+const talNode = i => { const [k, v] = TAL_STATS[i % TAL_STATS.length]; return { k, v, cost: Math.round(120 * Math.pow(1.12, i) / 10) * 10, row: Math.floor(i / 3) }; };
+const TAL_MILES = [
+  { row: 2, icon: 'reroll', name: 'Second Sight', desc: '+1 reroll of level-up boons in every run', cost: 1500, apply: m => { m.reroll++; } },
+  { row: 5, icon: 'flask', name: 'Deep Flask', desc: '+1 tonic flask in every run', cost: 4000, apply: m => { m.flasks++; } },
+  { row: 8, icon: 'revive', name: 'Rebirth', desc: 'Rise once per run at half health', cost: 9000, apply: m => { m.revive++; } },
+  { row: 11, icon: 'eternal', name: 'Flame Eternal', desc: '+1 reroll and +10% damage in every run', cost: 18000, apply: m => { m.reroll++; m.might += 0.1; } },
+];
+const STAT_SHORT = { might: 'Damage', hp: 'Health', cdr: 'Haste', magnet: 'Reach', area: 'Area', spd: 'Speed', gold: 'Gold', xp: 'Embers' };
+const STAT_COLOR = { might: '#ff8a4a', hp: '#e8505e', cdr: '#7fd2c0', magnet: '#e0b860', area: '#a898f0', spd: '#8ac25a', gold: '#f0c860', xp: '#ffa050' };
+const STAT_ICON = {
+  might: '<path d="M18.5 2.5H21.5V5.5L11 16L8 13ZM7 14L10 17L8 19L9.5 20.5L8 22L2 16L3.5 14.5L5 16Z"/>',
+  hp: '<path d="M12 21s-8.5-5.3-8.5-11.2A4.6 4.6 0 0 1 12 7.2a4.6 4.6 0 0 1 8.5 2.6C20.5 15.7 12 21 12 21z"/>',
+  cdr: '<path d="M6 2h12v2.5l-4.6 7.5 4.6 7.5V22H6v-2.5l4.6-7.5L6 4.5z"/>',
+  magnet: '<path d="M4 3h5v8a3 3 0 0 0 6 0V3h5v8a8 8 0 0 1-16 0z"/>',
+  area: '<path d="M12 1.5l2.6 6.8 7.2.4-5.6 4.6 1.9 7-6.1-3.9-6.1 3.9 1.9-7L2.2 8.7l7.2-.4z"/>',
+  spd: '<path d="M7 2h6v8.5l6.2 3c1.4.7 2.3 1.8 2.3 3.1V20H3v-6l4-2z"/>',
+  gold: '<circle cx="12" cy="12" r="8.5"/>',
+  xp: '<path d="M12 1.5l7.5 10.5L12 22.5 4.5 12z"/>',
+  reroll: '<path d="M12 3a9 9 0 0 1 8.4 5.8H17.5l4 4.7 4-4.7h-2.6A11.5 11.5 0 0 0 .7 10.5h2.6A9 9 0 0 1 12 3zM3.6 15.2h2.9l-4-4.7-4 4.7h2.6A11.5 11.5 0 0 0 23.3 13.5h-2.6A9 9 0 0 1 3.6 15.2z" transform="scale(.9) translate(1.3 1.3)"/>',
+  flask: '<path d="M9 2h6v2h-1v4.6a7.5 7.5 0 1 1-4 0V4H9z"/>',
+  revive: '<path d="M12 1.5c2.2 4.4 7.5 6.6 7.5 13a7.5 7.5 0 0 1-15 0c0-3.3 2-5.4 3.3-6.6 0 3.2 1.2 4.6 3.2 5.3-1.1-4.4-1.1-7.6 1-11.7z"/>',
+  eternal: '<path d="M12 1l2.3 5.3L20 4l-2.3 5.7L23 12l-5.3 2.3L20 20l-5.7-2.3L12 23l-2.3-5.3L4 20l2.3-5.7L1 12l5.3-2.3L4 4l5.7 2.3z"/>',
+};
+const pctF = v => (Math.round(v * 1000) / 10) + '%';
+const valText = n => n.k === 'hp' ? '+' + n.v : '+' + pctF(n.v);
+function talAvailable() {
+  const i = SAVE.tal;
+  if (i < TAL_ROWS * 3) { const n = talNode(i); if (SAVE.plv >= talReq(n.row) && SAVE.gold >= n.cost) return { kind: 'n', i }; }
+  for (let k = 0; k < TAL_MILES.length; k++) { const M = TAL_MILES[k]; if (!SAVE.talM[k] && SAVE.tal >= (M.row + 1) * 3 && SAVE.gold >= M.cost) return { kind: 'm', i: k }; }
+  return null;
+}
+function talMods(m) { for (let i = 0; i < SAVE.tal; i++) { const n = talNode(i); m[n.k] += n.v; } TAL_MILES.forEach((M, k) => { if (SAVE.talM[k]) M.apply(m); }); }
+function renderAltar() {
+  const rows = [];
+  for (let r = 0; r < TAL_ROWS; r++) {
+    const req = talReq(r), open = SAVE.plv >= req, done = SAVE.tal >= (r + 1) * 3;
+    let cells = '';
+    for (let col = 0; col < 3; col++) {
+      const j = r % 2 === 0 ? col : 2 - col, i = r * 3 + j, n = talNode(i), st = i < SAVE.tal ? 'got' : (i === SAVE.tal && open ? 'next' : 'lock');
+      cells += `<button class="tnode ${st}" data-n="${i}" style="--sc:${STAT_COLOR[n.k]}" aria-label="${STAT_SHORT[n.k]} ${valText(n)}"><span class="tdia"><svg viewBox="0 0 24 24">${STAT_ICON[n.k]}</svg></span><b>${valText(n)}</b></button>`;
+    }
+    const mk = TAL_MILES.findIndex(M => M.row === r);
+    let mile = '<span></span>';
+    if (mk >= 0) { const M = TAL_MILES[mk], st = SAVE.talM[mk] ? 'got' : done ? 'next' : 'lock'; mile = `<button class="tnode mile ${st}" data-m="${mk}" aria-label="${M.name}"><span class="tdia"><svg viewBox="0 0 24 24">${STAT_ICON[M.icon]}</svg></span><b>${M.name}</b></button>`; }
+    rows.push(`<div class="trow${open ? '' : ' closed'}${done ? ' done' : ''}"><span class="tlv" title="Player level ${req}">${req}</span>${cells}${mile}${r < TAL_ROWS - 1 ? `<i class="tlink ${r % 2 === 0 ? 'r' : 'l'}"></i>` : ''}</div>`);
+  }
+  $('talTree').innerHTML = rows.join('');
+  const next = SAVE.tal < TAL_ROWS * 3 ? talNode(SAVE.tal) : null;
+  $('talSum').innerHTML = `<span>${SAVE.tal} of ${TAL_ROWS * 3} talents · ${SAVE.talM.filter(Boolean).length} of ${TAL_MILES.length} milestones</span><span class="muted">${next ? (SAVE.plv >= talReq(next.row) ? 'Next: ' + STAT_SHORT[next.k] + ' ' + valText(next) + ' for ' + fmtNum(next.cost) + ' gold' : 'Next talent needs player level ' + talReq(next.row)) : 'Every talent learned.'}</span>`;
+  $('talTree').querySelectorAll('[data-n]').forEach(b => b.onclick = () => openTalent('n', +b.dataset.n));
+  $('talTree').querySelectorAll('[data-m]').forEach(b => b.onclick = () => openTalent('m', +b.dataset.m));
+}
+function openTalent(kind, i) {
+  let title, body, cost = 0, can = false, onBuy;
+  if (kind === 'n') {
+    const n = talNode(i), req = talReq(n.row), got = i < SAVE.tal, next = i === SAVE.tal, lvOk = SAVE.plv >= req;
+    title = `${STAT_SHORT[n.k]} ${valText(n)}`; cost = n.cost; can = next && lvOk;
+    body = `<p class="muted">${STAT_TEXT[n.k](n.v)} in every run.</p>` + (got ? '<p style="margin:0">Learned.</p>' : !lvOk ? `<p style="margin:0">Requires player level ${req}.</p>` : !next ? '<p style="margin:0">Learn the talents before it on the path first.</p>' : '');
+    onBuy = () => { SAVE.tal++; };
+  } else {
+    const M = TAL_MILES[i], got = SAVE.talM[i], ready = SAVE.tal >= (M.row + 1) * 3;
+    title = M.name; cost = M.cost; can = !got && ready;
+    body = `<p class="muted">${M.desc}.</p>` + (got ? '<p style="margin:0">Learned.</p>' : !ready ? `<p style="margin:0">Learn every talent up to player level ${talReq(M.row)} first.</p>` : '');
+    onBuy = () => { SAVE.talM[i] = true; };
+  }
+  openModal(`<div class="eyebrow">${kind === 'm' ? 'Milestone talent' : 'Talent ' + (i + 1) + ' of ' + TAL_ROWS * 3}</div><h2>${title}</h2>${body}
+    <div class="row">${can ? `<button class="buy" id="mBuy" ${SAVE.gold >= cost ? '' : 'disabled'}>Learn for ${costHTML({ gold: cost })}</button>` : ''}<button class="btn ghost" id="mClose">Close</button></div>
+    ${can && SAVE.gold < cost ? `<p class="muted">You need ${fmtNum(cost - SAVE.gold)} more gold.</p>` : ''}`, m => {
+    m.querySelector('#mClose').onclick = closeModal;
+    const b = m.querySelector('#mBuy'); if (b) b.onclick = () => { if (!pay({ gold: cost })) return; onBuy(); persist(); closeModal(); renderHub(); SND.init(); SND.level(); toast(title + ' learned.'); };
+  });
+}
+
+/* play tab: daily vigil, ember urn, stage rewards */
+function renderBounties() {
+  const ready = dailyReady(), shown = ready ? SAVE.daily.n % 7 : (SAVE.daily.n - 1 + 7) % 7;
+  const pips = DAILY.map((d, k) => `<i class="${k < shown || (k === shown && !ready) ? 'got' : k === shown ? 'now' : ''}" title="Day ${k + 1}: ${rewardLine(d)}"></i>`).join('');
+  const pr = Platform.prices[URN.sku];
+  $('bounties').innerHTML = `<div class="bcard${ready ? ' hot' : ''}"><div class="eyebrow">Daily vigil · Day ${shown + 1} of 7</div><div class="dpips">${pips}</div>
+      <p>${ready ? 'Today: ' + rewardLine(DAILY[shown]) : 'Claimed. Tomorrow: ' + rewardLine(DAILY[(shown + 1) % 7]) + '.'}</p>${ready ? '<button class="buy" id="dailyBtn">Claim</button>' : ''}</div>
+    <div class="bcard"><div class="eyebrow">Ember urn</div><div class="urnbar"><i style="width:${Math.min(100, SAVE.urn / URN.cap * 100)}%"></i></div>
+      <p>${fmtNum(SAVE.urn)} of ${URN.cap} sigils stored. Every run adds more.</p>
+      ${Platform.canBuy() && pr ? `<button class="buy" id="urnBtn" ${SAVE.urn ? '' : 'disabled'}>Break it open · ${pr.priceString}</button>` : '<span class="muted" style="font-size:14px">Break it open in the Android and iOS app.</span>'}</div>`;
+  const db = $('dailyBtn');
+  if (db) db.onclick = () => { if (!dailyReady()) return; const r = DAILY[SAVE.daily.n % 7]; giveReward(r); SAVE.daily.n++; SAVE.daily.last = todayKey(); persist(); renderHub(); SND.init(); SND.chest(); toast('Claimed ' + rewardLine(r) + '.'); };
+  const ub = $('urnBtn');
+  if (ub) ub.onclick = async () => { ub.disabled = true; try { await Platform.purchase(URN.sku); const n = SAVE.urn; SAVE.sigils += n; SAVE.urn = 0; persist(); renderHub(); toast(fmtNum(n) + ' sigils added.'); } catch (e) { toast(e && e.userCancelled ? 'Purchase cancelled.' : 'Purchase not completed.'); ub.disabled = false; } };
+}
+function renderStageMiles() {
+  const i = SAVE.stage, st = STAGES[i], S = milesState(i);
+  $('stageMiles').innerHTML = `<div class="sect-h"><h2>Stage rewards</h2><span class="muted">${st.name}: survive or clear it to earn these chests.</span></div>
+    <div class="miles">${S.map((s, k) => `<button class="mile ${s.claimed ? 'claimed' : s.reached ? 'ready' : 'locked'}" data-k="${k}"><img src="${chestArt(s.m.art, s.claimed)}" alt=""><b>${s.m.label}</b><span>${s.claimed ? 'Claimed' : s.reached ? 'Claim' : rewardLine(s.m.give(st))}</span></button>`).join('<i class="mline"></i>')}</div>`;
+  $('stageMiles').querySelectorAll('.mile').forEach(b => b.onclick = () => {
+    const k = +b.dataset.k, s = milesState(i)[k];
+    if (s.claimed) return;
+    if (!s.reached) { toast(s.m.t === 'clear' ? 'Defeat the third boss of ' + st.name + ' to earn this.' : 'Survive ' + s.m.label + ' in ' + st.name + ' to earn this.'); return; }
+    const r = s.m.give(st); SAVE.miles[st.id] = SAVE.miles[st.id] || [false, false, false]; SAVE.miles[st.id][k] = true;
+    giveReward(r); persist(); renderHub(); SND.init(); SND.chest(); toast('Claimed ' + rewardLine(r) + '.');
+  });
+}
+
 /* ---------------- Hub UI ---------------- */
 let hubTab = 'play';
 const fmtNum = n => Math.floor(n).toLocaleString('en-US');
@@ -2371,18 +2718,18 @@ const canAfford = c => c.gold != null ? SAVE.gold >= c.gold : SAVE.sigils >= c.s
 function pay(c) { if (!canAfford(c)) return false; if (c.gold != null) SAVE.gold -= c.gold; else SAVE.sigils -= c.sigils; return true; }
 let toastT = null;
 function toast(msg) { const t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 2200); }
-function openModal(html, bind) { $('modalBody').innerHTML = html; $('modal').hidden = false; if (bind) bind($('modalBody')); const f = $('modalBody').querySelector('button:not([disabled])'); if (f && !isTouch) f.focus({ preventScroll: true }); }
+function openModal(html, bind, wide) { $('modalBody').classList.toggle('wide', !!wide); $('modalBody').innerHTML = html; $('modal').hidden = false; if (bind) bind($('modalBody')); const f = $('modalBody').querySelector('button:not([disabled])'); if (f && !isTouch) f.focus({ preventScroll: true }); }
 function closeModal() { $('modal').hidden = true; $('modalBody').innerHTML = ''; }
 $('modal').addEventListener('click', e => { if (e.target === $('modal')) closeModal(); });
 
-function showHub(tab) { state = 'title'; if (tab) hubTab = tab; $('hub').hidden = false; renderHub(); }
+function showHub(tab) { state = 'title'; if (tab) hubTab = tab; $('hub').hidden = false; renderHub(); if (SAVE.refundNote) { toast('The Altar became a talent path. ' + fmtNum(SAVE.refundNote) + ' gold refunded.'); delete SAVE.refundNote; persist(); } }
 function renderHub() {
   $('goldAmt').textContent = fmtNum(SAVE.gold); $('sigilAmt').textContent = fmtNum(SAVE.sigils);
   $('plvNum').textContent = SAVE.plv; $('plvFill').style.width = (SAVE.pxp / pxpNext(SAVE.plv) * 100) + '%';
   const freeReady = Date.now() >= SAVE.freeChestAt || SAVE.ironClaims > 0;
   document.querySelectorAll('.tabbar button').forEach(b => {
     b.setAttribute('aria-current', b.dataset.tab === hubTab ? 'page' : 'false');
-    b.innerHTML = TAB_ICONS[b.dataset.tab] + '<span>' + b.dataset.tab[0].toUpperCase() + b.dataset.tab.slice(1) + (b.dataset.tab === 'shop' && freeReady ? '<span class="dot" aria-label="Free chest ready"></span>' : '') + '</span>';
+    b.innerHTML = TAB_ICONS[b.dataset.tab] + '<span>' + TAB_LABELS[b.dataset.tab] + (tabDot(b.dataset.tab) ? '<span class="dot" aria-label="Something to claim"></span>' : '') + '</span>';
   });
   for (const t of ['play', 'armory', 'shop', 'altar']) $('tab-' + t).hidden = t !== hubTab;
   ({ play: renderPlay, armory: renderArmory, shop: renderShop, altar: renderAltar })[hubTab]();
@@ -2415,7 +2762,7 @@ function renderPlay() {
   }));
   $('beginBtn').textContent = 'Descend';
   $('heroStage').textContent = 'Stage ' + ROMAN[SAVE.stage] + ' \u00b7 ' + STAGES[SAVE.stage].name;
-  heroStart();
+  heroStart(); renderBounties(); renderStageMiles();
   $('record').textContent = STAGES[SAVE.stage].name + ' · ' + CLASSES[SAVE.cls].name + (SAVE.runs ? ' · ' + SAVE.runs + ' vigils so far' : '');
 }
 function confirmBuy(title, text, cost, onOk) {
@@ -2433,13 +2780,7 @@ function itemCard(it) {
   return `<button class="item r${it.r}" data-id="${it.id}" style="--rc:${RARITY[it.r].color}"><img class="ico" src="${itemIcon(it.slot, it.r)}" alt=""><span class="itxt"><span class="slot">${SLOTS[it.slot].name}${eq ? ' · Equipped' : ''}</span>
     <b>${it.name}${it.plus ? ' +' + it.plus : ''}</b><span class="sum">${STAT_TEXT[st[0]](st[1])}${it.aff.length ? ' · ' + it.aff.length + ' more' : ''}</span></span></button>`;
 }
-function renderArmory() {
-  $('slots').innerHTML = Object.keys(SLOTS).map(s => { const it = itemById(SAVE.equipped[s]); return it ? itemCard(it) : `<div class="item empty"><img class="ico" src="${itemIcon(s, 0)}" alt=""><span class="itxt"><span class="slot">${SLOTS[s].name}</span><b>Empty</b><span class="sum">Find gear in chests.</span></span></div>`; }).join('');
-  const items = SAVE.items.filter(i => !isEquipped(i)).sort((a, b) => b.r - a.r || b.plus - a.plus || a.slot.localeCompare(b.slot));
-  $('inv').innerHTML = items.length ? items.map(itemCard).join('') : `<p class="muted" style="grid-column:1/-1">Nothing in storage. Open chests in the Shop to find gear.</p>`;
-  $('invCount').textContent = SAVE.items.length + ' / ' + INV_CAP;
-  document.querySelectorAll('#tab-armory .item[data-id]').forEach(b => b.addEventListener('click', () => openItem(+b.dataset.id)));
-}
+$('mergeBtn').addEventListener('click', openMerge);
 $('salvageCommons').addEventListener('click', () => {
   const spare = SAVE.items.filter(i => i.r === 0 && !isEquipped(i));
   if (!spare.length) { toast('No spare common gear to salvage.'); return; }
@@ -2468,25 +2809,30 @@ function openItem(id) {
 
 function renderFreeChest() {
   const left = SAVE.freeChestAt - Date.now(), ready = left <= 0;
-  $('freeChest').innerHTML = `<div><h3>Daily Offering</h3><p class="muted">A free Wooden Coffer every 4 hours.</p></div>
+  $('freeChest').innerHTML = `<div><h3>Free Coffer</h3><p class="muted">A free Wooden Coffer every 4 hours.</p></div>
     <div class="row">${!ready && Platform.canAds() ? '<button class="btn ghost" id="freeAd">Watch an ad to open now</button>' : ''}
     <button class="buy" id="freeBtn" ${ready ? '' : 'disabled'}>${ready ? 'Open free' : 'Ready in ' + fmtDur(left)}</button></div>`;
   const fb = $('freeBtn'); if (fb) fb.onclick = () => { if (Date.now() < SAVE.freeChestAt) return; if (!roomCheck()) return; SAVE.freeChestAt = Date.now() + FREE_CHEST_MS; openShopChest(CHESTS[0]); };
   const fa = $('freeAd'); if (fa) fa.onclick = async () => { fa.disabled = true; const ok = await Platform.rewardedAd(); if (ok && roomCheck()) openShopChest(CHESTS[0]); else fa.disabled = false; };
 }
-function roomCheck() { if (SAVE.items.length >= INV_CAP) { toast('Your armory is full. Salvage some gear first.'); return false; } return true; }
+function roomCheck(n = 1) { if (SAVE.items.length + n > INV_CAP) { toast('Your armory is full. Salvage some gear first.'); return false; } return true; }
 function renderShop() {
-  renderClaims(); renderFreeChest();
+  renderStarter(); renderClaims(); renderFreeChest();
   $('chests').innerHTML = CHESTS.map((c, i) => `<div class="chestcard"><img class="chestimg" src="${chestArt(c.id, false)}" alt=""><div class="ctext"><h3>${c.name}</h3><p>${c.blurb}</p></div>
     <div class="odds">${c.odds.map((o, r) => o ? `<span style="--rc:${RARITY[r].color}">${RARITY[r].name} ${o}%</span>` : '').join('')}</div>
-    <button class="buy" data-i="${i}" ${canAfford(c.cost) ? '' : 'disabled'}>Open ${costHTML(c.cost)}</button></div>`).join('');
-  $('chests').querySelectorAll('.buy').forEach(b => b.addEventListener('click', () => { const c = CHESTS[+b.dataset.i]; if (!roomCheck() || !pay(c.cost)) return; openShopChest(c); }));
+    <div class="pity">${chestPityText(c)}</div>
+    <div class="row"><button class="buy" data-i="${i}" data-n="1" ${canAfford(c.cost) ? '' : 'disabled'}>Open ${costHTML(c.cost)}</button><button class="buy" data-i="${i}" data-n="10" ${canAfford(mulCost(c.cost, 9)) ? '' : 'disabled'} title="Ten chests for the price of nine">Open 10 ${costHTML(mulCost(c.cost, 9))}</button></div></div>`).join('');
+  $('chests').querySelectorAll('.buy').forEach(b => b.addEventListener('click', () => {
+    const c = CHESTS[+b.dataset.i], ten = b.dataset.n === '10';
+    if (!roomCheck(ten ? 10 : 1) || !pay(ten ? mulCost(c.cost, 9) : c.cost)) return;
+    if (ten) openShopChest10(c); else openShopChest(c);
+  }));
   const ex = `<div class="pack"><span class="tag">Exchange</span><h3>${fmtNum(EXCHANGE.gold)} gold</h3><button class="buy" id="exBtn" ${SAVE.sigils >= EXCHANGE.sigils ? '' : 'disabled'}>Trade ${costHTML({ sigils: EXCHANGE.sigils })}</button></div>`;
   let packs;
   if (Platform.canBuy()) packs = PACKS.map(p => { const pr = Platform.prices[p.sku];
     return `<div class="pack">${p.tag ? `<span class="tag">${p.tag}</span>` : ''}<h3>${p.name}</h3><span class="coin gem">${fmtNum(p.amt)}</span>
       <button class="buy" data-sku="${p.sku}" ${pr ? '' : 'disabled'}>${pr ? pr.priceString : 'Unavailable'}</button></div>`; }).join('');
-  else packs = `<p class="note" style="grid-column:1/-1">Sigil packs are sold in the Android and iOS app. Here, sigils come from slaying bosses (3 each), finishing a stage (10) and clearing a stage for the first time (40).</p>`;
+  else packs = `<p class="note" style="grid-column:1/-1">Sigil packs are sold in the Android and iOS app. Here, sigils come from bosses, stage rewards, player levels and daily vigils.</p>`;
   $('packs').innerHTML = ex + packs;
   $('exBtn').onclick = () => { if (!pay({ sigils: EXCHANGE.sigils })) return; SAVE.gold += EXCHANGE.gold; persist(); renderHub(); toast('Traded for ' + fmtNum(EXCHANGE.gold) + ' gold.'); };
   $('packs').querySelectorAll('[data-sku]').forEach(b => b.addEventListener('click', async () => {
@@ -2496,7 +2842,7 @@ function renderShop() {
   }));
 }
 function openShopChest(c) {
-  const r = rollRarity(c.odds), it = genItem(r), R = RARITY[r];
+  const r = rollChest(c), it = genItem(r), R = RARITY[r];
   SAVE.items.push(it); persist(); renderHub(); SND.init();
   openModal(`<div class="eyebrow">${c.name}</div><div class="reveal" id="rv" style="--rc:${R.color}"><div class="burst"></div><img class="chestimg big shake" id="rvChest" src="${chestArt(c.id, false)}" alt=""></div>
     <div id="rvItem" style="visibility:hidden;display:flex;flex-direction:column;gap:10px">
@@ -2511,18 +2857,6 @@ function openShopChest(c) {
   setTimeout(() => { const ch = $('rvChest'); if (!ch) return; ch.src = chestArt(c.id, true); ch.classList.remove('shake'); ch.classList.add('opened'); $('rv').classList.add('lit'); if (r >= 2) SND.chest(); else SND.level(); }, 850);
   setTimeout(() => { const ri = $('rvItem'); if (ri) { ri.style.visibility = 'visible'; if (!isTouch) $('mEquip').focus({ preventScroll: true }); } }, 1150);
 }
-function renderAltar() {
-  $('upgs').innerHTML = UPGRADES.map(u => {
-    const rank = SAVE.upg[u.id] || 0, max = rank >= u.max, cost = upgCost(u, rank);
-    return `<div class="upg"><h3>${u.name}</h3><p>${u.desc}</p><span class="pips" aria-label="Rank ${rank} of ${u.max}">${'<i></i>'.repeat(rank)}${'<i class="off"></i>'.repeat(u.max - rank)}</span>
-      <button class="buy" data-id="${u.id}" ${max || SAVE.gold < cost ? 'disabled' : ''}>${max ? 'Mastered' : costHTML({ gold: cost })}</button></div>`;
-  }).join('');
-  $('upgs').querySelectorAll('.buy').forEach(b => b.addEventListener('click', () => {
-    const u = UPGRADES.find(x => x.id === b.dataset.id), rank = SAVE.upg[u.id] || 0;
-    if (rank >= u.max || !pay({ gold: upgCost(u, rank) })) return;
-    SAVE.upg[u.id] = rank + 1; persist(); renderHub(); SND.init(); SND.level(); toast(u.name + ' rank ' + (rank + 1) + '.');
-  }));
-}
 function openSettings(confirmErase) {
   const z = SAVE.settings.zoom;
   openModal(`<h2>Settings</h2>
@@ -2535,7 +2869,7 @@ function openSettings(confirmErase) {
       : `<div class="row"><button class="btn" id="mClose" style="padding:12px 24px;font-size:14px">Done</button><button class="btn ghost danger" id="mErase">Erase progress</button></div>`}`, m => {
     m.querySelectorAll('[data-z]').forEach(b => b.onclick = () => { SAVE.settings.zoom = b.dataset.z; zoomPref = ZOOM_PREFS[b.dataset.z]; resize(); persist(); openSettings(false); });
     m.querySelectorAll('[data-s]').forEach(b => b.onclick = () => { SND.init(); SND.setMuted(b.dataset.s === 'off'); $('muteBtn').textContent = SND.muted ? 'OFF' : 'SND'; openSettings(false); });
-    if (confirmErase) { m.querySelector('#mKeep').onclick = () => openSettings(false); m.querySelector('#mErase2').onclick = () => { SAVE = DEFAULT_SAVE(); persist(); closeModal(); renderHub(); toast('Progress erased.'); }; }
+    if (confirmErase) { m.querySelector('#mKeep').onclick = () => openSettings(false); m.querySelector('#mErase2').onclick = () => { SAVE = DEFAULT_SAVE(); migrateSave(); closeModal(); renderHub(); toast('Progress erased.'); }; }
     else { m.querySelector('#mClose').onclick = closeModal; m.querySelector('#mErase').onclick = () => openSettings(true); }
   });
 }
@@ -2564,14 +2898,6 @@ function renderPlvPanel(rw) {
     ${got.levels ? `<p class="lvup">${got.levels > 1 ? got.levels + ' levels gained' : 'Level up'}! You earned ${rewardText(got)}.</p>` : `<p class="muted" style="font-size:15px;text-align:left">${fmtNum(pxpNext(SAVE.plv) - SAVE.pxp)} XP to level ${SAVE.plv + 1}</p>`}`;
   requestAnimationFrame(() => requestAnimationFrame(() => { const f = $('endPlvFill'); if (f) f.style.width = (endFrac * 100) + '%'; }));
 }
-function renderClaims() {
-  const cl = $('claims');
-  if (!(SAVE.ironClaims > 0)) { cl.hidden = true; cl.innerHTML = ''; return; }
-  cl.hidden = false;
-  cl.innerHTML = `<div class="claim"><img src="${chestArt('iron', false)}" alt=""><div style="flex:1;min-width:160px"><h3>Level reward</h3><p class="muted">${SAVE.ironClaims} Iron Reliquar${SAVE.ironClaims > 1 ? 'ies' : 'y'} waiting to be opened.</p></div><button class="buy" id="claimBtn">Open now</button></div>`;
-  $('claimBtn').onclick = () => { if (!roomCheck() || SAVE.ironClaims <= 0) return; SAVE.ironClaims--; openShopChest(CHESTS[1]); };
-}
-
 $('settingsBtn').addEventListener('click', () => openSettings(false));
 setInterval(() => { if (state === 'title' && hubTab === 'shop' && $('modal').hidden) renderFreeChest(); }, 1000);
 showHub('play');

@@ -25,6 +25,8 @@ Before publishing, change `appId` in `capacitor.config.json` from `com.example.a
 | Lever | Where in the game | Setup needed |
 |---|---|---|
 | Sigil packs (IAP, consumable) | Shop, "Sigils" section | Products `av_sigils_80`, `av_sigils_500`, `av_sigils_1200` in Play Console and App Store Connect, imported into RevenueCat |
+| Pilgrim's Bundle (IAP, one-time) | Shop, top card | Non-consumable or one-time consumable product `av_starter` |
+| Ember Urn (IAP, consumable) | Play tab | Product `av_urn`; it gives whatever sigils the urn holds, so price it as a mid-size pack |
 | Rewarded ad: double run gold | End-of-run screen | AdMob rewarded ad unit |
 | Rewarded ad: skip free-chest timer | Shop, Daily Offering | Same ad unit |
 
@@ -40,6 +42,7 @@ The store code (`Platform` in `index.html`) has not been run on a device yet. Te
 
 ## Before submitting: rules that apply to this design
 
+- **No energy system.** Runs are never limited by a timer, by design.
 - **Loot box odds.** The Ember Ark can be bought with sigils, which are bought with real money. Apple (App Review Guideline 3.1.1) and Google Play both require the odds to be disclosed before purchase. The Shop already shows odds on every chest; keep them accurate if you change `CHESTS`.
 - **Regional rules.** Paid loot boxes are effectively banned in Belgium, and some other countries regulate them. Either exclude those storefronts or make the Ember Ark purchasable with gold only there.
 - **Ads consent.** AdMob needs a consent prompt for users in the EEA and UK (Google's UMP SDK; the AdMob plugin exposes `requestConsentInfo` and `showConsentForm`). iOS needs an App Tracking Transparency prompt if you use personalised ads.
