@@ -26,7 +26,9 @@ Open `index.html` in a browser to play (the `assets/` folder must sit beside it)
 - **Origins** beyond the Knight are unlocked with gold.
 - Camera zoom setting (Close, Normal, Far). Phones default to a closer camera.
 
-See [APP.md](APP.md) for building the Android and iOS apps and setting up purchases and ads.
+A short first-run tutorial teaches movement, embers, rolling and flasks, then points new players to the talents and stage rewards.
+
+See [STORE.md](STORE.md) for the store listing kit and [APP.md](APP.md) for building the Android and iOS apps and setting up purchases and ads.
 
 ## Features
 - 5 origins, 7 armaments, 7 relics, each with 5 levels

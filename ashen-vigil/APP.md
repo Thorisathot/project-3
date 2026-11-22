@@ -53,4 +53,14 @@ The store code (`Platform` in `index.html`) has not been run on a device yet. Te
 
 - **Save data is local** (`localStorage`). A reinstall loses progress, and players can edit it. Bought sigils should be restored from RevenueCat; consider cloud saves (Play Games Services, Game Center or your own backend).
 - **Fonts load from Google Fonts.** Offline, the game falls back to Georgia. Bundle the Cinzel and Cormorant Garamond font files into `www/` for a consistent look.
-- **App icon and splash screen.** Generate them with `@capacitor/assets`.
+
+
+## Icons and splash screen
+
+`resources/` holds the source art: `icon-only.png` (1024, full icon), `icon-foreground.png` and `icon-background.png` (Android adaptive icon layers) and `splash.jpg` (2732×2732 launch screen). Generate every platform size with:
+
+```bash
+npm run assets
+```
+
+This runs `@capacitor/assets` and writes the icons and launch screens into `android/` and `ios/`. Run it after `npx cap add`.

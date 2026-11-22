@@ -426,6 +426,14 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
 #flaskBtn{background:radial-gradient(circle at 40% 35%,#ffb060,#a8400c);color:#fff;border-color:#ffcf8a;text-shadow:0 1px 2px #5a1a04}
 #rollBtn{background:radial-gradient(circle at 40% 35%,#6a5aa8,#2a2048);border-color:#8a7ac8}
 
+.coach{position:fixed;left:0;right:0;margin-inline:auto;width:max-content;top:calc(env(safe-area-inset-top,0px) + 106px);z-index:8;display:flex;align-items:center;gap:12px;max-width:min(560px,calc(100vw - 32px));
+  padding:10px 18px 10px 10px;border-radius:999px;background:linear-gradient(180deg,rgba(58,44,98,.95),rgba(30,22,52,.95));border:2px solid #ffc04a;box-shadow:0 8px 28px -6px rgba(0,0,0,.7),0 0 22px -6px rgba(255,180,80,.7);
+  font-size:17px;line-height:1.25;color:#fff4e4;pointer-events:none;animation:coachIn .45s cubic-bezier(.2,.8,.2,1) both,coachPulse 2.4s ease-in-out .5s infinite;box-sizing:border-box}
+.coach-key{flex:none;min-width:44px;height:44px;padding:0 10px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(180deg,#ffd36a,#f07a1a);color:#3a1606;font-family:var(--display);font-weight:900;font-size:13px;letter-spacing:.06em;box-shadow:0 3px 0 #9a420c;box-sizing:border-box}
+@keyframes coachIn{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+@keyframes coachPulse{50%{box-shadow:0 8px 28px -6px rgba(0,0,0,.7),0 0 30px -2px rgba(255,180,80,.9)}}
+@media (max-width:560px){.coach{top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 190px);font-size:15px}}
+
 @media (max-width:820px){.slots{grid-template-columns:repeat(2,minmax(0,1fr))}.chests{grid-template-columns:1fr}.chestcard{flex-direction:row;flex-wrap:wrap;text-align:left;align-items:center}.chestcard>.ctext{flex:1;min-width:160px}.chestcard .odds{justify-content:flex-start}.brand{letter-spacing:.08em}}
 @media (max-width:400px){.coin{font-size:13px;padding:4px 7px}.brand{font-size:15px}}
 
@@ -438,6 +446,7 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
 <button id="pauseBtn" class="tbtn" hidden aria-label="Pause">II</button>
 <button id="flaskBtn" class="tbtn touchbtn" hidden aria-label="Drink flask">FLASK</button>
 <button id="rollBtn" class="tbtn touchbtn" hidden aria-label="Roll">ROLL</button>
+<div id="coach" class="coach" hidden role="status"><span class="coach-key" id="coachKey"></span><span id="coachText"></span></div>
 <div id="banner"><h2 id="bannerTitle"></h2><p id="bannerSub"></p></div>
 
 <div id="splash" class="splash" role="dialog" aria-label="Ashen Vigil title screen">
@@ -522,7 +531,7 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
     <h2 style="font-size:clamp(28px,5vw,44px);letter-spacing:.08em">Choose a boon</h2>
     <div id="luCards" class="cards"></div>
     <button id="rerollBtn" class="btn ghost" hidden>Reroll</button>
-    <p class="hint">Press 1, 2 or 3</p>
+    <p class="hint" id="luHint">Press 1, 2 or 3</p>
   </div>
 </div>
 
@@ -907,7 +916,7 @@ const PACKS = [
 /* ---------------- Save ---------------- */
 const SAVE_KEY = 'av_save_v1';
 const DEFAULT_SAVE = () => ({ v: 1, gold: 0, sigils: 0, items: [], nextId: 1, equipped: { helm: null, armor: null, ring: null, charm: null },
-  upg: {}, origins: ['knight'], cls: 'knight', stage: 0, unlocked: 1, best: {}, cleared: {}, freeChestAt: 0, settings: { zoom: 'normal' }, runs: 0, plv: 1, pxp: 0, ironClaims: 0,
+  upg: {}, origins: ['knight'], cls: 'knight', stage: 0, unlocked: 1, best: {}, cleared: {}, freeChestAt: 0, settings: { zoom: 'normal' }, runs: 0, tut: {}, plv: 1, pxp: 0, ironClaims: 0,
   claims: { wood: 0, iron: 0, ember: 0 }, pity: { wood: 0, iron: 0, ember: 0, emberL: 0 }, daily: { last: '', n: 0 }, miles: {}, tal: 0, talM: [false, false, false, false], starter: false, urn: 0, migrated2: false });
 function loadSave() {
   const d = DEFAULT_SAVE(), s = store.get(SAVE_KEY, null);
@@ -1426,7 +1435,7 @@ function updatePlayer(dt) {
   if (touch.active) { const dx = touch.x - touch.ox, dy = touch.y - touch.oy, d = Math.hypot(dx, dy); if (d > 8) { mx = dx / Math.max(d, 50); my = dy / Math.max(d, 50); } }
   const ml = Math.hypot(mx, my); if (ml > 1) { mx /= ml; my /= ml; }
   P.moving = ml > 0.05;
-  if (P.moving) { P.face = Math.atan2(my, mx); P.fx = Math.cos(P.face); P.fy = Math.sin(P.face); P.walkT += dt * 10 * Math.min(1, ml); }
+  if (P.moving) { TUTS.moved += dt; P.face = Math.atan2(my, mx); P.fx = Math.cos(P.face); P.fy = Math.sin(P.face); P.walkT += dt * 10 * Math.min(1, ml); }
   if (P.inv > 0) P.inv -= dt; if (P.hurtT > 0) P.hurtT -= dt; if (P.swingT > 0) P.swingT -= dt;
   let sp = 150 * P.spdMul * (P.drink > 0 ? 0.45 : 1);
   if (P.roll > 0) {
@@ -1443,12 +1452,12 @@ function updatePlayer(dt) {
 }
 function tryRoll() {
   if (state !== 'play' || P.roll > 0 || P.stam < 30 || P.drink > 0) return;
-  P.stam -= 30; P.roll = 0.36; P.rollDx = P.fx; P.rollDy = P.fy; SND.roll();
+  P.stam -= 30; TUTS.rolled = true; P.roll = 0.36; P.rollDx = P.fx; P.rollDy = P.fy; SND.roll();
   for (let i = 0; i < 6; i++) G.parts.push({ x: P.x, y: P.y + 8, vx: rand(-40, 40), vy: rand(-30, 10), t: 0, life: 0.5, c: '#4a4250', s: 3 });
 }
 function tryDrink() {
   if (state !== 'play' || P.flasks <= 0 || P.drink > 0 || P.roll > 0 || P.hp >= P.maxHp) return;
-  P.flasks--; P.drink = 0.9; SND.drink();
+  P.flasks--; TUTS.drank = true; P.drink = 0.9; SND.drink();
 }
 
 /* ---------------- Projectiles, pickups, fx ---------------- */
@@ -1589,6 +1598,9 @@ function openLevelUp() {
   currentChoices = rollChoices(3);
   $('luEyebrow').textContent = 'Level ' + (P.lv - G.pendingLevels);
   renderLevelCards();
+  if (!SAVE.tut) SAVE.tut = {};
+  $('luHint').textContent = !SAVE.tut.boon ? 'Pick one. New armaments add firepower; relics strengthen everything. Max an armament and own its relic to evolve it.' : (isTouch ? 'Tap a boon' : 'Press 1, 2 or 3');
+  if (!SAVE.tut.boon) { SAVE.tut.boon = true; persist(); }
   $('levelScreen').hidden = false; SND.level();
   setTimeout(() => { const f = $('card0'); if (f && !isTouch) f.focus({ preventScroll: true }); }, 30);
 }
@@ -1630,6 +1642,7 @@ function buildList() {
 function startRun() {
   SND.init();
   if (!SAVE.origins.includes(SAVE.cls)) SAVE.cls = 'knight';
+  TUTS.moved = 0; TUTS.rolled = false; TUTS.drank = false; TUTS.cur = null;
   newRun(SAVE.cls); state = 'play'; closeModal(); $('toast').classList.remove('show');
   ['hub', 'endScreen', 'pauseScreen', 'levelScreen', 'chestScreen'].forEach(id => $(id).hidden = true);
   $('pauseBtn').hidden = false; $('muteBtn').hidden = false;
@@ -1637,7 +1650,7 @@ function startRun() {
   banner(STAGES[G.stage].name, 'Survive. Three bells will toll.', 2.6);
 }
 function endRun(won) {
-  state = won ? 'win' : 'dead';
+  state = won ? 'win' : 'dead'; hideCoach();
   if (!won) SND.death(); else SND.chest();
   const st = STAGES[G.stage];
   let gold = Math.floor(G.gold), sig = G.sigils, firstClear = false;
@@ -1670,6 +1683,7 @@ $('adDoubleBtn').addEventListener('click', async () => {
   else b.disabled = false;
 });
 function togglePause() {
+  if (state === 'play') $('coach').hidden = true;
   if (state === 'play') { state = 'pause'; $('pauseBuild').innerHTML = buildList(); $('pauseScreen').hidden = false; if (!isTouch) $('resumeBtn').focus({ preventScroll: true }); }
   else if (state === 'pause') { state = 'play'; $('pauseScreen').hidden = true; }
 }
@@ -1698,6 +1712,7 @@ function update(dt) {
   updateProjectiles(dt);
   updatePickups(dt);
   updateFx(dt);
+  tutorialTick(dt);
   const k = 1 - Math.pow(0.0001, dt);
   G.cam.x += (P.x - G.cam.x) * k; G.cam.y += (P.y - G.cam.y) * k;
   G.cam.shake *= Math.pow(0.02, dt);
@@ -1975,7 +1990,7 @@ function drawEnemy(e) {
     const hover = e.type === 'wraith' ? 6 + Math.sin(e.t * 3) * 3 : Math.abs(Math.sin(e.t * (e.type === 'rat' ? 14 : 7))) * (e.type === 'boss' ? 3 : 1.6);
     if (e.type === 'boss') { c.save(); c.globalCompositeOperation = 'lighter'; const g0 = c.createRadialGradient(0, -es.h * 0.4, 0, 0, -es.h * 0.4, es.h * 0.8); g0.addColorStop(0, `rgba(${STAGES[G.stage].glow},0.22)`); g0.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = g0; c.fillRect(-es.h, -es.h * 1.2, es.h * 2, es.h * 1.6); c.restore(); }
     if (e.type === 'wraith') c.globalAlpha *= 0.9;
-    drawSpr(c, es, 0, e.r * 0.9 - hover, bdir, { rot: e.type === 'boss' ? 0 : Math.sin(e.t * 7) * 0.05, flash: f ? 0.85 : 0 });
+    drawSpr(c, es, 0, e.r * 0.9 - hover, bdir, { rot: e.type === 'boss' ? 0 : Math.sin(e.t * 7) * 0.05, flash: f ? (e.type === 'boss' ? 0.25 : 0.6) : 0 });
     c.restore(); return;
   }
   c.lineWidth = 1.5; c.strokeStyle = OUTLINE; c.lineJoin = 'round';
@@ -2385,7 +2400,7 @@ function drawHUD() {
   if (G.revives > 0) { c.fillStyle = '#f1d38e'; c.font = '700 11px Cinzel, Georgia, serif'; c.textAlign = 'right'; c.fillText('REBIRTH ×' + G.revives, bx + bw, by + 43); c.textAlign = 'left'; }
   // boss bar
   if (G.boss) {
-    const b = G.boss, ww = Math.min(620, W - 40), x0 = (W - ww) / 2, y0 = H - (isTouch ? 160 : 48);
+    const b = G.boss, ww = Math.min(620, W - 40), x0 = (W - ww) / 2, y0 = isTouch ? (W < 640 ? 214 : 124) : H - 48;
     if (b.ghost == null || b.ghost < b.hp) b.ghost = b.hp; else b.ghost = Math.max(b.hp, b.ghost - b.maxHp * 0.004);
     c.textAlign = 'center'; c.font = '700 18px Cinzel, Georgia, serif'; c.strokeStyle = 'rgba(0,0,0,0.85)'; c.lineWidth = 4;
     c.strokeText(b.name, W / 2, y0 - 10); c.fillStyle = '#f1e7d3'; c.fillText(b.name, W / 2, y0 - 10); c.textAlign = 'left';
@@ -2638,6 +2653,7 @@ function migrateSave() {
   SAVE.claims = Object.assign({ wood: 0, iron: 0, ember: 0 }, SAVE.claims || {});
   SAVE.pity = Object.assign({ wood: 0, iron: 0, ember: 0, emberL: 0 }, SAVE.pity || {});
   SAVE.daily = Object.assign({ last: '', n: 0 }, SAVE.daily || {});
+  if (!SAVE.tut) SAVE.tut = SAVE.runs > 2 ? { move: 1, embers: 1, roll: 1, flask: 1, shrine: 1, boss: 1, boon: 1, hub: 1 } : {};
   SAVE.miles = SAVE.miles || {}; SAVE.talM = SAVE.talM || [false, false, false, false]; SAVE.tal = SAVE.tal || 0; SAVE.urn = SAVE.urn || 0;
   if (SAVE.ironClaims) { SAVE.claims.iron += SAVE.ironClaims; SAVE.ironClaims = 0; }
   if (!SAVE.migrated2) {
@@ -2864,6 +2880,43 @@ function renderStageMiles() {
   });
 }
 
+/* ---------------- First-run tutorial ---------------- */
+const TUTS = { moved: 0, rolled: false, drank: false, cur: null, shown: 0 };
+const TUT_STEPS = [
+  { id: 'move', key: () => isTouch ? 'DRAG' : 'WASD', text: () => isTouch ? 'Drag anywhere to move. Your weapons strike on their own.' : 'Move with WASD or the arrow keys. Your weapons strike on their own.', when: () => true, done: () => TUTS.moved > 1.6 },
+  { id: 'embers', key: () => '◆', text: () => 'Walk over glowing embers to gain experience and level up.', when: () => G.gems.length > 0, done: () => P.lv >= 2 },
+  { id: 'roll', key: () => isTouch ? 'ROLL' : 'SPACE', text: () => isTouch ? 'Tap ROLL to dodge. You can’t be hurt mid-roll.' : 'Press Space to roll. You can’t be hurt mid-roll.', when: () => G.t > 20, done: () => TUTS.rolled },
+  { id: 'flask', key: () => isTouch ? 'FLASK' : 'Q', text: () => isTouch ? 'Hurt? Tap FLASK to heal.' : 'Hurt? Press Q to drink a flask and heal.', when: () => P.hp < P.maxHp * 0.65 && P.flasks > 0, done: () => TUTS.drank || P.hp >= P.maxHp * 0.95 },
+  { id: 'shrine', key: () => '✦', text: () => 'A candle shrine is near. Follow the arrow to refill your flasks.', when: () => G.shrines.some(s => !s.used), done: () => G.shrines.some(s => s.used) || TUTS.shown > 9 },
+  { id: 'boss', key: () => '!', text: () => 'The bell tolls. Defeat the boss to claim its reliquary.', when: () => !!G.boss, done: () => TUTS.shown > 6 },
+];
+function tutorialTick(dt) {
+  const el = $('coach');
+  if (!SAVE.tut) SAVE.tut = {};
+  let step = TUTS.cur;
+  if (step && step.done()) { SAVE.tut[step.id] = true; persist(); TUTS.cur = step = null; SND.pickup(); }
+  if (!step) { step = TUT_STEPS.find(s => !SAVE.tut[s.id] && s.when()); if (step) { TUTS.cur = step; TUTS.shown = 0; $('coachKey').textContent = step.key(); $('coachText').textContent = step.text(); } }
+  if (step) TUTS.shown += dt;
+  el.hidden = !step || state !== 'play';
+}
+function hideCoach() { $('coach').hidden = true; TUTS.cur = null; }
+function hubTutorial() {
+  if (!SAVE.tut) SAVE.tut = {};
+  if (SAVE.runs < 1 || SAVE.tut.hub) return;
+  SAVE.tut.hub = true; persist();
+  openModal(`<div class="eyebrow">Your first vigil</div><h2>Spend what you earned</h2>
+    <ul class="path">
+      <li><b>Talents</b><span>Permanent boons for every run, bought with gold.</span></li>
+      <li><b>Stage rewards</b><span>Chests for surviving 2:00, 5:00 and clearing a stage.</span></li>
+      <li><b>Shop</b><span>A free chest every 4 hours, plus gear to equip in the Armory.</span></li>
+      <li><b>Player level</b><span>Every run earns XP. Each level adds rewards and +1% damage.</span></li>
+    </ul>
+    <div class="row"><button class="btn" id="mTal" style="padding:12px 24px;font-size:14px">Show me talents</button><button class="btn ghost" id="mClose">Later</button></div>`, m => {
+    m.querySelector('#mClose').onclick = closeModal;
+    m.querySelector('#mTal').onclick = () => { closeModal(); hubTab = 'altar'; renderHub(); };
+  });
+}
+
 /* ---------------- Hub UI ---------------- */
 let hubTab = 'play';
 const fmtNum = n => Math.floor(n).toLocaleString('en-US');
@@ -2877,7 +2930,7 @@ function openModal(html, bind, wide) { $('modalBody').classList.toggle('wide', !
 function closeModal() { $('modal').hidden = true; $('modalBody').innerHTML = ''; }
 $('modal').addEventListener('click', e => { if (e.target === $('modal')) closeModal(); });
 
-function showHub(tab) { state = 'title'; if (tab) hubTab = tab; $('hub').hidden = false; renderHub(); if (SAVE.refundNote) { toast('The Altar became a talent path. ' + fmtNum(SAVE.refundNote) + ' gold refunded.'); delete SAVE.refundNote; persist(); } }
+function showHub(tab) { state = 'title'; if (tab) hubTab = tab; $('hub').hidden = false; renderHub(); hubTutorial(); if (SAVE.refundNote) { toast('The Altar became a talent path. ' + fmtNum(SAVE.refundNote) + ' gold refunded.'); delete SAVE.refundNote; persist(); } }
 function renderHub() {
   $('goldAmt').textContent = fmtNum(SAVE.gold); $('sigilAmt').textContent = fmtNum(SAVE.sigils);
   $('plvNum').textContent = SAVE.plv; $('plvFill').style.width = (SAVE.pxp / pxpNext(SAVE.plv) * 100) + '%';
