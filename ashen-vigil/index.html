@@ -473,6 +473,33 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
 @media (max-width:760px){.ddays{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:560px){.fight-top{padding-inline:84px;top:12px}.fight-top h2{font-size:21px}.fight-top p{font-size:12px}.side{top:10px;gap:8px;padding:8px 4px}.side.left{left:8px}.side.right{right:8px}.sbtn{width:58px;font-size:10px}.sbtn img{width:44px;height:44px}.fight #heroBegin{padding:15px 40px;font-size:20px}.fight-bottom .startrow{gap:10px}.fight .mile img{width:44px}.fight .mile b{font-size:12px}.fight .miles{padding:4px 10px}.ddays{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
+/* ---- armory layout ---- */
+#tab-armory .dstats{grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+#tab-armory .dstats span{flex-direction:row;justify-content:flex-start;gap:8px;padding:8px 10px;text-transform:none;letter-spacing:0}
+#tab-armory .dstats img{width:26px;height:26px;object-fit:contain;flex:none;filter:drop-shadow(0 2px 3px rgba(0,0,0,.6))}
+#tab-armory .dstats b{font-size:16px;white-space:nowrap}
+#tab-armory .dstats i{font-style:normal;font-size:12px;color:var(--ash);margin-left:auto;white-space:nowrap}
+.subtabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;border-radius:16px;background:rgba(14,10,24,.6);border:2px solid #3f3460;width:min(420px,100%);margin:2px auto 0;box-sizing:border-box}
+.subtabs button{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:#b8aed0;background:none;border:0;border-radius:11px;padding:11px 8px;cursor:pointer}
+.subtabs button[aria-selected="true"]{color:#fff;background:linear-gradient(180deg,#6a54b8,#3a2a70);box-shadow:inset 0 2px 0 rgba(255,255,255,.25),0 4px 12px -4px rgba(120,90,220,.7)}
+.subtabs button:focus-visible{outline:2px solid #ffc04a;outline-offset:2px}
+.sub{display:flex;flex-direction:column;gap:12px}
+.sub-h{display:flex;align-items:center;justify-content:space-between;gap:8px 14px;flex-wrap:wrap}
+.sub-h b{color:var(--bone)}
+@media (max-width:820px){#tab-armory .dstats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){
+  #tab-armory .dstats{grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+  #tab-armory .dstats span{flex-direction:column;align-items:center;gap:1px;padding:6px 2px;border-radius:10px}
+  #tab-armory .dstats i{margin:0;font-size:10px}#tab-armory .dstats b{font-size:13px}#tab-armory .dstats img{width:20px;height:20px}
+  #tab-armory .doll{grid-template-columns:80px minmax(0,1fr) 80px;gap:8px}
+  #tab-armory .doll-mid{grid-column:auto;order:0}
+  #tab-armory .doll-mid img{max-width:100%;max-height:230px}
+  #tab-armory .doll-col{gap:12px}
+  #tab-armory .doll-col .item{grid-template-columns:1fr;justify-items:center;padding:8px 4px;gap:2px}
+  #tab-armory .doll-col .item .itxt{display:none}
+  #tab-armory .doll-col .item .ico{width:58px;height:58px}
+  #tab-armory .doll-col .item::before{content:attr(data-slot);font-family:var(--display);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ash);order:2}
+}
 @media (max-width:820px){.slots{grid-template-columns:repeat(2,minmax(0,1fr))}.chests{grid-template-columns:1fr}.chestcard{flex-direction:row;flex-wrap:wrap;text-align:left;align-items:center}.chestcard>.ctext{flex:1;min-width:160px}.chestcard .odds{justify-content:flex-start}.brand{letter-spacing:.08em}}
 @media (max-width:400px){.coin{font-size:13px;padding:4px 7px}.brand{font-size:15px}}
 
@@ -529,13 +556,17 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
         </div>
       </section>
       <section id="tab-armory" class="tab" hidden>
-        <div class="sect-h"><h2>Equipped</h2><span class="muted">Gear applies to every origin.</span></div>
+        <div id="dollStats" class="dstats" aria-label="Your stats in every run"></div>
         <div class="doll"><div class="doll-col" id="dollL"></div><div class="doll-mid"><img id="dollImg" alt="Your origin"><div class="doll-name" id="dollName"></div></div><div class="doll-col" id="dollR"></div></div>
-        <div id="dollStats" class="dstats"></div>
-        <div class="sect-h"><h2>Origins</h2><span class="muted">Choose who keeps the vigil. Unlock more with gold.</span></div>
-        <div id="classes" class="classes"></div>
-        <div class="sect-h"><h2>Armory <span id="invCount" class="muted"></span></h2><div class="row"><button id="mergeBtn" class="btn ghost">Merge gear</button><button id="salvageCommons" class="btn ghost">Salvage spare commons</button></div></div>
-        <div id="inv" class="inv"></div>
+        <div class="subtabs" role="tablist" aria-label="Armory sections"><button role="tab" data-sub="gear" id="subTabGear">Gear</button><button role="tab" data-sub="origins" id="subTabOrigins">Origins</button></div>
+        <div id="subGear" class="sub">
+          <div class="sub-h"><span class="muted">Stored gear <b id="invCount"></b></span><div class="row"><button id="mergeBtn" class="btn ghost">Merge gear</button><button id="salvageCommons" class="btn ghost">Salvage spare commons</button></div></div>
+          <div id="inv" class="inv"></div>
+        </div>
+        <div id="subOrigins" class="sub" hidden>
+          <div class="sub-h"><span class="muted">Choose who keeps the vigil. Unlock more with gold.</span></div>
+          <div id="classes" class="classes"></div>
+        </div>
       </section>
       <section id="tab-shop" class="tab" hidden>
         <div id="starter" hidden></div>
@@ -2791,16 +2822,24 @@ function bigPortrait(cls) {
     return cv.toDataURL();
   });
 }
-function slotCard(s) { const it = itemById(SAVE.equipped[s]); return it ? itemCard(it) : `<div class="item empty"><img class="ico" src="${itemIcon(s, 0)}" alt=""><span class="itxt"><span class="slot">${SLOTS[s].name}</span><b>Empty</b><span class="sum">Find gear in chests.</span></span></div>`; }
+function slotCard(s) { const it = itemById(SAVE.equipped[s]); return it ? itemCard(it) : `<div class="item empty" data-slot="${SLOTS[s].name}"><img class="ico" src="${itemIcon(s, 0)}" alt=""><span class="itxt"><span class="slot">${SLOTS[s].name}</span><b>Empty</b><span class="sum">Find gear in chests.</span></span></div>`; }
+let armorySub = 'gear';
+document.querySelectorAll('.subtabs [data-sub]').forEach(b => b.addEventListener('click', () => { armorySub = b.dataset.sub; renderArmory(); }));
 function renderArmory() {
   $('dollL').innerHTML = slotCard('helm') + slotCard('armor');
   $('dollR').innerHTML = slotCard('ring') + slotCard('charm');
   renderOrigins();
   $('dollImg').src = bigPortrait(SAVE.cls); $('dollName').textContent = CLASSES[SAVE.cls].name;
   const m = metaMods(), c = CLASSES[SAVE.cls];
-  const stats = [['Health', Math.round(c.hp + m.hp)], ['Damage', '+' + Math.round((c.might * (1 + m.might) - 1) * 100) + '%'], ['Armor', c.armor + m.armor],
-    ['Haste', Math.round((1 - c.cdr * (1 - m.cdr)) * 100) + '%'], ['Reach', '+' + Math.round(m.magnet * 100) + '%'], ['Gold', '+' + Math.round(m.gold * 100) + '%']];
-  $('dollStats').innerHTML = stats.map(([k, v]) => `<span><b>${v}</b>${k}</span>`).join('');
+  const pc = v => (v >= 0 ? '+' : '') + Math.round(v * 100) + '%';
+  const stats = [['hp', 'Health', Math.round(c.hp + m.hp)], ['fortitude', 'Armor', c.armor + m.armor], ['regen', 'Regen', (c.regen + m.regen).toFixed(1) + '/s'],
+    ['might', 'Damage', pc(c.might * (1 + m.might) - 1)], ['cdr', 'Haste', pc(1 - c.cdr * (1 - m.cdr))], ['area', 'Area', pc(c.area * (1 + m.area) - 1)],
+    ['spd', 'Speed', pc(c.spd * (1 + m.spd) - 1)], ['magnet', 'Reach', pc(m.magnet)], ['gold', 'Gold', pc(m.gold)],
+    ['xp', 'Embers', pc(m.xp)], ['flask', 'Flasks', 3 + m.flasks], ['reroll', 'Rerolls', m.reroll + (m.revive ? ' \u00b7 ' + m.revive + ' rise' : '')]];
+  const SI = { hp: 'icon_p_vitality', fortitude: 'icon_p_fortitude', regen: 'icon_w_ward', might: 'icon_p_strength', cdr: 'icon_p_dexterity', area: 'icon_p_attunement', spd: 'icon_p_endurance', magnet: 'icon_p_covetous', gold: 'cur_gold', xp: 'cur_ember', flask: 'icon_w_pyre', reroll: 'icon_p_attunement' };
+  $('dollStats').innerHTML = stats.map(([k, label, v]) => `<span>${IMG[SI[k]] ? `<img src="${assetUrl(SI[k])}" alt="">` : ''}<b>${v}</b><i>${label}</i></span>`).join('');
+  $('subGear').hidden = armorySub !== 'gear'; $('subOrigins').hidden = armorySub !== 'origins';
+  $('subTabGear').setAttribute('aria-selected', armorySub === 'gear'); $('subTabOrigins').setAttribute('aria-selected', armorySub === 'origins');
   const items = SAVE.items.filter(i => !isEquipped(i)).sort((a, b) => b.r - a.r || b.plus - a.plus || a.slot.localeCompare(b.slot));
   $('inv').innerHTML = items.length ? items.map(itemCard).join('') : `<p class="muted" style="grid-column:1/-1">Nothing in storage. Open chests in the Shop to find gear.</p>`;
   $('invCount').textContent = SAVE.items.length + ' / ' + INV_CAP;
@@ -3080,7 +3119,7 @@ function confirmBuy(title, text, cost, onOk) {
 
 function itemCard(it) {
   const st = itemStats(it)[0], eq = isEquipped(it);
-  return `<button class="item r${it.r}" data-id="${it.id}" style="--rc:${RARITY[it.r].color}"><img class="ico" src="${itemIcon(it.slot, it.r)}" alt=""><span class="itxt"><span class="slot">${SLOTS[it.slot].name}${eq ? ' · Equipped' : ''}</span>
+  return `<button class="item r${it.r}" data-id="${it.id}" data-slot="${SLOTS[it.slot].name}${it.plus ? ' +' + it.plus : ''}" style="--rc:${RARITY[it.r].color}"><img class="ico" src="${itemIcon(it.slot, it.r)}" alt=""><span class="itxt"><span class="slot">${SLOTS[it.slot].name}${eq ? ' · Equipped' : ''}</span>
     <b>${it.name}${it.plus ? ' +' + it.plus : ''}</b><span class="sum">${STAT_TEXT[st[0]](st[1])}${it.aff.length ? ' · ' + it.aff.length + ' more' : ''}</span></span></button>`;
 }
 $('mergeBtn').addEventListener('click', openMerge);
