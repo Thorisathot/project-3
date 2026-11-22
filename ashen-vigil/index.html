@@ -83,6 +83,118 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
 .touchbtn{width:74px;height:74px;border-radius:50%;font-size:13px;letter-spacing:.1em}
 #rollBtn{right:calc(env(safe-area-inset-right,0px) + 24px);bottom:calc(env(safe-area-inset-bottom,0px) + 40px)}
 #flaskBtn{right:calc(env(safe-area-inset-right,0px) + 112px);bottom:calc(env(safe-area-inset-bottom,0px) + 22px);width:60px;height:60px;color:var(--ember)}
+/* ---- Hub (main menu) ---- */
+:root{--r0:#b3a99c;--r1:#6fa4e6;--r2:#b98af0;--r3:#eea84a}
+.hub{padding:0;background:radial-gradient(ellipse at 50% 0%,rgba(40,20,24,.6),rgba(7,6,10,.95) 70%)}
+.hub-wrap{flex:1;width:100%;max-width:1000px;margin:0 auto;display:flex;flex-direction:column;min-height:0}
+.hub-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:calc(env(safe-area-inset-top,0px) + 12px);padding-bottom:12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));border-bottom:1px solid var(--line)}
+.brand{font-family:var(--display);font-weight:900;letter-spacing:.16em;font-size:clamp(17px,3.2vw,26px);text-shadow:0 0 18px rgba(239,125,50,.35);white-space:nowrap}
+.purse{display:flex;align-items:center;gap:8px}
+.coin{display:inline-flex;align-items:center;gap:7px;font-family:var(--display);font-weight:700;font-size:14px;font-variant-numeric:tabular-nums;background:var(--stone);border:1px solid var(--line);padding:5px 10px;white-space:nowrap}
+.coin::before{content:"";width:11px;height:11px;flex:none}
+.coin.gold::before{border-radius:50%;background:radial-gradient(circle at 35% 35%,#f3d48a,#a8772a);box-shadow:0 0 6px rgba(207,170,98,.5)}
+.coin.gem::before{width:9px;height:9px;transform:rotate(45deg);background:linear-gradient(135deg,#dcc2ff,#7a4ec8);box-shadow:0 0 6px rgba(160,110,240,.6)}
+.coin.bare{background:none;border:0;padding:0}
+.iconbtn{width:36px;height:36px;display:grid;place-items:center;background:var(--stone);border:1px solid var(--line);color:var(--bone);cursor:pointer;flex:none}
+.iconbtn:hover,.iconbtn:focus-visible{border-color:var(--ember);outline:none}
+.hub-body{flex:1;min-height:0;overflow-y:auto;padding-block:20px 32px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.tab{display:flex;flex-direction:column;gap:14px}
+.tab .tagline{font-size:19px;margin-bottom:6px}
+.tabbar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);background:rgba(10,8,12,.97);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+.tabbar button{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--ash);background:none;border:0;border-top:2px solid transparent;padding:16px 4px;cursor:pointer}
+.tabbar button[aria-current="page"]{color:var(--bone);border-top-color:var(--ember)}
+.tabbar button:focus-visible{outline:1px solid var(--ember);outline-offset:-4px}
+.tabbar .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ember);margin-left:6px;vertical-align:middle}
+.sect-h{display:flex;align-items:baseline;justify-content:space-between;gap:6px 14px;flex-wrap:wrap;margin-top:10px}
+.sect-h h2{font-size:clamp(21px,4vw,28px);letter-spacing:.06em}
+.muted{color:var(--ash);font-size:16px;margin:0}
+.stages{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(250px,1fr);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+.stage{font:inherit;color:inherit;text-align:left;cursor:pointer;scroll-snap-align:start;display:flex;flex-direction:column;gap:6px;padding:16px;min-width:0;
+  background:linear-gradient(160deg,hsl(var(--hue) 30% 17%),var(--stone) 70%);border:1px solid var(--line)}
+.stage h3{font-size:18px;letter-spacing:.04em}
+.stage p{margin:0;font-size:16px;line-height:1.3;color:#c9bfad}
+.stage .meta{font-size:14px;color:var(--ash)}
+.stage[aria-pressed="true"]{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset}
+.stage.locked{cursor:not-allowed;filter:grayscale(.7) brightness(.7)}
+.stage:focus-visible{outline:1px solid var(--ember)}
+.pips{display:flex;gap:7px;padding:3px 0 2px 2px}
+.pips i{width:8px;height:8px;transform:rotate(45deg);background:var(--blood)}
+.pips i.off{background:var(--line)}
+.cls .price{align-self:flex-start;margin-top:4px}
+.cls.locked h3,.cls.locked .start{opacity:.6}
+.descend{display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:10px}
+.howto{border-top:1px solid var(--line);padding-top:10px;color:var(--ash)}
+.howto summary{cursor:pointer;font-family:var(--display);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+.howto .controls{margin-top:10px}
+.slots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.inv{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.item{--rc:var(--line);font:inherit;color:inherit;text-align:left;cursor:pointer;background:linear-gradient(180deg,var(--stone-2),var(--stone));border:1px solid var(--line);padding:10px 12px;display:flex;flex-direction:column;gap:3px;min-width:0;position:relative}
+.item::after{content:"";position:absolute;top:10px;right:10px;width:7px;height:7px;transform:rotate(45deg);background:var(--rc)}
+.item:hover,.item:focus-visible{border-color:var(--rc);outline:none}
+.item b{font-family:var(--display);font-size:14px;color:var(--rc);padding-right:14px;line-height:1.25}
+.item .slot{font-family:var(--display);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ash)}
+.item .sum{font-size:15px;color:#c9bfad;line-height:1.25}
+.item.empty{cursor:default;color:var(--ash)}
+.item.empty b{color:var(--ash)}
+.item.empty::after{display:none}
+.chests{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.chestcard{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:18px 14px;background:linear-gradient(180deg,var(--stone-2),var(--stone));border:1px solid var(--line);min-width:0}
+.chestcard h3{font-size:17px}
+.chestcard p{margin:0;font-size:16px;color:#c9bfad;line-height:1.3}
+.odds{display:flex;flex-wrap:wrap;gap:4px 10px;justify-content:center;font-size:13px;font-variant-numeric:tabular-nums}
+.odds span{color:var(--rc)}
+.freechest{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:16px;border:1px solid var(--gold);background:linear-gradient(120deg,rgba(207,170,98,.12),transparent 60%),var(--stone)}
+.freechest h3{font-size:18px}
+.freechest .row{justify-content:flex-end}
+.packs{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.pack{display:flex;flex-direction:column;gap:8px;padding:14px;background:var(--stone);border:1px solid var(--line)}
+.pack h3{font-size:16px}
+.pack .tag{font-family:var(--display);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ember)}
+.note{font-size:16px;color:var(--ash);margin:0;padding:12px 14px;border:1px dashed var(--line)}
+.buy{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.08em;color:var(--bone);background:var(--stone-2);border:1px solid var(--gold);padding:10px 14px;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.buy:hover:not(:disabled),.buy:focus-visible{background:var(--gold);color:var(--void);outline:none}
+.buy:disabled{opacity:.45;cursor:not-allowed;border-color:var(--line)}
+.buy .coin{background:none;border:0;padding:0;font-size:13px}
+.upgs{display:flex;flex-direction:column;gap:8px}
+.upg{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 14px;align-items:center;padding:12px 14px;background:var(--stone);border:1px solid var(--line)}
+.upg h3{font-size:16px}
+.upg p{margin:0;font-size:16px;color:#c9bfad}
+.upg .pips{grid-column:1}
+.upg .pips i{background:var(--gold)}
+.upg .pips i.off{background:var(--line)}
+.upg .buy{grid-row:1 / span 3;grid-column:2}
+/* modal */
+#modal{z-index:20}
+.sheet{margin:auto;width:100%;max-width:460px;display:flex;flex-direction:column;gap:14px;padding:22px;background:linear-gradient(180deg,var(--stone-2),var(--stone));border:1px solid var(--line);box-sizing:border-box}
+.sheet h2{font-size:24px;letter-spacing:.04em}
+.sheet .row{justify-content:flex-start}
+.statlist{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px;font-size:17px}
+.statlist li::before{content:"";display:inline-block;width:6px;height:6px;transform:rotate(45deg);background:var(--rc,var(--ember));margin-right:10px;vertical-align:middle}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line)}
+.seg.two{grid-template-columns:repeat(2,1fr)}
+.seg button{font-family:var(--display);font-size:13px;letter-spacing:.1em;color:var(--ash);background:none;border:0;padding:10px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--bone);color:var(--void)}
+.danger{border-color:var(--blood)!important;color:#e8a0a4!important}
+/* chest art */
+.chestart{--cc:#6b4630;--band:#3a2618;width:70px;height:56px;position:relative;flex:none}
+.chestart::before{content:"";position:absolute;left:0;right:0;bottom:0;height:34px;background:linear-gradient(var(--cc),#1c120c);border:2px solid var(--band);box-sizing:border-box}
+.chestart::after{content:"";position:absolute;left:-3px;right:-3px;top:2px;height:22px;background:linear-gradient(#9a6a48,var(--cc));border:2px solid var(--band);border-radius:16px 16px 2px 2px;box-sizing:border-box;transform-origin:50% 100%;transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+.chestart.iron{--cc:#4f5260;--band:#9a9cab}
+.chestart.ember{--cc:#6a2418;--band:#e8a43c}
+.chestart.big{transform:scale(1.7);margin:34px auto 30px}
+.chestart.shake{animation:shake .12s linear 7}
+.chestart.open::after{transform:translateY(-14px) rotate(-24deg)}
+@keyframes shake{0%,100%{translate:0 0}25%{translate:-3px 0}75%{translate:3px 0}}
+.reveal{position:relative;display:grid;place-items:center;min-height:150px}
+.burst{position:absolute;inset:-20px;background:radial-gradient(circle,var(--rc) 0%,transparent 60%);opacity:0;transition:opacity .4s}
+.reveal.lit .burst{opacity:.45}
+.rewards{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.rewards .coin{font-size:18px;padding:8px 14px}
+#toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 80px);transform:translateX(-50%);z-index:30;background:var(--stone-2);border:1px solid var(--gold);color:var(--bone);padding:10px 16px;font-size:17px;opacity:0;pointer-events:none;transition:opacity .25s;max-width:calc(100vw - 32px);text-align:center}
+#toast.show{opacity:1}
+@media (max-width:820px){.slots{grid-template-columns:repeat(2,minmax(0,1fr))}.chests{grid-template-columns:1fr}.chestcard{flex-direction:row;flex-wrap:wrap;text-align:left;align-items:center}.chestcard>.ctext{flex:1;min-width:160px}.chestcard .odds{justify-content:flex-start}.brand{letter-spacing:.08em}}
+@media (max-width:400px){.coin{font-size:13px;padding:4px 7px}.brand{font-size:15px}}
+
 @media (max-width:820px){.classes{grid-template-columns:repeat(2,minmax(0,1fr))}.cards{grid-template-columns:1fr}.card{min-height:0}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (prefers-reduced-motion:reduce){.title{animation:none}.death{animation:none}}
 </style>
@@ -94,30 +206,64 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
 <button id="rollBtn" class="tbtn touchbtn" hidden aria-label="Roll">ROLL</button>
 <div id="banner"><h2 id="bannerTitle"></h2><p id="bannerSub"></p></div>
 
-<div id="titleScreen" class="overlay">
-  <div class="panel">
-    <div class="eyebrow">The deep halls of Varn</div>
-    <h1 class="title">ASHEN VIGIL</h1>
-    <p class="tagline">The last flame gutters below the cathedral. Hold it against the hollowed dead until the third bell tolls and its Warden falls.</p>
-    <hr class="rule">
-    <div class="eyebrow">Choose your origin</div>
-    <div id="classes" class="classes"></div>
-    <button id="beginBtn" class="btn">Descend</button>
-    <div class="controls">
-      <span><kbd>WASD</kbd> / <kbd>Arrows</kbd></span><span>Move. Your armaments strike on their own.</span>
-      <span><kbd>Space</kbd> / <kbd>Shift</kbd></span><span>Roll through danger. Costs stamina.</span>
-      <span><kbd>Q</kbd> / <kbd>E</kbd></span><span>Drink a tonic flask. Rest at candle shrines to refill.</span>
-      <span><kbd>Esc</kbd> · <kbd>M</kbd></span><span>Pause · Sound</span>
-    </div>
-    <div id="record" class="record"></div>
+<div id="hub" class="overlay hub">
+  <div class="hub-wrap">
+    <header class="hub-head">
+      <div class="brand">ASHEN VIGIL</div>
+      <div class="purse">
+        <span class="coin gold" id="goldAmt" title="Gold">0</span>
+        <span class="coin gem" id="sigilAmt" title="Sigils">0</span>
+        <button class="iconbtn" id="settingsBtn" aria-label="Settings"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="3.3"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></svg></button>
+      </div>
+    </header>
+    <main class="hub-body">
+      <section id="tab-play" class="tab">
+        <p class="tagline">The last flame gutters below the cathedral. Hold it against the hollowed dead until the third bell tolls and its Warden falls.</p>
+        <div class="sect-h"><h2>Descent</h2><span class="muted">Deeper stages are deadlier and pay more gold.</span></div>
+        <div id="stages" class="stages"></div>
+        <div class="sect-h"><h2>Origin</h2><span class="muted">Unlock more origins with gold.</span></div>
+        <div id="classes" class="classes"></div>
+        <div class="descend"><button id="beginBtn" class="btn">Descend</button><div id="record" class="record"></div></div>
+        <details class="howto"><summary>Controls</summary>
+          <div class="controls">
+            <span><kbd>WASD</kbd> / <kbd>Arrows</kbd></span><span>Move. Your armaments strike on their own.</span>
+            <span><kbd>Space</kbd> / <kbd>Shift</kbd></span><span>Roll through danger. Costs stamina.</span>
+            <span><kbd>Q</kbd> / <kbd>E</kbd></span><span>Drink a tonic flask. Candle shrines refill them.</span>
+            <span><kbd>Esc</kbd> · <kbd>M</kbd></span><span>Pause · Sound</span>
+            <span>Touch</span><span>Drag anywhere to move. Buttons roll and drink.</span>
+          </div>
+        </details>
+      </section>
+      <section id="tab-armory" class="tab" hidden>
+        <div class="sect-h"><h2>Equipped</h2><span class="muted">Gear applies to every origin.</span></div>
+        <div id="slots" class="slots"></div>
+        <div class="sect-h"><h2>Armory <span id="invCount" class="muted"></span></h2><button id="salvageCommons" class="btn ghost">Salvage spare commons</button></div>
+        <div id="inv" class="inv"></div>
+      </section>
+      <section id="tab-shop" class="tab" hidden>
+        <div id="freeChest" class="freechest"></div>
+        <div class="sect-h"><h2>Chests</h2><span class="muted">Each chest holds one piece of gear. Odds are listed.</span></div>
+        <div id="chests" class="chests"></div>
+        <div class="sect-h"><h2>Sigils</h2><span class="muted">Earned from bosses and first stage clears.</span></div>
+        <div id="packs" class="packs"></div>
+      </section>
+      <section id="tab-altar" class="tab" hidden>
+        <div class="sect-h"><h2>Altar of Embers</h2><span class="muted">Permanent boons for every run, bought with gold.</span></div>
+        <div id="upgs" class="upgs"></div>
+      </section>
+    </main>
+    <nav class="tabbar" aria-label="Main menu"><button data-tab="play">Play</button><button data-tab="armory">Armory</button><button data-tab="shop">Shop</button><button data-tab="altar">Altar</button></nav>
   </div>
 </div>
+<div id="modal" class="overlay" hidden><div class="sheet" id="modalBody"></div></div>
+<div id="toast" role="status" aria-live="polite"></div>
 
 <div id="levelScreen" class="overlay" hidden>
   <div class="panel">
     <div class="eyebrow" id="luEyebrow">Level 2</div>
     <h2 style="font-size:clamp(28px,5vw,44px);letter-spacing:.08em">Choose a boon</h2>
     <div id="luCards" class="cards"></div>
+    <button id="rerollBtn" class="btn ghost" hidden>Reroll</button>
     <p class="hint">Press 1, 2 or 3</p>
   </div>
 </div>
@@ -153,10 +299,12 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
       <div><b id="stLevel">1</b><span>Level</span></div>
       <div><b id="stBoss">0</b><span>Bosses</span></div>
     </div>
+    <div class="rewards" id="rewards"></div>
+    <button id="adDoubleBtn" class="btn ghost" hidden>Watch an ad to double your gold</button>
     <div id="endBuild" class="build"></div>
     <div class="row">
       <button id="againBtn" class="btn">Rise again</button>
-      <button id="menuBtn" class="btn ghost">Choose origin</button>
+      <button id="menuBtn" class="btn ghost">Return to hub</button>
     </div>
   </div>
 </div>
@@ -242,20 +390,22 @@ const SND = {
 /* ---------------- Canvas ---------------- */
 const cv = $('game'), ctx = cv.getContext('2d');
 const lightCv = document.createElement('canvas'), lctx = lightCv.getContext('2d');
-let W = 0, H = 0, DPR = 1, ZOOM = 1;
+let W = 0, H = 0, DPR = 1, ZOOM = 1, zoomPref = 1;
+const ZOOM_PREFS = { near: 1.25, normal: 1, far: 0.8 };
 function resize() {
   DPR = Math.min(2, window.devicePixelRatio || 1);
   W = window.innerWidth; H = window.innerHeight;
   cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
   cv.style.width = W + 'px'; cv.style.height = H + 'px';
   lightCv.width = Math.ceil(W / 2); lightCv.height = Math.ceil(H / 2);
-  ZOOM = clamp(Math.min(W, H) / 700, 0.55, 1.3);
+  const short = Math.min(W, H);
+  ZOOM = clamp(short / (short < 600 ? 430 : 640) * zoomPref, 0.6, 1.8);
 }
 window.addEventListener('resize', resize); resize();
 
 /* Floor texture: 512px flagstone tile, repeated */
 const floorCv = document.createElement('canvas'); floorCv.width = floorCv.height = 512;
-(function makeFloor() {
+function makeFloor(baseHue, sat) {
   const f = floorCv.getContext('2d');
   f.fillStyle = '#0c0a0e'; f.fillRect(0, 0, 512, 512);
   const S = 64;
@@ -263,8 +413,8 @@ const floorCv = document.createElement('canvas'); floorCv.width = floorCv.height
     const off = (row % 2) * 32;
     for (let col = -1; col < 9; col++) {
       const x = col * S + off, y = row * S, h = hash(col, row, 7);
-      const l = 13 + h * 7, hue = 260 + h * 30;
-      f.fillStyle = `hsl(${hue},8%,${l}%)`; f.fillRect(x + 2, y + 2, S - 4, S - 4);
+      const l = 13 + h * 7, hue = baseHue + h * 30;
+      f.fillStyle = `hsl(${hue},${sat}%,${l}%)`; f.fillRect(x + 2, y + 2, S - 4, S - 4);
       f.fillStyle = 'rgba(255,240,220,0.04)'; f.fillRect(x + 2, y + 2, S - 4, 3); f.fillRect(x + 2, y + 2, 3, S - 4);
       f.fillStyle = 'rgba(0,0,0,0.28)'; f.fillRect(x + 2, y + S - 5, S - 4, 3); f.fillRect(x + S - 5, y + 2, 3, S - 4);
       for (let i = 0; i < 40; i++) {
@@ -280,8 +430,9 @@ const floorCv = document.createElement('canvas'); floorCv.width = floorCv.height
       }
     }
   }
-})();
-let floorPattern = ctx.createPattern(floorCv, 'repeat');
+}
+let floorPattern = null;
+function setFloor(st) { makeFloor(st.hue, st.sat); floorPattern = ctx.createPattern(floorCv, 'repeat'); }
 
 /* ---------------- World features ---------------- */
 const CHUNK = 480;
@@ -372,9 +523,156 @@ const BOSSES = [
 ];
 const BOSS_TIMES = [300, 600, 900];
 
+/* ---------------- Stages ---------------- */
+const STAGES = [
+  { id: 'undercroft', name: 'The Undercroft', sub: 'Where the vigil began. Rusted gaols and restless dead.', hue: 260, sat: 8, hp: 1, dmg: 1, gold: 1, glow: '239,125,50', bosses: ['The Gaoler of Ash', 'The Rotting Mother', 'The Last Warden'] },
+  { id: 'catacombs', name: 'Sunken Catacombs', sub: 'Black water, older bones, and things that drowned angry.', hue: 170, sat: 12, hp: 1.8, dmg: 1.3, gold: 1.6, glow: '110,200,170', bosses: ['The Drowned Jailer', 'Mother of Leeches', 'The Tide Warden'] },
+  { id: 'cathedral', name: 'Ember Cathedral', sub: 'The fire here has turned on the faithful.', hue: 8, sat: 16, hp: 3, dmg: 1.65, gold: 2.4, glow: '255,90,40', bosses: ['The Scorched Gaoler', 'The Cinder Matron', 'The Burning Warden'] },
+  { id: 'abyss', name: 'The Abyss Below', sub: 'Nothing returns from here. Prove otherwise.', hue: 285, sat: 14, hp: 5, dmg: 2.1, gold: 3.5, glow: '170,110,255', bosses: ['The Hollow Colossus', 'The Mother of All Rot', 'The First Warden'] },
+];
+const ROMAN = ['I', 'II', 'III', 'IV'];
+
+/* ---------------- Gear ---------------- */
+const RARITY = [
+  { name: 'Common', color: '#b3a99c', mult: 1, aff: 0 },
+  { name: 'Rare', color: '#6fa4e6', mult: 1.5, aff: 1 },
+  { name: 'Epic', color: '#b98af0', mult: 2.2, aff: 2 },
+  { name: 'Legendary', color: '#eea84a', mult: 3.2, aff: 3 },
+];
+const SLOTS = {
+  helm: { name: 'Helm', prim: ['hp', 14], names: [['Pilgrim Hood', 'Rusted Sallet', 'Hollow Helm'], ["Knight's Bascinet", "Gaoler's Visor", 'Sellsword Coif'], ['Helm of the Drowned', 'Cinderbound Crown', 'Visage of Ash'], ['Crown of Varn', "Warden's Greathelm"]] },
+  armor: { name: 'Armor', prim: ['armor', 1], names: [['Tattered Gambeson', 'Rusted Mail', 'Grave Wrappings'], ['Chainmail of the Order', 'Scaled Hauberk', 'Cultist Robes'], ['Plate of the Drowned King', 'Ashen Cuirass', 'Mantle of Cinders'], ["Warden's Aegis", 'Shroud of the First Flame']] },
+  ring: { name: 'Ring', prim: ['might', 0.04], names: [['Iron Band', 'Copper Loop', 'Bone Ring'], ['Ring of Embers', 'Signet of Varn', "Thief's Ring"], ['Ring of the Old Gods', 'Bloodstone Ring', 'Serpent Coil'], ['Ring of the Last Flame', 'Covenant of Ash']] },
+  charm: { name: 'Talisman', prim: ['cdr', 0.025], names: [['Worn Rosary', 'Candle Stub', 'Rat Totem'], ['Pilgrim Charm', 'Bell Shard', "Saint's Finger"], ['Ember Reliquary', 'Moth Talisman', 'Eye of the Deep'], ['Heart of the Vigil', 'Third Bell Fragment']] },
+};
+const AFFIX = { hp: 10, might: 0.03, cdr: 0.02, area: 0.04, spd: 0.03, magnet: 0.12, xp: 0.04, gold: 0.06, regen: 0.12 };
+const INT_STATS = new Set(['armor', 'flasks', 'revive']);
+const pctS = v => Math.round(v * 100) + '%';
+const STAT_TEXT = {
+  hp: v => `+${Math.round(v)} max health`, might: v => `+${pctS(v)} damage`, cdr: v => `Armaments recover ${pctS(v)} faster`,
+  area: v => `+${pctS(v)} area`, spd: v => `+${pctS(v)} move speed`, magnet: v => `+${pctS(v)} pickup reach`,
+  xp: v => `+${pctS(v)} embers gained`, gold: v => `+${pctS(v)} gold found`, armor: v => `+${v} armor`,
+  regen: v => `+${v.toFixed(2)} health per second`, flasks: v => `+${v} tonic flask`, revive: () => 'Rise once per run at half health',
+};
+const INV_CAP = 80;
+const CHESTS = [
+  { id: 'wood', name: 'Wooden Coffer', cost: { gold: 300 }, odds: [75, 22, 3, 0], blurb: 'Mostly common gear. Now and then a rare.' },
+  { id: 'iron', name: 'Iron Reliquary', cost: { gold: 1200 }, odds: [35, 48, 15, 2], blurb: 'Sturdier finds, with a small chance of a legend.' },
+  { id: 'ember', name: 'Ember Ark', cost: { sigils: 60 }, odds: [0, 50, 40, 10], blurb: 'Always rare or better.' },
+];
+const FREE_CHEST_MS = 4 * 3600 * 1000;
+const EXCHANGE = { sigils: 50, gold: 1500 };
+const UPGRADES = [
+  { id: 'vit', name: 'Vitality', desc: '+10 max health per rank', max: 5, base: 150 },
+  { id: 'might', name: 'Might', desc: '+5% damage per rank', max: 5, base: 200 },
+  { id: 'haste', name: 'Haste', desc: 'Armaments recover 3% faster per rank', max: 5, base: 250 },
+  { id: 'reach', name: 'Reach', desc: '+5% area per rank', max: 3, base: 300 },
+  { id: 'swift', name: 'Swiftness', desc: '+4% move speed per rank', max: 3, base: 250 },
+  { id: 'greed', name: 'Greed', desc: '+10% gold found per rank', max: 5, base: 200 },
+  { id: 'wisdom', name: 'Wisdom', desc: '+5% embers gained per rank', max: 5, base: 200 },
+  { id: 'reroll', name: 'Second Sight', desc: '+1 reroll of level-up boons per run', max: 3, base: 500 },
+  { id: 'flask', name: 'Deep Flask', desc: '+1 tonic flask', max: 2, base: 800 },
+  { id: 'rebirth', name: 'Rebirth', desc: 'Rise once per run at half health', max: 1, base: 3000 },
+];
+const upgCost = (u, rank) => Math.round(u.base * Math.pow(rank + 1, 1.6) / 10) * 10;
+const ORIGIN_COST = { knight: 0, wanderer: 600, sorcerer: 900, pyromancer: 900, cleric: 1400 };
+const PACKS = [
+  { sku: 'av_sigils_80', amt: 80, name: 'Pouch of Sigils' },
+  { sku: 'av_sigils_500', amt: 500, name: 'Satchel of Sigils', tag: 'Popular' },
+  { sku: 'av_sigils_1200', amt: 1200, name: 'Hoard of Sigils', tag: 'Best value' },
+];
+
+/* ---------------- Save ---------------- */
+const SAVE_KEY = 'av_save_v1';
+const DEFAULT_SAVE = () => ({ v: 1, gold: 0, sigils: 0, items: [], nextId: 1, equipped: { helm: null, armor: null, ring: null, charm: null },
+  upg: {}, origins: ['knight'], cls: 'knight', stage: 0, unlocked: 1, best: {}, cleared: {}, freeChestAt: 0, settings: { zoom: 'normal' }, runs: 0 });
+function loadSave() {
+  const d = DEFAULT_SAVE(), s = store.get(SAVE_KEY, null);
+  if (!s || typeof s !== 'object') return d;
+  return Object.assign(d, s, { equipped: Object.assign(d.equipped, s.equipped || {}), settings: Object.assign(d.settings, s.settings || {}), best: s.best || {}, cleared: s.cleared || {}, upg: s.upg || {} });
+}
+let SAVE = loadSave();
+function persist() { store.set(SAVE_KEY, SAVE); }
+zoomPref = ZOOM_PREFS[SAVE.settings.zoom] || 1; resize();
+const itemById = id => SAVE.items.find(i => i.id === id) || null;
+const isEquipped = it => SAVE.equipped[it.slot] === it.id;
+function itemStats(it) {
+  const k = 1 + 0.1 * it.plus, out = [];
+  const add = ([key, v]) => out.push([key, INT_STATS.has(key) ? (key === 'armor' ? v + Math.floor(it.plus / 4) : v) : v * k]);
+  add(it.prim); it.aff.forEach(add); return out;
+}
+function genItem(r) {
+  const slot = Object.keys(SLOTS)[Math.floor(Math.random() * 4)], S = SLOTS[slot], R = RARITY[r];
+  const names = S.names[r];
+  const it = { id: SAVE.nextId++, slot, r, name: names[Math.floor(Math.random() * names.length)], plus: 0,
+    prim: [S.prim[0], S.prim[0] === 'armor' ? (r >= 2 ? 2 : 1) : +(S.prim[1] * R.mult).toFixed(4)], aff: [] };
+  const keys = Object.keys(AFFIX).filter(k => k !== S.prim[0]).sort(() => Math.random() - 0.5);
+  for (let i = 0; i < R.aff; i++) it.aff.push([keys[i], +(AFFIX[keys[i]] * R.mult * rand(0.85, 1.15)).toFixed(4)]);
+  if (r === 3 && slot === 'charm') it.aff.push(['revive', 1]);
+  if (r === 3 && slot === 'armor') it.aff.push(['flasks', 1]);
+  return it;
+}
+const upCost = it => Math.round(50 * Math.pow(RARITY[it.r].mult, 1.3) * Math.pow(it.plus + 1, 1.45) / 5) * 5;
+const salvageVal = it => Math.round(20 * RARITY[it.r].mult * RARITY[it.r].mult * (1 + it.plus * 0.6));
+function rollRarity(odds) { let r = Math.random() * 100; for (let i = 0; i < 4; i++) { r -= odds[i]; if (r < 0) return i; } return 0; }
+function metaMods() {
+  const m = { hp: 0, might: 0, cdr: 0, area: 0, spd: 0, magnet: 0, xp: 0, gold: 0, armor: 0, regen: 0, flasks: 0, revive: 0, reroll: 0 };
+  const u = id => SAVE.upg[id] || 0;
+  m.hp += 10 * u('vit'); m.might += 0.05 * u('might'); m.cdr += 0.03 * u('haste'); m.area += 0.05 * u('reach'); m.spd += 0.04 * u('swift');
+  m.gold += 0.1 * u('greed'); m.xp += 0.05 * u('wisdom'); m.reroll += u('reroll'); m.flasks += u('flask'); m.revive += u('rebirth');
+  for (const slot in SAVE.equipped) { const it = itemById(SAVE.equipped[slot]); if (it) for (const [k, v] of itemStats(it)) m[k] += v; }
+  m.revive = Math.min(m.revive, 2); m.cdr = Math.min(m.cdr, 0.6);
+  return m;
+}
+
+/* ---------------- Platform: app-store purchases and rewarded ads ----------------
+   In the browser these report unavailable and the UI hides them. In the Capacitor
+   app they talk to RevenueCat (@revenuecat/purchases-capacitor) and AdMob
+   (@capacitor-community/admob). Fill in the keys below before shipping. */
+const STORE_KEYS = { revenuecatAndroid: 'REVENUECAT_ANDROID_KEY', revenuecatIos: 'REVENUECAT_IOS_KEY', admobRewardedAndroid: 'ca-app-pub-3940256099942544/5224354917', admobRewardedIos: 'ca-app-pub-3940256099942544/1712485313' };
+const Platform = {
+  plugins: {}, prices: {}, ready: false,
+  get native() { const C = window.Capacitor; return !!(C && C.isNativePlatform && C.isNativePlatform()); },
+  get ios() { const C = window.Capacitor; return !!(C && C.getPlatform && C.getPlatform() === 'ios'); },
+  plugin(name) {
+    const C = window.Capacitor; if (!this.native || !C.isPluginAvailable || !C.isPluginAvailable(name)) return null;
+    if (!this.plugins[name]) this.plugins[name] = C.registerPlugin ? C.registerPlugin(name) : C.Plugins[name];
+    return this.plugins[name];
+  },
+  canBuy() { return this.ready && !!this.plugin('Purchases'); },
+  canAds() { return this.ready && !!this.plugin('AdMob'); },
+  async init() {
+    if (!this.native) return;
+    try {
+      const P_ = this.plugin('Purchases');
+      if (P_) {
+        await P_.configure({ apiKey: this.ios ? STORE_KEYS.revenuecatIos : STORE_KEYS.revenuecatAndroid });
+        const { products } = await P_.getProducts({ productIdentifiers: PACKS.map(p => p.sku) });
+        for (const p of products || []) this.prices[p.identifier] = p;
+      }
+      const A = this.plugin('AdMob'); if (A) await A.initialize({});
+    } catch (e) { console.warn('Store init failed', e); }
+    this.ready = true; if (state === 'title') renderHub();
+  },
+  async purchase(sku) {
+    const P_ = this.plugin('Purchases'), product = this.prices[sku];
+    if (!P_ || !product) throw new Error('This pack is not available right now.');
+    await P_.purchaseStoreProduct({ product });
+    return true;
+  },
+  async rewardedAd() {
+    const A = this.plugin('AdMob'); if (!A) return false;
+    try {
+      await A.prepareRewardVideoAd({ adId: this.ios ? STORE_KEYS.admobRewardedIos : STORE_KEYS.admobRewardedAndroid });
+      const reward = await A.showRewardVideoAd(); return !!reward;
+    } catch (e) { return false; }
+  },
+};
+
+setFloor(STAGES[SAVE.stage] || STAGES[0]);
+
 /* ---------------- Run state ---------------- */
 let state = 'title';
-let selectedClass = store.get('av_class', 'knight'); if (!CLASSES[selectedClass]) selectedClass = 'knight';
 let G = null, P = null;
 const keys = {};
 const touch = { active: false, id: null, ox: 0, oy: 0, x: 0, y: 0 };
@@ -388,24 +686,29 @@ function newRun(cls) {
   G = { t: 0, kills: 0, enemies: [], proj: [], eproj: [], gems: [], fx: [], texts: [], zones: [], hazards: [], chests: [], shrines: [], items: [], parts: [],
     spawnAcc: 0, nextElite: 60, bossIdx: 0, boss: null, bossesKilled: 0, swarms: [150, 390, 510, 750, 840], shrineT: 40, pendingLevels: 0,
     cam: { x: 0, y: 0, shake: 0 }, slow: 1, winT: 0, grid: new Map(), dmgDealt: 0 };
+  G.stage = SAVE.stage; G.meta = metaMods(); G.gold = 0; G.sigils = 0; G.revives = G.meta.revive; G.rerolls = G.meta.reroll;
+  G.goldMul = (1 + G.meta.gold) * STAGES[G.stage].gold;
+  P.maxFlasks = 3 + G.meta.flasks; P.flasks = P.maxFlasks;
+  setFloor(STAGES[G.stage]);
   addWeapon(c.start);
   recalc(); P.hp = P.maxHp;
 }
 function recalc() {
   const c = CLASSES[P.cls], pv = id => P.passives[id] || 0;
   const oldMax = P.maxHp;
-  P.maxHp = c.hp + 25 * pv('vitality');
+  const M = G.meta;
+  P.maxHp = Math.round(c.hp + 25 * pv('vitality') + M.hp);
   if (P.maxHp > oldMax) P.hp += P.maxHp - oldMax;
-  P.might = c.might * (1 + 0.1 * pv('strength'));
-  P.cdr = c.cdr * Math.pow(0.93, pv('dexterity'));
-  P.area = c.area * (1 + 0.12 * pv('attunement'));
-  P.spdMul = c.spd * (1 + 0.08 * pv('endurance'));
+  P.might = c.might * (1 + 0.1 * pv('strength') + M.might);
+  P.cdr = c.cdr * Math.pow(0.93, pv('dexterity')) * (1 - M.cdr);
+  P.area = c.area * (1 + 0.12 * pv('attunement') + M.area);
+  P.spdMul = c.spd * (1 + 0.08 * pv('endurance') + M.spd);
   P.maxStam = 100 + 15 * pv('endurance');
-  P.magnet = 60 * (1 + 0.35 * pv('covetous'));
-  P.xpMul = 1 + 0.08 * pv('covetous');
-  P.armor = c.armor + pv('fortitude');
+  P.magnet = 60 * (1 + 0.35 * pv('covetous') + M.magnet);
+  P.xpMul = 1 + 0.08 * pv('covetous') + M.xp;
+  P.armor = c.armor + pv('fortitude') + M.armor;
   const ward = P.weapons.find(w => w.id === 'ward');
-  P.regen = c.regen + (ward && ward.evo ? 1.5 : 0);
+  P.regen = c.regen + M.regen + (ward && ward.evo ? 1.5 : 0);
 }
 function addWeapon(id) { P.weapons.push({ id, lv: 1, t: 0.3, evo: false, ang: 0, tick: 0 }); }
 function getW(id) { return P.weapons.find(w => w.id === id); }
@@ -466,6 +769,7 @@ function killEnemy(e) {
     G.parts.push({ x: e.x, y: e.y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, t: 0, life: rand(0.4, 0.9), c: e.type === 'wraith' ? '#8aa6d6' : e.type === 'skeleton' ? '#cfc6b4' : '#5a1216', s: rand(1.5, 3.5) });
   }
   if (e.boss) { onBossDeath(e); return; }
+  G.gold += (e.elite ? 25 + e.xp : e.xp * 0.5) * G.goldMul;
   dropGem(e.x, e.y, e.xp);
   if (e.elite) G.chests.push({ x: e.x, y: e.y, t: 0 });
   else {
@@ -485,7 +789,15 @@ function hurtPlayer(dmg, sx, sy) {
   dmg = Math.max(1, dmg - P.armor);
   P.hp -= dmg; P.inv = 0.45; P.hurtT = 0.3; G.cam.shake = Math.min(12, G.cam.shake + 6);
   SND.hurt();
-  if (P.hp <= 0) { P.hp = 0; endRun(false); }
+  if (P.hp <= 0) {
+    if (G.revives > 0) {
+      G.revives--; P.hp = P.maxHp * 0.5; P.inv = 2.2;
+      for (const e of G.enemies) { if (e.boss) continue; const dx = e.x - P.x, dy = e.y - P.y, d = Math.hypot(dx, dy) || 1; if (d < 280) { e.kbx += dx / d * 900; e.kby += dy / d * 900; } }
+      G.fx.push({ kind: 'boom', x: P.x, y: P.y, r: 220, t: 0, dur: 0.7 }); G.eproj.length = 0;
+      banner('You rise again', 'The flame refuses to die.', 2.2); SND.bell(130, 0.25); return;
+    }
+    P.hp = 0; endRun(false);
+  }
 }
 
 /* ---------------- Weapon behaviors ---------------- */
@@ -625,7 +937,7 @@ function explode(x, y, rad, dmg, evo) {
 /* ---------------- Enemies & bosses ---------------- */
 function spawnEnemy(type, x, y, elite = false) {
   const d = ENEMIES[type], t = G.t;
-  const hpMul = 1 + (t / 60) * 0.22 + (t / 300) * (t / 300) * 0.5, dmgMul = 1 + (t / 60) * 0.07;
+  const st = STAGES[G.stage], hpMul = (1 + (t / 60) * 0.22 + (t / 300) * (t / 300) * 0.5) * st.hp, dmgMul = (1 + (t / 60) * 0.07) * st.dmg;
   const e = { type, x, y, r: d.r, hp: d.hp * hpMul, maxHp: d.hp * hpMul, spd: d.spd * rand(0.9, 1.1), dmg: d.dmg * dmgMul, xp: d.xp, mass: d.mass,
     flash: 0, kbx: 0, kby: 0, vx: 0, vy: 0, t: Math.random() * 10, shootT: rand(1.5, 3), ranged: !!d.ranged, slow: 0, boss: false, elite };
   if (elite) { e.hp *= 6; e.maxHp = e.hp; e.r *= 1.3; e.xp *= 4; e.mass *= 3; e.dmg *= 1.3; }
@@ -669,19 +981,20 @@ function director(dt) {
 }
 function spawnBoss(i) {
   const b = BOSSES[i]; const [x, y] = spawnPoint();
-  const e = { type: 'boss', def: b, boss: true, x, y, r: b.r, hp: b.hp, maxHp: b.hp, spd: b.spd, dmg: b.dmg, xp: 0, mass: 50,
+  const st = STAGES[G.stage], bhp = b.hp * st.hp * 0.9;
+  const e = { type: 'boss', def: b, name: st.bosses[i], boss: true, x, y, r: b.r, hp: bhp, maxHp: bhp, spd: b.spd, dmg: b.dmg * st.dmg, xp: 0, mass: 50,
     flash: 0, kbx: 0, kby: 0, vx: 0, vy: 0, t: 0, slow: 0, phase: 'walk', atkT: 3, ct: 0, cang: 0, spiral: 0, spA: 0, spT: 0 };
   G.enemies.push(e); G.boss = e;
-  banner(b.name, b.sub, 3.5); SND.bell(i === 2 ? 49 : 65, 0.35);
+  banner(e.name, b.sub, 3.5); SND.bell(i === 2 ? 49 : 65, 0.35);
 }
 function onBossDeath(e) {
-  G.boss = null; G.bossesKilled++;
+  G.boss = null; G.bossesKilled++; G.sigils += 3; G.gold += 150 * G.goldMul;
   for (let i = 0; i < 30; i++) { const a = Math.random() * TAU, r = Math.random() * 60; dropGem(e.x + Math.cos(a) * r, e.y + Math.sin(a) * r, 5); }
   G.chests.push({ x: e.x, y: e.y, t: 0, boss: true });
   G.fx.push({ kind: 'boom', x: e.x, y: e.y, r: 160, t: 0, dur: 0.9 });
   G.cam.shake = 18; SND.bell(98, 0.3);
   if (e.def.id === 'warden') { G.winT = 2.8; G.slow = 0.35; banner('Victory achieved', 'The Warden falls. The flame endures.', 3); }
-  else banner('Foe vanquished', e.def.name + ' is no more.', 2.6);
+  else banner('Foe vanquished', e.name + ' is no more.', 2.6);
 }
 function bossUpdate(e, dt) {
   const b = e.def; e.t += dt;
@@ -929,11 +1242,16 @@ function openLevelUp() {
   state = 'levelup'; G.pendingLevels--;
   currentChoices = rollChoices(3);
   $('luEyebrow').textContent = 'Level ' + (P.lv - G.pendingLevels);
-  const box = $('luCards'); box.innerHTML = currentChoices.map(cardHTML).join('');
-  box.querySelectorAll('.card').forEach(b => b.addEventListener('click', () => pickChoice(+b.dataset.i)));
+  renderLevelCards();
   $('levelScreen').hidden = false; SND.level();
   setTimeout(() => { const f = $('card0'); if (f && !isTouch) f.focus({ preventScroll: true }); }, 30);
 }
+function renderLevelCards() {
+  const box = $('luCards'); box.innerHTML = currentChoices.map(cardHTML).join('');
+  box.querySelectorAll('.card').forEach(b => b.addEventListener('click', () => pickChoice(+b.dataset.i)));
+  $('rerollBtn').hidden = !(G.rerolls > 0); $('rerollBtn').textContent = 'Reroll (' + G.rerolls + ' left)';
+}
+$('rerollBtn').addEventListener('click', () => { if (state !== 'levelup' || G.rerolls <= 0) return; G.rerolls--; currentChoices = rollChoices(3); renderLevelCards(); });
 function pickChoice(i) {
   if (state !== 'levelup' || !currentChoices[i]) return;
   applyChoice(currentChoices[i]); $('levelScreen').hidden = true; state = 'play';
@@ -965,37 +1283,53 @@ function buildList() {
 }
 function startRun() {
   SND.init();
-  newRun(selectedClass); state = 'play';
-  ['titleScreen', 'endScreen', 'pauseScreen', 'levelScreen', 'chestScreen'].forEach(id => $(id).hidden = true);
+  if (!SAVE.origins.includes(SAVE.cls)) SAVE.cls = 'knight';
+  newRun(SAVE.cls); state = 'play'; closeModal();
+  ['hub', 'endScreen', 'pauseScreen', 'levelScreen', 'chestScreen'].forEach(id => $(id).hidden = true);
   $('pauseBtn').hidden = false; $('muteBtn').hidden = false;
   $('rollBtn').hidden = !isTouch; $('flaskBtn').hidden = !isTouch;
-  banner('The vigil begins', 'Survive. Three bells will toll.', 2.6);
+  banner(STAGES[G.stage].name, 'Survive. Three bells will toll.', 2.6);
 }
 function endRun(won) {
   state = won ? 'win' : 'dead';
   if (!won) SND.death(); else SND.chest();
-  const rec = store.get('av_record', { t: 0, kills: 0, won: false });
-  const better = won || G.t > rec.t;
-  if (better) store.set('av_record', { t: G.t, kills: G.kills, won: won || rec.won, cls: P.cls });
+  const st = STAGES[G.stage];
+  let gold = Math.floor(G.gold), sig = G.sigils, firstClear = false;
+  if (won) {
+    gold += Math.round(300 * st.gold); sig += 10;
+    if (!SAVE.cleared[st.id]) { SAVE.cleared[st.id] = true; sig += 40; firstClear = true; }
+    SAVE.unlocked = Math.min(STAGES.length, Math.max(SAVE.unlocked, G.stage + 2));
+  }
+  SAVE.best[st.id] = Math.max(SAVE.best[st.id] || 0, Math.floor(G.t));
+  SAVE.gold += gold; SAVE.sigils += sig; SAVE.runs++; persist();
+  G.reward = { gold, sig };
   setTimeout(() => {
     $('endTitle').textContent = won ? 'VIGIL KEPT' : 'YOU HAVE FALLEN';
     $('endTitle').className = 'death' + (won ? ' victory' : '');
-    $('endSub').textContent = won ? 'The Warden lies still and the last flame burns on. For now.' : (G.t >= 300 ? 'The flame dims, but another will take up the vigil.' : 'The dead claim another. Rise, and try again.');
+    $('endSub').textContent = won ? (firstClear && G.stage + 1 < STAGES.length ? STAGES[G.stage + 1].name + ' is now open to you.' : 'The Warden lies still and the last flame burns on. For now.') : (G.t >= 300 ? 'The flame dims, but another will take up the vigil.' : 'The dead claim another. Rise, and try again.');
     $('stTime').textContent = fmtTime(G.t); $('stKills').textContent = G.kills; $('stLevel').textContent = P.lv; $('stBoss').textContent = G.bossesKilled + ' / 3';
+    $('rewards').innerHTML = `<span class="coin gold">+${fmtNum(gold)} gold</span>` + (sig ? `<span class="coin gem">+${fmtNum(sig)} sigils</span>` : '');
+    const ad = $('adDoubleBtn'); ad.hidden = !(Platform.canAds() && gold > 0); ad.disabled = false;
     $('endBuild').innerHTML = buildList();
     $('endScreen').hidden = false; $('pauseBtn').hidden = true; $('rollBtn').hidden = true; $('flaskBtn').hidden = true;
     if (!isTouch) $('againBtn').focus({ preventScroll: true });
   }, won ? 600 : 1400);
 }
+$('adDoubleBtn').addEventListener('click', async () => {
+  const b = $('adDoubleBtn'); if (!G || !G.reward || b.disabled) return; b.disabled = true;
+  if (await Platform.rewardedAd()) { SAVE.gold += G.reward.gold; persist(); $('rewards').querySelector('.gold').textContent = '+' + fmtNum(G.reward.gold * 2) + ' gold'; b.hidden = true; }
+  else b.disabled = false;
+});
 function togglePause() {
   if (state === 'play') { state = 'pause'; $('pauseBuild').innerHTML = buildList(); $('pauseScreen').hidden = false; if (!isTouch) $('resumeBtn').focus({ preventScroll: true }); }
   else if (state === 'pause') { state = 'play'; $('pauseScreen').hidden = true; }
 }
 function toTitle() {
-  state = 'title'; G = null;
+  G = null;
   ['endScreen', 'pauseScreen', 'levelScreen', 'chestScreen'].forEach(id => $(id).hidden = true);
   ['pauseBtn', 'muteBtn', 'rollBtn', 'flaskBtn'].forEach(id => $(id).hidden = true);
-  renderTitle(); $('titleScreen').hidden = false;
+  setFloor(STAGES[SAVE.stage] || STAGES[0]);
+  showHub('play');
 }
 
 /* ---------------- Main update ---------------- */
@@ -1308,7 +1642,7 @@ function render() {
   c.globalCompositeOperation = 'lighter';
   for (const l of lights.slice(1)) {
     const g = c.createRadialGradient(l[0], l[1], 0, l[0], l[1], l[2] * 0.6);
-    g.addColorStop(0, `rgba(239,125,50,${0.12 * l[3]})`); g.addColorStop(1, 'rgba(239,125,50,0)');
+    const gc = STAGES[G.stage].glow; g.addColorStop(0, `rgba(${gc},${0.12 * l[3]})`); g.addColorStop(1, `rgba(${gc},0)`);
     c.fillStyle = g; c.fillRect(l[0] - l[2], l[1] - l[2], l[2] * 2, l[2] * 2);
   }
   // brazier & shrine flames
@@ -1419,7 +1753,7 @@ function drawHUD() {
   c.font = '700 26px Cinzel, Georgia, serif'; c.fillStyle = '#e4d9c5'; c.fillText(fmtTime(G.t), W / 2, 18);
   c.font = '500 14px "Cormorant Garamond", Georgia, serif'; c.fillStyle = '#958a9c';
   const nextBell = BOSS_TIMES[G.bossIdx];
-  c.fillText(G.kills + ' slain' + (nextBell && !G.boss ? '  ·  bell in ' + fmtTime(nextBell - G.t) : ''), W / 2, 50);
+  c.fillText(G.kills + ' slain  \u00b7  ' + fmtNum(G.gold) + ' gold' + (nextBell && !G.boss ? '  ·  bell in ' + fmtTime(nextBell - G.t) : ''), W / 2, 50);
   // inventory (top-left)
   c.textAlign = 'left';
   const ix = 16, iy = 22;
@@ -1458,7 +1792,7 @@ function drawHUD() {
   // boss bar
   if (G.boss) {
     const b = G.boss, ww = Math.min(620, W - 40), x0 = (W - ww) / 2, y0 = H - (isTouch ? 150 : 46);
-    c.textAlign = 'left'; c.font = '600 17px Cinzel, Georgia, serif'; c.fillStyle = '#e4d9c5'; c.fillText(b.def.name, x0, y0 - 9);
+    c.textAlign = 'left'; c.font = '600 17px Cinzel, Georgia, serif'; c.fillStyle = '#e4d9c5'; c.fillText(b.name, x0, y0 - 9);
     c.fillStyle = 'rgba(10,8,12,0.9)'; c.fillRect(x0 - 2, y0 - 2, ww + 4, 12);
     c.fillStyle = '#3a0a0e'; c.fillRect(x0, y0, ww, 8);
     c.fillStyle = '#9e1b24'; c.fillRect(x0, y0, ww * Math.max(0, b.hp / b.maxHp), 8);
@@ -1487,19 +1821,186 @@ function drawTitleBackdrop() {
   c.globalCompositeOperation = 'source-over';
 }
 
-/* ---------------- Title UI ---------------- */
-function renderTitle() {
-  const box = $('classes');
-  box.innerHTML = Object.entries(CLASSES).map(([id, c]) => `<button class="cls" id="cls-${id}" data-id="${id}" aria-pressed="${id === selectedClass}">
-    <h3>${c.name}</h3><span class="start">${WEAPONS[c.start].name}</span><p>${c.blurb}</p></button>`).join('');
-  box.querySelectorAll('.cls').forEach(b => b.addEventListener('click', () => { selectedClass = b.dataset.id; store.set('av_class', selectedClass); renderTitle(); $('beginBtn').focus({ preventScroll: true }); }));
-  const rec = store.get('av_record', null);
-  $('record').textContent = rec && rec.t ? (rec.won ? 'Vigil kept. ' : '') + 'Longest vigil ' + fmtTime(rec.t) + ' · ' + rec.kills + ' slain' : 'No vigil yet kept.';
+/* ---------------- Hub UI ---------------- */
+let hubTab = 'play';
+const fmtNum = n => Math.floor(n).toLocaleString('en-US');
+const fmtDur = ms => { const s = Math.max(0, Math.ceil(ms / 1000)), h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60); return h ? `${h}h ${m}m` : m ? `${m}m ${s % 60}s` : `${s}s`; };
+const costHTML = c => c.gold != null ? `<span class="coin gold bare">${fmtNum(c.gold)}</span>` : `<span class="coin gem bare">${fmtNum(c.sigils)}</span>`;
+const canAfford = c => c.gold != null ? SAVE.gold >= c.gold : SAVE.sigils >= c.sigils;
+function pay(c) { if (!canAfford(c)) return false; if (c.gold != null) SAVE.gold -= c.gold; else SAVE.sigils -= c.sigils; return true; }
+let toastT = null;
+function toast(msg) { const t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 2200); }
+function openModal(html, bind) { $('modalBody').innerHTML = html; $('modal').hidden = false; if (bind) bind($('modalBody')); const f = $('modalBody').querySelector('button:not([disabled])'); if (f && !isTouch) f.focus({ preventScroll: true }); }
+function closeModal() { $('modal').hidden = true; $('modalBody').innerHTML = ''; }
+$('modal').addEventListener('click', e => { if (e.target === $('modal')) closeModal(); });
+
+function showHub(tab) { state = 'title'; if (tab) hubTab = tab; $('hub').hidden = false; renderHub(); }
+function renderHub() {
+  $('goldAmt').textContent = fmtNum(SAVE.gold); $('sigilAmt').textContent = fmtNum(SAVE.sigils);
+  const freeReady = Date.now() >= SAVE.freeChestAt;
+  document.querySelectorAll('.tabbar button').forEach(b => {
+    b.setAttribute('aria-current', b.dataset.tab === hubTab ? 'page' : 'false');
+    b.innerHTML = b.dataset.tab[0].toUpperCase() + b.dataset.tab.slice(1) + (b.dataset.tab === 'shop' && freeReady ? '<span class="dot" aria-label="Free chest ready"></span>' : '');
+  });
+  for (const t of ['play', 'armory', 'shop', 'altar']) $('tab-' + t).hidden = t !== hubTab;
+  ({ play: renderPlay, armory: renderArmory, shop: renderShop, altar: renderAltar })[hubTab]();
 }
-renderTitle();
+document.querySelectorAll('.tabbar button').forEach(b => b.addEventListener('click', () => { hubTab = b.dataset.tab; renderHub(); $('hub').querySelector('.hub-body').scrollTop = 0; }));
+
+function renderPlay() {
+  if (!SAVE.origins.includes(SAVE.cls)) SAVE.cls = 'knight';
+  if (SAVE.stage >= SAVE.unlocked) SAVE.stage = 0;
+  $('stages').innerHTML = STAGES.map((s, i) => {
+    const locked = i >= SAVE.unlocked, best = SAVE.best[s.id];
+    return `<button class="stage${locked ? ' locked' : ''}" data-i="${i}" aria-pressed="${i === SAVE.stage}" style="--hue:${s.hue}">
+      <span class="eyebrow">Stage ${ROMAN[i]}${SAVE.cleared[s.id] ? ' · Cleared' : ''}</span><h3>${s.name}</h3><p>${s.sub}</p>
+      <span class="pips" aria-label="Danger ${i + 1} of 4">${'<i></i>'.repeat(i + 1)}${'<i class="off"></i>'.repeat(3 - i)}</span>
+      <span class="meta">${locked ? 'Clear ' + STAGES[i - 1].name + ' to unlock' : (best ? 'Longest vigil ' + fmtTime(best) : 'Not yet attempted') + ' · Gold ×' + s.gold}</span></button>`;
+  }).join('');
+  $('stages').querySelectorAll('.stage').forEach(b => b.addEventListener('click', () => {
+    const i = +b.dataset.i; if (i >= SAVE.unlocked) { toast('Clear ' + STAGES[i - 1].name + ' first.'); return; }
+    SAVE.stage = i; persist(); renderPlay();
+  }));
+  $('classes').innerHTML = Object.entries(CLASSES).map(([id, c]) => {
+    const owned = SAVE.origins.includes(id);
+    return `<button class="cls${owned ? '' : ' locked'}" data-id="${id}" aria-pressed="${id === SAVE.cls}">
+      <h3>${c.name}</h3><span class="start">${WEAPONS[c.start].name}</span><p>${c.blurb}</p>${owned ? '' : `<span class="price coin gold">${fmtNum(ORIGIN_COST[id])}</span>`}</button>`;
+  }).join('');
+  $('classes').querySelectorAll('.cls').forEach(b => b.addEventListener('click', () => {
+    const id = b.dataset.id, c = CLASSES[id];
+    if (SAVE.origins.includes(id)) { SAVE.cls = id; persist(); renderPlay(); return; }
+    confirmBuy('Unlock the ' + c.name, c.blurb + ' Starts with ' + WEAPONS[c.start].name + '.', { gold: ORIGIN_COST[id] }, () => { SAVE.origins.push(id); SAVE.cls = id; toast(c.name + ' unlocked.'); });
+  }));
+  $('beginBtn').textContent = 'Descend';
+  $('record').textContent = STAGES[SAVE.stage].name + ' · ' + CLASSES[SAVE.cls].name + (SAVE.runs ? ' · ' + SAVE.runs + ' vigils so far' : '');
+}
+function confirmBuy(title, text, cost, onOk) {
+  const ok = canAfford(cost);
+  openModal(`<h2>${title}</h2><p class="muted">${text}</p>
+    <div class="row"><button class="buy" id="mBuy" ${ok ? '' : 'disabled'}>Buy for ${costHTML(cost)}</button><button class="btn ghost" id="mCancel">Not now</button></div>
+    ${ok ? '' : `<p class="muted">You need ${cost.gold != null ? fmtNum(cost.gold - SAVE.gold) + ' more gold' : fmtNum(cost.sigils - SAVE.sigils) + ' more sigils'}.</p>`}`, m => {
+    m.querySelector('#mCancel').onclick = closeModal;
+    m.querySelector('#mBuy').onclick = () => { if (!pay(cost)) return; onOk(); persist(); closeModal(); renderHub(); };
+  });
+}
+
+function itemCard(it) {
+  const st = itemStats(it)[0], eq = isEquipped(it);
+  return `<button class="item" data-id="${it.id}" style="--rc:${RARITY[it.r].color}"><span class="slot">${SLOTS[it.slot].name}${eq ? ' · Equipped' : ''}</span>
+    <b>${it.name}${it.plus ? ' +' + it.plus : ''}</b><span class="sum">${STAT_TEXT[st[0]](st[1])}${it.aff.length ? ' · ' + it.aff.length + ' more' : ''}</span></button>`;
+}
+function renderArmory() {
+  $('slots').innerHTML = Object.keys(SLOTS).map(s => { const it = itemById(SAVE.equipped[s]); return it ? itemCard(it) : `<div class="item empty"><span class="slot">${SLOTS[s].name}</span><b>Empty</b><span class="sum">Find gear in chests.</span></div>`; }).join('');
+  const items = SAVE.items.filter(i => !isEquipped(i)).sort((a, b) => b.r - a.r || b.plus - a.plus || a.slot.localeCompare(b.slot));
+  $('inv').innerHTML = items.length ? items.map(itemCard).join('') : `<p class="muted" style="grid-column:1/-1">Nothing in storage. Open chests in the Shop to find gear.</p>`;
+  $('invCount').textContent = SAVE.items.length + ' / ' + INV_CAP;
+  document.querySelectorAll('#tab-armory .item[data-id]').forEach(b => b.addEventListener('click', () => openItem(+b.dataset.id)));
+}
+$('salvageCommons').addEventListener('click', () => {
+  const spare = SAVE.items.filter(i => i.r === 0 && !isEquipped(i));
+  if (!spare.length) { toast('No spare common gear to salvage.'); return; }
+  const g = spare.reduce((s, i) => s + salvageVal(i), 0);
+  SAVE.items = SAVE.items.filter(i => !spare.includes(i)); SAVE.gold += g; persist(); renderHub(); toast(`Salvaged ${spare.length} items for ${fmtNum(g)} gold.`);
+});
+function openItem(id) {
+  const it = itemById(id); if (!it) { closeModal(); return; }
+  const R = RARITY[it.r], eq = isEquipped(it), cur = itemById(SAVE.equipped[it.slot]), cost = upCost(it), maxed = it.plus >= 10;
+  openModal(`<div class="eyebrow" style="color:${R.color}">${R.name} ${SLOTS[it.slot].name}</div>
+    <h2>${it.name}${it.plus ? ' +' + it.plus : ''}</h2>
+    <ul class="statlist" style="--rc:${R.color}">${itemStats(it).map(([k, v]) => `<li>${STAT_TEXT[k](v)}</li>`).join('')}</ul>
+    ${!eq && cur ? `<p class="muted">Replaces ${cur.name}${cur.plus ? ' +' + cur.plus : ''}.</p>` : ''}
+    <div class="row">
+      <button class="btn" id="mEquip" style="padding:12px 24px;font-size:14px">${eq ? 'Unequip' : 'Equip'}</button>
+      <button class="buy" id="mUp" ${maxed || SAVE.gold < cost ? 'disabled' : ''}>${maxed ? 'Fully upgraded' : 'Upgrade to +' + (it.plus + 1) + ' ' + costHTML({ gold: cost })}</button>
+    </div>
+    <div class="row"><button class="btn ghost" id="mSalv" ${eq ? 'disabled' : ''}>Salvage for ${fmtNum(salvageVal(it))} gold</button><button class="btn ghost" id="mClose">Close</button></div>`, m => {
+    m.querySelector('#mClose').onclick = closeModal;
+    m.querySelector('#mEquip').onclick = () => { SAVE.equipped[it.slot] = eq ? null : it.id; persist(); closeModal(); renderHub(); toast(eq ? 'Unequipped.' : it.name + ' equipped.'); };
+    m.querySelector('#mUp').onclick = () => { if (maxed || !pay({ gold: cost })) return; it.plus++; persist(); renderHub(); openItem(id); SND.init(); SND.pickup(); };
+    m.querySelector('#mSalv').onclick = () => { if (eq) return; SAVE.gold += salvageVal(it); SAVE.items = SAVE.items.filter(i => i !== it); persist(); closeModal(); renderHub(); toast('Salvaged for ' + fmtNum(salvageVal(it)) + ' gold.'); };
+  });
+}
+
+function renderFreeChest() {
+  const left = SAVE.freeChestAt - Date.now(), ready = left <= 0;
+  $('freeChest').innerHTML = `<div><h3>Daily Offering</h3><p class="muted">A free Wooden Coffer every 4 hours.</p></div>
+    <div class="row">${!ready && Platform.canAds() ? '<button class="btn ghost" id="freeAd">Watch an ad to open now</button>' : ''}
+    <button class="buy" id="freeBtn" ${ready ? '' : 'disabled'}>${ready ? 'Open free' : 'Ready in ' + fmtDur(left)}</button></div>`;
+  const fb = $('freeBtn'); if (fb) fb.onclick = () => { if (Date.now() < SAVE.freeChestAt) return; if (!roomCheck()) return; SAVE.freeChestAt = Date.now() + FREE_CHEST_MS; openChest(CHESTS[0]); };
+  const fa = $('freeAd'); if (fa) fa.onclick = async () => { fa.disabled = true; const ok = await Platform.rewardedAd(); if (ok && roomCheck()) openChest(CHESTS[0]); else fa.disabled = false; };
+}
+function roomCheck() { if (SAVE.items.length >= INV_CAP) { toast('Your armory is full. Salvage some gear first.'); return false; } return true; }
+function renderShop() {
+  renderFreeChest();
+  $('chests').innerHTML = CHESTS.map((c, i) => `<div class="chestcard"><div class="chestart ${c.id}"></div><div class="ctext"><h3>${c.name}</h3><p>${c.blurb}</p></div>
+    <div class="odds">${c.odds.map((o, r) => o ? `<span style="--rc:${RARITY[r].color}">${RARITY[r].name} ${o}%</span>` : '').join('')}</div>
+    <button class="buy" data-i="${i}" ${canAfford(c.cost) ? '' : 'disabled'}>Open ${costHTML(c.cost)}</button></div>`).join('');
+  $('chests').querySelectorAll('.buy').forEach(b => b.addEventListener('click', () => { const c = CHESTS[+b.dataset.i]; if (!roomCheck() || !pay(c.cost)) return; openChest(c); }));
+  const ex = `<div class="pack"><span class="tag">Exchange</span><h3>${fmtNum(EXCHANGE.gold)} gold</h3><button class="buy" id="exBtn" ${SAVE.sigils >= EXCHANGE.sigils ? '' : 'disabled'}>Trade ${costHTML({ sigils: EXCHANGE.sigils })}</button></div>`;
+  let packs;
+  if (Platform.canBuy()) packs = PACKS.map(p => { const pr = Platform.prices[p.sku];
+    return `<div class="pack">${p.tag ? `<span class="tag">${p.tag}</span>` : ''}<h3>${p.name}</h3><span class="coin gem">${fmtNum(p.amt)}</span>
+      <button class="buy" data-sku="${p.sku}" ${pr ? '' : 'disabled'}>${pr ? pr.priceString : 'Unavailable'}</button></div>`; }).join('');
+  else packs = `<p class="note" style="grid-column:1/-1">Sigil packs are sold in the Android and iOS app. Here, sigils come from slaying bosses (3 each), finishing a stage (10) and clearing a stage for the first time (40).</p>`;
+  $('packs').innerHTML = ex + packs;
+  $('exBtn').onclick = () => { if (!pay({ sigils: EXCHANGE.sigils })) return; SAVE.gold += EXCHANGE.gold; persist(); renderHub(); toast('Traded for ' + fmtNum(EXCHANGE.gold) + ' gold.'); };
+  $('packs').querySelectorAll('[data-sku]').forEach(b => b.addEventListener('click', async () => {
+    const p = PACKS.find(x => x.sku === b.dataset.sku); b.disabled = true;
+    try { await Platform.purchase(p.sku); SAVE.sigils += p.amt; persist(); renderHub(); toast(fmtNum(p.amt) + ' sigils added.'); }
+    catch (e) { toast(e && e.userCancelled ? 'Purchase cancelled.' : 'Purchase not completed.'); b.disabled = false; }
+  }));
+}
+function openChest(c) {
+  const r = rollRarity(c.odds), it = genItem(r), R = RARITY[r];
+  SAVE.items.push(it); persist(); renderHub(); SND.init();
+  openModal(`<div class="eyebrow">${c.name}</div><div class="reveal" id="rv" style="--rc:${R.color}"><div class="burst"></div><div class="chestart big ${c.id} shake"></div></div>
+    <div id="rvItem" style="visibility:hidden;display:flex;flex-direction:column;gap:10px">
+      <div class="eyebrow" style="color:${R.color}">${R.name} ${SLOTS[it.slot].name}</div><h2>${it.name}</h2>
+      <ul class="statlist" style="--rc:${R.color}">${itemStats(it).map(([k, v]) => `<li>${STAT_TEXT[k](v)}</li>`).join('')}</ul>
+      <div class="row"><button class="btn" id="mEquip" style="padding:12px 24px;font-size:14px">Equip</button><button class="btn ghost" id="mKeep">Keep in armory</button></div>
+    </div>`, m => {
+    m.querySelector('#mKeep').onclick = closeModal;
+    m.querySelector('#mEquip').onclick = () => { SAVE.equipped[it.slot] = it.id; persist(); closeModal(); renderHub(); toast(it.name + ' equipped.'); };
+  });
+  setTimeout(() => { const rv = $('rv'); if (!rv) return; rv.querySelector('.chestart').classList.add('open'); rv.classList.add('lit'); if (r >= 2) SND.chest(); else SND.level(); }, 850);
+  setTimeout(() => { const ri = $('rvItem'); if (ri) { ri.style.visibility = 'visible'; if (!isTouch) $('mEquip').focus({ preventScroll: true }); } }, 1150);
+}
+function renderAltar() {
+  $('upgs').innerHTML = UPGRADES.map(u => {
+    const rank = SAVE.upg[u.id] || 0, max = rank >= u.max, cost = upgCost(u, rank);
+    return `<div class="upg"><h3>${u.name}</h3><p>${u.desc}</p><span class="pips" aria-label="Rank ${rank} of ${u.max}">${'<i></i>'.repeat(rank)}${'<i class="off"></i>'.repeat(u.max - rank)}</span>
+      <button class="buy" data-id="${u.id}" ${max || SAVE.gold < cost ? 'disabled' : ''}>${max ? 'Mastered' : costHTML({ gold: cost })}</button></div>`;
+  }).join('');
+  $('upgs').querySelectorAll('.buy').forEach(b => b.addEventListener('click', () => {
+    const u = UPGRADES.find(x => x.id === b.dataset.id), rank = SAVE.upg[u.id] || 0;
+    if (rank >= u.max || !pay({ gold: upgCost(u, rank) })) return;
+    SAVE.upg[u.id] = rank + 1; persist(); renderHub(); SND.init(); SND.level(); toast(u.name + ' rank ' + (rank + 1) + '.');
+  }));
+}
+function openSettings(confirmErase) {
+  const z = SAVE.settings.zoom;
+  openModal(`<h2>Settings</h2>
+    <div class="eyebrow">Camera</div>
+    <div class="seg" role="group" aria-label="Camera zoom">${[['near', 'Close'], ['normal', 'Normal'], ['far', 'Far']].map(([k, l]) => `<button data-z="${k}" aria-pressed="${z === k}">${l}</button>`).join('')}</div>
+    <div class="eyebrow">Sound</div>
+    <div class="seg two" role="group" aria-label="Sound"><button data-s="on" aria-pressed="${!SND.muted}">On</button><button data-s="off" aria-pressed="${SND.muted}">Off</button></div>
+    ${confirmErase ? `<p class="muted">This erases all gold, sigils, gear, upgrades and unlocks on this device. It cannot be undone.</p>
+      <div class="row"><button class="btn ghost danger" id="mErase2">Erase everything</button><button class="btn ghost" id="mKeep">Keep my progress</button></div>`
+      : `<div class="row"><button class="btn" id="mClose" style="padding:12px 24px;font-size:14px">Done</button><button class="btn ghost danger" id="mErase">Erase progress</button></div>`}`, m => {
+    m.querySelectorAll('[data-z]').forEach(b => b.onclick = () => { SAVE.settings.zoom = b.dataset.z; zoomPref = ZOOM_PREFS[b.dataset.z]; resize(); persist(); openSettings(false); });
+    m.querySelectorAll('[data-s]').forEach(b => b.onclick = () => { SND.init(); SND.setMuted(b.dataset.s === 'off'); $('muteBtn').textContent = SND.muted ? 'OFF' : 'SND'; openSettings(false); });
+    if (confirmErase) { m.querySelector('#mKeep').onclick = () => openSettings(false); m.querySelector('#mErase2').onclick = () => { SAVE = DEFAULT_SAVE(); persist(); closeModal(); renderHub(); toast('Progress erased.'); }; }
+    else { m.querySelector('#mClose').onclick = closeModal; m.querySelector('#mErase').onclick = () => openSettings(true); }
+  });
+}
+$('settingsBtn').addEventListener('click', () => openSettings(false));
+setInterval(() => { if (state === 'title' && hubTab === 'shop' && $('modal').hidden) renderFreeChest(); }, 1000);
+showHub('play');
+Platform.init();
 
 /* ---------------- Input ---------------- */
 window.addEventListener('keydown', e => {
+  if (e.code === 'Escape' && !$('modal').hidden) { closeModal(); return; }
   if (e.repeat && (e.code === 'Space' || e.code === 'KeyQ')) return;
   keys[e.code] = true;
   if (['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.code) && state === 'play') e.preventDefault();
@@ -1530,8 +2031,8 @@ $('pauseBtn').addEventListener('click', () => togglePause());
 $('muteBtn').textContent = SND.muted ? 'OFF' : 'SND';
 $('muteBtn').addEventListener('click', () => { SND.init(); SND.setMuted(!SND.muted); $('muteBtn').textContent = SND.muted ? 'OFF' : 'SND'; });
 $('beginBtn').addEventListener('click', startRun);
-$('againBtn').addEventListener('click', startRun);
 $('menuBtn').addEventListener('click', toTitle);
+$('againBtn').addEventListener('click', startRun);
 $('resumeBtn').addEventListener('click', togglePause);
 $('quitBtn').addEventListener('click', () => { $('pauseScreen').hidden = true; endRun(false); });
 $('chestBtn').addEventListener('click', closeChest);
@@ -1546,6 +2047,6 @@ function frame(now) {
 requestAnimationFrame(frame);
 if (document.fonts && document.fonts.load) { document.fonts.load('700 20px Cinzel').catch(() => {}); }
 // test hook
-window.__AV = { get G() { return G; }, get P() { return P; }, get state() { return state; }, update, startRun, pickChoice, closeChest, set cls(v) { selectedClass = v; } };
+window.__AV = { get G() { return G; }, get P() { return P; }, get state() { return state; }, update, startRun, pickChoice, closeChest, set cls(v) { SAVE.cls = v; }, get SAVE() { return SAVE; }, Platform };
 })();
 </script>

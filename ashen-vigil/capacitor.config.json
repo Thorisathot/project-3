@@ -1,0 +1,8 @@
+{
+  "appId": "com.example.ashenvigil",
+  "appName": "Ashen Vigil",
+  "webDir": "www",
+  "backgroundColor": "#07060a",
+  "android": { "backgroundColor": "#07060a" },
+  "ios": { "backgroundColor": "#07060a", "contentInset": "never" }
+}

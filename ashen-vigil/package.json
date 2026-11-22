@@ -1,0 +1,23 @@
+{
+  "name": "ashen-vigil",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ashen Vigil, a dark-fantasy survivors-style roguelite for Android and iOS.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "sync": "npm run build && npx cap sync",
+    "android": "npm run sync && npx cap open android",
+    "ios": "npm run sync && npx cap open ios"
+  },
+  "dependencies": {
+    "@capacitor-community/admob": "^8.4.2",
+    "@capacitor/android": "^8.6.2",
+    "@capacitor/core": "^8.6.2",
+    "@capacitor/ios": "^8.6.2",
+    "@revenuecat/purchases-capacitor": "^14.1.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.6.2"
+  }
+}

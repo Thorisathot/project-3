@@ -11,6 +11,17 @@ Open `index.html` in a browser to play. No build step is needed. Fonts load from
 - **Esc / P**: pause, **M**: sound
 - Touch: drag anywhere to move, with on-screen Roll and Flask buttons
 
+## Progression and shop
+- **Hub** with Play, Armory, Shop and Altar tabs. Progress saves on the device.
+- **Gold** is earned from kills, bosses and clears. **Sigils** come from bosses and first-time stage clears (and from in-app purchases in the native app).
+- **4 stages** (Undercroft, Sunken Catacombs, Ember Cathedral, Abyss Below), unlocked in order, each tougher and paying more gold.
+- **Chests** (wooden, iron and ember, plus a free one every 4 hours) drop gear for 4 slots in 4 rarities, with odds shown. Gear can be upgraded to +10 or salvaged.
+- **Altar** upgrades are permanent: health, damage, haste, area, speed, gold, embers, rerolls, extra flasks and a once-per-run revive.
+- **Origins** beyond the Knight are unlocked with gold.
+- Camera zoom setting (Close, Normal, Far). Phones default to a closer camera.
+
+See [APP.md](APP.md) for building the Android and iOS apps and setting up purchases and ads.
+
 ## Features
 - 5 origins, 7 armaments, 7 relics, each with 5 levels
 - Reliquaries dropped by elites and bosses evolve a max-level armament paired with its relic (for example Hollow Blade + Strength becomes Kingsbane)
