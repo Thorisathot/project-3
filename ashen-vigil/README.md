@@ -13,6 +13,7 @@ Open `index.html` in a browser to play. No build step is needed. Fonts load from
 
 ## Progression and shop
 - **Hub** with Play, Armory, Shop and Altar tabs. Progress saves on the device.
+- **Player level** grows from every run (kills, time survived, bosses, clears and deeper stages). Each level pays gold, every 5th adds sigils and an Iron Reliquary, and each level adds +1% damage to every run (up to +50%).
 - **Gold** is earned from kills, bosses and clears. **Sigils** come from bosses and first-time stage clears (and from in-app purchases in the native app).
 - **4 stages** (Undercroft, Sunken Catacombs, Ember Cathedral, Abyss Below), unlocked in order, each tougher and paying more gold.
 - **Chests** (wooden, iron and ember, plus a free one every 4 hours) drop gear for 4 slots in 4 rarities, with odds shown. Gear can be upgraded to +10 or salvaged.
