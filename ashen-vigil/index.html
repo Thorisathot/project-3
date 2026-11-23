@@ -627,6 +627,126 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
 @media (max-width:560px){.fc-art{width:90px;height:80px}.fc-art .chestimg{width:84px}.freechest .row,.claim .buy{width:100%;justify-content:center}}
 @media (prefers-reduced-motion:reduce){.cc-rays,.rv-rays::before,.mile.ready::before,.spark,.cc-stage .chestimg,.fc-art .chestimg,.rv-banner,.card,.sheet{animation:none}}
 
+/* ---- header ---- */
+.hub-head{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:10px}
+.hub-head .brand{grid-column:2;text-align:center;display:block}
+.hub-head .purse{justify-self:end}
+.head-left{gap:10px}
+.avatar{width:46px;height:46px;flex:none;padding:0;border-radius:14px;cursor:pointer;overflow:hidden;border:3px solid transparent;
+  background:linear-gradient(180deg,#3a2e5a,#1a1430) padding-box,linear-gradient(160deg,#ffe8a8,#c88a2a,#ffd27a) border-box;box-shadow:0 0 14px -4px rgba(255,170,80,.7)}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:50% 12%;transform:scale(1.5);transform-origin:50% 10%}
+.avatar:hover,.avatar:focus-visible{outline:none;box-shadow:0 0 20px -2px rgba(255,190,90,.9)}
+@media (max-width:560px){
+  .hub-head{grid-template-columns:auto minmax(0,1fr);grid-template-areas:"brand brand" "left purse";row-gap:6px;padding-top:calc(env(safe-area-inset-top,0px) + 8px);padding-bottom:8px}
+  .hub-head .brand{display:block;grid-area:brand;font-size:16px;letter-spacing:.22em}
+  .head-left{grid-area:left}.hub-head .purse{grid-area:purse}
+  .avatar{width:40px;height:40px;border-radius:12px}
+  .plv-meta{display:none}
+}
+/* ---- modal ribbons and heroes ---- */
+.mribbon{align-self:center;margin:-46px auto 2px;padding:9px 48px 11px;font-family:var(--display);font-weight:900;font-size:17px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;color:#3a1606;
+  background:linear-gradient(180deg,#ffe48e,#f0a030 55%,#c86a14);clip-path:polygon(0 0,100% 0,94% 50%,100% 100%,0 100%,6% 50%);text-shadow:0 1px 0 rgba(255,240,200,.7);position:relative;z-index:2}
+.sheet:has(.mribbon)::before{display:none}
+.sheet:has(.mribbon){margin-top:34px}
+.mhero{position:relative;height:170px;display:grid;place-items:center}
+.mhero.small{height:130px}
+.mhero img{position:relative;z-index:1;height:150px;width:auto;object-fit:contain;animation:chestBob 2.8s ease-in-out infinite;filter:drop-shadow(0 10px 16px rgba(0,0,0,.6))}
+.mbig{display:flex;align-items:center;justify-content:center;gap:8px}
+.mbig img{width:34px;height:34px;object-fit:contain}
+.mbig b{font-family:var(--display);font-size:32px;color:#fff}
+.mbig span{color:var(--ash);font-size:18px}
+.urnbar.big{height:14px;border-radius:8px;overflow:hidden;border:2px solid #4a3e70}
+.plv-badge.huge{width:76px;height:76px;position:relative;z-index:1;border-width:3px;box-shadow:0 0 30px rgba(255,150,60,.6)}
+.plv-badge.huge span{font-size:30px}
+.plv-big{border-radius:8px;overflow:hidden;height:14px;border:2px solid #4a3e70}
+.vet{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;background:linear-gradient(120deg,rgba(255,140,60,.22),rgba(30,22,52,.6));border:2px solid rgba(255,170,80,.45)}
+.vet img{width:32px;height:32px;object-fit:contain}
+.vet span{flex:1;font-family:var(--display);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#ffd8a8}
+.vet b{font-family:var(--display);font-size:18px;color:#fff}
+/* reward chips */
+.dicons{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center}
+.rw{display:inline-flex;flex-direction:column;align-items:center;gap:1px}
+.rw img{width:40px;height:40px;object-fit:contain;filter:drop-shadow(0 3px 5px rgba(0,0,0,.6))}
+.rw b{font-family:var(--display);font-size:13px;color:#fff;text-shadow:0 1px 2px #000;line-height:1}
+/* daily */
+.ddays{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.dday{position:relative;align-items:center;gap:6px;padding:10px 6px 12px;border-radius:16px;border:2px solid #4a3e70;background:linear-gradient(180deg,#3a2e5c,#1d1630)}
+.dday.big{grid-column:span 2;background:linear-gradient(180deg,#7a2030,#2a0812);border-color:#ffd27a}
+.dday.big .rw img{width:64px;height:64px}
+.dnum{font-family:var(--display);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#cfc4e4}
+.dday.now{border-color:#ffc04a;background:linear-gradient(180deg,#6a4a20,#2a1a0c);box-shadow:0 0 22px -4px rgba(255,180,80,.9);animation:readyGlow 2s ease-in-out infinite}
+.dday.got{opacity:.55}
+.dday.got span::after{content:none}
+.dcheck{position:absolute;top:-8px;right:-6px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:700;color:#fff;background:#4cae2c;border:2px solid #fff}
+.dnow{position:absolute;top:-10px;left:50%;transform:translateX(-50%);font-style:normal;font-family:var(--display);font-weight:900;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:#e8323c;color:#fff;border:2px solid #fff;white-space:nowrap}
+/* level path track */
+.track{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.trk{display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px 6px;border-radius:14px;border:2px solid #4a3e70;background:linear-gradient(180deg,#30264e,#1d1630)}
+.trk.big{border-color:#ffd27a;background:linear-gradient(180deg,#6a4a20,#2a1a0c)}
+.trk-lv{font-family:var(--display);font-weight:900;font-size:13px;letter-spacing:.08em;color:#ffe2a8}
+.trk .rw img{width:32px;height:32px}
+/* account */
+.acct-top{display:flex;align-items:center;gap:16px}
+.acct-ava{position:relative;width:96px;height:96px;flex:none;border-radius:22px;overflow:visible;border:3px solid transparent;background:radial-gradient(circle at 50% 40%,rgba(255,170,80,.4),#1a1430 70%) padding-box,linear-gradient(160deg,#ffe8a8,#c88a2a,#ffd27a) border-box}
+.acct-ava img{width:100%;height:100%;object-fit:contain}
+.acct-ava .plv-badge{position:absolute;right:-10px;bottom:-10px}
+.acct-id{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.acct-id input{font-family:var(--display);font-weight:700;font-size:20px;color:#fff;background:rgba(0,0,0,.35);border:2px solid #4a3e70;border-radius:12px;padding:8px 12px;width:100%;box-sizing:border-box}
+.acct-id input:focus{outline:none;border-color:#ffc04a}
+.ava-pick{display:flex;gap:8px;flex-wrap:wrap}
+.ava{width:56px;height:56px;padding:0;border-radius:14px;cursor:pointer;border:2px solid #4a3e70;background:#1d1630;overflow:hidden}
+.ava img{width:100%;height:100%;object-fit:contain}
+.ava.on{border-color:#ffc04a;box-shadow:0 0 14px -2px rgba(255,180,80,.8)}
+.ava.locked{opacity:.35;cursor:not-allowed}
+.acct-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.acct-stats div{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px;border-radius:12px;background:linear-gradient(180deg,#2a2143,#1d1630);border:1px solid #3f3460;text-align:center}
+.acct-stats b{font-family:var(--display);font-size:16px;color:#fff}
+.acct-stats span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ash)}
+@media (max-width:560px){.acct-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.track{grid-template-columns:repeat(2,minmax(0,1fr))}.ddays{grid-template-columns:repeat(3,minmax(0,1fr))}.dday.big{grid-column:span 3}.mribbon{font-size:15px;padding:9px 38px 11px}}
+/* ---- talents board ---- */
+.tal-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:center;padding:14px 18px;border-radius:22px;border:3px solid transparent;
+  background:linear-gradient(120deg,#3e2c72,#1a1430 70%) padding-box,linear-gradient(160deg,#ffe8a8,#6a4aa8,#ffe8a8) border-box;box-shadow:0 14px 30px -16px rgba(0,0,0,.9)}
+.tal-ring{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#ffb050 var(--p),#2e2648 0);box-shadow:0 0 18px -4px rgba(255,170,80,.7)}
+.tal-ring div{width:60px;height:60px;border-radius:50%;background:#1a1430;display:grid;place-items:center;text-align:center;line-height:1}
+.tal-ring b{font-family:var(--display);font-size:20px;color:#fff}
+.tal-ring span{font-size:11px;color:var(--ash)}
+.tal-next{display:flex;align-items:center;gap:12px;min-width:0}
+.tal-next img{width:46px;height:46px;object-fit:contain;flex:none;filter:drop-shadow(0 3px 6px rgba(0,0,0,.6))}
+.tal-next .eyebrow{font-size:11px}
+.tal-next h3{font-size:18px;color:#fff}
+.tal-next p{margin:0;font-size:14px;color:var(--ash)}
+#tab-altar .ttree{padding:16px 10px 10px;border-radius:22px;border:2px solid #3f3460;
+  background:radial-gradient(ellipse at 50% 0,rgba(120,90,220,.28),transparent 55%),linear-gradient(180deg,#221a3a,#120e1e);box-shadow:inset 0 0 50px rgba(0,0,0,.55)}
+#tab-altar .ttree::after{display:none}
+#tab-altar .trow::before{top:38px;height:6px;border-radius:3px;background:#2e2648}
+#tab-altar .trow.done::before{background:linear-gradient(90deg,#c86a2a,#ffc060,#c86a2a);box-shadow:0 0 12px rgba(255,170,80,.65)}
+#tab-altar .tlink{top:38px;width:6px;border-radius:3px;background:#2e2648}
+#tab-altar .tlink.r{left:calc(44px + (100% - 44px) * 5 / 8 - 3px)}
+#tab-altar .tlink.l{left:calc(44px + (100% - 44px) / 8 - 3px)}
+#tab-altar .trow.done .tlink{background:#e08a3a;box-shadow:0 0 12px rgba(255,170,80,.65)}
+#tab-altar .tnode{padding-top:13px}
+#tab-altar .tnode.mile{padding-top:9px}
+#tab-altar .tdia{width:56px;height:56px;border-radius:12px;border:3px solid #463a6a;background:linear-gradient(135deg,#3a2e5a,#1a1430);box-shadow:inset 0 2px 0 rgba(255,255,255,.12),0 6px 12px -4px rgba(0,0,0,.7)}
+#tab-altar .tdia img{transform:rotate(-45deg);width:36px;height:36px;object-fit:contain;filter:drop-shadow(0 2px 3px rgba(0,0,0,.6))}
+#tab-altar .tnode.got .tdia{border-color:#ffc04a;background:linear-gradient(135deg,color-mix(in srgb,var(--sc) 55%,#3a2410),#1a1008);box-shadow:0 0 18px -2px rgba(255,180,80,.75),inset 0 2px 0 rgba(255,255,255,.25)}
+#tab-altar .tnode.got::after{content:"\2713";position:absolute;top:6px;left:calc(50% + 16px);width:20px;height:20px;border-radius:50%;background:#4cae2c;color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;border:2px solid #fff;z-index:2}
+#tab-altar .tnode.next .tdia{border-color:#ffb050}
+#tab-altar .tnode.next::before{content:"";position:absolute;left:50%;top:41px;width:130px;height:130px;margin:-65px 0 0 -65px;z-index:-1;pointer-events:none;
+  background:repeating-conic-gradient(rgba(255,190,90,.4) 0 8deg,transparent 8deg 20deg);-webkit-mask:radial-gradient(circle,#000 10%,transparent 60%);mask:radial-gradient(circle,#000 10%,transparent 60%);animation:spin 8s linear infinite}
+#tab-altar .tnode.lock .tdia img{filter:grayscale(1) brightness(.45)}
+#tab-altar .tnode b{padding:2px 9px;border-radius:999px;background:rgba(0,0,0,.45);font-size:12px}
+#tab-altar .tnode.got b{color:#ffe2a8}
+#tab-altar .tnode.mile .tdia{width:64px;height:64px;border-color:#a87a2a;background:linear-gradient(135deg,#7a5418,#2a1808)}
+#tab-altar .tnode.mile .tdia img{width:42px;height:42px}
+#tab-altar .tnode.mile b{background:linear-gradient(180deg,#ffd36a,#e08a24);color:#3a1606;font-size:10px;letter-spacing:.04em}
+#tab-altar .tlv{width:40px;height:40px;margin-top:21px;font-size:15px;border:3px solid #ffe2a0;box-shadow:0 0 14px -2px rgba(255,190,90,.7)}
+#tab-altar .trow.closed .tlv{border-color:#4a3e70}
+@media (max-width:560px){
+  .tal-head{grid-template-columns:auto minmax(0,1fr);}.tal-head .buy{grid-column:1/-1}
+  #tab-altar .tdia{width:46px;height:46px}#tab-altar .tdia img{width:30px;height:30px}#tab-altar .tnode{padding-top:18px}
+  #tab-altar .tnode.mile .tdia{width:52px;height:52px}#tab-altar .tnode.mile .tdia img{width:34px;height:34px}#tab-altar .tnode.mile{padding-top:15px}
+  #tab-altar .tnode.got::after{left:calc(50% + 12px)}#tab-altar .tnode b{font-size:10px;padding:2px 6px}}
+
 @media (max-width:820px){.slots{grid-template-columns:repeat(2,minmax(0,1fr))}.chests{grid-template-columns:1fr}.chestcard{flex-direction:row;flex-wrap:wrap;text-align:left;align-items:center}.chestcard>.ctext{flex:1;min-width:160px}.chestcard .odds{justify-content:flex-start}.brand{letter-spacing:.08em}}
 @media (max-width:400px){.coin{font-size:13px;padding:4px 7px}.brand{font-size:15px}}
 
@@ -663,8 +783,9 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
 <div id="hub" class="overlay hub">
   <div class="hub-wrap">
     <header class="hub-head">
-      <div class="head-left"><div class="brand">ASHEN VIGIL</div>
+      <div class="head-left"><button class="avatar" id="acctBtn" aria-label="Account"><img id="acctImg" alt=""></button>
         <button class="plv" id="plvBtn" aria-label="Player level and rewards"><span class="plv-badge"><span id="plvNum">1</span></span><span class="plv-meta"><span class="plv-label">Level</span><span class="plv-bar"><i id="plvFill" style="width:0"></i></span></span></button></div>
+      <div class="brand">ASHEN VIGIL</div>
       <div class="purse">
         <span class="coin gold" id="goldAmt" title="Gold">0</span>
         <span class="coin gem" id="sigilAmt" title="Sigils">0</span>
@@ -708,7 +829,7 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
       </section>
       <section id="tab-altar" class="tab" hidden>
         <div class="sect-h"><h2>Talents</h2><span class="muted">A path of permanent boons. Each row opens at a player level.</span></div>
-        <div id="talSum" class="tsum"></div>
+        <div id="talSum" class="tal-head"></div>
         <div id="talTree" class="ttree"></div>
       </section>
     </main>
@@ -876,7 +997,7 @@ const IMG_NAMES = [
   ...['blade', 'knives', 'pyre', 'ward', 'lance', 'censer', 'wrath'].map(k => 'icon_w_' + k),
   ...['vitality', 'strength', 'dexterity', 'attunement', 'endurance', 'covetous', 'fortitude'].map(k => 'icon_p_' + k),
   ...['wood', 'iron', 'ember'].flatMap(k => [`chest_${k}_0`, `chest_${k}_1`]),
-  'cur_gold', 'cur_sigil', 'cur_ember',
+  'cur_gold', 'cur_sigil', 'cur_ember', 'prop_urn',
   ...['pillar', 'brazier', 'candles', 'tomb', 'shrine'].map(k => 'prop_' + k),
   ...['undercroft', 'catacombs', 'cathedral', 'abyss'].flatMap(k => ['floor_' + k, 'stage_' + k]),
 ];
@@ -1976,6 +2097,7 @@ function endRun(won) {
   }
   SAVE.best[st.id] = Math.max(SAVE.best[st.id] || 0, Math.floor(G.t));
   SAVE.gold += gold; SAVE.sigils += sig; SAVE.runs++;
+  ensureProfile(); SAVE.stats.kills += G.kills; SAVE.stats.bosses += G.bossesKilled; SAVE.stats.time += Math.floor(G.t); if (won) SAVE.stats.wins++;
   SAVE.urn = Math.min(URN.cap, (SAVE.urn || 0) + Math.floor(G.kills / 120) + G.bossesKilled * 5 + (won ? 15 : 0));
   const xp = runXp(won), lvl = grantPlayerXp(xp); persist();
   G.reward = { gold, sig, xp, lvl };
@@ -3183,6 +3305,8 @@ function talAvailable() {
   return null;
 }
 function talMods(m) { for (let i = 0; i < SAVE.tal; i++) { const n = talNode(i); m[n.k] += n.v; } TAL_MILES.forEach((M, k) => { if (SAVE.talM[k]) M.apply(m); }); }
+const TAL_IMG = { might: 'icon_p_strength', hp: 'icon_p_vitality', cdr: 'icon_p_dexterity', magnet: 'icon_p_covetous', area: 'icon_p_attunement', spd: 'icon_p_endurance', gold: 'cur_gold', xp: 'cur_ember', reroll: 'icon_p_attunement', flask: 'icon_w_pyre', revive: 'icon_w_ward', eternal: 'prop_brazier' };
+const tIcon = k => IMG[TAL_IMG[k]] ? `<img src="${assetUrl(TAL_IMG[k])}" alt="">` : `<svg viewBox="0 0 24 24">${STAT_ICON[k]}</svg>`;
 function renderAltar() {
   const rows = [];
   for (let r = 0; r < TAL_ROWS; r++) {
@@ -3190,16 +3314,23 @@ function renderAltar() {
     let cells = '';
     for (let col = 0; col < 3; col++) {
       const j = r % 2 === 0 ? col : 2 - col, i = r * 3 + j, n = talNode(i), st = i < SAVE.tal ? 'got' : (i === SAVE.tal && open ? 'next' : 'lock');
-      cells += `<button class="tnode ${st}" data-n="${i}" style="--sc:${STAT_COLOR[n.k]}" aria-label="${STAT_SHORT[n.k]} ${valText(n)}"><span class="tdia"><svg viewBox="0 0 24 24">${STAT_ICON[n.k]}</svg></span><b>${valText(n)}</b></button>`;
+      cells += `<button class="tnode ${st}" data-n="${i}" style="--sc:${STAT_COLOR[n.k]}" aria-label="${STAT_SHORT[n.k]} ${valText(n)}"><span class="tdia">${tIcon(n.k)}</span><b>${valText(n)}</b></button>`;
     }
     const mk = TAL_MILES.findIndex(M => M.row === r);
     let mile = '<span></span>';
-    if (mk >= 0) { const M = TAL_MILES[mk], st = SAVE.talM[mk] ? 'got' : done ? 'next' : 'lock'; mile = `<button class="tnode mile ${st}" data-m="${mk}" aria-label="${M.name}"><span class="tdia"><svg viewBox="0 0 24 24">${STAT_ICON[M.icon]}</svg></span><b>${M.name}</b></button>`; }
+    if (mk >= 0) { const M = TAL_MILES[mk], st = SAVE.talM[mk] ? 'got' : done ? 'next' : 'lock'; mile = `<button class="tnode mile ${st}" data-m="${mk}" aria-label="${M.name}"><span class="tdia">${tIcon(M.icon)}</span><b>${M.name}</b></button>`; }
     rows.push(`<div class="trow${open ? '' : ' closed'}${done ? ' done' : ''}"><span class="tlv" title="Player level ${req}">${req}</span>${cells}${mile}${r < TAL_ROWS - 1 ? `<i class="tlink ${r % 2 === 0 ? 'r' : 'l'}"></i>` : ''}</div>`);
   }
   $('talTree').innerHTML = rows.join('');
   const next = SAVE.tal < TAL_ROWS * 3 ? talNode(SAVE.tal) : null;
-  $('talSum').innerHTML = `<span>${SAVE.tal} of ${TAL_ROWS * 3} talents · ${SAVE.talM.filter(Boolean).length} of ${TAL_MILES.length} milestones</span><span class="muted">${next ? (SAVE.plv >= talReq(next.row) ? 'Next: ' + STAT_SHORT[next.k] + ' ' + valText(next) + ' for ' + fmtNum(next.cost) + ' gold' : 'Next talent needs player level ' + talReq(next.row)) : 'Every talent learned.'}</span>`;
+  const nx = talAvailable(), nn = SAVE.tal < TAL_ROWS * 3 ? talNode(SAVE.tal) : null, pct = SAVE.tal / (TAL_ROWS * 3) * 100;
+  let nxt;
+  if (nx && nx.kind === 'm') { const M = TAL_MILES[nx.i]; nxt = { icon: M.icon, title: M.name, sub: M.desc, cost: M.cost }; }
+  else if (nn) nxt = { icon: nn.k, title: STAT_SHORT[nn.k] + ' ' + valText(nn), sub: SAVE.plv >= talReq(nn.row) ? STAT_TEXT[nn.k](nn.v) : 'Needs player level ' + talReq(nn.row), cost: nn.cost };
+  $('talSum').innerHTML = `<div class="tal-ring" style="--p:${pct}%"><div><b>${SAVE.tal}</b><span>of ${TAL_ROWS * 3}</span></div></div>
+    <div class="tal-next">${nxt ? `${tIcon(nxt.icon)}<div><div class="eyebrow">${nx ? 'Next talent' : 'Up next'} \u00b7 ${SAVE.talM.filter(Boolean).length}/${TAL_MILES.length} milestones</div><h3>${nxt.title}</h3><p>${nxt.sub}</p></div>` : '<div><h3>Every talent learned</h3><p>The path is complete.</p></div>'}</div>
+    ${nxt ? `<button class="buy" id="talLearn" ${nx ? '' : 'disabled'}>Learn ${costHTML({ gold: nxt.cost })}</button>` : ''}`;
+  const tl = $('talLearn'); if (tl) tl.onclick = () => { const a = talAvailable(); if (!a) return; const cost = a.kind === 'm' ? TAL_MILES[a.i].cost : talNode(a.i).cost; if (!pay({ gold: cost })) return; if (a.kind === 'm') SAVE.talM[a.i] = true; else SAVE.tal++; persist(); renderHub(); SND.init(); SND.level(); toast('Talent learned.'); };
   $('talTree').querySelectorAll('[data-n]').forEach(b => b.onclick = () => openTalent('n', +b.dataset.n));
   $('talTree').querySelectorAll('[data-m]').forEach(b => b.onclick = () => openTalent('m', +b.dataset.m));
 }
@@ -3282,6 +3413,7 @@ $('modal').addEventListener('click', e => { if (e.target === $('modal')) closeMo
 function showHub(tab) { state = 'title'; if (tab) hubTab = tab; $('hub').hidden = false; renderHub(); hubTutorial(); if (SAVE.refundNote) { toast('The Altar became a talent path. ' + fmtNum(SAVE.refundNote) + ' gold refunded.'); delete SAVE.refundNote; persist(); } }
 function renderHub() {
   $('goldAmt').textContent = fmtNum(SAVE.gold); $('sigilAmt').textContent = fmtNum(SAVE.sigils);
+  renderAccountBtn();
   $('plvNum').textContent = SAVE.plv; $('plvFill').style.width = (SAVE.pxp / pxpNext(SAVE.plv) * 100) + '%';
   const freeReady = Date.now() >= SAVE.freeChestAt || SAVE.ironClaims > 0;
   document.querySelectorAll('.tabbar button').forEach(b => {
@@ -3348,7 +3480,7 @@ function sideBtn(id, img, label, badge) {
 }
 function renderSide() {
   const freeReady = Date.now() >= SAVE.freeChestAt, claims = claimsCount();
-  $('sideL').innerHTML = sideBtn('sbDaily', 'chest_wood_0', 'Daily', dailyReady()) + sideBtn('sbUrn', 'cur_sigil', 'Urn ' + Math.round(SAVE.urn / URN.cap * 100) + '%', SAVE.urn >= URN.cap);
+  $('sideL').innerHTML = sideBtn('sbDaily', 'chest_wood_0', 'Daily', dailyReady()) + sideBtn('sbUrn', 'prop_urn', 'Urn ' + Math.round(SAVE.urn / URN.cap * 100) + '%', SAVE.urn >= URN.cap);
   $('sideR').innerHTML = sideBtn('sbPath', 'cur_ember', 'Level ' + SAVE.plv, false) + sideBtn('sbFree', 'chest_iron_0', 'Chests', claims ? claims : freeReady) + sideBtn('sbTal', 'icon_p_attunement', 'Talents', talAvailable() != null);
   $('sbDaily').onclick = openDaily; $('sbUrn').onclick = openUrn; $('sbPath').onclick = openPath;
   $('sbFree').onclick = () => { hubTab = 'shop'; renderHub(); };
@@ -3378,28 +3510,6 @@ function renderStageMiles() {
     if (!s.reached) { toast((s.m.t === 'clear' ? 'Defeat the third boss of ' + st.name : 'Survive ' + s.m.label + ' in ' + st.name) + ' to earn ' + rewardLine(s.m.give(st)) + '.'); return; }
     const r = s.m.give(st); SAVE.miles[st.id] = SAVE.miles[st.id] || [false, false, false]; SAVE.miles[st.id][k] = true;
     giveReward(r); persist(); renderHub(); SND.init(); SND.chest(); toast('Claimed ' + rewardLine(r) + '.');
-  });
-}
-function openDaily() {
-  const ready = dailyReady(), shown = ready ? SAVE.daily.n % 7 : (SAVE.daily.n - 1 + 7) % 7;
-  const days = DAILY.map((d, k) => `<div class="dday ${k < shown || (k === shown && !ready) ? 'got' : k === shown ? 'now' : ''}"><span>Day ${k + 1}</span><b>${rewardLine(d)}</b></div>`).join('');
-  openModal(`<div class="eyebrow">Daily vigil</div><h2>Day ${shown + 1} of 7</h2><div class="ddays">${days}</div>
-    <p class="muted">Claim once a day. Missing a day never resets your progress.</p>
-    <div class="row">${ready ? '<button class="buy" id="dailyBtn">Claim ' + rewardLine(DAILY[shown]) + '</button>' : ''}<button class="btn ghost" id="mClose">Close</button></div>`, m => {
-    m.querySelector('#mClose').onclick = closeModal;
-    const b = m.querySelector('#dailyBtn');
-    if (b) b.onclick = () => { if (!dailyReady()) return; const r = DAILY[SAVE.daily.n % 7]; giveReward(r); SAVE.daily.n++; SAVE.daily.last = todayKey(); persist(); closeModal(); renderHub(); SND.init(); SND.chest(); toast('Claimed ' + rewardLine(r) + '.'); };
-  }, true);
-}
-function openUrn() {
-  const pr = Platform.prices[URN.sku], can = Platform.canBuy() && pr;
-  openModal(`<div class="eyebrow">Ember urn</div><h2>${fmtNum(SAVE.urn)} of ${URN.cap} sigils</h2>
-    <div class="urnbar"><i style="width:${Math.min(100, SAVE.urn / URN.cap * 100)}%"></i></div>
-    <p class="muted">Every run pours sigils into the urn: some for kills, more for bosses and victories. Break it open to claim them all at once.</p>
-    <div class="row">${can ? `<button class="buy" id="urnBtn" ${SAVE.urn ? '' : 'disabled'}>Break it open · ${pr.priceString}</button>` : '<span class="note" style="font-size:15px">Break it open in the Android and iOS app.</span>'}<button class="btn ghost" id="mClose">Close</button></div>`, m => {
-    m.querySelector('#mClose').onclick = closeModal;
-    const ub = m.querySelector('#urnBtn');
-    if (ub) ub.onclick = async () => { ub.disabled = true; try { await Platform.purchase(URN.sku); const n = SAVE.urn; SAVE.sigils += n; SAVE.urn = 0; persist(); closeModal(); renderHub(); toast(fmtNum(n) + ' sigils added.'); } catch (e) { toast(e && e.userCancelled ? 'Purchase cancelled.' : 'Purchase not completed.'); ub.disabled = false; } };
   });
 }
 function renderOrigins() {
@@ -3538,17 +3648,83 @@ const TAB_ICONS = {
   shop: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M3.5 11h17v9h-17z"/><path d="M3.5 11a8.5 6 0 0 1 17 0"/><path d="M10.5 11v4h3v-4M7 8.2V20M17 8.2V20"/></svg>',
   altar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M9.5 10h5v8h-5z"/><path d="M12 3.2c1.4 2 1.6 3.4 0 5.2-1.6-1.8-1.4-3.2 0-5.2z"/><path d="M4 21h16M6 18h12"/></svg>',
 };
+/* ---------------- Reward icons and main-page pop-ups ---------------- */
+const rwChip = (src, label, title) => `<span class="rw" title="${title || ''}"><img src="${src}" alt=""><b>${label}</b></span>`;
+function rewardIcons(r) {
+  const out = [];
+  if (r.gold) out.push(rwChip(sideSrc('cur_gold'), fmtNum(r.gold), r.gold + ' gold'));
+  if (r.sigils) out.push(rwChip(sideSrc('cur_sigil'), r.sigils, r.sigils + ' sigils'));
+  const cl = Object.assign({}, r.claims || {}); if (r.iron) cl.iron = (cl.iron || 0) + r.iron;
+  for (const k in cl) out.push(rwChip(chestArt(k, false), cl[k] > 1 ? '×' + cl[k] : '', CHEST_NAME(k)));
+  return out.join('');
+}
+function openDaily() {
+  const ready = dailyReady(), shown = ready ? SAVE.daily.n % 7 : (SAVE.daily.n - 1 + 7) % 7;
+  const days = DAILY.map((d, k) => { const st = k < shown || (k === shown && !ready) ? 'got' : k === shown ? 'now' : '';
+    return `<div class="dday ${st}${k === 6 ? ' big' : ''}"><span class="dnum">Day ${k + 1}</span><div class="dicons">${rewardIcons(d)}</div>${st === 'got' ? '<i class="dcheck">✓</i>' : ''}${st === 'now' ? '<i class="dnow">Today</i>' : ''}</div>`; }).join('');
+  openModal(`<div class="mribbon">Daily Vigil</div><p class="muted" style="text-align:center;margin:0">Claim once a day. Missing a day never resets your progress.</p>
+    <div class="ddays">${days}</div>
+    <div class="row" style="justify-content:center">${ready ? '<button class="buy" id="dailyBtn">Claim today’s reward</button>' : '<span class="muted">Come back tomorrow for day ' + ((shown + 1) % 7 + 1) + '.</span>'}<button class="btn ghost" id="mClose">Close</button></div>`, m => {
+    m.querySelector('#mClose').onclick = closeModal;
+    const b = m.querySelector('#dailyBtn');
+    if (b) b.onclick = () => { if (!dailyReady()) return; const r = DAILY[SAVE.daily.n % 7]; giveReward(r); SAVE.daily.n++; SAVE.daily.last = todayKey(); persist(); closeModal(); renderHub(); SND.init(); SND.chest(); toast('Claimed ' + rewardLine(r) + '.'); };
+  }, true);
+}
+function openUrn() {
+  const pr = Platform.prices[URN.sku], can = Platform.canBuy() && pr, k = Math.min(1, SAVE.urn / URN.cap);
+  openModal(`<div class="mribbon">Ember Urn</div>
+    <div class="mhero"><div class="cc-rays" style="--cG:180,120,255"></div>${sparks(8)}<img src="${sideSrc('prop_urn')}" alt=""></div>
+    <div class="mbig"><img src="${sideSrc('cur_sigil')}" alt=""><b>${fmtNum(SAVE.urn)}</b><span>/ ${URN.cap}</span></div>
+    <div class="urnbar big"><i style="width:${k * 100}%"></i></div>
+    <p class="muted" style="text-align:center;margin:0">Every run pours sigils into the urn: some for the dead you slay, more for bosses and victories. Break it to claim them all at once.</p>
+    <div class="row" style="justify-content:center">${can ? `<button class="buy" id="urnBtn" ${SAVE.urn ? '' : 'disabled'}>Break it open · ${pr.priceString}</button>` : '<span class="note" style="font-size:15px">Break it open in the Android and iOS app.</span>'}<button class="btn ghost" id="mClose">Close</button></div>`, m => {
+    m.querySelector('#mClose').onclick = closeModal;
+    const ub = m.querySelector('#urnBtn');
+    if (ub) ub.onclick = async () => { ub.disabled = true; try { await Platform.purchase(URN.sku); const n = SAVE.urn; SAVE.sigils += n; SAVE.urn = 0; persist(); closeModal(); renderHub(); toast(fmtNum(n) + ' sigils added.'); } catch (e) { toast(e && e.userCancelled ? 'Purchase cancelled.' : 'Purchase not completed.'); ub.disabled = false; } };
+  });
+}
 function openPath() {
   const l = SAVE.plv, need = pxpNext(l), rows = [];
-  for (let i = l + 1; i <= l + 6; i++) rows.push(`<li><b>Level ${i}</b><span>${rewardText(levelReward(i))}</span></li>`);
-  openModal(`<div class="eyebrow">Path of the Vigil</div><h2>Player level ${l}</h2>
+  for (let i = l + 1; i <= l + 6; i++) { const r = levelReward(i), big = r.iron || r.sigils; rows.push(`<div class="trk${big ? ' big' : ''}"><span class="trk-lv">Lv ${i}</span><div class="dicons">${rewardIcons(r)}</div></div>`); }
+  openModal(`<div class="mribbon">Path of the Vigil</div>
+    <div class="mhero small"><div class="cc-rays"></div><span class="plv-badge huge"><span>${l}</span></span></div>
     <div class="plv-big"><i style="width:${SAVE.pxp / need * 100}%"></i></div>
-    <p class="muted">${fmtNum(SAVE.pxp)} / ${fmtNum(need)} XP. Every run earns XP for kills, time survived and bosses felled, with a bonus for clearing a stage and for deeper stages.</p>
-    <p style="margin:0">Veteran: <b style="color:var(--gold)">+${Math.round(veteranBonus() * 100)}% damage</b> in every run. Each level adds 1%, up to 50%.</p>
-    <div class="eyebrow">Next rewards</div><ul class="path">${rows.join('')}</ul>
-    <div class="row"><button class="btn ghost" id="mClose">Close</button></div>`, m => { m.querySelector('#mClose').onclick = closeModal; });
+    <p class="muted" style="text-align:center;margin:0">${fmtNum(SAVE.pxp)} / ${fmtNum(need)} XP to level ${l + 1}</p>
+    <div class="vet"><img src="${sideSrc('icon_p_strength')}" alt=""><span>Veteran bonus</span><b>+${Math.round(veteranBonus() * 100)}% damage</b></div>
+    <div class="eyebrow" style="text-align:center">Coming rewards</div><div class="track">${rows.join('')}</div>
+    <p class="muted" style="font-size:14px;text-align:center;margin:0">XP comes from every run: kills, time survived, bosses and clears.</p>
+    <div class="row" style="justify-content:center"><button class="btn ghost" id="mClose">Close</button></div>`, m => { m.querySelector('#mClose').onclick = closeModal; });
 }
+/* ---------------- Account ---------------- */
+function ensureProfile() {
+  if (!SAVE.profile) SAVE.profile = { name: 'Pilgrim', avatar: SAVE.cls || 'knight' };
+  if (!SAVE.stats) SAVE.stats = { kills: 0, bosses: 0, time: 0, wins: 0 };
+  if (!SAVE.pid) { const a = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; let id = ''; for (let i = 0; i < 8; i++) id += a[Math.floor(Math.random() * a.length)]; SAVE.pid = id.slice(0, 4) + '-' + id.slice(4); }
+}
+function openAccount() {
+  ensureProfile(); persist();
+  const st = SAVE.stats, P_ = SAVE.profile;
+  const bestStage = STAGES.slice(0, SAVE.unlocked).map(s => s).pop();
+  const tiles = [['Player level', SAVE.plv], ['Vigils', fmtNum(SAVE.runs)], ['Victories', fmtNum(st.wins)], ['Dead slain', fmtNum(st.kills)], ['Bosses felled', fmtNum(st.bosses)], ['Time kept', Math.floor(st.time / 3600) + 'h ' + Math.floor(st.time % 3600 / 60) + 'm'], ['Deepest stage', bestStage.name], ['Gear owned', SAVE.items.length]];
+  openModal(`<div class="mribbon">Account</div>
+    <div class="acct-top"><div class="acct-ava"><img src="${portrait(P_.avatar)}" alt=""><span class="plv-badge"><span>${SAVE.plv}</span></span></div>
+      <div class="acct-id"><label for="acctName" class="eyebrow">Name</label><input id="acctName" maxlength="16" value="${P_.name.replace(/"/g, '&quot;')}" autocomplete="off"><span class="muted" style="font-size:14px">Player ID ${SAVE.pid}</span></div></div>
+    <div class="eyebrow">Portrait</div>
+    <div class="ava-pick">${Object.keys(CLASSES).map(id => { const own = SAVE.origins.includes(id); return `<button class="ava${id === P_.avatar ? ' on' : ''}${own ? '' : ' locked'}" data-a="${id}" ${own ? '' : 'disabled'} aria-label="${CLASSES[id].name}"><img src="${portrait(id)}" alt=""></button>`; }).join('')}</div>
+    <div class="acct-stats">${tiles.map(([k, v]) => `<div><b>${v}</b><span>${k}</span></div>`).join('')}</div>
+    <p class="note" style="font-size:14px;margin:0">Progress is saved on this device. Cloud saves arrive with the Android and iOS app.</p>
+    <div class="row" style="justify-content:center"><button class="btn ghost" id="mSettings">Settings</button><button class="btn" id="mClose" style="padding:12px 26px;font-size:14px">Done</button></div>`, m => {
+    const inp = m.querySelector('#acctName');
+    inp.oninput = () => { SAVE.profile.name = inp.value.trim().slice(0, 16) || 'Pilgrim'; persist(); renderAccountBtn(); };
+    m.querySelectorAll('[data-a]').forEach(b => b.onclick = () => { SAVE.profile.avatar = b.dataset.a; persist(); renderAccountBtn(); openAccount(); });
+    m.querySelector('#mSettings').onclick = () => openSettings(false);
+    m.querySelector('#mClose').onclick = closeModal;
+  });
+}
+function renderAccountBtn() { ensureProfile(); $('acctImg').src = portrait(SAVE.profile.avatar); $('acctBtn').setAttribute('aria-label', 'Account: ' + SAVE.profile.name); }
+
 $('plvBtn').addEventListener('click', openPath);
+$('acctBtn').addEventListener('click', openAccount);
 function renderPlvPanel(rw) {
   const { from, got } = rw.lvl, endFrac = SAVE.pxp / pxpNext(SAVE.plv), startFrac = got.levels ? 0 : from.xp / pxpNext(from.l);
   $('plvPanel').innerHTML = `<div class="plv-row"><span class="plv-badge"><span>${SAVE.plv}</span></span>
