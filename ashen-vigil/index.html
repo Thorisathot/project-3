@@ -752,6 +752,62 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
 
 @media (max-width:820px){.classes{grid-template-columns:repeat(2,minmax(0,1fr))}.cards{grid-template-columns:1fr}.card{min-height:0}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (prefers-reduced-motion:reduce){.title{animation:none}.death{animation:none}}
+/* pause menu */
+.pausepanel{max-width:none;background:none;border:0;box-shadow:none;padding:0}
+.pmodal{position:relative;width:min(560px,calc(100vw - 32px));margin:40px auto 24px;padding:46px 22px 22px;border-radius:22px;border:2px solid #6a54b8;background:linear-gradient(180deg,#2e2448,#1a1430 70%);box-shadow:0 0 0 4px rgba(20,14,36,.8),0 24px 60px -10px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.12);display:flex;flex-direction:column;gap:14px;box-sizing:border-box}
+#pauseScreen .pribbon{position:absolute;top:-26px;left:50%;transform:translateX(-50%);margin:0;font-size:clamp(26px,6vw,38px);letter-spacing:.16em;white-space:nowrap}
+.pstage{text-align:center;margin:0}
+.pstats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.pstat{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px;border-radius:14px;background:rgba(10,6,20,.5);border:1px solid rgba(255,255,255,.08)}
+.pstat img{width:28px;height:28px;object-fit:contain}
+.pstat b{font-family:var(--display);font-size:18px;color:#f1e7d3}
+.pstat span{font-family:var(--display);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#9a90b8}
+.pgroup{display:flex;flex-direction:column;gap:8px}
+.ph{font-family:var(--display);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#ffc04a;text-align:center}
+.pslots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.pslot{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:14px;min-width:0;border:2px solid color-mix(in srgb,var(--wc,#4a3e70) 50%,#3f3460);background:linear-gradient(160deg,color-mix(in srgb,var(--wc,#4a3e70) 18%,#241a3a),#18122a 75%)}
+.pslot img{width:40px;height:40px;flex:none;object-fit:contain;filter:drop-shadow(0 3px 6px rgba(0,0,0,.6))}
+.pslot>div{display:flex;flex-direction:column;gap:3px;min-width:0;text-align:left}
+.pslot b{font-family:var(--display);font-size:13px;color:#f1e7d3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pslot small{font-size:12px;color:#a89ec0;line-height:1.2}
+.pslot.evo{border-color:#ffd27a;box-shadow:0 0 16px -6px #ffd27a}
+.pslot.empty{border-style:dashed;border-color:#3f3460;background:rgba(10,6,20,.35)}
+.pslot.empty b{color:#7a7096}
+.pq{width:40px;height:40px;flex:none;display:grid;place-items:center;border-radius:12px;border:1px dashed #4a3e70;color:#6a5e90;font-family:var(--display);font-size:22px}
+.pips{display:flex;gap:3px}.pips u{width:9px;height:4px;border-radius:2px;background:rgba(255,255,255,.14)}.pips u.on{background:var(--wc)}
+.pevo{font-style:normal;font-family:var(--display);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#ffd27a}
+.pbtns{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.pbtns>.btn{font-size:18px;padding:14px}
+.prow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pquit{color:#ff9a8a}.pquit.armed{background:linear-gradient(180deg,#e04848,#9a1a24);color:#fff;border-color:#ff8a8a}
+@media (max-width:640px){.pmodal{padding:42px 14px 16px;gap:12px}.pstats{gap:6px}.pstat b{font-size:15px}.pslots{grid-template-columns:1fr}.pslot small{display:none}}
+/* touch action buttons */
+.tbtn.act{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:0;overflow:visible;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+.tbtn.act[hidden]{display:none!important}
+.tbtn.act svg{width:46%;height:46%;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 2px 2px rgba(0,0,0,.45))}
+.tbtn.act .al{font-family:var(--display);font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.9}
+.tbtn.act::before{content:"";position:absolute;inset:-6px;border-radius:50%;background:conic-gradient(rgba(10,6,20,.72) calc(var(--cd,0) * 360deg),transparent 0);-webkit-mask:radial-gradient(circle,transparent 62%,#000 63%);mask:radial-gradient(circle,transparent 62%,#000 63%);pointer-events:none}
+.tbtn.act::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:3px solid rgba(255,255,255,.16);pointer-events:none}
+.tbtn.act.cool{filter:saturate(.45) brightness(.8)}
+.tbtn.act.hit{animation:tpress .18s ease-out}
+@keyframes tpress{0%{transform:scale(.86)}100%{transform:scale(1)}}
+#rollBtn.act{width:88px;height:88px;right:calc(env(safe-area-inset-right,0px) + 22px);bottom:calc(env(safe-area-inset-bottom,0px) + 34px);background:radial-gradient(circle at 38% 30%,#9a86ff,#5a42c8 45%,#2a1c6a);border:3px solid #c8baff;color:#fff;box-shadow:0 6px 0 #1a1048,0 10px 24px -6px rgba(110,80,255,.7),inset 0 2px 0 rgba(255,255,255,.35)}
+#parryBtn.act{width:70px;height:70px;right:calc(env(safe-area-inset-right,0px) + 116px);bottom:calc(env(safe-area-inset-bottom,0px) + 118px);background:radial-gradient(circle at 38% 30%,#fff2c0,#f0b440 45%,#9a5a10);border:3px solid #fff0c8;color:#3a1a04;box-shadow:0 5px 0 #5a3008,0 10px 22px -6px rgba(255,180,60,.7),inset 0 2px 0 rgba(255,255,255,.5)}
+#flaskBtn.act{width:66px;height:66px;right:calc(env(safe-area-inset-right,0px) + 32px);bottom:calc(env(safe-area-inset-bottom,0px) + 140px);background:radial-gradient(circle at 38% 30%,#ffb87a,#e0541c 50%,#7a1a06);border:3px solid #ffd0a0;color:#fff;box-shadow:0 5px 0 #4a1004,0 10px 22px -6px rgba(255,110,40,.7),inset 0 2px 0 rgba(255,255,255,.4)}
+#flaskBtn .cnt{position:absolute;top:-6px;right:-6px;min-width:24px;height:24px;border-radius:12px;display:grid;place-items:center;background:#fff;color:#a8300c;font-family:var(--display);font-size:13px;font-weight:900;border:2px solid #a8300c;box-sizing:border-box;padding:0 5px}
+#flaskBtn.empty{filter:grayscale(.9) brightness(.6)}#flaskBtn.empty .cnt{background:#555;color:#ddd;border-color:#333}
+/* hard mode toggle */
+.hardtog{display:flex;align-items:center;gap:12px;margin:10px auto 0;padding:8px 14px 8px 10px;border-radius:14px;border:2px solid #4a3e70;background:rgba(20,14,36,.75);color:#d8cfe8;cursor:pointer;font:inherit;text-align:left;max-width:380px}
+.hardtog .hk{width:42px;height:24px;flex:none;border-radius:12px;background:#2a2240;border:2px solid #5a4e80;position:relative;transition:background .2s}
+.hardtog .hk i{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#8a7fa8;transition:left .2s,background .2s}
+.hardtog .ht{display:flex;flex-direction:column}
+.hardtog b{font-family:var(--display);font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.hardtog small{font-size:13px;color:#a89ec0}
+.hardtog[aria-pressed="true"]{border-color:#ff5a4a;background:linear-gradient(160deg,rgba(200,30,40,.35),rgba(30,10,20,.85));box-shadow:0 0 20px -6px rgba(255,60,60,.8)}
+.hardtog[aria-pressed="true"] .hk{background:#c8202c;border-color:#ff8a8a}.hardtog[aria-pressed="true"] .hk i{left:20px;background:#fff}
+.hardtog[aria-pressed="true"] b{color:#ff9a8a}
+.hardtog[hidden]{display:none}
+@media (max-width:640px){.hardtog{margin-top:6px;padding:6px 12px 6px 8px}.hardtog small{display:none}.hardtog .hk{width:36px;height:20px}.hardtog .hk i{width:12px;height:12px}.hardtog[aria-pressed="true"] .hk i{left:18px}.stagewpn em{display:none}.stagewpn{padding:6px 12px;margin-bottom:6px}.stagewpn img{width:36px;height:36px}}
 /* evolution hints on boon cards */
 .evohint{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:auto;padding:6px 10px;border-radius:10px;background:rgba(10,6,20,.45);border:1px solid rgba(255,255,255,.08);font-family:var(--display);font-size:11px;letter-spacing:.08em;color:#b8aed0}
 .evohint img{width:26px;height:26px;object-fit:contain;flex:none}
@@ -807,9 +863,9 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
 <canvas id="game" aria-label="Game view"></canvas>
 <button id="muteBtn" class="tbtn" hidden aria-label="Toggle sound">SND</button>
 <button id="pauseBtn" class="tbtn" hidden aria-label="Pause">II</button>
-<button id="flaskBtn" class="tbtn touchbtn" hidden aria-label="Drink flask">FLASK</button>
-<button id="rollBtn" class="tbtn touchbtn" hidden aria-label="Roll">ROLL</button>
-<button id="parryBtn" class="tbtn touchbtn" hidden aria-label="Parry">PARRY</button>
+<button id="flaskBtn" class="tbtn touchbtn act" hidden aria-label="Drink flask"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 2.8h5M10.2 2.8v5.3L5.6 16a3.2 3.2 0 0 0 2.8 4.9h7.2a3.2 3.2 0 0 0 2.8-4.9l-4.6-7.9V2.8"/><path d="M7.4 14.5h9.2" opacity=".75"/></svg><span class="al">Flask</span><b class="cnt" id="flaskCnt">3</b></button>
+<button id="rollBtn" class="tbtn touchbtn act" hidden aria-label="Roll"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15.5a7.5 7.5 0 0 1 13.6-6.2"/><path d="M19.4 4.6v4.9h-4.9"/><path d="M3 19.5h6M6 22h5" opacity=".6"/></svg><span class="al">Roll</span></button>
+<button id="parryBtn" class="tbtn touchbtn act" hidden aria-label="Parry"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l7.2 2.9v5.6c0 4.8-3.3 8.1-7.2 10-3.9-1.9-7.2-5.2-7.2-10V5.7z"/><path d="M12 7v9M8.5 11.5h7" opacity=".75"/></svg><span class="al">Parry</span></button>
 <div id="coach" class="coach" hidden role="status"><span class="coach-key" id="coachKey"></span><span id="coachText"></span></div>
 <div id="banner"><h2 id="bannerTitle"></h2><p id="bannerSub"></p></div>
 
@@ -852,6 +908,7 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
           <div id="stageMiles"></div>
           <div class="startrow"><button class="arrow prev" id="stPrev" aria-label="Previous stage"></button><button id="heroBegin" class="btn">Descend</button><button class="arrow next" id="stNext" aria-label="Next stage"></button></div>
           <div id="record" class="record"></div>
+          <button id="hardBtn" class="hardtog" aria-pressed="false"><span class="hk"><i></i></span><span class="ht"><b>Hard mode</b><small>No flask refills · roll every 2s · +50% rewards</small></span></button>
         </div>
       </section>
       <section id="tab-armory" class="tab" hidden>
@@ -913,13 +970,17 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
 </div>
 
 <div id="pauseScreen" class="overlay" hidden>
-  <div class="panel">
-    <div class="eyebrow">The vigil waits</div>
-    <h2 style="font-size:clamp(32px,6vw,56px);letter-spacing:.12em">Paused</h2>
-    <div id="pauseBuild" class="build"></div>
-    <div class="row">
-      <button id="resumeBtn" class="btn">Resume</button>
-      <button id="quitBtn" class="btn ghost">Abandon run</button>
+  <div class="panel pausepanel">
+    <div class="pmodal">
+      <h2 class="pribbon">Paused</h2>
+      <div class="eyebrow pstage" id="pauseStage"></div>
+      <div id="pauseStats" class="pstats"></div>
+      <div class="pgroup"><div class="ph">Armaments</div><div id="pauseW" class="pslots"></div></div>
+      <div class="pgroup"><div class="ph">Relics</div><div id="pauseR" class="pslots"></div></div>
+      <div class="pbtns">
+        <button id="resumeBtn" class="btn">Resume</button>
+        <div class="prow"><button id="pSound" class="btn ghost">Sound on</button><button id="quitBtn" class="btn ghost pquit">Abandon run</button></div>
+      </div>
     </div>
   </div>
 </div>
@@ -1367,7 +1428,10 @@ const BOSSES = [
   { id: 'mother', name: 'The Rotting Mother', sub: 'The bell tolls twice. Something stirs in the filth.', hp: 8000, r: 42, spd: 38, dmg: 26, cd: 2.6, attacks: ['spiral', 'summon', 'ring', 'slam'], chargeSpd: 500, color: '#5b6a3a' },
   { id: 'warden', name: 'The Last Warden', sub: 'The third bell. The flame’s keeper comes to end it.', hp: 22000, r: 30, spd: 84, dmg: 32, cd: 1.9, attacks: ['charge', 'charge', 'spiral', 'ring', 'slam', 'summon'], chargeSpd: 780, color: '#2a2a33' },
 ];
-const BOSS_TIMES = [300, 600, 900];
+const BOSS_TIMES = [200, 400, 600];
+// runs last 10 minutes; difficulty curves were tuned for 15, so they read time at 1.5x
+const TSCALE = 1.5, MAX_W = 4, MAX_R = 4;
+const HORDE_TIMES = [150, 470], HORDE_DUR = 22;
 
 /* ---------------- Stages ---------------- */
 const STAGES = [
@@ -1483,7 +1547,7 @@ const pxpNext = l => 120 + (l - 1) * 70 + Math.floor(Math.pow(l - 1, 1.7) * 12);
 function levelReward(l) { const r = { gold: 100 + l * 30, sigils: 0, iron: 0 }; if (l % 5 === 0) { r.sigils += 25; r.iron = 1; } if (l % 10 === 0) r.sigils += 25; return r; }
 const veteranBonus = () => Math.min(0.5, (SAVE.plv - 1) * 0.01);
 function rewardText(r) { return [r.gold ? fmtNum(r.gold) + ' gold' : '', r.sigils ? r.sigils + ' sigils' : '', r.iron ? (r.iron > 1 ? r.iron + ' Iron Reliquaries' : 'an Iron Reliquary') : ''].filter(Boolean).join(', '); }
-function runXp(won) { return Math.floor((G.kills * 0.08 + G.t * 0.6 + G.bossesKilled * 120 + (won ? 400 : 0)) * (1 + G.stage * 0.3)); }
+function runXp(won) { return Math.floor((G.kills * 0.08 + G.t * 0.9 + G.bossesKilled * 120 + (won ? 400 : 0)) * (1 + G.stage * 0.3) * (G.hard ? 1.5 : 1)); }
 function grantPlayerXp(x) {
   const from = { l: SAVE.plv, xp: SAVE.pxp }, got = { gold: 0, sigils: 0, iron: 0, levels: 0 };
   SAVE.pxp += x;
@@ -1551,12 +1615,14 @@ function newRun(cls) {
     moving: false, walkT: 0, flasks: 3, maxFlasks: 3, drink: 0, lv: 1, xp: 0, xpNext: 6, weapons: [], passives: {},
     might: 1, cdr: 1, area: 1, spdMul: 1, magnet: 60, xpMul: 1, armor: 0, regen: 0, hurtT: 0 };
   G = { t: 0, kills: 0, enemies: [], proj: [], eproj: [], gems: [], fx: [], texts: [], zones: [], hazards: [], chests: [], shrines: [], items: [], parts: [],
-    spawnAcc: 0, nextElite: 60, bossIdx: 0, boss: null, bossesKilled: 0, swarms: [150, 390, 510, 750, 840], shrineT: 40, pendingLevels: 0,
+    spawnAcc: 0, nextElite: 60, bossIdx: 0, boss: null, bossesKilled: 0, swarms: [100, 340, 540], hordes: HORDE_TIMES.slice(), horde: null, hordesBroken: 0, shrineT: 35, pendingLevels: 0,
     cam: { x: 0, y: 0, shake: 0 }, slow: 1, winT: 0, grid: new Map(), dmgDealt: 0 };
   G.decals = []; G.flash = 0; P.swingT = 0; P.ghost = null; P.parry = 0; P.parryCd = 0; G.hitstop = 0; G.flameOut = false;
   G.flameF = { x: 0, y: -110, fuel: 100, t: 0 };
   G.stage = SAVE.stage; G.meta = metaMods(); G.gold = 0; G.sigils = 0; G.revives = G.meta.revive; G.rerolls = G.meta.reroll;
-  G.goldMul = (1 + G.meta.gold) * STAGES[G.stage].gold;
+  G.hard = !!SAVE.hard;
+  G.goldMul = (1 + G.meta.gold) * STAGES[G.stage].gold * (G.hard ? 1.5 : 1);
+  P.rollCd = 0;
   const wi = itemById(SAVE.equipped.wings), fi = itemById(SAVE.equipped.familiar);
   G.wingsR = wi ? wi.r : -1; G.famR = fi ? fi.r : -1; G.fam = fi ? { x: 0, y: -30, t: 0, cd: 1 } : null;
   P.maxFlasks = 3 + G.meta.flasks; P.flasks = P.maxFlasks;
@@ -1627,7 +1693,7 @@ function randomVisibleEnemies(n) {
 function damageEnemy(e, dmg, kx = 0, ky = 0) {
   if (e.dead) return;
   const crit = Math.random() < 0.08 + (P.crit || 0);
-  dmg *= P.might * (0.9 + Math.random() * 0.2) * (crit ? 1.8 : 1) * (e.broken > 0 ? 2.5 : 1) * (e.vuln > G.t ? 1.5 : 1);
+  dmg *= P.might * (0.9 + Math.random() * 0.2) * (crit ? 1.8 : 1) * (e.broken > 0 ? 2.5 : 1) * (e.vuln > G.t ? 1.5 : 1) * 1.3;
   e.hp -= dmg; e.flash = 0.08; G.dmgDealt += dmg;
   if (!e.boss) { const m = 1 / e.mass; e.kbx += kx * m; e.kby += ky * m; }
   if (G.texts.length < 90) G.texts.push({ x: e.x + rand(-6, 6), y: e.y - e.r - 6, v: Math.round(dmg), t: 0, big: dmg > 60, crit });
@@ -1651,7 +1717,7 @@ function killEnemy(e) {
   if (e.elite) { G.chests.push({ x: e.x, y: e.y, t: 0 }); G.items.push({ x: e.x + 24, y: e.y, kind: 'heart', t: 0 }); }
   else {
     const r = Math.random();
-    if (r < 0.004) G.items.push({ x: e.x, y: e.y, kind: 'flask', t: 0 });
+    if (r < 0.004 && !G.hard) G.items.push({ x: e.x, y: e.y, kind: 'flask', t: 0 });
     else if (r < 0.0055) G.items.push({ x: e.x, y: e.y, kind: 'vessel', t: 0 });
   }
 }
@@ -1929,7 +1995,7 @@ function explode(x, y, rad, dmg, evo) {
 
 /* ---------------- Enemies & bosses ---------------- */
 function spawnEnemy(type, x, y, elite = false) {
-  const d = ENEMIES[type], t = G.t;
+  const d = ENEMIES[type], t = G.t * TSCALE;
   const st = STAGES[G.stage], hpMul = (1 + (t / 60) * 0.22 + (t / 300) * (t / 300) * 0.5) * st.hp, dmgMul = (1 + (t / 60) * 0.07) * st.dmg;
   const e = { type, x, y, r: d.r, hp: d.hp * hpMul, maxHp: d.hp * hpMul, spd: d.spd * rand(0.9, 1.1), dmg: d.dmg * dmgMul, xp: d.xp, mass: d.mass,
     flash: 0, kbx: 0, kby: 0, vx: 0, vy: 0, t: Math.random() * 10, born: G.t, shootT: rand(1.5, 3), ranged: !!d.ranged, slow: 0, boss: false, elite };
@@ -1941,7 +2007,7 @@ function spawnPoint() {
   return [P.x + Math.cos(a) * R, P.y + Math.sin(a) * R];
 }
 function pickType() {
-  const m = G.t / 60;
+  const m = G.t * TSCALE / 60;
   const table = m < 1 ? [['hollow', 1]] :
     m < 3 ? [['hollow', .6], ['rat', .4]] :
     m < 5 ? [['hollow', .4], ['rat', .28], ['skeleton', .32]] :
@@ -1951,30 +2017,55 @@ function pickType() {
   let r = Math.random(); for (const [k, w] of table) { r -= w; if (r <= 0) return k; } return table[0][0];
 }
 function director(dt) {
-  const t = G.t;
-  let rate = 1.1 + t / 38; if (G.boss) rate *= 0.45;
-  const cap = 320 + Math.min(120, t / 6);
+  const t = G.t * TSCALE;
+  let rate = (1.1 + t / 38) * 1.2; if (G.boss) rate *= 0.45;
+  const cap = (G.horde ? 440 : 320) + Math.min(120, t / 6);
   G.spawnAcc += rate * dt;
   while (G.spawnAcc >= 1) { G.spawnAcc -= 1; if (G.enemies.length < cap) { const [x, y] = spawnPoint(); spawnEnemy(pickType(), x, y); } }
   if (t >= G.nextElite) {
     G.nextElite += 60; const [x, y] = spawnPoint();
     spawnEnemy(t < 240 ? 'skeleton' : 'knight', x, y, true);
   }
-  if (G.swarms.length && t >= G.swarms[0]) {
+  if (G.hordes.length && G.t >= G.hordes[0] && !G.boss && !G.horde) { G.hordes.shift(); startHorde(); }
+  if (G.horde) hordeUpdate(dt);
+  if (G.swarms.length && G.t >= G.swarms[0]) {
     G.swarms.shift(); const n = 46, type = t < 300 ? 'rat' : t < 600 ? 'hollow' : 'wraith', R = 460;
     for (let i = 0; i < n; i++) { const a = i / n * TAU; spawnEnemy(type, P.x + Math.cos(a) * R, P.y + Math.sin(a) * R); }
     banner('They close in', 'A swarm encircles you.', 2.2);
   }
-  if (G.bossIdx < BOSS_TIMES.length && t >= BOSS_TIMES[G.bossIdx] && !G.boss) spawnBoss(G.bossIdx++);
+  if (G.bossIdx < BOSS_TIMES.length && G.t >= BOSS_TIMES[G.bossIdx] && !G.boss && !G.horde) spawnBoss(G.bossIdx++);
   G.shrineT -= dt;
   if (G.shrineT <= 0 && !G.shrines.some(s => !s.used)) {
-    G.shrineT = 95; const a = Math.random() * TAU, R = rand(480, 700);
+    G.shrineT = 70; const a = Math.random() * TAU, R = rand(480, 700);
     G.shrines.push({ x: P.x + Math.cos(a) * R, y: P.y + Math.sin(a) * R, used: false, life: 70, t: 0 });
+  }
+}
+function startHorde() {
+  G.horde = { t: 0, next: 0.4, dur: HORDE_DUR };
+  banner('The horde covets your light', 'Hold the flame. Survive the onslaught.', 3.2);
+  SND.bell(58, 0.3); G.cam.shake = Math.min(16, G.cam.shake + 8); G.flash = Math.max(G.flash, 0.25);
+}
+function hordeUpdate(dt) {
+  const h = G.horde; h.t += dt; h.next -= dt;
+  if (h.next <= 0 && h.t < h.dur - 3) {
+    h.next = 0.9;
+    const n = 20 + Math.floor(G.t / 60) * 2, R = Math.hypot(W, H) / 2 / ZOOM + 30, off = Math.random() * TAU;
+    for (let i = 0; i < n && G.enemies.length < 520; i++) {
+      const a = off + i / n * TAU, e = spawnEnemy(pickType(), P.x + Math.cos(a) * R, P.y + Math.sin(a) * R);
+      e.hp *= 0.65; e.maxHp = e.hp; e.spd *= 1.18; e.horde = true;
+    }
+  }
+  if (h.t >= h.dur) {
+    G.horde = null; G.hordesBroken++;
+    banner('The horde breaks', 'Your light endures. Claim the reliquary.', 2.8);
+    const a = Math.random() * TAU; G.chests.push({ x: P.x + Math.cos(a) * 90, y: P.y + Math.sin(a) * 90, t: 0 });
+    G.gold += 120 * G.goldMul; floatText(P.x, P.y - 40, '+' + Math.round(120 * G.goldMul) + ' gold', '#e8c779', true);
+    SND.bell(98, 0.25);
   }
 }
 function spawnBoss(i) {
   const b = BOSSES[i]; const [x, y] = spawnPoint();
-  const st = STAGES[G.stage], bhp = b.hp * st.hp * 1.15;
+  const st = STAGES[G.stage], bhp = b.hp * st.hp * 1.15 * 0.85; // bosses arrive earlier in 10-minute runs
   const e = { type: 'boss', def: b, name: st.bosses[i], boss: true, x, y, r: b.r, hp: bhp, maxHp: bhp, spd: b.spd, dmg: b.dmg * st.dmg * 1.25, xp: 0, mass: 50, posture: 0, broken: 0, stun: 0,
     flash: 0, kbx: 0, kby: 0, vx: 0, vy: 0, t: 0, slow: 0, phase: 'walk', atkT: 3, ct: 0, cang: 0, spiral: 0, spA: 0, spT: 0 };
   G.enemies.push(e); G.boss = e;
@@ -2081,7 +2172,7 @@ function parryBoss(e, posture, stun) {
 function flameUpdate(dt) {
   const f = G.flameF; if (!f) return;
   f.t += dt;
-  f.fuel = Math.max(0, f.fuel - (0.45 + G.t / 1200 * 0.5) * dt);
+  f.fuel = Math.max(0, f.fuel - (0.45 + G.t * TSCALE / 1200 * 0.5) * dt);
   const out = f.fuel <= 0;
   if (out && !G.flameOut) { G.flameOut = true; banner('The flame gutters out', 'The dark emboldens them. Kindle it again.', 2.4); SND.bell(55, 0.3); }
   if (!out && G.flameOut) { G.flameOut = false; banner('The flame burns again', 'The dark recedes.', 1.8); }
@@ -2161,7 +2252,7 @@ function updatePlayer(dt) {
   const ml = Math.hypot(mx, my); if (ml > 1) { mx /= ml; my /= ml; }
   P.moving = ml > 0.05;
   if (P.moving) { TUTS.moved += dt; P.face = Math.atan2(my, mx); P.fx = Math.cos(P.face); P.fy = Math.sin(P.face); P.walkT += dt * 10 * Math.min(1, ml); }
-  if (P.inv > 0) P.inv -= dt; if (P.hurtT > 0) P.hurtT -= dt; if (P.swingT > 0) P.swingT -= dt; if (P.parry > 0) P.parry -= dt; if (P.parryCd > 0) P.parryCd -= dt;
+  if (P.inv > 0) P.inv -= dt; if (P.hurtT > 0) P.hurtT -= dt; if (P.swingT > 0) P.swingT -= dt; if (P.parry > 0) P.parry -= dt; if (P.parryCd > 0) P.parryCd -= dt; if (P.rollCd > 0) P.rollCd -= dt;
   let sp = 150 * P.spdMul * (P.drink > 0 ? 0.45 : 1);
   if (P.roll > 0) {
     P.roll -= dt; sp = 410 * P.spdMul;
@@ -2176,8 +2267,8 @@ function updatePlayer(dt) {
   if (P.regen > 0) P.hp = Math.min(P.maxHp, P.hp + P.regen * dt);
 }
 function tryRoll() {
-  if (state !== 'play' || P.roll > 0 || P.stam < 30 || P.drink > 0) return;
-  P.stam -= 30; TUTS.rolled = true; P.roll = 0.36; P.rollDx = P.fx; P.rollDy = P.fy; SND.roll();
+  if (state !== 'play' || P.roll > 0 || P.stam < 30 || P.drink > 0 || P.rollCd > 0) return;
+  P.stam -= 30; if (G.hard) P.rollCd = 2; TUTS.rolled = true; P.roll = 0.36; P.rollDx = P.fx; P.rollDy = P.fy; SND.roll();
   for (let i = 0; i < 6; i++) G.parts.push({ x: P.x, y: P.y + 8, vx: rand(-40, 40), vy: rand(-30, 10), t: 0, life: 0.5, c: '#4a4250', s: 3 });
 }
 function tryDrink() {
@@ -2321,7 +2412,7 @@ function updatePickups(dt) {
   for (const s of G.shrines) {
     s.t += dt; if (!s.used) s.life -= dt;
     if (!s.used && d2(s.x, s.y, P.x, P.y) < (P.r + 26) ** 2) {
-      s.used = true; P.flasks = P.maxFlasks; P.hp = Math.min(P.maxHp, P.hp + P.maxHp * 0.25); kindle(40);
+      s.used = true; if (!G.hard) P.flasks = P.maxFlasks; P.hp = Math.min(P.maxHp, P.hp + P.maxHp * 0.25); kindle(40);
       SND.bell(196, 0.15); banner('Shrine kindled', 'Flasks restored. Wounds eased.', 1.8);
     }
   }
@@ -2330,7 +2421,7 @@ function updatePickups(dt) {
 function floatText(x, y, s, c) { G.texts.push({ x, y, v: s, t: 0, c, label: true }); }
 function gainXp(v) {
   P.xp += v * P.xpMul;
-  while (P.xp >= P.xpNext) { P.xp -= P.xpNext; P.lv++; G.pendingLevels++; G.flash = 0.6; G.fx.push({ kind: 'lvl', t: 0, dur: 0.9 }); P.xpNext = Math.floor(6 + P.lv * 7 + Math.max(0, P.lv - 20) * 12); }
+  while (P.xp >= P.xpNext) { P.xp -= P.xpNext; P.lv++; G.pendingLevels++; G.flash = 0.6; G.fx.push({ kind: 'lvl', t: 0, dur: 0.9 }); P.xpNext = Math.floor(6 + P.lv * 6 + Math.max(0, P.lv - 18) * 10); }
 }
 function updateFx(dt) {
   if (G.flash > 0) G.flash = Math.max(0, G.flash - dt * 1.5);
@@ -2348,12 +2439,12 @@ function rollChoices(n) {
     const w = getW(id), stg = WEAPONS[id].stage;
     if (stg && stg !== sid && !w) continue; // stage armaments are only found in their own stage
     if (w) { if (w.lv < 5) pool.push({ k: 'w', id, wgt: 1.2 }); }
-    else if (P.weapons.length < 6) pool.push({ k: 'w', id, wgt: stg ? 1.8 : P.weapons.length < 3 ? 1.1 : 0.8 });
+    else if (P.weapons.length < MAX_W) pool.push({ k: 'w', id, wgt: stg ? 1.8 : P.weapons.length < 2 ? 1.1 : 0.8 });
   }
   const pcount = Object.keys(P.passives).length;
   for (const id in PASSIVES) {
     const l = P.passives[id] || 0;
-    if (l > 0 && l < 5) pool.push({ k: 'p', id, wgt: 1 }); else if (l === 0 && pcount < 6) pool.push({ k: 'p', id, wgt: 0.8 });
+    if (l > 0 && l < 5) pool.push({ k: 'p', id, wgt: 1 }); else if (l === 0 && pcount < MAX_R) pool.push({ k: 'p', id, wgt: 0.8 });
   }
   const out = [];
   while (out.length < n && pool.length) {
@@ -2361,7 +2452,7 @@ function rollChoices(n) {
     for (; i < pool.length; i++) { r -= pool[i].wgt; if (r <= 0) break; }
     out.push(pool.splice(Math.min(i, pool.length - 1), 1)[0]);
   }
-  if (!out.length) out.push({ k: 'heal' }, { k: 'flask' });
+  if (!out.length) { out.push({ k: 'heal' }); if (!G.hard) out.push({ k: 'flask' }); out.push({ k: 'gold' }); }
   return out;
 }
 function describe(c) {
@@ -2383,6 +2474,7 @@ function describe(c) {
     return { kind: 'Evolution', img: 'icon_w_' + c.id, name: d.evoName, glyph: d.glyph, color: '#cfaa62', lv: d.name + ' transcends', text: d.evoDesc, evo: true };
   }
   if (c.k === 'kindle') return { kind: 'Vigil', img: 'prop_brazier', name: 'Kindle the Flame', glyph: '\u2736', color: '#ffb060', lv: '+40 light \u00b7 flame at ' + Math.round(G.flameF.fuel) + '%', text: 'Skip a boon to feed the vigil flame. Your light grows and the dark holds back.' };
+  if (c.k === 'gold') return { kind: 'Respite', img: 'cur_gold', name: 'Hoarded Gold', glyph: 'G', color: '#e8c779', lv: 'Treasure', text: 'Take ' + Math.round(60 * G.goldMul) + ' gold for the road home.' };
   if (c.k === 'heal') return { kind: 'Respite', name: 'Warm Ash', glyph: '+', color: '#c94a4a', lv: 'Restore', text: 'Recover 40% of your health.' };
   return { kind: 'Respite', name: 'Tonic Draught', glyph: 'T', color: '#ef7d32', lv: 'Restore', text: 'Refill one tonic flask.' };
 }
@@ -2392,6 +2484,7 @@ function applyChoice(c) {
   else if (c.k === 'evo') { const w = getW(c.id); w.evo = true; if (!SAVE.evos.includes(c.id)) { SAVE.evos.push(c.id); SAVE.codexNew = true; persist(); } }
   else if (c.k === 'kindle') kindle(40);
   else if (c.k === 'heal') P.hp = Math.min(P.maxHp, P.hp + P.maxHp * 0.4);
+  else if (c.k === 'gold') G.gold += 60 * G.goldMul;
   else if (c.k === 'flask') P.flasks = Math.min(P.maxFlasks, P.flasks + 1);
   recalc();
 }
@@ -2445,6 +2538,21 @@ function closeChest() { if (state !== 'chest') return; $('chestScreen').hidden =
 /* ---------------- Flow ---------------- */
 let bannerTimer = 0;
 function banner(t, s, dur) { $('bannerTitle').textContent = t; $('bannerSub').textContent = s; $('banner').classList.add('show'); bannerTimer = dur; }
+function renderPause() {
+  const st = STAGES[G.stage], ic = n => IMG[n] ? `<img src="${assetUrl(n)}" alt="">` : '';
+  $('pauseStage').textContent = st.name + (G.hard ? ' \u00b7 Hard' : '');
+  const stat = (img, v, l) => `<div class="pstat">${ic(img)}<b>${v}</b><span>${l}</span></div>`;
+  $('pauseStats').innerHTML = stat('cur_ember', fmtTime(G.t), 'Time') + stat('icon_w_blade', fmtNum(G.kills), 'Slain') + stat('cur_sigil', P.lv, 'Level') + stat('cur_gold', fmtNum(Math.floor(G.gold)), 'Gold');
+  const pips = (lv, evo) => evo ? '<em class="pevo">Evolved</em>' : `<i class="pips">${[0, 1, 2, 3, 4].map(k => `<u class="${k < lv ? 'on' : ''}"></u>`).join('')}</i>`;
+  const w = P.weapons.map(w => { const d = WEAPONS[w.id], p = PASSIVES[d.evoWith];
+    return `<div class="pslot${w.evo ? ' evo' : ''}" style="--wc:${d.color}">${ic('icon_w_' + w.id)}<div><b>${w.evo ? d.evoName : d.name}</b>${pips(w.lv, w.evo)}${w.evo ? '' : `<small>${P.passives[d.evoWith] ? '\u2714 ' : ''}Evolves with ${p.name}</small>`}</div></div>`; });
+  while (w.length < MAX_W) w.push('<div class="pslot empty"><span class="pq">+</span><div><b>Empty slot</b><small>Find armaments as you level</small></div></div>');
+  const r = Object.keys(P.passives).map(id => `<div class="pslot" style="--wc:${PASSIVES[id].color}">${ic('icon_p_' + id)}<div><b>${PASSIVES[id].name}</b>${pips(P.passives[id], false)}<small>${PASSIVES[id].desc}</small></div></div>`);
+  while (r.length < MAX_R) r.push('<div class="pslot empty"><span class="pq">+</span><div><b>Empty slot</b><small>Relics strengthen everything</small></div></div>');
+  $('pauseW').innerHTML = w.join(''); $('pauseR').innerHTML = r.join('');
+  $('pSound').textContent = SND.muted ? 'Sound off' : 'Sound on';
+  const q = $('quitBtn'); q.textContent = 'Abandon run'; q.classList.remove('armed');
+}
 function buildList() {
   const parts = P.weapons.map(w => `<span class="${w.evo ? 'evo' : ''}">${w.evo ? WEAPONS[w.id].evoName : WEAPONS[w.id].name} ${w.evo ? '' : '· ' + w.lv}</span>`);
   for (const id in P.passives) parts.push(`<span>${PASSIVES[id].name} · ${P.passives[id]}</span>`);
@@ -2458,7 +2566,7 @@ function startRun() {
   ['hub', 'endScreen', 'pauseScreen', 'levelScreen', 'chestScreen'].forEach(id => $(id).hidden = true);
   $('pauseBtn').hidden = false; $('muteBtn').hidden = false;
   $('rollBtn').hidden = !isTouch; $('flaskBtn').hidden = $('parryBtn').hidden = !isTouch;
-  banner(STAGES[G.stage].name, 'Survive. Three bells will toll.', 2.6);
+  banner(STAGES[G.stage].name, G.hard ? 'Hard mode. No flask will be refilled.' : 'Survive. Three bells will toll.', 2.6);
 }
 function endRun(won) {
   state = won ? 'win' : 'dead'; hideCoach();
@@ -2471,15 +2579,16 @@ function endRun(won) {
     SAVE.unlocked = Math.min(STAGES.length, Math.max(SAVE.unlocked, G.stage + 2));
   }
   SAVE.best[st.id] = Math.max(SAVE.best[st.id] || 0, Math.floor(G.t));
+  if (G.hard) { SAVE.bestHard = SAVE.bestHard || {}; SAVE.bestHard[st.id] = Math.max(SAVE.bestHard[st.id] || 0, Math.floor(G.t)); if (won) sig += 10; }
   SAVE.gold += gold; SAVE.sigils += sig; SAVE.runs++;
   ensureProfile(); SAVE.stats.kills += G.kills; SAVE.stats.bosses += G.bossesKilled; SAVE.stats.time += Math.floor(G.t); if (won) SAVE.stats.wins++;
   SAVE.urn = Math.min(URN.cap, (SAVE.urn || 0) + Math.floor(G.kills / 120) + G.bossesKilled * 5 + (won ? 15 : 0));
   const xp = runXp(won), lvl = grantPlayerXp(xp); persist();
   G.reward = { gold, sig, xp, lvl };
   setTimeout(() => {
-    $('endTitle').textContent = won ? 'VIGIL KEPT' : 'YOU HAVE FALLEN';
+    $('endTitle').textContent = (won ? 'VIGIL KEPT' : 'YOU HAVE FALLEN') + (G.hard ? ' \u00b7 HARD' : '');
     $('endTitle').className = 'death' + (won ? ' victory' : '');
-    $('endSub').textContent = won ? (firstClear && G.stage + 1 < STAGES.length ? STAGES[G.stage + 1].name + ' is now open to you.' : 'The Warden lies still and the last flame burns on. For now.') : (G.t >= 300 ? 'The flame dims, but another will take up the vigil.' : 'The dead claim another. Rise, and try again.');
+    $('endSub').textContent = won ? (firstClear && G.stage + 1 < STAGES.length ? STAGES[G.stage + 1].name + ' is now open to you.' : 'The Warden lies still and the last flame burns on. For now.') : (G.t >= 200 ? 'The flame dims, but another will take up the vigil.' : 'The dead claim another. Rise, and try again.');
     $('stTime').textContent = fmtTime(G.t); $('stKills').textContent = G.kills; $('stLevel').textContent = P.lv; $('stBoss').textContent = G.bossesKilled + ' / 3';
     $('rewards').innerHTML = `<span class="coin gold">+${fmtNum(gold)} gold</span>` + (sig ? `<span class="coin gem">+${fmtNum(sig)} sigils</span>` : '');
     renderPlvPanel(G.reward);
@@ -2496,7 +2605,7 @@ $('adDoubleBtn').addEventListener('click', async () => {
 });
 function togglePause() {
   if (state === 'play') $('coach').hidden = true;
-  if (state === 'play') { state = 'pause'; $('pauseBuild').innerHTML = buildList(); $('pauseScreen').hidden = false; if (!isTouch) $('resumeBtn').focus({ preventScroll: true }); }
+  if (state === 'play') { state = 'pause'; renderPause(); $('pauseScreen').hidden = false; if (!isTouch) $('resumeBtn').focus({ preventScroll: true }); }
   else if (state === 'pause') { state = 'play'; $('pauseScreen').hidden = true; }
 }
 function toTitle() {
@@ -3057,7 +3166,7 @@ function render() {
   const lc = lctx;
   lc.setTransform(1, 0, 0, 1, 0, 0); lc.globalCompositeOperation = 'source-over';
   const fk0 = G.flameF ? G.flameF.fuel / 100 : 1;
-  const dark = Math.min(0.93, (artLoaded ? 0.44 : 0.74) + (1 - fk0) * 0.42 + Math.min(0.06, G.t / 900 * 0.06));
+  const dark = Math.min(0.93, (artLoaded ? 0.44 : 0.74) + (1 - fk0) * 0.42 + Math.min(0.06, G.t / 600 * 0.06));
   lc.fillStyle = `rgba(6,4,9,${dark})`; lc.fillRect(0, 0, lightCv.width, lightCv.height);
   lc.setTransform(0.5 * ZOOM, 0, 0, 0.5 * ZOOM, 0.5 * (W / 2 - camX * ZOOM), 0.5 * (H / 2 - camY * ZOOM));
   lc.globalCompositeOperation = 'destination-out';
@@ -3086,6 +3195,7 @@ function render() {
   }
   lc.setTransform(1, 0, 0, 1, 0, 0);
   if (VIG) lc.drawImage(VIG, 0, 0, lightCv.width, lightCv.height);
+  if (G.horde && VIGR) { lc.globalAlpha = 0.35 + 0.2 * Math.sin(G.t * 5); lc.drawImage(VIGR, 0, 0, lightCv.width, lightCv.height); lc.globalAlpha = 1; }
   { const hpk = P.hp / P.maxHp; if (VIGR && (hpk < 0.35 || P.hurtT > 0)) { const a = Math.max(P.hurtT * 1.2, (0.35 - hpk) * 1.6) * (0.8 + Math.sin(performance.now() / 180) * 0.2); lc.globalAlpha = Math.max(0, Math.min(0.6, a)); lc.drawImage(VIGR, 0, 0, lightCv.width, lightCv.height); lc.globalAlpha = 1; } }
   c.setTransform(DPR, 0, 0, DPR, 0, 0);
   c.drawImage(lightCv, 0, 0, W, H);
@@ -3334,7 +3444,12 @@ function drawHUD() {
     hudBar(c, mx, my, mw, 7, fk, 0, fk < 0.25 ? '#ff5a3a' : '#ffc060', '#a0400c');
     if (fk < 0.25 && Math.sin(performance.now() / 140) > 0) { c.strokeStyle = 'rgba(255,90,60,0.95)'; c.lineWidth = 1.5; c.strokeRect(mx - 2, my - 2, mw + 4, 11); } }
   const nextBell = BOSS_TIMES[G.bossIdx];
-  if (nextBell && !G.boss) { c.font = 'italic 600 14px "Cormorant Garamond", Georgia, serif'; c.fillStyle = nextBell - G.t < 20 ? '#ff7a5a' : '#958a9c'; c.fillText('The bell tolls in ' + fmtTime(nextBell - G.t), W / 2, 98); }
+  if (G.horde) {
+    const left = Math.max(0, G.horde.dur - G.horde.t), hw = 200, hx = W / 2 - hw / 2, hy = W < 640 ? 184 : 96;
+    c.font = '700 13px Cinzel, Georgia, serif'; c.fillStyle = Math.sin(performance.now() / 160) > 0 ? '#ff6a4a' : '#ffb08a';
+    c.fillText('THE HORDE COVETS YOUR LIGHT', W / 2, hy);
+    hudBar(c, hx, hy + 18, hw, 6, left / G.horde.dur, 0, '#ff5a3a', '#7a1408');
+  } else if (nextBell && !G.boss) { c.font = 'italic 600 14px "Cormorant Garamond", Georgia, serif'; c.fillStyle = nextBell - G.t < 20 ? '#ff7a5a' : '#958a9c'; c.fillText('The bell tolls in ' + fmtTime(nextBell - G.t), W / 2, 98); }
   // inventory
   c.textAlign = 'left';
   const ix = 16, iy = W < 640 ? 112 : 22;
@@ -3352,9 +3467,12 @@ function drawHUD() {
     else { c.fillStyle = '#ffd27a'; c.fillRect(x - 11, y + 29, 22, 3.2); }
     x += 32;
   };
+  const emptySlot = y => { c.save(); c.translate(x, y + 12); c.rotate(Math.PI / 4); c.fillStyle = 'rgba(12,10,16,0.55)'; c.fillRect(-10, -10, 20, 20); c.strokeStyle = 'rgba(217,176,100,0.28)'; c.lineWidth = 1; c.setLineDash([3, 3]); c.strokeRect(-10, -10, 20, 20); c.setLineDash([]); c.restore(); x += 32; };
   for (const w of P.weapons) drawSigil(WEAPONS[w.id].glyph, WEAPONS[w.id].color, w.lv, w.evo, iy - 10, 'icon_w_' + w.id);
+  for (let i = P.weapons.length; i < MAX_W; i++) emptySlot(iy - 10);
   x = ix + 50;
   for (const id in P.passives) drawSigil(PASSIVES[id].glyph, PASSIVES[id].color, P.passives[id], false, iy + 30, 'icon_p_' + id);
+  for (let i = Object.keys(P.passives).length; i < MAX_R; i++) emptySlot(iy + 30);
   c.textBaseline = 'alphabetic'; c.textAlign = 'left';
   // health, stamina, flasks
   if (P.ghost == null || P.ghost < P.hp) P.ghost = P.hp; else P.ghost = Math.max(P.hp, P.ghost - P.maxHp * 0.012);
@@ -3995,9 +4113,10 @@ function renderPlay() {
   if (viewStage == null || viewStage >= STAGES.length) viewStage = SAVE.stage;
   const st = STAGES[viewStage], locked = viewStage >= SAVE.unlocked, best = SAVE.best[st.id];
   $('stageTitle').textContent = (viewStage + 1) + '. ' + st.name;
-  $('stageBest').textContent = locked ? 'Clear ' + STAGES[viewStage - 1].name + ' to unlock' : (best ? 'Longest vigil ' + fmtTime(best) : 'Not yet attempted') + (SAVE.cleared[st.id] ? ' · Cleared' : '');
+  $('stageBest').textContent = locked ? 'Clear ' + STAGES[viewStage - 1].name + ' to unlock' : (best ? 'Longest vigil ' + fmtTime(best) : 'Not yet attempted') + (SAVE.bestHard && SAVE.bestHard[st.id] ? ' · Hard ' + fmtTime(SAVE.bestHard[st.id]) : '') + (SAVE.cleared[st.id] ? ' · Cleared' : '');
   $('stPrev').disabled = viewStage <= 0; $('stNext').disabled = viewStage >= STAGES.length - 1;
   const hb = $('heroBegin'); hb.disabled = locked; hb.textContent = locked ? 'Locked' : 'Descend';
+  $('hardBtn').setAttribute('aria-pressed', !!SAVE.hard); $('hardBtn').hidden = locked;
   $('record').textContent = CLASSES[SAVE.cls].name + ' · Gold ×' + st.gold + ' · Danger ' + '◆'.repeat(viewStage + 1);
   if (!locked && SAVE.stage !== viewStage) { SAVE.stage = viewStage; persist(); }
   renderSide(); renderStageMiles(); heroStart();
@@ -4513,17 +4632,33 @@ window.addEventListener('pointermove', e => { if (touch.active && e.pointerId ==
 const endTouch = e => { if (e.pointerId === touch.id) { touch.active = false; touch.id = null; } };
 window.addEventListener('pointerup', endTouch); window.addEventListener('pointercancel', endTouch);
 window.addEventListener('touchstart', () => { isTouch = true; }, { passive: true, once: true });
-$('rollBtn').addEventListener('pointerdown', e => { e.preventDefault(); tryRoll(); });
-$('flaskBtn').addEventListener('pointerdown', e => { e.preventDefault(); tryDrink(); });
-$('parryBtn').addEventListener('pointerdown', e => { e.preventDefault(); tryParry(); });
+const press = (id, fn) => { const b = $(id); b.addEventListener('pointerdown', e => { e.preventDefault(); b.classList.remove('hit'); void b.offsetWidth; b.classList.add('hit'); try { navigator.vibrate && navigator.vibrate(12); } catch (er) {} fn(); }); };
+press('rollBtn', tryRoll); press('flaskBtn', tryDrink); press('parryBtn', tryParry);
+// cooldown rings and flask count on the touch buttons (only touches the DOM when a value changes)
+const TUI = {};
+function touchUI() {
+  if (!isTouch || state !== 'play' || !P) return;
+  const set = (id, k) => { k = Math.round(Math.max(0, Math.min(1, k)) * 40) / 40; if (TUI[id] !== k) { TUI[id] = k; const b = $(id); b.style.setProperty('--cd', k); b.classList.toggle('cool', k > 0); } };
+  set('rollBtn', P.rollCd > 0 ? P.rollCd / 2 : P.stam < 30 ? 1 - P.stam / 30 : 0);
+  set('parryBtn', P.parryCd > 0 ? P.parryCd / 0.9 : 0);
+  set('flaskBtn', P.drink > 0 ? P.drink / 0.9 : 0);
+  if (TUI.fl !== P.flasks) { TUI.fl = P.flasks; $('flaskCnt').textContent = P.flasks; $('flaskBtn').classList.toggle('empty', P.flasks <= 0); }
+}
 $('pauseBtn').addEventListener('click', () => togglePause());
 $('muteBtn').textContent = SND.muted ? 'OFF' : 'SND';
 $('muteBtn').addEventListener('click', () => { SND.init(); SND.setMuted(!SND.muted); $('muteBtn').textContent = SND.muted ? 'OFF' : 'SND'; });
 $('heroBegin').addEventListener('click', startRun);
+$('hardBtn').addEventListener('click', () => { SAVE.hard = !SAVE.hard; persist(); renderPlay(); SND.init(); SND.pickup(); toast(SAVE.hard ? 'Hard mode: flasks never refill, roll every 2 seconds, +50% gold, sigils and XP.' : 'Hard mode off.'); });
 $('menuBtn').addEventListener('click', toTitle);
 $('againBtn').addEventListener('click', startRun);
 $('resumeBtn').addEventListener('click', togglePause);
-$('quitBtn').addEventListener('click', () => { $('pauseScreen').hidden = true; endRun(false); });
+let quitTimer = 0;
+$('quitBtn').addEventListener('click', () => {
+  const q = $('quitBtn');
+  if (!q.classList.contains('armed')) { q.classList.add('armed'); q.textContent = 'Tap again to abandon'; clearTimeout(quitTimer); quitTimer = setTimeout(() => { q.classList.remove('armed'); q.textContent = 'Abandon run'; }, 2500); return; }
+  $('pauseScreen').hidden = true; endRun(false);
+});
+$('pSound').addEventListener('click', () => { SND.init(); SND.setMuted(!SND.muted); $('muteBtn').textContent = SND.muted ? 'OFF' : 'SND'; $('pSound').textContent = SND.muted ? 'Sound off' : 'Sound on'; });
 $('chestBtn').addEventListener('click', closeChest);
 
 /* ---------------- Loop ---------------- */
@@ -4542,7 +4677,7 @@ function perfTick(ms) {
 function frame(now) {
   const raw = now - last; perfTick(raw);
   const dt = Math.min(1 / 30, raw / 1000); last = now;
-  try { update(dt); render(); } catch (err) { console.error(err); }
+  try { update(dt); render(); touchUI(); } catch (err) { console.error(err); }
   requestAnimationFrame(frame);
 }
 requestAnimationFrame(frame);

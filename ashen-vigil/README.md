@@ -1,6 +1,6 @@
 # Ashen Vigil
 
-A dark-fantasy survivors-style roguelite in one HTML file. Pick an origin, descend into the halls, and hold out against the hollowed dead until the third bell tolls and the Last Warden falls (about 15 minutes).
+A dark-fantasy survivors-style roguelite in one HTML file. Pick an origin, descend into the halls, and hold out against the hollowed dead until the third bell tolls and the Last Warden falls (about 10 minutes).
 
 Open `index.html` in a browser to play (the `assets/` folder must sit beside it). No build step is needed. Fonts load from Google Fonts, and the game works offline with fallback fonts.
 
@@ -36,11 +36,13 @@ A short first-run tutorial teaches movement, embers, rolling and flasks, then po
 See [STORE.md](STORE.md) for the store listing kit and [APP.md](APP.md) for building the Android and iOS apps and setting up purchases and ads.
 
 ## Features
+- Carry up to 4 armaments and 4 relics per run
+- Hard mode: flasks never refill and rolling has a 2 second cooldown, for +50% gold, sigils and XP
 - 5 origins, 13 armaments (including one exclusive armament per stage), 7 relics, each with 5 levels
 - Reliquaries dropped by elites and bosses evolve a max-level armament paired with its relic (for example Hollow Blade + Strength becomes Kingsbane)
 - Boon cards show each armament's evolution relic, and relics glow when they complete a pairing for an armament you hold
 - Evolution Codex in the Armory: every pairing is listed, and each evolution is revealed the first time you achieve it
-- 3 bosses at 5, 10 and 15 minutes, with telegraphed charges, ground slams, bullet rings and spirals
+- 10-minute runs with 3 bosses at 3:20, 6:40 and 10:00, plus two "the horde covets your light" onslaughts that reward a reliquary, with telegraphed charges, ground slams, bullet rings and spirals
 - Dynamic darkness lit by your lantern, braziers, spells and candle shrines
 - Puppet walk animation: sprites are split at the hip so legs stride while the body bobs and leans
 - Performance: cached glow/gem/gore sprites, lighting, fog and vignette baked into one half-res layer, a pixel budget for large hi-DPI screens, and automatic resolution scaling if frames run long
