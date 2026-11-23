@@ -38,6 +38,8 @@ See [STORE.md](STORE.md) for the store listing kit and [APP.md](APP.md) for buil
 ## Features
 - 5 origins, 13 armaments (including one exclusive armament per stage), 7 relics, each with 5 levels
 - Reliquaries dropped by elites and bosses evolve a max-level armament paired with its relic (for example Hollow Blade + Strength becomes Kingsbane)
+- Boon cards show each armament's evolution relic, and relics glow when they complete a pairing for an armament you hold
+- Evolution Codex in the Armory: every pairing is listed, and each evolution is revealed the first time you achieve it
 - 3 bosses at 5, 10 and 15 minutes, with telegraphed charges, ground slams, bullet rings and spirals
 - Dynamic darkness lit by your lantern, braziers, spells and candle shrines
 - Puppet walk animation: sprites are split at the hip so legs stride while the body bobs and leans
