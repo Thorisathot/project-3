@@ -64,3 +64,17 @@ npm run assets
 ```
 
 This runs `@capacitor/assets` and writes the icons and launch screens into `android/` and `ios/`. Run it after `npx cap add`.
+
+## Test builds on your phone (Obtainium)
+
+Every push that changes `ashen-vigil/` runs `.github/workflows/android-test-build.yml`. It builds a debug APK and publishes it as a GitHub Release named `test-<n>` with `ashen-vigil-test-<n>.apk` attached.
+
+To get updates on an Android phone:
+1. Install [Obtainium](https://github.com/ImranR98/Obtainium).
+2. If the repository is private, create a fine-grained GitHub token with read-only **Contents** access to this repository. In Obtainium go to Settings, then Source-specific, then GitHub, and paste it as the personal access token.
+3. Tap **Add App** and paste the repository URL `https://github.com/Thorisathot/project-3`. Tap **Add**, then **Install**.
+4. Allow Obtainium to install unknown apps when Android asks.
+
+Obtainium checks for new releases in the background and can update automatically (Settings, then Updates).
+
+Test builds are signed with `android/test-signing.keystore`. This key is committed on purpose so every CI build can update the installed app. Never use it for the Play Store; create a private upload key for release builds. The manifest uses Google's test AdMob app id until you set a real one.
