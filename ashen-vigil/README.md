@@ -36,7 +36,7 @@ A short first-run tutorial teaches movement, embers, rolling and flasks, then po
 See [STORE.md](STORE.md) for the store listing kit and [APP.md](APP.md) for building the Android and iOS apps and setting up purchases and ads.
 
 ## Features
-- 5 origins, 11 armaments, 7 relics, each with 5 levels
+- 5 origins, 13 armaments (including one exclusive armament per stage), 7 relics, each with 5 levels
 - Reliquaries dropped by elites and bosses evolve a max-level armament paired with its relic (for example Hollow Blade + Strength becomes Kingsbane)
 - 3 bosses at 5, 10 and 15 minutes, with telegraphed charges, ground slams, bullet rings and spirals
 - Dynamic darkness lit by your lantern, braziers, spells and candle shrines
