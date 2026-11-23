@@ -44,7 +44,7 @@ SLAY COLOSSAL BOSSES
 Three bells toll in every stage. Face the Gaoler of Ash, the Rotting Mother and the Last Warden, and dodge their charges, slams and spirals.
 
 BUILD YOUR LEGEND
-Choose from 9 armaments and 7 relics as you level up. Max an armament and pair it with its relic to evolve it into something devastating.
+Choose from 11 armaments and 7 relics as you level up. Max an armament and pair it with its relic to evolve it into something devastating.
 
 LOOT EPIC GEAR
 Open chests for helms, armor, rings and talismans in four rarities. Upgrade them, merge three into one of higher rarity, and chase legendaries. Drop odds and guarantees are always shown.

@@ -963,6 +963,8 @@ const SND = {
     if (!this.ctx) return;
     [[1, 1], [2.02, .55], [2.74, .4], [4.1, .25], [5.43, .15]].forEach(([m, v]) => this.tone(base * m, 4.5 / Math.sqrt(m), 'sine', vol * v));
   },
+  toll() { if (this.ok('toll', 700)) this.bell(165, 0.07); },
+  caw() { if (this.ok('caw', 260)) { this.noise(0.11, 1500, 0.05, 'bandpass', -0.5); this.tone(620, 0.09, 'sawtooth', 0.015, -0.4); } },
   drone() {
     const c = this.ctx; const g = c.createGain(); g.gain.value = 0.035;
     const f = c.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 220;
@@ -1016,7 +1018,7 @@ const IMG_NAMES = [
   ...['hollow', 'rat', 'skeleton', 'wraith', 'cultist', 'dknight'].map(k => 'foe_' + k),
   ...['gaoler', 'mother', 'warden'].map(k => 'boss_' + k),
   ...['helm', 'armor', 'ring', 'charm', 'gloves', 'boots', 'wings', 'familiar'].flatMap(s => [0, 1, 2, 3].map(r => `item_${s}_${r}`)),
-  ...['blade', 'knives', 'pyre', 'ward', 'lance', 'censer', 'wrath', 'starfall', 'scythe'].map(k => 'icon_w_' + k),
+  ...['blade', 'knives', 'pyre', 'ward', 'lance', 'censer', 'wrath', 'starfall', 'scythe', 'bell', 'crows'].map(k => 'icon_w_' + k),
   ...['vitality', 'strength', 'dexterity', 'attunement', 'endurance', 'covetous', 'fortitude'].map(k => 'icon_p_' + k),
   ...['wood', 'iron', 'ember'].flatMap(k => [`chest_${k}_0`, `chest_${k}_1`]),
   'cur_gold', 'cur_sigil', 'cur_ember', 'prop_urn',
@@ -1273,6 +1275,14 @@ const WEAPONS = {
     desc: 'A spinning spectral scythe that flies out and returns.',
     lv: ['Hurls a scythe that returns to you.', '+8 damage.', '+1 scythe.', 'Larger, +10 damage.', '+1 scythe.'],
     evoDesc: 'Four great scythes reap in every direction.' },
+  bell: { name: 'Funeral Bell', glyph: 'T', color: '#d6a65a', evoName: 'Requiem', evoWith: 'fortitude',
+    desc: 'A spectral bell tolls, its knell hurling the dead back.',
+    lv: ['Tolls a knell that damages and repels nearby foes.', '+8 damage, +15% knockback.', '+20% radius. The knell stuns foes briefly.', '+10 damage, tolls faster.', 'Tolls twice, the echo reaching further.'],
+    evoDesc: 'A vast knell that stuns all it touches and silences enemy spells.' },
+  crows: { name: 'Carrion Crows', glyph: 'Q', color: '#c84a4a', evoName: 'Murder of Crows', evoWith: 'dexterity',
+    desc: 'A flock of crows hunts foes, pecking from one to the next.',
+    lv: ['Two crows hunt the nearest foes.', '+1 crow.', '+4 damage. Each crow strikes one more foe.', '+1 crow, they fly faster.', '+1 crow, +5 damage, one more strike.'],
+    evoDesc: 'A screaming black cloud of ten crows that never stops feeding.' },
 };
 // spray additive sparks (capped so big fights stay cheap)
 function fxSparks(x, y, n, col, sp, life, sz, up) {
@@ -1764,6 +1774,29 @@ function weaponUpdate(w, dt) {
       }
       break;
     }
+    case 'bell': {
+      w.t -= dt; if (w.t > 0) return;
+      const evo = w.evo;
+      w.t = (evo ? 2.4 : lv >= 4 ? 2.6 : 3.2) * cdMul;
+      const dmg = (18 + (lv >= 2 ? 8 : 0) + (lv >= 4 ? 10 : 0)) * (evo ? 2 : 1);
+      const R = 125 * (lv >= 3 ? 1.2 : 1) * (evo ? 1.6 : 1) * P.area, kb = 260 * (lv >= 2 ? 1.15 : 1) * (evo ? 1.3 : 1);
+      const stun = evo ? 1.2 : lv >= 3 ? 0.5 : 0;
+      G.proj.push({ kind: 'toll', x: P.x, y: P.y, vx: 0, vy: 0, r: 0, R, dmg, kb, stun, t: 0, dur: 0.45, life: 9, hit: new Set(), evo, a: 0 });
+      if (lv >= 5 || evo) G.proj.push({ kind: 'toll', x: P.x, y: P.y, vx: 0, vy: 0, r: 0, R: R * 1.3, dmg: dmg * 0.6, kb: kb * 0.6, stun: stun * 0.5, t: -0.35, dur: 0.5, life: 9, hit: new Set(), evo, a: 0, echo: true });
+      G.cam.shake = Math.min(10, G.cam.shake + 2); SND.toll();
+      break;
+    }
+    case 'crows': {
+      w.t -= dt; if (w.t > 0) return;
+      const evo = w.evo;
+      w.t = (evo ? 1.2 : 1.6) * cdMul;
+      const count = evo ? 10 : [2, 3, 3, 4, 5][lv - 1];
+      const dmg = (10 + (lv >= 3 ? 4 : 0) + (lv >= 5 ? 5 : 0)) * (evo ? 1.4 : 1), hops = evo ? 5 : 2 + (lv >= 3 ? 1 : 0) + (lv >= 5 ? 1 : 0);
+      const sp = (lv >= 4 ? 430 : 360) * (evo ? 1.15 : 1);
+      for (let i = 0; i < count; i++) { const a = Math.random() * TAU; G.proj.push({ kind: 'crow', x: P.x + Math.cos(a) * 10, y: P.y - 20 + Math.sin(a) * 6, vx: Math.cos(a) * sp * 0.6, vy: Math.sin(a) * sp * 0.6 - 120, sp, r: 9, dmg, pierce: hops, life: 3.2, hit: new Set(), a, tgt: null, t: Math.random() * 3, evo }); }
+      SND.caw();
+      break;
+    }
     case 'scythe': {
       w.t -= dt; if (w.t > 0) return;
       const evo = w.evo;
@@ -2080,6 +2113,40 @@ function updateProjectiles(dt) {
         ring(p.x, p.y, p.rad * 2, '255,230,160', 0.55, 7); fxSparks(p.x, p.y, 10, 'rgba(255,230,150,1)', 340, 0.6, 2.4, 60);
         G.cam.shake = Math.min(14, G.cam.shake + 4); G.flash = Math.max(G.flash, 0.1);
       } else if (p.t > 0 && Math.random() < 0.8) { const k = p.t / p.dur, hx = p.x - 260 * (1 - k), hy = p.y - 420 * (1 - k); G.parts.push({ x: hx, y: hy, vx: rand(-30, 30), vy: rand(-30, 10), t: 0, life: 0.35, c: '#ffb050', s: 3, glow: true }); }
+      continue;
+    }
+    if (p.kind === 'toll') {
+      p.t += dt; p.x = P.x; p.y = P.y; if (p.t < 0) continue;
+      const k = Math.min(1, p.t / p.dur); p.r = p.R * (1 - Math.pow(1 - k, 2.2));
+      query(p.x, p.y, p.r, QBUF);
+      for (const e of QBUF) {
+        if (p.hit.has(e)) continue; p.hit.add(e);
+        const a = Math.atan2(e.y - p.y, e.x - p.x);
+        damageEnemy(e, p.dmg, Math.cos(a) * p.kb, Math.sin(a) * p.kb);
+        if (p.stun && !e.boss) { e.stun = Math.max(e.stun || 0, p.stun); e.kbx = Math.cos(a) * p.kb * 0.6; e.kby = Math.sin(a) * p.kb * 0.6; }
+      }
+      if (p.evo) for (const q of G.eproj) if (d2(q.x, q.y, p.x, p.y) < p.r * p.r) { q.life = -1; G.parts.push({ x: q.x, y: q.y, vx: 0, vy: -30, t: 0, life: 0.4, c: 'rgba(255,220,140,1)', s: 2.4, glow: true }); }
+      if (k >= 1) p.life = -1;
+      continue;
+    }
+    if (p.kind === 'crow') {
+      p.t += dt;
+      if (p.pierce > 0 && (!p.tgt || p.tgt.dead || p.hit.has(p.tgt))) {
+        let best = null, bd = 380 * 380;
+        for (const e of G.enemies) { if (e.dead || p.hit.has(e)) continue; const dd = d2(p.x, p.y, e.x, e.y); if (dd < bd) { bd = dd; best = e; } }
+        p.tgt = best;
+      }
+      let ax = p.vx, ay = p.vy;
+      if (p.tgt) { const dx = p.tgt.x - p.x, dy = p.tgt.y - 14 - p.y, d = Math.hypot(dx, dy) || 1; ax = dx / d * p.sp; ay = dy / d * p.sp; }
+      else { const dx = P.x - p.x, dy = P.y - 50 - p.y, d = Math.hypot(dx, dy) || 1; ax = dx / d * p.sp * 0.6 + Math.cos(p.t * 3) * 120; ay = dy / d * p.sp * 0.6 + Math.sin(p.t * 3) * 120; }
+      const tr = Math.min(1, dt * 6); p.vx += (ax - p.vx) * tr; p.vy += (ay - p.vy) * tr; p.a = Math.atan2(p.vy, p.vx);
+      if (p.tgt && d2(p.x, p.y, p.tgt.x, p.tgt.y - 14) < (p.r + p.tgt.r) ** 2) {
+        const e = p.tgt; p.hit.add(e); damageEnemy(e, p.dmg, p.vx * 0.15, p.vy * 0.15);
+        if (G.parts.length < 520) for (let i = 0; i < 3; i++) G.parts.push({ x: e.x, y: e.y - 14, vx: rand(-60, 60), vy: rand(-70, 10), t: 0, life: 0.55, c: '#141018', s: 3 });
+        fxSparks(e.x, e.y - 14, 2, 'rgba(255,80,70,1)', 160, 0.2, 1.6);
+        p.vx = -p.vx * 0.6 + rand(-80, 80); p.vy = -Math.abs(p.vy) * 0.7 - 80; p.tgt = null;
+        if (--p.pierce <= 0) p.life = Math.min(p.life, 0.45);
+      }
       continue;
     }
     if (p.kind === 'scythe') {
@@ -2881,7 +2948,7 @@ function render() {
   for (const s of G.shrines) if (!s.used || s.t < 500) lights.push([s.x, s.y - 14, s.used ? 120 : 220, 0.95]);
   for (const ch of G.chests) lights.push([ch.x, ch.y, 110, 0.85]);
   let nl = 0;
-  for (const p of G.proj) { if (nl >= 18) break; if (p.kind === 'fire' || p.kind === 'lance' || p.kind === 'scythe') { nl++; lights.push([p.x, p.y, 100, 0.75]); } else if (p.kind === 'meteor' && p.t > 0) { nl++; lights.push([p.x, p.y, 70 + 160 * p.t / p.dur, 0.85]); } }
+  for (const p of G.proj) { if (nl >= 18) break; if (p.kind === 'fire' || p.kind === 'lance' || p.kind === 'scythe') { nl++; lights.push([p.x, p.y, 100, 0.75]); } else if (p.kind === 'meteor' && p.t > 0) { nl++; lights.push([p.x, p.y, 70 + 160 * p.t / p.dur, 0.85]); } else if (p.kind === 'toll' && p.t >= 0) { nl++; lights.push([p.x, p.y, p.r * 1.2 + 40, 0.6 * (1 - p.t / p.dur)]); } }
   for (const f of G.fx) if (f.kind === 'boom' || f.kind === 'bolt') lights.push([f.x, f.y, f.r * 2.4, 0.9 * (1 - f.t / f.dur)]); else if (f.kind === 'slash') lights.push([P.x, P.y, f.r * 1.8, 0.5 * (1 - f.t / f.dur)]);
   for (const z of G.zones) lights.push([z.x, z.y, z.r * 1.6, 0.5]);
   for (const l of lights) { lc.globalAlpha = Math.max(0, Math.min(1, l[3])); lc.drawImage(LHOLE, l[0] - l[2], l[1] - l[2], l[2] * 2, l[2] * 2); }
@@ -2935,6 +3002,36 @@ function render() {
         glowAt(c, hx, hy, 34, '255,160,60', 0.8); glowAt(c, hx, hy, 14, '255,250,220', 1);
         c.globalCompositeOperation = 'source-over';
       }
+    } else if (p.kind === 'toll') {
+      if (p.t < 0) continue;
+      const k = Math.min(1, p.t / p.dur), a = 1 - k;
+      c.globalCompositeOperation = 'lighter';
+      const col = p.evo ? '255,225,150' : '230,180,100';
+      c.strokeStyle = `rgba(${col},${0.85 * a})`; c.lineWidth = 6 * a + 1.5; c.beginPath(); c.arc(p.x, p.y, p.r, 0, TAU); c.stroke();
+      c.strokeStyle = `rgba(${col},${0.4 * a})`; c.lineWidth = 2; c.beginPath(); c.arc(p.x, p.y, p.r * 0.82, 0, TAU); c.stroke(); c.beginPath(); c.arc(p.x, p.y, p.r * 0.66, 0, TAU); c.stroke();
+      c.fillStyle = `rgba(${col},${0.07 * a})`; c.beginPath(); c.arc(p.x, p.y, p.r, 0, TAU); c.fill();
+      c.globalCompositeOperation = 'source-over';
+      if (!p.echo && IMG.icon_w_bell) {
+        // ghostly bell swinging above the bearer
+        const bw = 46, bh = bw * IMG.icon_w_bell.height / IMG.icon_w_bell.width, sw = Math.sin(p.t * 18) * 0.25 * a;
+        c.save(); c.globalAlpha = Math.min(1, a * 1.6) * 0.9; c.translate(P.x, P.y - 92 - k * 10); c.rotate(sw);
+        c.globalCompositeOperation = 'lighter'; glowAt(c, 0, bh * 0.4, bw, '255,190,100', 0.5);
+        c.globalCompositeOperation = 'source-over'; c.drawImage(IMG.icon_w_bell, -bw / 2, 0, bw, bh); c.restore();
+      }
+    } else if (p.kind === 'crow') {
+      const fl = Math.sin(p.t * 26), dir = Math.cos(p.a) < 0 ? -1 : 1, s = p.evo ? 1.15 : 1;
+      c.save(); c.translate(p.x, p.y); c.rotate(dir < 0 ? p.a + Math.PI : p.a); c.scale(dir * s, s);
+      c.fillStyle = '#16121a'; c.strokeStyle = 'rgba(0,0,0,0.6)'; c.lineWidth = 1;
+      c.beginPath(); c.moveTo(-2, -1); c.lineTo(-9, -10 * fl - 2); c.lineTo(4, -2); c.closePath(); c.fill();
+      c.beginPath(); c.ellipse(0, 0, 8, 3.6, 0, 0, TAU); c.fill();
+      c.beginPath(); c.moveTo(-7, 0); c.lineTo(-13, -3); c.lineTo(-13, 3); c.closePath(); c.fill();
+      c.beginPath(); c.arc(6, -1.5, 3.2, 0, TAU); c.fill();
+      c.fillStyle = '#4a3a2a'; c.beginPath(); c.moveTo(9, -1.5); c.lineTo(13, -0.5); c.lineTo(9, 0.5); c.closePath(); c.fill();
+      c.fillStyle = '#2a2230'; c.beginPath(); c.moveTo(-1, 1); c.lineTo(-7, 9 * fl + 3); c.lineTo(3, 1); c.closePath(); c.fill();
+      c.restore();
+      c.globalCompositeOperation = 'lighter'; const ex = p.x + Math.cos(p.a) * 6 * s, ey = p.y + Math.sin(p.a) * 6 * s - 1.5;
+      glowAt(c, ex, ey, 6, '255,60,50', 0.9); c.fillStyle = '#ff5040'; circle(c, ex, ey, 1.1);
+      c.globalCompositeOperation = 'source-over';
     } else if (p.kind === 'scythe') {
       c.globalCompositeOperation = 'lighter';
       const R = p.r, col = p.evo ? '170,255,230' : '110,230,200';
