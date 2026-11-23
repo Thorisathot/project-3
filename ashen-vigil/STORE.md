@@ -31,6 +31,12 @@ The last flame gutters beneath the cathedral. Hold it against the hollowed dead 
 
 Ashen Vigil is a dark-fantasy horde survival roguelite. Move with one finger while your armaments strike on their own, roll through danger, and grow from a lone knight into a storm of steel, fire and lightning.
 
+KEEP THE FLAME ALIVE
+Your light is your lifeline. Feed the vigil flame or level up: every choice trades power for sight. Let it die and the dark comes for you.
+
+PARRY THE DARK
+Time your parry as a blow lands to stun the dead and fling their spells back. Bosses flash gold before a parryable strike: break their posture and strike while they stagger.
+
 HOLD BACK THE HORDE
 Hundreds of undead pour from the dark: hollows, plague rats, skeleton warriors, wraiths, cultists and dark knights. Every run is a fight to survive.
 

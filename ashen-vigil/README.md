@@ -11,6 +11,11 @@ Open `index.html` in a browser to play (the `assets/` folder must sit beside it)
 - **Esc / P**: pause, **M**: sound
 - Touch: drag anywhere to move, with on-screen Roll and Flask buttons
 
+## Signature mechanics
+- **The vigil flame**: your light radius follows the flame's fuel, which burns down over time. Feed it with the Kindle card at level-ups, candle shrines and ember hearts from elites. Near it you heal and enemies slow; let it die and you fight half-blind against faster, stronger dead.
+- **Parry**: press F / J / click (or the PARRY button) as an enemy strikes to stun it, and reflect projectiles back.
+- **Boss posture**: bosses are tougher and their parryable attacks flash gold. Parries fill their posture bar; a full bar breaks them for 3 seconds of 2.5x damage.
+
 ## Progression and shop
 - **Hub** with Play, Armory, Shop and Altar tabs. Progress saves on the device.
 - **Player level** grows from every run (kills, time survived, bosses, clears and deeper stages). Each level pays gold, every 5th adds sigils and an Iron Reliquary, and each level adds +1% damage to every run (up to +50%).
