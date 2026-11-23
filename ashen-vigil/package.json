@@ -9,7 +9,7 @@
     "sync": "npm run build && npx cap sync",
     "android": "npm run sync && npx cap open android",
     "ios": "npm run sync && npx cap open ios",
-    "assets": "capacitor-assets generate --iconBackgroundColor \"#2a0a10\" --splashBackgroundColor \"#0a0610\""
+    "assets": "capacitor-assets generate --assetPath resources --iconBackgroundColor \"#2a0a10\" --splashBackgroundColor \"#0a0610\""
   },
   "dependencies": {
     "@capacitor-community/admob": "^8.4.2",

@@ -1,0 +1,56 @@
+# Builds a test APK of Ashen Vigil on every push that touches the game, and publishes it
+# as a GitHub Release so Obtainium on your phone can pick up the update.
+name: Android test build
+
+on:
+  push:
+    branches: [main, ccr-cc5bee01-bpu6a0]
+    paths: ['ashen-vigil/**', '.github/workflows/android-test-build.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android-test-build
+  cancel-in-progress: true
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ashen-vigil
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - name: Install and sync web build
+        run: |
+          npm ci || npm install
+          npm run build
+          npx cap sync android
+      - name: Build APK
+        env:
+          BUILD_NUMBER: ${{ github.run_number }}
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+          cp app/build/outputs/apk/debug/app-debug.apk "$GITHUB_WORKSPACE/ashen-vigil-test-${{ github.run_number }}.apk"
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: test-${{ github.run_number }}
+          name: Ashen Vigil test build ${{ github.run_number }}
+          target_commitish: ${{ github.sha }}
+          prerelease: false
+          body: |
+            Test build from `${{ github.ref_name }}` at ${{ github.sha }}.
+            ${{ github.event.head_commit.message }}
+          files: ashen-vigil-test-${{ github.run_number }}.apk
