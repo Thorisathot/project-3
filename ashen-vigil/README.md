@@ -52,3 +52,7 @@ See [STORE.md](STORE.md) for the store listing kit and [APP.md](APP.md) for buil
 
 ## Art
 Characters, enemies, bosses, items, ability icons, chests, props, floors, stage scenes and splash art in `assets/` were generated with OpenAI's image models (gpt-image-1.5 for transparent sprites, gpt-image-2 for scenes) in one shared stylised 3D style, then trimmed, resized and compressed to WebP. If an image fails to load, the game falls back to its built-in drawn art.
+
+## Website
+
+`npm run build:web` builds a web version into `web/`: the same game with search and link-preview tags, an install-to-home-screen manifest and an offline cache. `.github/workflows/website.yml` publishes it to GitHub Pages on every push. In the browser, purchases and ads are hidden, and saves live in that browser.
