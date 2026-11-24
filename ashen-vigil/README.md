@@ -55,4 +55,4 @@ Characters, enemies, bosses, items, ability icons, chests, props, floors, stage 
 
 ## Website
 
-`npm run build:web` builds a web version into `web/`: the same game with search and link-preview tags, an install-to-home-screen manifest and an offline cache. `.github/workflows/website.yml` publishes it to GitHub Pages on every push. In the browser, purchases and ads are hidden, and saves live in that browser.
+`npm run build:web` builds a web version into `web/`: the same game with search and link-preview tags, an install-to-home-screen manifest and an offline cache. `.github/workflows/website.yml` publishes it to GitHub Pages on every push (live at https://thorisathot.github.io/project-3/). In the browser, purchases and ads are hidden, and saves live in that browser.
