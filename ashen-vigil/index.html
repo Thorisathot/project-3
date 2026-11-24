@@ -808,6 +808,13 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
 .hardtog[aria-pressed="true"] b{color:#ff9a8a}
 .hardtog[hidden]{display:none}
 @media (max-width:640px){.hardtog{margin-top:6px;padding:6px 12px 6px 8px}.hardtog small{display:none}.hardtog .hk{width:36px;height:20px}.hardtog .hk i{width:12px;height:12px}.hardtog[aria-pressed="true"] .hk i{left:18px}.stagewpn em{display:none}.stagewpn{padding:6px 12px;margin-bottom:6px}.stagewpn img{width:36px;height:36px}}
+/* browser */
+body.incombat #game{cursor:none}
+.pkeys{display:flex;flex-wrap:wrap;gap:6px 12px;justify-content:center;font-size:13px;color:#a89ec0}
+.pkeys:empty{display:none}
+.pkeys kbd{display:inline-block;margin-right:5px;padding:2px 7px;border-radius:6px;border:1px solid #5a4e80;border-bottom-width:3px;background:#221a38;color:#f1e7d3;font-family:var(--display);font-size:11px;letter-spacing:.06em}
+.setrow{flex-wrap:wrap;justify-content:center}.setrow .btn{padding:10px 14px;font-size:13px}
+button:focus-visible{outline:3px solid #ffc04a;outline-offset:2px}
 /* dungeons */
 .dunlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
 .dcard{display:flex;flex-direction:column;border-radius:18px;overflow:hidden;border:2px solid color-mix(in srgb,var(--dc) 55%,#3f3460);background:linear-gradient(180deg,#261d3c,#16112a);box-shadow:0 10px 26px -12px color-mix(in srgb,var(--dc) 70%,transparent)}
@@ -1024,7 +1031,9 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
       <div class="pgroup"><div class="ph">Relics</div><div id="pauseR" class="pslots"></div></div>
       <div class="pbtns">
         <button id="resumeBtn" class="btn">Resume</button>
-        <div class="prow"><button id="pSound" class="btn ghost">Sound on</button><button id="quitBtn" class="btn ghost pquit">Abandon run</button></div>
+        <div class="prow"><button id="pSound" class="btn ghost">Sound on</button><button id="pFull" class="btn ghost">Fullscreen</button></div>
+        <button id="quitBtn" class="btn ghost pquit">Abandon run</button>
+        <div id="pKeys" class="pkeys"></div>
       </div>
     </div>
   </div>
@@ -2298,6 +2307,7 @@ function updatePlayer(dt) {
   let mx = 0, my = 0;
   if (keys.KeyW || keys.ArrowUp) my -= 1; if (keys.KeyS || keys.ArrowDown) my += 1;
   if (keys.KeyA || keys.ArrowLeft) mx -= 1; if (keys.KeyD || keys.ArrowRight) mx += 1;
+  if (GP.mx || GP.my) { mx = GP.mx; my = GP.my; }
   if (touch.active) { const dx = touch.x - touch.ox, dy = touch.y - touch.oy, d = Math.hypot(dx, dy); if (d > 8) { mx = dx / Math.max(d, 50); my = dy / Math.max(d, 50); } }
   const ml = Math.hypot(mx, my); if (ml > 1) { mx /= ml; my /= ml; }
   P.moving = ml > 0.05;
@@ -2601,6 +2611,10 @@ function renderPause() {
   while (r.length < MAX_R) r.push('<div class="pslot empty"><span class="pq">+</span><div><b>Empty slot</b><small>Relics strengthen everything</small></div></div>');
   $('pauseW').innerHTML = w.join(''); $('pauseR').innerHTML = r.join('');
   $('pSound').textContent = SND.muted ? 'Sound off' : 'Sound on';
+  $('pFull').hidden = !canFullscreen(); $('pFull').textContent = document.fullscreenElement ? 'Exit fullscreen' : 'Fullscreen';
+  const k = (key, l) => `<span><kbd>${key}</kbd>${l}</span>`;
+  $('pKeys').innerHTML = isTouch ? '' : GP.active ? k('L-stick', 'Move') + k('A', 'Roll') + k('B / RB', 'Parry') + k('Y', 'Flask') + k('Start', 'Pause')
+    : k('WASD', 'Move') + k('Space', 'Roll') + k('F / Click', 'Parry') + k('Right-click', 'Roll') + k('Q', 'Flask') + k('Esc', 'Pause') + k('M', 'Sound');
   const q = $('quitBtn'); q.textContent = 'Abandon run'; q.classList.remove('armed');
 }
 function buildList() {
@@ -4588,7 +4602,8 @@ function openSettings(confirmErase) {
     <div class="seg" role="group" aria-label="Camera zoom">${[['near', 'Close'], ['normal', 'Normal'], ['far', 'Far']].map(([k, l]) => `<button data-z="${k}" aria-pressed="${z === k}">${l}</button>`).join('')}</div>
     <div class="eyebrow">Sound</div>
     <div class="seg two" role="group" aria-label="Sound"><button data-s="on" aria-pressed="${!SND.muted}">On</button><button data-s="off" aria-pressed="${SND.muted}">Off</button></div>
-    <div class="eyebrow">Controls</div><p class="muted" style="margin:0;font-size:15px">Move with WASD, the arrow keys or by dragging. Roll with Space or Shift. Parry with F, J or a mouse click. Drink a flask with Q or E. Pause with Esc, toggle sound with M.</p>
+    <div class="eyebrow">Controls</div><p class="muted" style="margin:0;font-size:15px">Move with WASD, the arrow keys or by dragging. Roll with Space, Shift or a right-click. Parry with F, J or a left-click. Drink a flask with Q or E. Pause with Esc, toggle sound with M. Controllers work too: left stick moves, A rolls, B parries, Y drinks, Start pauses.</p>
+    ${!Platform.native ? `<div class="eyebrow">This browser</div><div class="row setrow">${canFullscreen() ? '<button class="btn ghost" id="mFull">Fullscreen</button>' : ''}${installPrompt ? '<button class="btn ghost" id="mInstall">Install as app</button>' : ''}<button class="btn ghost" id="mExport">Back up save</button><button class="btn ghost" id="mImport">Restore save</button></div><p class="muted" style="margin:0;font-size:13px">Progress is stored in this browser. Back it up before clearing site data or switching devices.</p>` : ''}
     ${confirmErase ? `<p class="muted">This erases all gold, sigils, gear, upgrades and unlocks on this device. It cannot be undone.</p>
       <div class="row"><button class="btn ghost danger" id="mErase2">Erase everything</button><button class="btn ghost" id="mKeep">Keep my progress</button></div>`
       : `<div class="row"><button class="btn" id="mClose" style="padding:12px 24px;font-size:14px">Done</button><button class="btn ghost danger" id="mErase">Erase progress</button></div>`}`, m => {
@@ -4596,6 +4611,9 @@ function openSettings(confirmErase) {
     m.querySelectorAll('[data-s]').forEach(b => b.onclick = () => { SND.init(); SND.setMuted(b.dataset.s === 'off'); $('muteBtn').textContent = SND.muted ? 'OFF' : 'SND'; openSettings(false); });
     if (confirmErase) { m.querySelector('#mKeep').onclick = () => openSettings(false); m.querySelector('#mErase2').onclick = () => { SAVE = DEFAULT_SAVE(); migrateSave(); closeModal(); renderHub(); toast('Progress erased.'); }; }
     else { m.querySelector('#mClose').onclick = closeModal; m.querySelector('#mErase').onclick = () => openSettings(true); }
+    const on = (id, fn) => { const b = m.querySelector(id); if (b) b.onclick = fn; };
+    on('#mFull', toggleFullscreen); on('#mExport', exportSave); on('#mImport', importSave);
+    on('#mInstall', async () => { if (!installPrompt) return; installPrompt.prompt(); try { await installPrompt.userChoice; } catch (e) {} installPrompt = null; openSettings(false); });
   });
 }
 const TAB_ICONS = {
@@ -4944,7 +4962,7 @@ window.addEventListener('keyup', e => { keys[e.code] = false; });
 window.addEventListener('blur', () => { for (const k in keys) keys[k] = false; if (state === 'play') togglePause(); });
 document.addEventListener('visibilitychange', () => { if (document.hidden && state === 'play') togglePause(); });
 cv.addEventListener('pointerdown', e => {
-  if (e.pointerType === 'mouse' && state === 'play') { tryParry(); return; }
+  if (e.pointerType === 'mouse' && state === 'play') { if (e.button === 2) tryRoll(); else tryParry(); return; }
   if (e.pointerType === 'touch') { if (!isTouch) { isTouch = true; if (state === 'play') { $('rollBtn').hidden = false; $('flaskBtn').hidden = $('parryBtn').hidden = false; } } }
   if (state !== 'play' || e.pointerType !== 'touch' || touch.active) return;
   touch.active = true; touch.id = e.pointerId; touch.ox = touch.x = e.clientX; touch.oy = touch.y = e.clientY;
@@ -4953,6 +4971,64 @@ window.addEventListener('pointermove', e => { if (touch.active && e.pointerId ==
 const endTouch = e => { if (e.pointerId === touch.id) { touch.active = false; touch.id = null; } };
 window.addEventListener('pointerup', endTouch); window.addEventListener('pointercancel', endTouch);
 window.addEventListener('touchstart', () => { isTouch = true; }, { passive: true, once: true });
+cv.addEventListener('contextmenu', e => e.preventDefault());
+// pause audio while the tab is hidden
+document.addEventListener('visibilitychange', () => { try { if (!SND.ctx) return; if (document.hidden) SND.ctx.suspend(); else SND.ctx.resume(); } catch (e) {} });
+/* ---------------- Gamepad ---------------- */
+const GP = { mx: 0, my: 0, prev: [], active: false, navT: 0 };
+function gpVisibleButtons() {
+  const layer = ['modal', 'levelScreen', 'chestScreen', 'pauseScreen', 'endScreen'].map($).find(el => el && !el.hidden) || (!$('hub').hidden ? $('hub') : null);
+  return layer ? [...layer.querySelectorAll('button:not([disabled])')].filter(b => b.offsetParent !== null) : [];
+}
+function gpPoll(dt) {
+  const pads = navigator.getGamepads ? navigator.getGamepads() : []; let g = null;
+  for (const p of pads) if (p && p.connected) { g = p; break; }
+  if (!g) { GP.active = false; GP.mx = GP.my = 0; return; }
+  const ax = g.axes[0] || 0, ay = g.axes[1] || 0, m = Math.hypot(ax, ay), dz = 0.22;
+  GP.mx = m > dz ? ax * Math.min(1, (m - dz) / (1 - dz)) / m : 0; GP.my = m > dz ? ay * Math.min(1, (m - dz) / (1 - dz)) / m : 0;
+  const b = i => !!(g.buttons[i] && g.buttons[i].pressed), down = i => b(i) && !GP.prev[i];
+  if (GP.mx || GP.my || g.buttons.some(x => x.pressed)) { GP.active = true; isTouch = false; }
+  if (state === 'play') {
+    if (down(0) || down(4) || down(6)) tryRoll();
+    if (down(1) || down(2) || down(5) || down(7)) tryParry();
+    if (down(3)) tryDrink();
+    if (down(9) || down(8)) togglePause();
+  } else if (state === 'pause' && (down(9) || down(1))) togglePause();
+  else if (state === 'chest' && (down(0) || down(1))) closeChest();
+  else {
+    // menus: d-pad or stick moves focus, A presses
+    GP.navT -= dt;
+    const dir = b(15) || ax > 0.6 || b(13) || ay > 0.6 ? 1 : b(14) || ax < -0.6 || b(12) || ay < -0.6 ? -1 : 0;
+    if (dir && GP.navT <= 0) { GP.navT = 0.2; const list = gpVisibleButtons(); if (list.length) { const i = list.indexOf(document.activeElement); list[(i + dir + list.length) % list.length].focus(); } }
+    if (!dir) GP.navT = 0;
+    if (down(0) && document.activeElement && document.activeElement.tagName === 'BUTTON') document.activeElement.click();
+    if (down(1) && !$('modal').hidden) closeModal();
+  }
+  GP.prev = g.buttons.map(x => x.pressed);
+}
+window.addEventListener('gamepadconnected', () => toast('Controller connected. Left stick moves, A rolls, B parries, Y drinks, Start pauses.'));
+/* ---------------- Browser niceties ---------------- */
+let installPrompt = null;
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); installPrompt = e; });
+const canFullscreen = () => !!(document.documentElement.requestFullscreen) && !Platform.native;
+function toggleFullscreen() { try { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen({ navigationUI: 'hide' }).catch(() => {}); } catch (e) {} }
+function exportSave() {
+  const blob = new Blob([JSON.stringify(SAVE)], { type: 'application/json' }), a = document.createElement('a'), d = new Date();
+  a.href = URL.createObjectURL(blob); a.download = 'ashen-vigil-save-' + d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate() + '.json';
+  document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500); toast('Save downloaded. Keep it somewhere safe.');
+}
+function importSave() {
+  const inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'application/json,.json';
+  inp.onchange = () => { const f = inp.files && inp.files[0]; if (!f) return; f.text().then(txt => {
+    let data; try { data = JSON.parse(txt); } catch (e) { toast('That file is not an Ashen Vigil save.'); return; }
+    if (!data || typeof data !== 'object' || data.gold == null || !Array.isArray(data.items)) { toast('That file is not an Ashen Vigil save.'); return; }
+    openModal(`<h2>Restore this save?</h2><p class="muted">It replaces all progress in this browser: level ${data.plv || 1}, ${fmtNum(data.gold || 0)} gold, ${fmtNum(data.sigils || 0)} sigils.</p><div class="row"><button class="btn" id="mYes">Restore</button><button class="btn ghost" id="mNo">Cancel</button></div>`, m => {
+      m.querySelector('#mNo').onclick = closeModal;
+      m.querySelector('#mYes').onclick = () => { SAVE = data; migrateSave(); persist(); closeModal(); renderHub(); toast('Save restored.'); };
+    });
+  }); };
+  inp.click();
+}
 const press = (id, fn) => { const b = $(id); b.addEventListener('pointerdown', e => { e.preventDefault(); b.classList.remove('hit'); void b.offsetWidth; b.classList.add('hit'); try { navigator.vibrate && navigator.vibrate(12); } catch (er) {} fn(); }); };
 press('rollBtn', tryRoll); press('flaskBtn', tryDrink); press('parryBtn', tryParry);
 // cooldown rings and flask count on the touch buttons (only touches the DOM when a value changes)
@@ -4979,6 +5055,7 @@ $('quitBtn').addEventListener('click', () => {
   if (!q.classList.contains('armed')) { q.classList.add('armed'); q.textContent = 'Tap again to abandon'; clearTimeout(quitTimer); quitTimer = setTimeout(() => { q.classList.remove('armed'); q.textContent = 'Abandon run'; }, 2500); return; }
   $('pauseScreen').hidden = true; endRun(false);
 });
+$('pFull').addEventListener('click', () => { toggleFullscreen(); setTimeout(() => { $('pFull').textContent = document.fullscreenElement ? 'Exit fullscreen' : 'Fullscreen'; }, 300); });
 $('pSound').addEventListener('click', () => { SND.init(); SND.setMuted(!SND.muted); $('muteBtn').textContent = SND.muted ? 'OFF' : 'SND'; $('pSound').textContent = SND.muted ? 'Sound off' : 'Sound on'; });
 $('chestBtn').addEventListener('click', closeChest);
 
@@ -4998,7 +5075,8 @@ function perfTick(ms) {
 function frame(now) {
   const raw = now - last; perfTick(raw);
   const dt = Math.min(1 / 30, raw / 1000); last = now;
-  try { update(dt); render(); touchUI(); } catch (err) { console.error(err); }
+  try { gpPoll(dt); update(dt); render(); touchUI(); } catch (err) { console.error(err); }
+  const playing = state === 'play'; if (document.body.classList.contains('incombat') !== playing) document.body.classList.toggle('incombat', playing);
   requestAnimationFrame(frame);
 }
 requestAnimationFrame(frame);
