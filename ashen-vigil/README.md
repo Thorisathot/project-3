@@ -36,6 +36,8 @@ A short first-run tutorial teaches movement, embers, rolling and flasks, then po
 See [STORE.md](STORE.md) for the store listing kit and [APP.md](APP.md) for building the Android and iOS apps and setting up purchases and ads.
 
 ## Features
+- Dungeons tab with daily entries: Gilded Vault (gold), Crystal Reliquary (sigils), Ember Hatchery (familiars) and Trial of Bells (boss rush for a gear reliquary). Tiers open by clearing and by player level, and extra entries cost sigils
+- Wings come only from the Feathers of the Fallen event (two-week seasons, feathers from hordes, bosses, clears and trials) or the shop; familiars only from the Ember Hatchery
 - Carry up to 4 armaments and 4 relics per run
 - Hard mode: flasks never refill and rolling has a 2 second cooldown, for +50% gold, sigils and XP
 - 5 origins, 13 armaments (including one exclusive armament per stage), 7 relics, each with 5 levels

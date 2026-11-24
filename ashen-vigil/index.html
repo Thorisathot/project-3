@@ -102,7 +102,7 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
 .hub-body{flex:1;min-height:0;overflow-y:auto;padding-block:20px 32px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .tab{display:flex;flex-direction:column;gap:14px}
 .tab .tagline{font-size:19px;margin-bottom:6px}
-.tabbar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);background:rgba(10,8,12,.97);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+.tabbar{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);background:rgba(10,8,12,.97);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
 .tabbar button{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--ash);background:none;border:0;border-top:2px solid transparent;padding:16px 4px;cursor:pointer}
 .tabbar button[aria-current="page"]{color:var(--bone);border-top-color:var(--ember)}
 .tabbar button:focus-visible{outline:1px solid var(--ember);outline-offset:-4px}
@@ -808,6 +808,46 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
 .hardtog[aria-pressed="true"] b{color:#ff9a8a}
 .hardtog[hidden]{display:none}
 @media (max-width:640px){.hardtog{margin-top:6px;padding:6px 12px 6px 8px}.hardtog small{display:none}.hardtog .hk{width:36px;height:20px}.hardtog .hk i{width:12px;height:12px}.hardtog[aria-pressed="true"] .hk i{left:18px}.stagewpn em{display:none}.stagewpn{padding:6px 12px;margin-bottom:6px}.stagewpn img{width:36px;height:36px}}
+/* dungeons */
+.dunlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.dcard{display:flex;flex-direction:column;border-radius:18px;overflow:hidden;border:2px solid color-mix(in srgb,var(--dc) 55%,#3f3460);background:linear-gradient(180deg,#261d3c,#16112a);box-shadow:0 10px 26px -12px color-mix(in srgb,var(--dc) 70%,transparent)}
+.dcard.locked{filter:grayscale(.7) brightness(.75)}
+.dart{position:relative;height:130px;background-size:cover;background-position:center}
+.dart::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,#1e1732 100%)}
+.dart img{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);width:64px;height:64px;object-fit:contain;z-index:1;filter:drop-shadow(0 4px 10px rgba(0,0,0,.8))}
+.dtag{position:absolute;top:10px;left:10px;z-index:1;font-family:var(--display);font-size:10px;letter-spacing:.18em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:rgba(10,6,20,.75);color:var(--dc);border:1px solid color-mix(in srgb,var(--dc) 60%,transparent)}
+.dtries{position:absolute;top:10px;right:10px;z-index:1;font-family:var(--display);font-size:11px;letter-spacing:.08em;padding:4px 10px;border-radius:999px;background:rgba(10,6,20,.75);color:#f1e7d3}
+.dbody{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:12px 14px 16px}
+.dbody h3{margin:0;font-size:19px;letter-spacing:.06em;color:#f1e7d3}
+.dbody p{margin:0;font-size:15px;line-height:1.3;color:#c9bfad}
+.dtier{display:flex;align-items:center;gap:12px;font-family:var(--display);font-size:13px;letter-spacing:.08em;color:#b8aed0}
+.dtier b{color:var(--dc);font-size:16px}
+.arrowbtn{width:32px;height:32px;border-radius:10px;border:2px solid #4a3e70;background:#221a38;color:#f1e7d3;font-size:18px;cursor:pointer;line-height:1}
+.arrowbtn:disabled{opacity:.35;cursor:default}
+.drw{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center}
+.dodds{display:flex;flex-wrap:wrap;gap:4px 8px;justify-content:center;font-size:12px}.dodds i{font-style:normal}
+.dgoal{font-size:12px;color:#8a7fa8}
+.dbody .btn,.dbody .buy{width:100%;max-width:280px}
+/* event */
+.evbar{position:relative;height:22px;border-radius:11px;background:#140f22;border:2px solid #4a3e70;overflow:hidden;margin:4px 0 10px}
+.evbar i{position:absolute;inset:0 auto 0 0;background:linear-gradient(90deg,#c86a14,#ffd36a)}
+.evbar b{position:relative;display:block;text-align:center;font-family:var(--display);font-size:12px;line-height:18px;color:#fff;text-shadow:0 1px 2px #000}
+.evlist{display:flex;flex-direction:column;gap:6px}
+.evrow{display:flex;align-items:center;gap:10px;padding:6px 10px;border-radius:12px;background:rgba(10,6,20,.45);border:1px solid rgba(255,255,255,.08)}
+.evrow img{width:36px;height:36px;object-fit:contain}
+.evrow span{flex:1;font-size:14px;color:#e8e0f4;text-align:left}
+.evrow em{font-style:normal;font-size:12px;color:#8a7fa8}
+.evrow .buy{padding:6px 12px}
+.evf{min-width:34px;font-family:var(--display);color:#ffd27a;text-align:center}
+.evrow.ready{border-color:#ffd27a;box-shadow:0 0 12px -4px #ffd27a}.evrow.got{opacity:.55}
+.evtip{font-size:12px;color:#8a7fa8;text-align:center;margin:8px 0}
+.wingshop{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-bottom:12px}
+.wingoffer{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:16px;border:2px solid color-mix(in srgb,var(--rc) 60%,#3f3460);background:linear-gradient(160deg,color-mix(in srgb,var(--rc) 22%,#241a3a),#18122a 75%);box-shadow:0 0 22px -10px var(--rc)}
+.wingoffer img{width:64px;height:64px;object-fit:contain;flex:none}
+.wingoffer>div{flex:1;text-align:left;min-width:0}.wingoffer h3{margin:2px 0;font-size:15px;color:#f1e7d3}.wingoffer p{margin:0;font-size:13px;color:#c9bfad}
+.wingoffer .tag{font-family:var(--display);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--rc)}
+.wingoffer .btn{padding:10px 14px;flex:none}
+@media (max-width:640px){.tabbar button{font-size:10px;letter-spacing:.04em;margin:0 1px}.dart{height:110px}}
 /* evolution hints on boon cards */
 .evohint{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:auto;padding:6px 10px;border-radius:10px;background:rgba(10,6,20,.45);border:1px solid rgba(255,255,255,.08);font-family:var(--display);font-size:11px;letter-spacing:.08em;color:#b8aed0}
 .evohint img{width:26px;height:26px;object-fit:contain;flex:none}
@@ -932,11 +972,16 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
       <section id="tab-shop" class="tab" hidden>
         <div id="starter" hidden></div>
         <div id="claims" hidden></div>
+        <div id="wingShop"></div>
         <div id="freeChest" class="freechest"></div>
         <div class="sect-h"><h2>Chests</h2><span class="muted">Each chest holds one piece of gear. Odds are listed.</span></div>
         <div id="chests" class="chests"></div>
         <div class="sect-h"><h2>Sigils</h2><span class="muted">Earned from bosses and first stage clears.</span></div>
         <div id="packs" class="packs"></div>
+      </section>
+      <section id="tab-dun" class="tab" hidden>
+        <div class="sect-h"><h2>Dungeons</h2><span class="muted" id="dunReset"></span></div>
+        <div id="dunList" class="dunlist"></div>
       </section>
       <section id="tab-altar" class="tab" hidden>
         <div class="sect-h"><h2>Talents</h2><span class="muted">A path of permanent boons. Each row opens at a player level.</span></div>
@@ -944,7 +989,7 @@ h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance}
         <div id="talTree" class="ttree"></div>
       </section>
     </main>
-    <nav class="tabbar" aria-label="Main menu"><button data-tab="play">Play</button><button data-tab="armory">Armory</button><button data-tab="shop">Shop</button><button data-tab="altar">Altar</button></nav>
+    <nav class="tabbar" aria-label="Main menu"><button data-tab="shop">Shop</button><button data-tab="armory">Armory</button><button data-tab="play">Play</button><button data-tab="dun">Dungeons</button><button data-tab="altar">Talents</button></nav>
   </div>
 </div>
 <div id="modal" class="overlay" hidden><div class="sheet" id="modalBody"></div></div>
@@ -1517,8 +1562,10 @@ function itemStats(it) {
   const add = ([key, v]) => out.push([key, INT_STATS.has(key) ? (key === 'armor' ? v + Math.floor(it.plus / 4) : v) : v * k]);
   add(it.prim); it.aff.forEach(add); return out;
 }
+// wings come from events and the shop, familiars from the Ember Hatchery; chests roll the rest
+const CHEST_SLOTS = ['helm', 'armor', 'ring', 'charm', 'gloves', 'boots'];
 function genItem(r, forceSlot) {
-  const slot = forceSlot || Object.keys(SLOTS)[Math.floor(Math.random() * Object.keys(SLOTS).length)], S = SLOTS[slot], R = RARITY[r];
+  const slot = forceSlot || CHEST_SLOTS[Math.floor(Math.random() * CHEST_SLOTS.length)], S = SLOTS[slot], R = RARITY[r];
   const names = S.names[r];
   const it = { id: SAVE.nextId++, slot, r, name: names[Math.floor(Math.random() * names.length)], plus: 0,
     prim: [S.prim[0], S.prim[0] === 'armor' ? (r >= 2 ? 2 : 1) : +(S.prim[1] * R.mult).toFixed(4)], aff: [] };
@@ -1578,7 +1625,7 @@ const Platform = {
       const P_ = this.plugin('Purchases');
       if (P_) {
         await P_.configure({ apiKey: this.ios ? STORE_KEYS.revenuecatIos : STORE_KEYS.revenuecatAndroid });
-        const { products } = await P_.getProducts({ productIdentifiers: [...PACKS.map(p => p.sku), STARTER.sku, URN.sku] });
+        const { products } = await P_.getProducts({ productIdentifiers: [...PACKS.map(p => p.sku), STARTER.sku, URN.sku, ...WING_PACKS.map(p => p.sku)] });
         for (const p of products || []) this.prices[p.identifier] = p;
       }
       const A = this.plugin('AdMob'); if (A) await A.initialize({});
@@ -1617,7 +1664,7 @@ function newRun(cls) {
   G = { t: 0, kills: 0, enemies: [], proj: [], eproj: [], gems: [], fx: [], texts: [], zones: [], hazards: [], chests: [], shrines: [], items: [], parts: [],
     spawnAcc: 0, nextElite: 60, bossIdx: 0, boss: null, bossesKilled: 0, swarms: [100, 340, 540], hordes: HORDE_TIMES.slice(), horde: null, hordesBroken: 0, shrineT: 35, pendingLevels: 0,
     cam: { x: 0, y: 0, shake: 0 }, slow: 1, winT: 0, grid: new Map(), dmgDealt: 0 };
-  G.decals = []; G.flash = 0; G.calm = 0; ZK = 1; ZOOM = ZOOM0; FXA = 1; P.swingT = 0; P.ghost = null; P.parry = 0; P.parryCd = 0; G.hitstop = 0; G.flameOut = false;
+  G.decals = []; G.mode = null; G.dun = null; G.crystal = null; G.flash = 0; G.calm = 0; ZK = 1; ZOOM = ZOOM0; FXA = 1; P.swingT = 0; P.ghost = null; P.parry = 0; P.parryCd = 0; G.hitstop = 0; G.flameOut = false;
   G.flameF = { x: 0, y: -110, fuel: 100, t: 0 };
   G.stage = SAVE.stage; G.meta = metaMods(); G.gold = 0; G.sigils = 0; G.revives = G.meta.revive; G.rerolls = G.meta.reroll;
   G.hard = !!SAVE.hard;
@@ -1704,6 +1751,7 @@ function damageEnemy(e, dmg, kx = 0, ky = 0) {
 const GORE = { hollow: '#5a0c12', rat: '#5a0c12', skeleton: '#8a8478', wraith: '#4a6a9a', cultist: '#4e1a5a', knight: '#5a0c12', boss: '#5a0c12' };
 function killEnemy(e) {
   e.dead = true; G.kills++;
+  if (G.mode) dunOnKill(e);
   const gc = GORE[e.type] || '#5a0c12', n = e.boss ? 46 : 8;
   for (let i = 0; i < n; i++) { const a = Math.random() * TAU, s = rand(40, e.boss ? 280 : 160); G.parts.push({ x: e.x, y: e.y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, t: 0, life: rand(0.35, 0.8), c: i % 3 === 0 ? '#2a2228' : gc, s: rand(1.8, 4) }); }
   for (let i = 0; i < (e.boss ? 24 : 3); i++) G.parts.push({ x: e.x + rand(-6, 6), y: e.y + rand(-8, 4), vx: rand(-12, 12), vy: rand(-60, -25), t: 0, life: rand(0.5, 1.1), c: 'rgba(255,150,70,0.9)', s: rand(1, 2.2), glow: true });
@@ -1996,7 +2044,7 @@ function explode(x, y, rad, dmg, evo) {
 /* ---------------- Enemies & bosses ---------------- */
 function spawnEnemy(type, x, y, elite = false) {
   const d = ENEMIES[type], t = G.t * TSCALE;
-  const st = STAGES[G.stage], hpMul = (1 + (t / 60) * 0.22 + (t / 300) * (t / 300) * 0.5) * st.hp, dmgMul = (1 + (t / 60) * 0.07) * st.dmg;
+  const st = STAGES[G.stage], hpMul = (1 + (t / 60) * 0.22 + (t / 300) * (t / 300) * 0.5) * (G.mode ? G.dun.hp : st.hp), dmgMul = (1 + (t / 60) * 0.07) * (G.mode ? G.dun.dmg : st.dmg);
   const e = { type, x, y, r: d.r, hp: d.hp * hpMul, maxHp: d.hp * hpMul, spd: d.spd * rand(0.9, 1.1), dmg: d.dmg * dmgMul, xp: d.xp, mass: d.mass,
     flash: 0, kbx: 0, kby: 0, vx: 0, vy: 0, t: Math.random() * 10, born: G.t, shootT: rand(1.5, 3), ranged: !!d.ranged, slow: 0, boss: false, elite };
   if (elite) { e.hp *= 6; e.maxHp = e.hp; e.r *= 1.3; e.xp *= 4; e.mass *= 3; e.dmg *= 1.3; }
@@ -2072,6 +2120,7 @@ function spawnBoss(i) {
   banner(e.name, b.sub, 3.5); SND.bell(i === 2 ? 49 : 65, 0.35);
 }
 function onBossDeath(e) {
+  if (G.mode) { dunBossDeath(e); return; }
   G.boss = null; G.bossesKilled++; G.sigils += 3; G.gold += 150 * G.goldMul;
   for (let i = 0; i < 30; i++) { const a = Math.random() * TAU, r = Math.random() * 60; dropGem(e.x + Math.cos(a) * r, e.y + Math.sin(a) * r, 5); }
   G.chests.push({ x: e.x, y: e.y, t: 0, boss: true });
@@ -2205,10 +2254,11 @@ function updateEnemies(dt) {
     else if (e.stun > 0) { e.stun -= dt; e.t += dt; e.x += e.kbx * dt; e.y += e.kby * dt; const kd = Math.pow(0.0005, dt); e.kbx *= kd; e.kby *= kd; }
     else {
       e.t += dt;
-      const dx = P.x - e.x, dy = P.y - e.y, d = Math.hypot(dx, dy) || 1;
+      const tc = e.toC && G.crystal, dx = (tc ? G.crystal.x : P.x) - e.x, dy = (tc ? G.crystal.y : P.y) - e.y, d = Math.hypot(dx, dy) || 1;
       let sp = e.spd * (e.slow > 0 ? 0.62 : 1) * (G.flameOut ? 1.25 : 1) * (G.flameF && d2(e.x, e.y, G.flameF.x, G.flameF.y) < 25600 ? 0.6 : 1);
       let mx = dx / d, my = dy / d;
       if (e.type === 'wraith') { const s = Math.sin(e.t * 3) * 0.7; const px = -my, py = mx; mx += px * s; my += py * s; }
+      if (e.gilded) { const away = d < 320; if (away) { mx = -mx; my = -my; } else sp *= 0.45; const s = Math.sin(e.t * 1.3 + e.r) * 0.8, px = -my, py = mx; mx += px * s; my += py * s; const l = Math.hypot(mx, my) || 1; mx /= l; my /= l; }
       if (e.ranged) {
         if (d < 200) { mx = -mx; my = -my; sp *= 0.7; } else if (d < 260) { sp = 0; }
         e.shootT -= dt;
@@ -2236,7 +2286,7 @@ function updateEnemies(dt) {
   query(P.x, P.y, P.r, QBUF);
   for (const e of QBUF) {
     if (e.boss && (e.phase === 'tele' || e.broken > 0)) continue;
-    if (e.stun > 0) continue;
+    if (e.stun > 0 || e.gilded) continue;
     if (P.parry > 0) { parryEnemy(e); continue; }
     hurtPlayer(e.dmg * (G.flameOut ? 1.2 : 1), e.x, e.y);
   }
@@ -2420,7 +2470,7 @@ function updatePickups(dt) {
 }
 function floatText(x, y, s, c) { G.texts.push({ x, y, v: s, t: 0, c, label: true }); }
 function gainXp(v) {
-  P.xp += v * P.xpMul;
+  P.xp += v * P.xpMul * (G.mode ? 2.5 : 1);
   while (P.xp >= P.xpNext) { P.xp -= P.xpNext; P.lv++; G.pendingLevels++; G.flash = 0.6; G.fx.push({ kind: 'lvl', t: 0, dur: 0.9 }); P.xpNext = Math.floor(6 + P.lv * 6 + Math.max(0, P.lv - 18) * 10); }
 }
 function updateFx(dt) {
@@ -2569,6 +2619,8 @@ function startRun() {
   banner(STAGES[G.stage].name, G.hard ? 'Hard mode. No flask will be refilled.' : 'Survive. Three bells will toll.', 2.6);
 }
 function endRun(won) {
+  if (G.mode) { finishDungeon(false); return; }
+  $('againBtn').hidden = false; $('menuBtn').textContent = 'Return to hub';
   state = won ? 'win' : 'dead'; hideCoach();
   if (!won) SND.death(); else SND.chest();
   const st = STAGES[G.stage];
@@ -2583,14 +2635,15 @@ function endRun(won) {
   SAVE.gold += gold; SAVE.sigils += sig; SAVE.runs++;
   ensureProfile(); SAVE.stats.kills += G.kills; SAVE.stats.bosses += G.bossesKilled; SAVE.stats.time += Math.floor(G.t); if (won) SAVE.stats.wins++;
   SAVE.urn = Math.min(URN.cap, (SAVE.urn || 0) + Math.floor(G.kills / 120) + G.bossesKilled * 5 + (won ? 15 : 0));
+  const feathers = Math.round((G.hordesBroken * 3 + G.bossesKilled * 2 + (won ? 6 : 0)) * (G.hard ? 1.5 : 1)); addFeathers(feathers);
   const xp = runXp(won), lvl = grantPlayerXp(xp); persist();
-  G.reward = { gold, sig, xp, lvl };
+  G.reward = { gold, sig, xp, lvl, feathers };
   setTimeout(() => {
     $('endTitle').textContent = (won ? 'VIGIL KEPT' : 'YOU HAVE FALLEN') + (G.hard ? ' \u00b7 HARD' : '');
     $('endTitle').className = 'death' + (won ? ' victory' : '');
     $('endSub').textContent = won ? (firstClear && G.stage + 1 < STAGES.length ? STAGES[G.stage + 1].name + ' is now open to you.' : 'The Warden lies still and the last flame burns on. For now.') : (G.t >= 200 ? 'The flame dims, but another will take up the vigil.' : 'The dead claim another. Rise, and try again.');
     $('stTime').textContent = fmtTime(G.t); $('stKills').textContent = G.kills; $('stLevel').textContent = P.lv; $('stBoss').textContent = G.bossesKilled + ' / 3';
-    $('rewards').innerHTML = `<span class="coin gold">+${fmtNum(gold)} gold</span>` + (sig ? `<span class="coin gem">+${fmtNum(sig)} sigils</span>` : '');
+    $('rewards').innerHTML = `<span class="coin gold">+${fmtNum(gold)} gold</span>` + (sig ? `<span class="coin gem">+${fmtNum(sig)} sigils</span>` : '') + (feathers ? `<span class="rw"><img src="${itemIcon('wings', 1)}" alt=""><b>+${feathers} feathers</b></span>` : '');
     renderPlvPanel(G.reward);
     const ad = $('adDoubleBtn'); ad.hidden = !(Platform.canAds() && gold > 0); ad.disabled = false;
     $('endBuild').innerHTML = buildList();
@@ -2609,11 +2662,12 @@ function togglePause() {
   else if (state === 'pause') { state = 'play'; $('pauseScreen').hidden = true; }
 }
 function toTitle() {
+  const back = G && G.mode ? 'dun' : 'play';
   G = null;
   ['endScreen', 'pauseScreen', 'levelScreen', 'chestScreen'].forEach(id => $(id).hidden = true);
   ['pauseBtn', 'muteBtn', 'rollBtn', 'flaskBtn', 'parryBtn'].forEach(id => $(id).hidden = true);
   setFloor(STAGES[SAVE.stage] || STAGES[0]);
-  showHub('play');
+  showHub(back);
 }
 
 /* ---------------- Main update ---------------- */
@@ -2631,7 +2685,7 @@ function update(dt) {
   G.t += dt;
   buildGrid();
   updatePlayer(dt);
-  director(dt);
+  if (G.mode) dunDirector(dt); else director(dt);
   for (const w of P.weapons) weaponUpdate(w, dt);
   famUpdate(dt);
   flameUpdate(dt);
@@ -2950,6 +3004,7 @@ function drawEnemySpr(e, es, f, dir) {
   }
   const bdir = boss ? (P.x < e.x ? -1 : 1) : dir;
   if (e.type === 'wraith') c.globalAlpha = ga * 0.9;
+  if (e.gilded) { c.globalCompositeOperation = 'lighter'; glowAt(c, e.x, e.y - es.h * 0.4, es.h * (e.hoard ? 1 : 0.75), '255,200,80', 0.55); c.globalCompositeOperation = 'source-over'; }
   const cue = boss && (e.phase === 'tele' || e.phase === 'swipeTele') && e.ct < 0.32;
   const flash = cue ? 0.55 : f ? (boss ? 0.25 : 0.6) : 0, fy = e.y + yo + e.r * 0.9;
   const mv = e.stun > 0 || e.broken > 0 ? 0 : 1;
@@ -3111,6 +3166,7 @@ function render() {
     else if (it.kind === 'flask') { c.fillStyle = '#6b5a44'; c.fillRect(it.x - 2, y - 13, 4, 5); c.fillStyle = '#ef7d32'; circle(c, it.x, y - 2, 6.5); c.strokeStyle = OUTLINE; c.lineWidth = 1.5; c.stroke(); }
     else { c.fillStyle = '#3d3445'; circle(c, it.x, y, 8); c.fillStyle = '#d9b064'; circle(c, it.x, y, 4); }
   }
+  if (G.crystal) drawCrystal();
   const ents = [];
   for (const e of G.enemies) if (e.x > v.x0 && e.x < v.x1 && e.y > v.y0 && e.y < v.y1 + 40) ents.push(e);
   for (const p of pillars) ents.push({ pillar: p, y: p.y });
@@ -3186,6 +3242,7 @@ function render() {
   for (const p of props) if (p.kind === 'candles') lights.push([p.x, p.y - 6, 120 * (1 + Math.sin(G.t * 10 + p.rot) * 0.06), 0.8]); else if (p.kind === 'rune') lights.push([p.x, p.y, 80, 0.45]);
   for (const s of G.shrines) if (!s.used || s.t < 500) lights.push([s.x, s.y - 14, s.used ? 120 : 220, 0.95]);
   for (const ch of G.chests) lights.push([ch.x, ch.y, 110, 0.85]);
+  if (G.crystal) lights.push([G.crystal.x, G.crystal.y - 30, 280, 1]);
   let nl = 0;
   for (const p of G.proj) { if (nl >= 18) break; if (p.kind === 'fire' || p.kind === 'lance' || p.kind === 'scythe') { nl++; lights.push([p.x, p.y, 100, 0.75]); } else if (p.kind === 'meteor' && p.t > 0) { nl++; lights.push([p.x, p.y, 70 + 160 * p.t / p.dur, 0.85]); } else if (p.kind === 'rift') { nl++; lights.push([p.x, p.y, p.r * 1.6, 0.55]); } else if (p.kind === 'toll' && p.t >= 0) { nl++; lights.push([p.x, p.y, p.r * 1.2 + 40, 0.6 * (1 - p.t / p.dur)]); } }
   for (const f of G.fx) if (f.kind === 'boom' || f.kind === 'bolt') lights.push([f.x, f.y, f.r * 2.4, 0.9 * (1 - f.t / f.dur)]); else if (f.kind === 'slash') lights.push([P.x, P.y, f.r * 1.8, 0.5 * (1 - f.t / f.dur)]);
@@ -3429,6 +3486,7 @@ function drawHUD() {
   const hpk = P.hp / P.maxHp;
   if (G.flash > 0) { c.fillStyle = `rgba(255,220,160,${G.flash * 0.4 * (1 - 0.7 * G.calm)})`; c.fillRect(0, 0, W, H); }
   for (const s of G.shrines) if (!s.used) edgeArrow(s.x, s.y, '#f0c27a', 'SHRINE');
+  if (G.crystal) edgeArrow(G.crystal.x, G.crystal.y, '#c8a0ff', 'CRYSTAL');
   if (G.flameF) edgeArrow(G.flameF.x, G.flameF.y, G.flameF.fuel < 25 ? '#ff6a4a' : '#ffb060', 'VIGIL');
   for (const ch of G.chests) edgeArrow(ch.x, ch.y, '#d9b064', 'RELIQUARY');
   if (G.boss) edgeArrow(G.boss.x, G.boss.y, '#e0404a', '');
@@ -3443,7 +3501,7 @@ function drawHUD() {
   // timer plate
   const pw = 168; hudPlate(c, W / 2 - pw / 2, 16, pw, 58);
   c.textAlign = 'center'; c.textBaseline = 'top';
-  c.font = '700 26px Cinzel, Georgia, serif'; c.fillStyle = '#f1e7d3'; c.fillText(fmtTime(G.t), W / 2, 21);
+  c.font = '700 26px Cinzel, Georgia, serif'; c.fillStyle = '#f1e7d3'; c.fillText(fmtTime(G.mode ? Math.max(0, G.dun.lim - G.t) : G.t), W / 2, 21);
   c.font = '600 13px "Cormorant Garamond", Georgia, serif'; c.fillStyle = '#b3a8b8';
   c.fillText(fmtNum(G.kills) + ' slain', W / 2 - 34, 53);
   c.fillStyle = '#e8c779'; c.fillText(fmtNum(G.gold) + ' gold', W / 2 + 38, 53);
@@ -3452,7 +3510,8 @@ function drawHUD() {
     hudBar(c, mx, my, mw, 7, fk, 0, fk < 0.25 ? '#ff5a3a' : '#ffc060', '#a0400c');
     if (fk < 0.25 && Math.sin(performance.now() / 140) > 0) { c.strokeStyle = 'rgba(255,90,60,0.95)'; c.lineWidth = 1.5; c.strokeRect(mx - 2, my - 2, mw + 4, 11); } }
   const nextBell = BOSS_TIMES[G.bossIdx];
-  if (G.horde) {
+  if (G.mode) drawDunHud(c);
+  else if (G.horde) {
     const left = Math.max(0, G.horde.dur - G.horde.t), hw = 200, hx = W / 2 - hw / 2, hy = W < 640 ? 184 : 96;
     c.font = '700 13px Cinzel, Georgia, serif'; c.fillStyle = Math.sin(performance.now() / 160) > 0 ? '#ff6a4a' : '#ffb08a';
     c.fillText('THE HORDE COVETS YOUR LIGHT', W / 2, hy);
@@ -3728,10 +3787,14 @@ function drawHeroVector(t) {
 }
 
 /* ---------------- Progression features: claims, pity, merge, talents, daily, urn, starter ---------------- */
-const TAB_LABELS = { play: 'Play', armory: 'Armory', shop: 'Shop', altar: 'Talents' };
+const TAB_LABELS = { play: 'Play', armory: 'Armory', shop: 'Shop', dun: 'Dungeons', altar: 'Talents' };
 const PITY = { wood: { n: 5, r: 1 }, iron: { n: 10, r: 2 }, ember: { n: 10, r: 2, n2: 50, r2: 3 } };
 const STARTER = { sku: 'av_starter', give: { sigils: 300, gold: 5000, claims: { iron: 2, ember: 1 } } };
 const URN = { sku: 'av_urn', cap: 500 };
+const WING_PACKS = [
+  { sku: 'av_wings_abyssal', r: 2, name: 'Abyssal Wings', sigils: 100 },
+  { sku: 'av_wings_seraph', r: 3, name: 'Seraph Wings of Flame', sigils: 300 },
+];
 const DAILY = [{ gold: 200 }, { gold: 300 }, { sigils: 15 }, { claims: { iron: 1 } }, { gold: 600 }, { sigils: 30 }, { claims: { ember: 1 } }];
 const STAGE_MILES = [
   { t: 120, label: '2:00', art: 'wood', give: st => ({ gold: Math.round(200 * st.gold), sigils: 5 }) },
@@ -3747,6 +3810,7 @@ function milesState(i) { const st = STAGES[i], got = SAVE.miles[st.id] || []; re
 const milesReady = () => STAGES.some((_, i) => i < SAVE.unlocked && milesState(i).some(s => s.reached && !s.claimed));
 const claimsCount = () => Object.values(SAVE.claims).reduce((a, b) => a + b, 0);
 function tabDot(tab) {
+  if (tab === 'dun') return DUNGEONS.some(d => SAVE.plv >= d.lvl && dunLeft(d) > 0);
   if (tab === 'play') return dailyReady() || milesReady();
   if (tab === 'shop') return Date.now() >= SAVE.freeChestAt || claimsCount() > 0;
   if (tab === 'armory') return mergeGroups().length > 0;
@@ -3819,8 +3883,256 @@ function renderStarter() {
   };
 }
 
+
+/* ---------------- Dungeons ---------------- */
+const DUNGEONS = [
+  { id: 'gold', name: 'Gilded Vault', tag: 'Gold dungeon', art: 'dun_gold', icon: 'cur_gold', lvl: 1, tries: 2, extra: { sigils: 30 }, lim: 75, stage: 2, col: '#ffcf5a',
+    desc: 'Gilded thralls flee with the vault\'s gold. Run them down before they escape.', goal: 'Slay 15 gilded thralls to clear the tier.' },
+  { id: 'sigil', name: 'Crystal Reliquary', tag: 'Sigil dungeon', art: 'dun_sigil', icon: 'cur_sigil', lvl: 3, tries: 2, extra: null, lim: 70, stage: 3, col: '#b88aff',
+    desc: 'The dead swarm a sigil crystal. Guard it; every shard left standing is yours.', goal: 'Keep the crystal above half to clear the tier.' },
+  { id: 'fam', name: 'Ember Hatchery', tag: 'Familiar dungeon', art: 'dun_fam', icon: 'item_familiar_2', lvl: 5, tries: 1, extra: { sigils: 60 }, lim: 150, stage: 2, col: '#ff8a4a',
+    desc: 'Cut through the brood and slay the Den Mother to claim her egg.', goal: 'Slay the Den Mother before time runs out.' },
+  { id: 'trial', name: 'Trial of Bells', tag: 'Boss rush', art: 'dun_trial', icon: 'chest_iron_0', lvl: 8, tries: 1, extra: { sigils: 50 }, lim: 270, stage: 0, col: '#e0404a',
+    desc: 'Three bosses, back to back, with no rest between. Win a reliquary of gear.', goal: 'Defeat all three bosses in time.' },
+];
+const DUN = Object.fromEntries(DUNGEONS.map(d => [d.id, d]));
+function dunSave() {
+  SAVE.dun = SAVE.dun || { day: '', used: {}, clear: {}, sel: {} };
+  if (SAVE.dun.day !== todayKey()) { SAVE.dun.day = todayKey(); SAVE.dun.used = {}; }
+  return SAVE.dun;
+}
+// tiers open one at a time by clearing, and never faster than player level allows
+const dunCap = () => clamp(1 + Math.floor(SAVE.plv / 3), 1, 10);
+const dunMaxTier = d => Math.min(dunCap(), (dunSave().clear[d.id] || 0) + 1);
+const dunLeft = d => d.tries - (dunSave().used[d.id] || 0);
+const thrallGold = t => Math.round(8 * (1 + 0.3 * (t - 1)));
+const crystalSigils = t => 3 + Math.floor(t * 1.2);
+function famOdds(t) { const w = [Math.max(20, 88 - 7 * t), 10 + 3 * t, Math.max(0, (t - 2) * 2.4), t >= 6 ? (t - 5) * 0.6 : 0], s = w.reduce((a, b) => a + b, 0); return w.map(v => v / s); }
+function rollFam(t) { const o = famOdds(t); let r = Math.random(); for (let i = 0; i < 4; i++) { r -= o[i]; if (r <= 0) return i; } return 0; }
+const trialChest = t => t <= 3 ? 'wood' : t <= 7 ? 'iron' : 'ember';
+function dunPreview(d, t) {
+  if (d.id === 'gold') return rwChip(assetUrl('cur_gold'), '~' + fmtNum(thrallGold(t) * 20) + ' gold', 'Gold from each gilded thrall');
+  if (d.id === 'sigil') return rwChip(assetUrl('cur_sigil'), 'up to ' + crystalSigils(t) + ' sigils');
+  if (d.id === 'fam') { const o = famOdds(t); return rwChip(assetUrl('item_familiar_' + (o[2] > 0.05 ? 2 : 1)), 'Familiar egg') + `<span class="dodds">${['Common', 'Rare', 'Epic', 'Legendary'].map((n, i) => o[i] > 0 ? `<i style="color:${RARITY[i].color}">${n} ${Math.round(o[i] * 100)}%</i>` : '').join('')}</span>`; }
+  return rwChip(chestArt(trialChest(t), false), CHEST_NAME(trialChest(t))) + rwChip(assetUrl('cur_gold'), fmtNum(80 * t) + ' gold');
+}
+function renderDun() {
+  const ds = dunSave(), now = new Date(), mid = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1), ms = mid - now;
+  $('dunReset').textContent = 'Entries reset in ' + Math.floor(ms / 36e5) + 'h ' + Math.floor(ms / 6e4) % 60 + 'm · Higher tiers open as you clear them and level up.';
+  $('dunList').innerHTML = DUNGEONS.map(d => {
+    const locked = SAVE.plv < d.lvl, max = dunMaxTier(d), t = Math.min(max, ds.sel[d.id] || max), left = dunLeft(d);
+    const btn = locked ? `<button class="btn ghost" disabled>Reach level ${d.lvl}</button>`
+      : left > 0 ? `<button class="btn dgo" data-go="${d.id}">Enter · Tier ${t}</button>`
+      : d.extra ? `<button class="buy dgo" data-buy="${d.id}">Extra entry · ${costHTML(d.extra)}</button>` : `<button class="btn ghost" disabled>Come back tomorrow</button>`;
+    return `<div class="dcard${locked ? ' locked' : ''}" style="--dc:${d.col}">
+      <div class="dart" style="background-image:url('${assetUrl(d.art)}')"><span class="dtag">${d.tag}</span><span class="dtries">${locked ? 'Locked' : Math.max(0, left) + ' / ' + d.tries + ' today'}</span><img src="${assetUrl(d.icon)}" alt=""></div>
+      <div class="dbody"><h3>${d.name}</h3><p>${d.desc}</p>
+        <div class="dtier"><button class="arrowbtn" data-t="${d.id}" data-d="-1" ${t <= 1 || locked ? 'disabled' : ''} aria-label="Lower tier">‹</button><span>Tier <b>${t}</b> of ${max}</span><button class="arrowbtn" data-t="${d.id}" data-d="1" ${t >= max || locked ? 'disabled' : ''} aria-label="Higher tier">›</button></div>
+        <div class="drw">${dunPreview(d, t)}</div>
+        <small class="dgoal">${d.goal}</small>
+        ${btn}</div></div>`;
+  }).join('');
+  $('dunList').querySelectorAll('[data-t]').forEach(b => b.onclick = () => { const d = DUN[b.dataset.t], max = dunMaxTier(d); ds.sel[d.id] = clamp((Math.min(max, ds.sel[d.id] || max)) + +b.dataset.d, 1, max); persist(); renderDun(); });
+  $('dunList').querySelectorAll('[data-go]').forEach(b => b.onclick = () => { const d = DUN[b.dataset.go]; enterDungeon(d); });
+  $('dunList').querySelectorAll('[data-buy]').forEach(b => b.onclick = () => { const d = DUN[b.dataset.buy];
+    confirmBuy('Extra entry: ' + d.name, 'One more attempt today. Rewards are the same as a free entry.', d.extra, () => { dunSave().used[d.id] = (dunSave().used[d.id] || 0) - 1; }); });
+}
+function enterDungeon(d) {
+  const ds = dunSave(); if (dunLeft(d) <= 0) return;
+  const t = Math.min(dunMaxTier(d), ds.sel[d.id] || dunMaxTier(d));
+  ds.used[d.id] = (ds.used[d.id] || 0) + 1; persist();
+  startDungeon(d.id, t);
+}
+function dunType() {
+  const t = G.dun.tier, pool = ['hollow', 'rat'];
+  if (t >= 3) pool.push('skeleton'); if (t >= 5) pool.push('wraith'); if (t >= 6) pool.push('cultist'); if (t >= 8) pool.push('knight');
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+function startDungeon(id, tier) {
+  const d = DUN[id]; SND.init();
+  if (!SAVE.origins.includes(SAVE.cls)) SAVE.cls = 'knight';
+  TUTS.moved = 0; TUTS.rolled = false; TUTS.drank = false; TUTS.parried = false; TUTS.tried = false; TUTS.cur = null;
+  const keep = SAVE.stage, keepHard = SAVE.hard; SAVE.stage = d.stage; SAVE.hard = false;
+  newRun(SAVE.cls); SAVE.stage = keep; SAVE.hard = keepHard;
+  G.mode = id; G.dun = { id, tier, lim: d.lim, hp: 1 + 0.5 * (tier - 1), dmg: 1 + 0.15 * (tier - 1), kills: 0, gold: 0, bossN: 0, next: 1, wave: 0, win: 0, done: false };
+  G.flameF = null; G.hordes = []; G.swarms = []; G.shrineT = 1e9; G.nextElite = 1e9; G.bossIdx = 99;
+  P.weapons[0].lv = Math.min(5, 1 + Math.floor(tier / 2));
+  if (id === 'sigil') { G.crystal = { x: 0, y: 0, hp: 100, max: 100, r: 24, hit: 0 }; P.y = 70; G.cam.y = 70; }
+  state = 'play'; closeModal(); $('toast').classList.remove('show');
+  ['hub', 'endScreen', 'pauseScreen', 'levelScreen', 'chestScreen'].forEach(x => $(x).hidden = true);
+  $('pauseBtn').hidden = false; $('muteBtn').hidden = false;
+  $('rollBtn').hidden = !isTouch; $('flaskBtn').hidden = $('parryBtn').hidden = !isTouch;
+  banner(d.name + ' · Tier ' + tier, d.goal, 2.6);
+}
+function dunBoss(i, name, hpk) {
+  const b = BOSSES[i], [x, y] = spawnPoint(), bhp = b.hp * G.dun.hp * hpk;
+  const e = { type: 'boss', def: b, name, boss: true, x, y, r: b.r, hp: bhp, maxHp: bhp, spd: b.spd, dmg: b.dmg * G.dun.dmg * 1.1, xp: 0, mass: 50, posture: 0, broken: 0, stun: 0,
+    flash: 0, kbx: 0, kby: 0, vx: 0, vy: 0, t: 0, slow: 0, phase: 'walk', atkT: 3, ct: 0, cang: 0, spiral: 0, spA: 0, spT: 0 };
+  G.enemies.push(e); G.boss = e; banner(name, b.sub, 2.6); SND.bell(65, 0.3);
+}
+function dunBossDeath(e) {
+  G.boss = null; G.bossesKilled++;
+  for (let i = 0; i < 16; i++) { const a = Math.random() * TAU, r = Math.random() * 50; dropGem(e.x + Math.cos(a) * r, e.y + Math.sin(a) * r, 5); }
+  G.fx.push({ kind: 'boom', x: e.x, y: e.y, r: 160, t: 0, dur: 0.9 }); G.cam.shake = 14; SND.bell(98, 0.3);
+  if (G.mode === 'fam') { banner('The Den Mother falls', 'Her egg is yours.', 2.2); G.dun.win = 1.8; }
+  else if (G.mode === 'trial') {
+    G.dun.bossN++;
+    if (G.dun.bossN >= 3) { banner('The bells fall silent', 'The trial is won.', 2.2); G.dun.win = 1.8; }
+    else { banner('The bell tolls again', 'Another rises.', 1.8); G.dun.nextBoss = G.t + 3; }
+  }
+}
+function dunOnKill(e) {
+  const D = G.dun;
+  if (e.gilded) {
+    const v = thrallGold(D.tier) * (e.hoard ? 8 : 1); D.kills += e.hoard ? 0 : 1; D.gold += v;
+    floatText(e.x, e.y - 30, '+' + v + ' gold', '#ffd76a');
+    for (let i = 0; i < (e.hoard ? 18 : 6); i++) { const a = Math.random() * TAU, sp = rand(80, 220); G.parts.push({ x: e.x, y: e.y - 10, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 60, t: 0, life: 0.6, c: 'rgba(255,210,90,1)', s: 2.6, glow: true }); }
+    SND.pickup();
+  }
+}
+function dunDirector(dt) {
+  const D = G.dun, t = G.t;
+  if (D.done) return;
+  if (D.win > 0) { D.win -= dt; if (D.win <= 0) finishDungeon(true); return; }
+  if (t >= D.lim) { finishDungeon(G.mode === 'gold' || (G.mode === 'sigil' && G.crystal.hp > 0)); return; }
+  const trickle = G.mode === 'gold' ? 1.0 + t / 45 : G.mode === 'sigil' ? 0.4 + t / 60 : G.mode === 'fam' ? 2.4 + t / 25 : 0.7;
+  G.spawnAcc += trickle * dt;
+  while (G.spawnAcc >= 1) { G.spawnAcc -= 1; if (G.enemies.length < 240) { const [x, y] = spawnPoint(); const e = spawnEnemy(G.mode === 'fam' ? (Math.random() < 0.6 ? 'rat' : dunType()) : dunType(), x, y); if (G.mode === 'sigil') e.toC = true; } }
+  D.next -= dt;
+  if (G.mode === 'gold') {
+    if (D.next <= 0) {
+      D.next = 1.0;
+      if (G.enemies.filter(e => e.gilded && !e.dead).length < 8) { const [x, y] = spawnPoint(); const e = spawnEnemy('hollow', x, y); e.gilded = true; e.dmg = 0; e.spd = 96; e.escape = t + 16; }
+    }
+    if ((t >= 30 && !D.h1) || (t >= 55 && !D.h2)) { if (t >= 55) D.h2 = 1; else D.h1 = 1; const [x, y] = spawnPoint(); const e = spawnEnemy('hollow', x, y, true); e.gilded = e.hoard = true; e.dmg = 0; e.spd = 92; e.escape = t + 18; banner('A gold hoarder appears', 'It carries a fortune. Catch it.', 1.8); }
+    for (const e of G.enemies) if (e.gilded && !e.dead) {
+      if (Math.random() < 0.08) G.parts.push({ x: e.x + rand(-10, 10), y: e.y - rand(10, 40), vx: 0, vy: -30, t: 0, life: 0.5, c: 'rgba(255,215,100,1)', s: 2, glow: true });
+      if (t > e.escape) { e.dead = true; G.fx.push({ kind: 'pop', x: e.x, y: e.y, r: 30, col: '255,210,90', t: 0, dur: 0.4 }); floatText(e.x, e.y - 30, 'Escaped', '#b8a070'); }
+    }
+  } else if (G.mode === 'sigil') {
+    const C = G.crystal;
+    if (D.next <= 0) {
+      D.next = 10; D.wave++;
+      const n = 7 + D.wave * 2 + D.tier, off = Math.random() * TAU, R = Math.hypot(W, H) / 2 / ZOOM + 40;
+      for (let i = 0; i < n; i++) { const a = off + i / n * TAU, e = spawnEnemy(dunType(), C.x + Math.cos(a) * R, C.y + Math.sin(a) * R); e.toC = true; }
+      banner('Wave ' + D.wave, 'They come for the crystal.', 1.2);
+    }
+    if (C.hit > 0) C.hit -= dt;
+    // the crystal defends itself: a sigil bolt at the closest attacker
+    C.zap = (C.zap || 0) - dt;
+    if (C.zap <= 0) { let best = null, bd = 210 * 210; for (const e of G.enemies) { if (e.dead || !e.toC) continue; const dd = d2(e.x, e.y, C.x, C.y); if (dd < bd) { bd = dd; best = e; } }
+      if (best) { C.zap = 1.1; damageEnemy(best, 22 + 10 * D.tier, 0, 0); G.fx.push({ kind: 'bolt', x: best.x, y: best.y, pts: [C.x, C.y - 40, (C.x + best.x) / 2 + rand(-12, 12), (C.y - 40 + best.y) / 2, best.x, best.y], r: 18, t: 0, dur: 0.25 }); } else C.zap = 0.3; }
+    for (const e of G.enemies) if (e.toC && !e.dead && d2(e.x, e.y, C.x, C.y) < (C.r + e.r) ** 2) {
+      e.dead = true; C.hp = Math.max(0, C.hp - (e.elite ? 8 : 2.5)); C.hit = 0.25; G.cam.shake = Math.min(8, G.cam.shake + 2);
+      G.fx.push({ kind: 'pop', x: C.x, y: C.y - 20, r: 40, col: '200,150,255', t: 0, dur: 0.35 }); SND.hit();
+      if (C.hp <= 0) { banner('The crystal shatters', 'The reliquary is lost.', 2); G.fx.push({ kind: 'boom', x: C.x, y: C.y, r: 140, t: 0, dur: 0.8, col: 'void' }); D.win = 1.5; D.lost = true; break; }
+    }
+  } else if (G.mode === 'fam') {
+    if (!D.mother && t >= 20) { D.mother = 1; dunBoss(1, 'The Den Mother', 0.5); }
+  } else if (G.mode === 'trial') {
+    if (D.bossN === 0 && !G.boss && !D.started) { D.started = 1; dunBoss(0, 'The First Bell', 0.45); }
+    if (D.nextBoss && t >= D.nextBoss && !G.boss) { D.nextBoss = 0; dunBoss(D.bossN, D.bossN === 1 ? 'The Second Bell' : 'The Last Bell', 0.45); }
+  }
+}
+function finishDungeon(won) {
+  const D = G.dun; if (D.done) return; D.done = true;
+  if (D.lost) won = false;
+  state = won ? 'win' : 'dead'; hideCoach(); if (won) SND.chest(); else SND.death();
+  bannerTimer = 0; $('banner').classList.remove('show');
+  const d = DUN[G.mode], t = D.tier, R = {}, ds = dunSave(); let title, sub, cleared = false, extra = '';
+  if (G.mode === 'gold') { R.gold = Math.round(D.gold); cleared = D.kills >= 15; title = 'VAULT PLUNDERED'; sub = D.kills + ' gilded thralls slain' + (cleared ? '. The next tier opens.' : '. Slay 15 to clear the tier.'); won = true; }
+  else if (G.mode === 'sigil') { const k = G.crystal.hp / G.crystal.max; R.sigils = k > 0 ? Math.max(1, Math.round(crystalSigils(t) * (0.4 + 0.6 * k))) : 0; cleared = k >= 0.5; title = k > 0 ? 'CRYSTAL HELD' : 'CRYSTAL SHATTERED'; sub = k > 0 ? 'The crystal stands at ' + Math.round(k * 100) + '%.' : 'Nothing could be salvaged.'; }
+  else if (G.mode === 'fam') {
+    if (won) { const it = genItem(rollFam(t), 'familiar'); SAVE.items.push(it); cleared = true; title = 'EGG CLAIMED'; sub = 'A ' + RARITY[it.r].name.toLowerCase() + ' familiar hatched: ' + it.name + '.';
+      extra = `<span class="rw"><img src="${itemIcon('familiar', it.r)}" alt=""><b style="color:${RARITY[it.r].color}">${it.name}</b></span>`; }
+    else { title = 'THE BROOD PREVAILS'; sub = 'The Den Mother still guards her egg.'; }
+  } else {
+    if (won) { const k = trialChest(t); R.claims = { [k]: 1 }; R.gold = 80 * t; cleared = true; title = 'TRIAL WON'; sub = 'Three bells silenced. A reliquary waits in the shop.'; addFeathers(4); }
+    else { title = 'THE BELLS TOLL FOR YOU'; sub = 'The trial is not yet won.'; }
+  }
+  giveReward(R);
+  if (cleared) ds.clear[d.id] = Math.max(ds.clear[d.id] || 0, t);
+  ensureProfile(); SAVE.stats.kills += G.kills; SAVE.stats.time += Math.floor(G.t);
+  const xp = Math.floor((25 + 12 * t) * (won ? 1 : 0.5)), lvl = grantPlayerXp(xp); persist();
+  G.reward = { gold: R.gold || 0, sig: R.sigils || 0, xp, lvl };
+  setTimeout(() => {
+    $('endTitle').textContent = title; $('endTitle').className = 'death' + (won ? ' victory' : '');
+    $('endSub').textContent = d.name + ' · Tier ' + t + '. ' + sub;
+    $('stTime').textContent = fmtTime(G.t); $('stKills').textContent = G.kills; $('stLevel').textContent = P.lv; $('stBoss').textContent = G.bossesKilled;
+    $('rewards').innerHTML = (R.gold ? `<span class="coin gold">+${fmtNum(R.gold)} gold</span>` : '') + (R.sigils ? `<span class="coin gem">+${fmtNum(R.sigils)} sigils</span>` : '') + (R.claims ? rewardIcons({ claims: R.claims }) : '') + extra || '<span class="muted">No spoils this time.</span>';
+    renderPlvPanel(G.reward);
+    const ad = $('adDoubleBtn'); ad.hidden = !(Platform.canAds() && G.mode === 'gold' && R.gold > 0); ad.disabled = false;
+    $('endBuild').innerHTML = buildList(); $('againBtn').hidden = true; $('menuBtn').textContent = 'Back to dungeons';
+    $('endScreen').hidden = false; $('pauseBtn').hidden = true; $('rollBtn').hidden = true; $('flaskBtn').hidden = $('parryBtn').hidden = true;
+  }, won ? 600 : 1200);
+}
+function drawCrystal() {
+  const c = ctx, C = G.crystal, bob = Math.sin(G.t * 2) * 4, k = C.hp / C.max;
+  shadowAt(c, C.x, C.y + 14, 30, 10, 0.5);
+  c.globalCompositeOperation = 'lighter'; glowAt(c, C.x, C.y - 30 + bob, 90, '170,110,255', 0.45 + (C.hit > 0 ? 0.4 : 0)); c.globalCompositeOperation = 'source-over';
+  const im = IMG.cur_sigil; if (im) { const h = 70, w = h * im.width / im.height; c.drawImage(im, C.x - w / 2, C.y - h - 2 + bob, w, h); } else { c.fillStyle = '#b88aff'; circle(c, C.x, C.y - 30 + bob, 20); }
+  c.lineWidth = 5; c.strokeStyle = 'rgba(0,0,0,0.5)'; c.beginPath(); c.ellipse(C.x, C.y + 10, 40, 14, 0, 0, TAU); c.stroke();
+  c.strokeStyle = k > 0.5 ? '#c8a0ff' : k > 0.25 ? '#ffb060' : '#ff5a4a'; c.beginPath(); c.ellipse(C.x, C.y + 10, 40, 14, 0, -Math.PI / 2, -Math.PI / 2 + TAU * k); c.stroke();
+}
+function drawDunHud(c) {
+  const D = G.dun, y = 96; c.textAlign = 'center'; c.font = '700 13px Cinzel, Georgia, serif'; c.fillStyle = '#f1d38e';
+  if (G.mode === 'gold') c.fillText('Gilded slain ' + D.kills + ' / 15 · ' + fmtNum(Math.round(D.gold)) + ' gold', W / 2, y);
+  else if (G.mode === 'sigil') { c.fillText('Crystal ' + Math.round(G.crystal.hp) + '% · Wave ' + D.wave, W / 2, y); hudBar(c, W / 2 - 100, y + 18, 200, 6, G.crystal.hp / G.crystal.max, 0, '#c8a0ff', '#4a2a8a'); }
+  else if (G.mode === 'fam' && !D.mother) c.fillText('The Den Mother stirs...', W / 2, y);
+  else if (G.mode === 'trial') c.fillText('Bell ' + Math.min(3, D.bossN + 1) + ' of 3', W / 2, y);
+}
+
+/* ---------------- Event: Feathers of the Fallen ---------------- */
+const EVENT = { name: 'Feathers of the Fallen', len: 14 * 864e5, epoch: Date.UTC(2026, 0, 5),
+  miles: [{ f: 10, give: { gold: 300 } }, { f: 25, wings: 0 }, { f: 45, give: { sigils: 15 } }, { f: 70, wings: 1 }, { f: 100, give: { claims: { iron: 1 } } }, { f: 140, wings: 2 }, { f: 200, give: { claims: { ember: 1 } } }] };
+function eventState() { const n = Math.floor((Date.now() - EVENT.epoch) / EVENT.len); if (!SAVE.ev || SAVE.ev.n !== n) SAVE.ev = { n, f: 0, got: [] }; return SAVE.ev; }
+function addFeathers(k) { if (k > 0) eventState().f += Math.round(k); }
+const eventClaimable = () => { const e = eventState(); return EVENT.miles.filter((m, i) => e.f >= m.f && !e.got.includes(i)).length; };
+function giveWings(r) { const it = genItem(r, 'wings'); SAVE.items.push(it); return it; }
+function renderWingShop(el, inModal) {
+  if (!el) return;
+  SAVE.bought = SAVE.bought || {};
+  el.innerHTML = `${inModal ? '' : '<div class="sect-h"><h2>Wings</h2><span class="muted">Only from events or here.</span></div>'}<div class="wingshop">` + WING_PACKS.map(p => {
+    const pr = Platform.prices[p.sku], can = Platform.canBuy() && pr, owned = SAVE.bought[p.sku];
+    return `<div class="wingoffer r${p.r}" style="--rc:${RARITY[p.r].color}"><img src="${itemIcon('wings', p.r)}" alt=""><div><span class="tag">${RARITY[p.r].name}</span><h3>${p.name}</h3><p>+${p.sigils} sigils included</p></div>
+      ${owned ? '<span class="muted">Owned</span>' : can ? `<button class="btn" data-wsku="${p.sku}">${pr.priceString}</button>` : '<p class="note">In the app</p>'}</div>`;
+  }).join('') + '</div>';
+  el.querySelectorAll('[data-wsku]').forEach(b => b.onclick = async () => {
+    const p = WING_PACKS.find(x => x.sku === b.dataset.wsku); b.disabled = true;
+    try { await Platform.purchase(p.sku); const it = giveWings(p.r); SAVE.sigils += p.sigils; SAVE.bought[p.sku] = true; persist(); renderHub(); toast(it.name + ' added to your armory.'); if (inModal) openEvent(); }
+    catch (e) { toast(e && e.userCancelled ? 'Purchase cancelled.' : 'Purchase not completed.'); b.disabled = false; }
+  });
+}
+function openEvent() {
+  const e = eventState(), ends = EVENT.epoch + (e.n + 1) * EVENT.len - Date.now(), dd = Math.floor(ends / 864e5), hh = Math.floor(ends / 36e5) % 24;
+  const top = EVENT.miles[EVENT.miles.length - 1].f;
+  const rows = EVENT.miles.map((m, i) => {
+    const got = e.got.includes(i), ready = e.f >= m.f && !got;
+    const icon = m.wings != null ? itemIcon('wings', m.wings) : m.give.claims ? chestArt(Object.keys(m.give.claims)[0], false) : assetUrl(m.give.gold ? 'cur_gold' : 'cur_sigil');
+    const label = m.wings != null ? SLOTS.wings.names[m.wings][0] : rewardLine(m.give);
+    return `<div class="evrow${got ? ' got' : ready ? ' ready' : ''}"><b class="evf">${m.f}</b><img src="${icon}" alt=""><span>${label}</span>${got ? '<em>Claimed</em>' : ready ? `<button class="buy" data-ev="${i}">Claim</button>` : `<em>${m.f - e.f} to go</em>`}</div>`;
+  }).join('');
+  openModal(`<div class="mhero"><div class="cc-rays" style="--cG:255,170,90"></div><img src="${itemIcon('wings', 2)}" alt=""></div>
+    <div class="mribbon">${EVENT.name}</div>
+    <p class="muted" style="text-align:center">Break hordes, fell bosses and win trials to gather feathers. Ends in ${dd}d ${hh}h.</p>
+    <div class="evbar"><i style="width:${Math.min(100, e.f / top * 100)}%"></i><b>${e.f} feathers</b></div>
+    <div class="evlist">${rows}</div>
+    <div class="evtip">Feathers: +3 per horde broken, +2 per boss, +6 for a clear, +4 per Trial of Bells win. Hard mode earns 50% more.</div>
+    <div id="evShop"></div>
+    <div class="row"><button class="btn ghost" id="mClose">Close</button></div>`, m => {
+    m.querySelector('#mClose').onclick = closeModal;
+    m.querySelectorAll('[data-ev]').forEach(b => b.onclick = () => {
+      const i = +b.dataset.ev, ms = EVENT.miles[i]; if (e.got.includes(i) || e.f < ms.f) return;
+      e.got.push(i); let msg;
+      if (ms.wings != null) { const it = giveWings(ms.wings); msg = it.name + ' added to your armory.'; } else { giveReward(ms.give); msg = 'Claimed ' + rewardLine(ms.give) + '.'; }
+      persist(); SND.init(); SND.chest(); toast(msg); renderHub(); openEvent();
+    });
+    renderWingShop(m.querySelector('#evShop'), true);
+  }, true);
+}
+
 /* merging */
-function mergeGroups() { const g = {}; for (const it of SAVE.items) { if (it.r >= 3) continue; const k = it.slot + ':' + it.r; (g[k] = g[k] || []).push(it); } return Object.values(g).filter(a => a.length >= 3).sort((a, b) => b[0].r - a[0].r); }
+function mergeGroups() { const g = {}; for (const it of SAVE.items) { if (it.r >= 3 || it.slot === 'wings') continue; const k = it.slot + ':' + it.r; (g[k] = g[k] || []).push(it); } return Object.values(g).filter(a => a.length >= 3).sort((a, b) => b[0].r - a[0].r); }
 function doMerge(group) {
   const pick = group.slice().sort((a, b) => (isEquipped(a) - isEquipped(b)) || a.plus - b.plus).slice(0, 3);
   const wasEq = pick.some(isEquipped), slot = pick[0].slot;
@@ -3863,7 +4175,7 @@ function bigPortrait(cls) {
     return cv.toDataURL();
   });
 }
-function slotCard(s) { const it = itemById(SAVE.equipped[s]); return it ? itemCard(it) : `<div class="item empty" data-slot="${SLOTS[s].name}"><img class="ico" src="${itemIcon(s, 0)}" alt=""><span class="itxt"><span class="slot">${SLOTS[s].name}</span><b>Empty</b><span class="sum">Find gear in chests.</span></span></div>`; }
+function slotCard(s) { const it = itemById(SAVE.equipped[s]); return it ? itemCard(it) : `<div class="item empty" data-slot="${SLOTS[s].name}"><img class="ico" src="${itemIcon(s, 0)}" alt=""><span class="itxt"><span class="slot">${SLOTS[s].name}</span><b>Empty</b><span class="sum">${s === 'wings' ? 'Earn in events or the shop.' : s === 'familiar' ? 'Hatch one in the Ember Hatchery.' : 'Find gear in chests.'}</span></span></div>`; }
 let armorySub = 'gear', statsOpen = false;
 $('statInfo').addEventListener('click', () => { statsOpen = !statsOpen; renderArmory(); });
 document.querySelectorAll('.subtabs [data-sub]').forEach(b => b.addEventListener('click', () => { armorySub = b.dataset.sub; renderArmory(); }));
@@ -4049,9 +4361,9 @@ function renderHub() {
     b.setAttribute('aria-current', b.dataset.tab === hubTab ? 'page' : 'false');
     b.innerHTML = TAB_ICONS[b.dataset.tab] + '<span>' + TAB_LABELS[b.dataset.tab] + (tabDot(b.dataset.tab) ? '<span class="dot" aria-label="Something to claim"></span>' : '') + '</span>';
   });
-  for (const t of ['play', 'armory', 'shop', 'altar']) $('tab-' + t).hidden = t !== hubTab;
+  for (const t of ['play', 'armory', 'shop', 'dun', 'altar']) $('tab-' + t).hidden = t !== hubTab;
   $('hub').querySelector('.hub-body').classList.toggle('fullplay', hubTab === 'play');
-  ({ play: renderPlay, armory: renderArmory, shop: renderShop, altar: renderAltar })[hubTab]();
+  ({ play: renderPlay, armory: renderArmory, shop: renderShop, dun: renderDun, altar: renderAltar })[hubTab]();
 }
 document.querySelectorAll('.tabbar button').forEach(b => b.addEventListener('click', () => { hubTab = b.dataset.tab; renderHub(); $('hub').querySelector('.hub-body').scrollTop = 0; }));
 
@@ -4110,10 +4422,10 @@ function sideBtn(id, img, label, badge) {
 function renderSide() {
   const freeReady = Date.now() >= SAVE.freeChestAt, claims = claimsCount();
   $('sideL').innerHTML = sideBtn('sbDaily', 'chest_wood_0', 'Daily', dailyReady()) + sideBtn('sbUrn', 'prop_urn', 'Urn ' + Math.round(SAVE.urn / URN.cap * 100) + '%', SAVE.urn >= URN.cap);
-  $('sideR').innerHTML = sideBtn('sbPath', 'cur_ember', 'Level ' + SAVE.plv, false) + sideBtn('sbFree', 'chest_iron_0', 'Chests', claims ? claims : freeReady) + sideBtn('sbTal', 'icon_p_attunement', 'Talents', talAvailable() != null);
+  $('sideR').innerHTML = sideBtn('sbPath', 'cur_ember', 'Level ' + SAVE.plv, false) + sideBtn('sbFree', 'chest_iron_0', 'Chests', claims ? claims : freeReady) + sideBtn('sbEvent', 'item_wings_2', 'Event', eventClaimable() > 0);
   $('sbDaily').onclick = openDaily; $('sbUrn').onclick = openUrn; $('sbPath').onclick = openPath;
   $('sbFree').onclick = () => { hubTab = 'shop'; renderHub(); };
-  $('sbTal').onclick = () => { hubTab = 'altar'; renderHub(); };
+  $('sbEvent').onclick = openEvent;
 }
 function renderPlay() {
   if (!SAVE.origins.includes(SAVE.cls)) SAVE.cls = 'knight';
@@ -4222,7 +4534,7 @@ function renderFreeChest() {
 }
 function roomCheck(n = 1) { if (SAVE.items.length + n > INV_CAP) { toast('Your armory is full. Salvage some gear first.'); return false; } return true; }
 function renderShop() {
-  renderStarter(); renderClaims(); renderFreeChest();
+  renderStarter(); renderClaims(); renderFreeChest(); renderWingShop($('wingShop'));
   const CH_TAG = { wood: '', iron: 'Popular', ember: 'Best odds' };
   $('chests').innerHTML = CHESTS.map((c, i) => `<div class="chestcard c-${c.id}">${CH_TAG[c.id] ? `<span class="cc-tag">${CH_TAG[c.id]}</span>` : ''}
     <div class="cc-ribbon"><h3>${c.name}</h3></div>
@@ -4287,6 +4599,7 @@ function openSettings(confirmErase) {
   });
 }
 const TAB_ICONS = {
+  dun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 21V10a8 8 0 0 1 16 0v11z"/><path d="M8 21v-9a4 4 0 0 1 8 0v9"/><path d="M2.5 21h19M12 8v0"/></svg>',
   play: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 2.5c1.2 3.2 5 5.4 5 10a5 5 0 0 1-10 0c0-2.4 1.2-3.8 2.4-4.8 0 2 .9 3.3 2.2 3.6-.4-3.4-.6-5.8.4-8.8z"/></svg>',
   armory: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 2.8l7.5 3v5.6c0 5-3.3 8.4-7.5 10.3-4.2-1.9-7.5-5.3-7.5-10.3V5.8z"/><path d="M12 7v10M8.5 10.5h7"/></svg>',
   shop: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M3.5 11h17v9h-17z"/><path d="M3.5 11a8.5 6 0 0 1 17 0"/><path d="M10.5 11v4h3v-4M7 8.2V20M17 8.2V20"/></svg>',

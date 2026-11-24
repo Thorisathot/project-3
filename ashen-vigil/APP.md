@@ -27,6 +27,7 @@ Before publishing, change `appId` in `capacitor.config.json` from `com.example.a
 | Sigil packs (IAP, consumable) | Shop, "Sigils" section | Products `av_sigils_80`, `av_sigils_500`, `av_sigils_1200` in Play Console and App Store Connect, imported into RevenueCat |
 | Pilgrim's Bundle (IAP, one-time) | Shop, top card | Non-consumable or one-time consumable product `av_starter` |
 | Ember Urn (IAP, consumable) | Play tab | Product `av_urn`; it gives whatever sigils the urn holds, so price it as a mid-size pack |
+| Wings (IAP, non-consumable) | Shop tab and Event | Products `av_wings_abyssal` (epic wings + 100 sigils) and `av_wings_seraph` (legendary wings + 300 sigils). Wings are otherwise only earned from the Feathers of the Fallen event |
 | Rewarded ad: double run gold | End-of-run screen | AdMob rewarded ad unit |
 | Rewarded ad: skip free-chest timer | Shop, Daily Offering | Same ad unit |
 
