@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">Ashen Vigil</string>
     <string name="title_activity_main">Ashen Vigil</string>
-    <string name="package_name">com.example.ashenvigil</string>
-    <string name="custom_url_scheme">com.example.ashenvigil</string>
+    <string name="package_name">com.thorisathot.ashenvigil</string>
+    <string name="custom_url_scheme">com.thorisathot.ashenvigil</string>
 </resources>

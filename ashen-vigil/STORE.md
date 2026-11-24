@@ -49,6 +49,12 @@ Choose from 13 armaments, including one found only in each stage, and 7 relics a
 LOOT EPIC GEAR
 Open chests for helms, armor, rings and talismans in four rarities. Upgrade them, merge three into one of higher rarity, and chase legendaries. Drop odds and guarantees are always shown.
 
+RAID DAILY DUNGEONS
+Chase gilded thieves through the Gilded Vault, defend a sigil crystal in the Crystal Reliquary, slay the Den Mother in the Ember Hatchery to hatch a familiar companion, and survive the Trial of Bells boss rush.
+
+SEASONAL EVENTS
+Gather feathers from hordes and bosses to earn rare wings each season.
+
 GROW STRONGER EVERY RUN
 Earn gold and player levels, walk the talent path, unlock five origins and descend through four increasingly deadly stages.
 

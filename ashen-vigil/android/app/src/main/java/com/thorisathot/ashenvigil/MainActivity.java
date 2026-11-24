@@ -1,4 +1,4 @@
-package com.example.ashenvigil;
+package com.thorisathot.ashenvigil;
 
 import com.getcapacitor.BridgeActivity;
 

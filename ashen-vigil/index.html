@@ -1616,6 +1616,7 @@ function grantPlayerXp(x) {
    In the browser these report unavailable and the UI hides them. In the Capacitor
    app they talk to RevenueCat (@revenuecat/purchases-capacitor) and AdMob
    (@capacitor-community/admob). Fill in the keys below before shipping. */
+const PRIVACY_URL = 'https://thorisathot.github.io/project-3/privacy.html';
 const STORE_KEYS = { revenuecatAndroid: 'REVENUECAT_ANDROID_KEY', revenuecatIos: 'REVENUECAT_IOS_KEY', admobRewardedAndroid: 'ca-app-pub-3940256099942544/5224354917', admobRewardedIos: 'ca-app-pub-3940256099942544/1712485313' };
 const Platform = {
   plugins: {}, prices: {}, ready: false,
@@ -1627,7 +1628,8 @@ const Platform = {
     return this.plugins[name];
   },
   canBuy() { return this.ready && !!this.plugin('Purchases'); },
-  canAds() { return this.ready && !!this.plugin('AdMob'); },
+  canAds() { return this.ready && !!this.plugin('AdMob') && this.adsOk !== false; },
+  async privacyOptions() { const A = this.plugin('AdMob'); if (A) try { await A.showPrivacyOptionsForm(); } catch (e) {} },
   async init() {
     if (!this.native) return;
     try {
@@ -1637,7 +1639,16 @@ const Platform = {
         const { products } = await P_.getProducts({ productIdentifiers: [...PACKS.map(p => p.sku), STARTER.sku, URN.sku, ...WING_PACKS.map(p => p.sku)] });
         for (const p of products || []) this.prices[p.identifier] = p;
       }
-      const A = this.plugin('AdMob'); if (A) await A.initialize({});
+      const A = this.plugin('AdMob');
+      if (A) {
+        await A.initialize({});
+        // Google's consent message (UMP) for players in the EEA/UK; set it up under AdMob > Privacy & messaging
+        try {
+          let ci = await A.requestConsentInfo();
+          if (ci.isConsentFormAvailable && ci.status === 'REQUIRED') ci = await A.showConsentForm();
+          this.adsOk = ci.canRequestAds !== false; this.privacyOpt = ci.privacyOptionsRequirementStatus === 'REQUIRED';
+        } catch (e) { this.adsOk = true; }
+      }
     } catch (e) { console.warn('Store init failed', e); }
     this.ready = true; if (state === 'title') renderHub();
   },
@@ -4604,6 +4615,7 @@ function openSettings(confirmErase) {
     <div class="seg two" role="group" aria-label="Sound"><button data-s="on" aria-pressed="${!SND.muted}">On</button><button data-s="off" aria-pressed="${SND.muted}">Off</button></div>
     <div class="eyebrow">Controls</div><p class="muted" style="margin:0;font-size:15px">Move with WASD, the arrow keys or by dragging. Roll with Space, Shift or a right-click. Parry with F, J or a left-click. Drink a flask with Q or E. Pause with Esc, toggle sound with M. Controllers work too: left stick moves, A rolls, B parries, Y drinks, Start pauses.</p>
     ${!Platform.native ? `<div class="eyebrow">This browser</div><div class="row setrow">${canFullscreen() ? '<button class="btn ghost" id="mFull">Fullscreen</button>' : ''}${installPrompt ? '<button class="btn ghost" id="mInstall">Install as app</button>' : ''}<button class="btn ghost" id="mExport">Back up save</button><button class="btn ghost" id="mImport">Restore save</button></div><p class="muted" style="margin:0;font-size:13px">Progress is stored in this browser. Back it up before clearing site data or switching devices.</p>` : ''}
+    <div class="eyebrow">Privacy</div><div class="row setrow"><a class="btn ghost" href="${PRIVACY_URL}" target="_blank" rel="noopener">Privacy policy</a>${Platform.privacyOpt ? '<button class="btn ghost" id="mAdPriv">Ad privacy choices</button>' : ''}</div>
     ${confirmErase ? `<p class="muted">This erases all gold, sigils, gear, upgrades and unlocks on this device. It cannot be undone.</p>
       <div class="row"><button class="btn ghost danger" id="mErase2">Erase everything</button><button class="btn ghost" id="mKeep">Keep my progress</button></div>`
       : `<div class="row"><button class="btn" id="mClose" style="padding:12px 24px;font-size:14px">Done</button><button class="btn ghost danger" id="mErase">Erase progress</button></div>`}`, m => {
@@ -4612,7 +4624,7 @@ function openSettings(confirmErase) {
     if (confirmErase) { m.querySelector('#mKeep').onclick = () => openSettings(false); m.querySelector('#mErase2').onclick = () => { SAVE = DEFAULT_SAVE(); migrateSave(); closeModal(); renderHub(); toast('Progress erased.'); }; }
     else { m.querySelector('#mClose').onclick = closeModal; m.querySelector('#mErase').onclick = () => openSettings(true); }
     const on = (id, fn) => { const b = m.querySelector(id); if (b) b.onclick = fn; };
-    on('#mFull', toggleFullscreen); on('#mExport', exportSave); on('#mImport', importSave);
+    on('#mAdPriv', () => Platform.privacyOptions()); on('#mFull', toggleFullscreen); on('#mExport', exportSave); on('#mImport', importSave);
     on('#mInstall', async () => { if (!installPrompt) return; installPrompt.prompt(); try { await installPrompt.userChoice; } catch (e) {} installPrompt = null; openSettings(false); });
   });
 }

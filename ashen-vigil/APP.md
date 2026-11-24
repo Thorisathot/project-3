@@ -18,7 +18,7 @@ npm run ios              # build, sync, open Xcode
 
 Run `npm run sync` again after every change to `index.html`. Commit the generated `android/` and `ios/` folders, because native settings live there.
 
-Before publishing, change `appId` in `capacitor.config.json` from `com.example.ashenvigil` to a reverse-domain ID you own. It can't be changed after the first store release.
+The app id is `com.thorisathot.ashenvigil` (set in `capacitor.config.json` and `android/app/build.gradle`). It can't be changed after the first store release.
 
 ## Monetisation
 
@@ -79,3 +79,9 @@ To get updates on an Android phone:
 Obtainium checks for new releases in the background and can update automatically (Settings, then Updates).
 
 Test builds are signed with `android/test-signing.keystore`. This key is committed on purpose so every CI build can update the installed app. Never use it for the Play Store; create a private upload key for release builds. The manifest uses Google's test AdMob app id until you set a real one.
+
+## Release builds for Google Play
+
+See `LAUNCH.md` for the full checklist. Release bundles are built by `.github/workflows/android-release.yml` (Actions > Android release > Run workflow). It signs with your private upload key from the repository secrets `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS` and `ANDROID_KEY_PASSWORD`, and reads your real AdMob app id from the repository variable `ADMOB_APP_ID`. The test-only key in `android/test-signing.keystore` is never used for releases. The package name is `com.thorisathot.ashenvigil`.
+
+The game asks EEA and UK players for ad consent through Google's UMP message (create it in AdMob > Privacy & messaging), and Settings links to the privacy policy at `https://thorisathot.github.io/project-3/privacy.html`.
